@@ -1,15 +1,6 @@
 <div>
-    <h2>Login</h2>
-    <div class="control-group">
-      <div class="form-group controls">
-        <input placeholder="Username.." type="text" class="form-control" name="username" [(ngModel)]="model.UserName" required />
-      </div>
-    </div>
-    <div class="control-group">
-      <div class="form-group controls">
-        <input placeholder="Password.." type="password" class="form-control" name="password" [(ngModel)]="model.Password" required />
-      </div>
-    </div>
+    <h2>Already have an account?</h2>
+    <input placeholder="Username.." type="text" class="form-control" name="username" [(ngModel)]="model.UserName" required />
+    <input placeholder="Password.." type="password" class="form-control" name="password" [(ngModel)]="model.Password" required />
     <button [disabled]="loading" class="btn btn-outline btn-lg btn-block" (click)="login()">Login</button>
-    <a routerLink="/register" class="btn btn-link">Register</a>
 </div>
