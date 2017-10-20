@@ -1,14 +1,7 @@
 <div>
-
-    <h2>Register</h2>
-    <label for="firstName">First Name</label>
-    <input type="text" class="form-control" name="firstName" [(ngModel)]="model.FirstName" required />
-    <label for="lastName">Last Name</label>
-    <input type="text" class="form-control" name="lastName" [(ngModel)]="model.LastName" required />
-    <label for="username">Username</label>
-    <input type="text" class="form-control" name="username" [(ngModel)]="model.UserName" required />
-    <label for="password">Password</label>
-    <input type="password" class="form-control" name="password" [(ngModel)]="model.Password" required />
-    <button [disabled]="loading" class="btn btn-primary" (click)="register()">Register</button>
-    <a routerLink="/login" class="btn btn-link">Cancel</a>
+    <h2>New to Faragni? Join Us!</h2>
+    <input placeholder="First Name.." type="text" class="form-control" name="username" [(ngModel)]="model.UserName" required />
+    <input placeholder="Email.." type="text" class="form-control" name="username" [(ngModel)]="model.Email[0]" required />
+    <input placeholder="Password.." type="password" class="form-control" name="password" [(ngModel)]="model.Password" required />
+    <button [disabled]="loading" class="btn btn-outline btn-lg btn-block" (click)="register()">Register</button>
 </div>

@@ -1,5 +1,5 @@
 /*!
- * Start Bootstrap - Freelancer v4.0.0-beta (https://startbootstrap.com/template-overviews/freelancer)
+ * Start Bootstrap - Freelancer v4.0.0-beta (http://startbootstrap.com/template-overviews/freelancer)
  * Copyright 2013-2017 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-freelancer/blob/master/LICENSE)
  */
@@ -116,15 +116,12 @@ section.success {
   #mainNav .navbar-nav {
     letter-spacing: 1px; }
     #mainNav .navbar-nav li.nav-item a.nav-link {
-      color: white;
-      cursor: pointer; }
+      color: white; }
       #mainNav .navbar-nav li.nav-item a.nav-link:hover {
         color: #18BC9C;
-        outline: none;
-        cursor: pointer;}
+        outline: none; }
       #mainNav .navbar-nav li.nav-item a.nav-link:active, #mainNav .navbar-nav li.nav-item a.nav-link:focus {
-        color: white;
-        cursor: pointer;}
+        color: white; }
   #mainNav .navbar-toggler {
     font-size: 14px;
     padding: 11px;

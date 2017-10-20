@@ -21,17 +21,21 @@ export class RegisterComponent implements OnInit {
         private toast: ToasterService)
     {
         this.model = new User();
+        this.model.UserName = "";
+        this.model.Password = "";
+        this.model.Email = [];
+        this.model.Email[0] = "";
     }
 
     register() {
-      console.log('hamada')
+        console.log('hamada')
         this.loading = true;
         this.userService.create(this.model)
             .subscribe(
                 data => {
                     // set success message and pass true paramater to persist the message after redirecting to the login page
                     //this.toast.pop('success', 'Hello', 'Welcome to Faragni');
-                    this.router.navigate(['/login']);
+                    //this.router.navigate(['/login']);
                 },
                 error => {
                     //this.toast.pop('error', 'Error', 'Error while login');
