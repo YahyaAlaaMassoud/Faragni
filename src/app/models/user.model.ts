@@ -1,8 +1,8 @@
-import { Rating } from './rating'
-import { Recommendation } from './recommendation'
+import { Rating } from './rating.model'
+import { Recommendation } from './recommendation.model'
 
 export class User {
-  UserID: string;
+  UserID: number;
   MovieRatings: Rating[];
   FirstName: string;
   LastName: string;
@@ -12,4 +12,5 @@ export class User {
   Age: number;
   Friends: User[];
   Recommended: Recommendation[];
+  Password: string;
 }

@@ -1,5 +1,5 @@
-import { ProductionCompany } from './production-company'
-import { Genre } from './genre'
+import { ProductionCompany } from './production-company.model'
+import { Genre } from './genre.model'
 
 export class Movie {
   MovieID: number;
