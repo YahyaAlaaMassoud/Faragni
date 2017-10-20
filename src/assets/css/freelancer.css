@@ -116,12 +116,15 @@ section.success {
   #mainNav .navbar-nav {
     letter-spacing: 1px; }
     #mainNav .navbar-nav li.nav-item a.nav-link {
-      color: white; }
+      color: white;
+      cursor: pointer; }
       #mainNav .navbar-nav li.nav-item a.nav-link:hover {
         color: #18BC9C;
-        outline: none; }
+        outline: none;
+        cursor: pointer;}
       #mainNav .navbar-nav li.nav-item a.nav-link:active, #mainNav .navbar-nav li.nav-item a.nav-link:focus {
-        color: white; }
+        color: white;
+        cursor: pointer;}
   #mainNav .navbar-toggler {
     font-size: 14px;
     padding: 11px;
