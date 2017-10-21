@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { AuthenticationService } from '../../services/authentication/authentication.service';
-import { ToasterService } from 'angular2-toaster';
+import { UserService } from '../../services/user/user.service';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 import { User } from '../../models/user.model';
 
@@ -15,16 +16,24 @@ export class LoginComponent implements OnInit {
   model: User;
   loading = false;
   returnUrl: string;
+  loginOrRegiser: boolean;
+  email: string;
 
   constructor(
         private route: ActivatedRoute,
         private router: Router,
         private authenticationService: AuthenticationService,
-        private toasterService: ToasterService)
+        public toastr: ToastsManager,
+        private userService: UserService,)
   {
       this.model = new User();
       this.model.UserName = "";
+      this.model.FirstName = "";
+      this.model.LastName = "";
+      this.model.Email = [];
+      this.email = "";
       this.model.Password = "";
+      this.loginOrRegiser = false;
   }
 
 
@@ -37,9 +46,9 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-
-      console.log(this.model.UserName + " " + this.model.Password)
-      this.authenticationService.login(this.model.UserName, this.model.Password)
+      this.toastr.info('You are awesome!');
+      console.log('logged in')
+      /*this.authenticationService.login(this.model.UserName, this.model.Password)
           .subscribe(
               data => {
                   console.log('yes')
@@ -51,7 +60,26 @@ export class LoginComponent implements OnInit {
                   console.log('no');
                   //this.toasterService.pop('error', 'Error', 'Error while login');
                   this.loading = false;
-              });
+              });*/
+  }
+
+  register() {
+      console.log('registered')
+      this.toastr.success('You are awesome!', 'error!');
+      /*this.loading = true;
+      this.model.Email = [];
+      this.model.Email.push(this.email)
+      this.userService.create(this.model)
+          .subscribe(
+              data => {
+                  // set success message and pass true paramater to persist the message after redirecting to the login page
+                  //this.toast.pop('success', 'Hello', 'Welcome to Faragni');
+                  this.loginOrRegiser = !this.loginOrRegiser
+              },
+              error => {
+                  //this.toast.pop('error', 'Error', 'Error while login');
+                  this.loading = false;
+              });*/
   }
 
 }

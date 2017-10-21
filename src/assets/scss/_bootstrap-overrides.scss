@@ -3,16 +3,16 @@
   font-size: 20px;
   margin-top: 15px;
   transition: all 0.3s ease-in-out;
-  color: white;
-  border: solid 2px white;
+  color: blue;
+  border: solid 2px blue;
   background: transparent;
   &.active,
   &:active,
   &:focus,
   &:hover {
     color: $theme-success;
-    border: solid 2px white;
-    background: white;
+    border: solid 2px blue;
+    background: blue;
   }
 }
 

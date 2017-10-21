@@ -1,11 +1,12 @@
 //modules
 import { BrowserModule } from '@angular/platform-browser';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ToasterModule, ToasterService, ToasterContainerComponent } from 'angular2-toaster';
+import {ToastModule} from 'ng2-toastr/ng2-toastr';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
+import { AlertModule } from 'ngx-bootstrap';
 
 
 //components
@@ -28,6 +29,7 @@ import { BaseRequestOptions } from '@angular/http';
 
 //routing
 import { appRoutes } from './app.routing';
+import { LoginSignupModalComponent } from './components/login-signup-modal/login-signup-modal.component';
 
 @NgModule({
   declarations: [
@@ -37,17 +39,19 @@ import { appRoutes } from './app.routing';
     WelcomeScreenComponent,
     LoginComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginSignupModalComponent
   ],
   imports: [
     BrowserModule,
-    ToasterModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    ToastModule.forRoot(),
+    AlertModule.forRoot()
   ],
   providers: [
-    ToasterService,
     AuthenticationService,
     AuthGuard,
     UserService,

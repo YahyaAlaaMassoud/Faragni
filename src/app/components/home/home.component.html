@@ -1,15 +1,29 @@
-<div class="container">
-  <div class="intro-text wdth-md">
-    <!--<div class="col-md-6 intro-text">-->
+<app-navbar></app-navbar>
+<header class="masthead">
+  <div class="container">
+    <div class="intro-text" style="padding-left:200px; padding-right:200px">
       <span class="name">Hello and welcome to</span>
       <span class="skills">Your Personalized Movie Recommendation Engine</span>
       <hr>
-      <button style="cursor: pointer;" type="button" class="btn btn-outline btn-lg btn-block" routerLink="/register">Let's get started!</button>
-    <!--</div>-->
-    <!--<div class="col-md-6">
-        <app-login></app-login>
-        <hr>
-        <app-register></app-register>
-    </div>-->
+      <button type="button" class="btn btn-outline btn-lg btn-block" data-toggle="modal" data-target="#login">Sign up to get started!</button>
+    </div>
+  </div>
+</header>
+<app-footer></app-footer>
+
+<div id="login" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">come on!!</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
   </div>
 </div>
