@@ -21,8 +21,10 @@ export class WelcomeScreenComponent implements OnInit {
   }
 
   deleteUser(id: number) {
+    console.log(id)
       this.userService.delete(id)
         .subscribe(() => {
+          console.log('deleted')
           this.loadAllUsers()
         });
   }
@@ -31,6 +33,7 @@ export class WelcomeScreenComponent implements OnInit {
       this.userService.getAll()
         .subscribe(users => {
           this.users = users;
+          console.log(users)
         });
   }
 }

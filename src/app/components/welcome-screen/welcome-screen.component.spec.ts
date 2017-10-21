@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HomeScreenComponent } from './home-screen.component';
+import { WelcomeScreenComponent } from './welcome-screen.component';
 
 describe('HomeScreenComponent', () => {
-  let component: HomeScreenComponent;
-  let fixture: ComponentFixture<HomeScreenComponent>;
+  let component: WelcomeScreenComponent;
+  let fixture: ComponentFixture<WelcomeScreenComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomeScreenComponent ]
+      declarations: [ WelcomeScreenComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HomeScreenComponent);
+    fixture = TestBed.createComponent(WelcomeScreenComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
