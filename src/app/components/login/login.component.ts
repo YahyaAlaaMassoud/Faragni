@@ -65,10 +65,11 @@ export class LoginComponent implements OnInit {
 
   register() {
       console.log('registered')
-      this.toastr.success('You are awesome!', 'error!');
+      this.toastr.success('You are awesome!', 'registering');
       this.loading = true;
       this.model.Email = [];
       this.model.Email.push(this.email)
+      console.log(this.model)
       this.userService.create(this.model)
           .subscribe(
               data => {
