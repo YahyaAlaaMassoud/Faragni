@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
   login() {
       this.toastr.info('You are awesome!');
       console.log('logged in')
-      /*this.authenticationService.login(this.model.UserName, this.model.Password)
+      this.authenticationService.login(this.model.UserName, this.model.Password)
           .subscribe(
               data => {
                   console.log('yes')
@@ -60,13 +60,13 @@ export class LoginComponent implements OnInit {
                   console.log('no');
                   //this.toasterService.pop('error', 'Error', 'Error while login');
                   this.loading = false;
-              });*/
+              });
   }
 
   register() {
       console.log('registered')
       this.toastr.success('You are awesome!', 'error!');
-      /*this.loading = true;
+      this.loading = true;
       this.model.Email = [];
       this.model.Email.push(this.email)
       this.userService.create(this.model)
@@ -79,7 +79,7 @@ export class LoginComponent implements OnInit {
               error => {
                   //this.toast.pop('error', 'Error', 'Error while login');
                   this.loading = false;
-              });*/
+              });
   }
 
 }

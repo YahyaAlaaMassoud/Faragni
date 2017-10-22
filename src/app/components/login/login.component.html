@@ -2,6 +2,7 @@
   <div class="col-md-6">
   </div>
   <div class="col-md-6" style="border-radius: 25px; padding-top: 150px; padding-bottom:100px; padding-right:300px;">
+    <!--login form-->
     <div class="login" *ngIf="!loginOrRegiser">
       <h2 style="font-size:22px;">Log in to your account</h2>
       <input style="width:270px;" placeholder="Username.." type="text" class="form-control" name="username"
@@ -12,6 +13,7 @@
       <button style="width:270px;" [disabled]="loading" class="btn login-btn-outline btn-lg btn-block" (click)="login()">Login</button>
       <a (click)="loginOrRegiser = !loginOrRegiser" style="cursor: pointer;">Not a member?</a>
     </div>
+    <!--register form-->
     <div class="login" *ngIf="loginOrRegiser">
       <h2 style="font-size:22px;">Create a new account</h2>
       <input style="width:270px;" placeholder="First Name.." type="text" class="form-control"
@@ -22,7 +24,7 @@
                     [(ngModel)]="model.UserName" required />
       <input style="width:270px;" placeholder="Email.." type="text" class="form-control"
                     [(ngModel)]="model.Email" required />
-      <input style="width:270px;" placeholder="Age.." type="number" class="form-control" [min]="0"
+      <input style="width:270px;" placeholder="Age.." type="date" class="form-control"
                     [(ngModel)]="model.Age" required />
       <input style="width:270px;" placeholder="Password.." type="password" class="form-control"
                     [(ngModel)]="model.Password" required />

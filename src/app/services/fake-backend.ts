@@ -87,7 +87,7 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
                 }
 
                 // save new user
-                newUser.id = users.length + 1;
+                newUser.UserID = users.length + 1;
                 users.push(newUser);
                 localStorage.setItem('users', JSON.stringify(users));
 
@@ -103,11 +103,15 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
                 if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
                     // find user by id in users array
                     let urlParts = connection.request.url.split('/');
+                    console.log('urlParts '+urlParts)
                     let id = parseInt(urlParts[urlParts.length - 1]);
+                    console.log('id '+id)
                     for (let i = 0; i < users.length; i++) {
                         let user = users[i];
-                        if (user.UserID === id) {
+                        console.log(user)
+                        if (user.UserID == id) {
                             // delete user
+                            console.log('emsa7 ' + id)
                             users.splice(i, 1);
                             localStorage.setItem('users', JSON.stringify(users));
                             break;
