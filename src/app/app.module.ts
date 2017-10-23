@@ -1,9 +1,10 @@
 //modules
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { FormsModule } from '@angular/forms';
-import {ToastModule} from 'ng2-toastr/ng2-toastr';
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { AlertModule } from 'ngx-bootstrap';
@@ -48,6 +49,7 @@ import { LoginSignupModalComponent } from './components/login-signup-modal/login
     FormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
+    MDBBootstrapModule.forRoot(),
     ToastModule.forRoot(),
     AlertModule.forRoot()
   ],
@@ -59,6 +61,7 @@ import { LoginSignupModalComponent } from './components/login-signup-modal/login
     MockBackend,
     BaseRequestOptions
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [ NO_ERRORS_SCHEMA ]
 })
 export class AppModule { }
