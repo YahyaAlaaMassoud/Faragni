@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
         private router: Router,
         private authenticationService: AuthenticationService,
         public toastr: ToastsManager,
-        private userService: UserService,)
+        private userService: UserService)
   {
       this.model = new User();
       this.model.UserName = "";
