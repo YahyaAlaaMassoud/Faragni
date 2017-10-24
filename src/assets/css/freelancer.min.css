@@ -140,6 +140,9 @@ div.login {
   height: 9px;}
   #mainNav a:focus {
     outline: none; }
+  #mainNav .nav-link{
+    color: #7b4397;
+  }
   #mainNav .navbar-brand {
     padding-top: 10px;
     font-size: 14px;
