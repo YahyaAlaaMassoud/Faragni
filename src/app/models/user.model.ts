@@ -13,4 +13,5 @@ export class User {
   Friends: User[];
   Recommended: Recommendation[];
   Password: string;
+  token: string;
 }
