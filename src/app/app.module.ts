@@ -32,6 +32,8 @@ import { BaseRequestOptions } from '@angular/http';
 import { appRoutes } from './app.routing';
 import { LoginSignupModalComponent } from './components/login-signup-modal/login-signup-modal.component';
 
+import 'jquery';
+
 @NgModule({
   declarations: [
     AppComponent,

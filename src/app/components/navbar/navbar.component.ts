@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -6,12 +6,18 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
+  @Input() hide: boolean;
+  @Output() onModalOpen = new EventEmitter<any>();
+
   constructor() {
-    this.hide = true ;
+    this.hide = true;
   }
 
-  @Input() hide:boolean ;
   ngOnInit() {
+  }
+
+  toggleModal() {
+    this.onModalOpen.emit()
   }
 
 }

@@ -1,11 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
+//services
 import { AuthenticationService } from '../../services/authentication/authentication.service';
 import { UserService } from '../../services/user/user.service';
+//models
+import { User } from '../../models/user.model';
+
+//wrappers
+import 'jquery';
+import 'bootstrap';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
-import { User } from '../../models/user.model';
+declare var $: any;
 
 @Component({
   selector: 'app-home',
@@ -76,5 +83,10 @@ export class HomeComponent implements OnInit {
                   //this.toast.pop('error', 'Error', 'Error while login');
                   this.loading = false;
               });
+  }
+
+  toggleModal(){
+    this.loginOrRegiser = false;
+    $('#loginModal').modal('toggle');
   }
 }
