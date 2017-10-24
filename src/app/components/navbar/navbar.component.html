@@ -1,12 +1,18 @@
-<nav class="navbar navbar-expand-lg fixed-top" id="mainNav" role="navigation">
+<nav class="navbar navbar-expand-lg fixed-top scrolling-navbar" id="mainNav" role="navigation">
   <div class="container">
     <a class="navbar-brand js-scroll-trigger" href="/">Faragni</a>
+    <a class="nav-link" routerLinkActive="active">Home</a>
+    <a class="nav-link">About</a>
+    <a class="nav-link">Courses</a>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <!--<input class="form-control mr-sm-2" style="background-color: rgba(245,245,245, 0.1);" type="search" placeholder="Search for movies" aria-label="Search">-->
-        <button class="nav-btn-outline my-2 my-sm-0" (click)="toggleModal()" *ngIf ="hide">Sign in</button>
+        <form *ngIf="!hide" class="form-inline search">
+            <input class="form-control mr-sm-2 search" type="text" placeholder="Search" aria-label="Search">
+        </form>
+        <button class="nav-btn-outline my-2 my-sm-0" (click)="toggleModal()" *ngIf="hide">Sign in</button>
+        <button class="nav-btn-outline my-2 my-sm-0" (click)="toggleModal()" *ngIf="currentUser != null">Hello {{currentUser.UserName}}!</button>
       </form>
     </div>
   </div>

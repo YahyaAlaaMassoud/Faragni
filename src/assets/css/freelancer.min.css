@@ -92,6 +92,10 @@ section.success {
   color: white;
   background: #18BC9C; }
 
+.search{
+  color: #7b4397;
+}
+
 @media (max-width: 767px) {
   section {
     padding: 75px 0; }
@@ -133,7 +137,7 @@ div.login {
   background:  white;
   /*background: -webkit-linear-gradient(to left, #7b4397, #dc2430);
   background:  linear-gradient(to left, #7b4397, #dc2430);*/
-  height: 10px;}
+  height: 9px;}
   #mainNav a:focus {
     outline: none; }
   #mainNav .navbar-brand {

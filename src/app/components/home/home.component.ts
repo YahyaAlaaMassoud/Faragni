@@ -47,8 +47,6 @@ export class HomeComponent implements OnInit {
   }
 
   login() {
-      this.toastr.info('You are awesome!');
-      console.log('logged in')
       this.authenticationService.login(this.model.UserName, this.model.Password)
           .subscribe(
               data => {
@@ -65,12 +63,9 @@ export class HomeComponent implements OnInit {
   }
 
   register() {
-      console.log('registered')
-      this.toastr.success('You are awesome!', 'registering');
       this.loading = true;
       this.model.Email = [];
       this.model.Email.push(this.email)
-      console.log(this.model)
       this.userService.create(this.model)
           .subscribe(
               data => {
@@ -78,10 +73,12 @@ export class HomeComponent implements OnInit {
                   //this.toast.pop('success', 'Hello', 'Welcome to Faragni');
                   this.loginOrRegiser = !this.loginOrRegiser
                   this.loading = false;
+                  console.log('leh')
               },
               error => {
                   //this.toast.pop('error', 'Error', 'Error while login');
                   this.loading = false;
+                  console.log('ahhhh')
               });
   }
 

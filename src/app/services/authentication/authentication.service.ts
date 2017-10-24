@@ -3,6 +3,8 @@ import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
 
+import { User } from '../../models/user.model'
+
 @Injectable()
 export class AuthenticationService {
     constructor(private http: Http) { }
@@ -12,12 +14,19 @@ export class AuthenticationService {
             .map((response: Response) => {
                 // login successful if there's a jwt token in the response
                 let user = response.json();
+                let curr = new User();
                 if (user && user.token) {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentUser', JSON.stringify(user));
+
+                    curr.UserID = user.id;
+                    curr.UserName = user.username;
+                    curr.FirstName = user.firstName;
+                    curr.LastName = user.lastName;
+                    curr.token = user.token;
+                    localStorage.setItem('currentUser', JSON.stringify(curr));
                 }
 
-                return user;
+                return curr;
             });
     }
 
