@@ -4,13 +4,14 @@ import { Router, ActivatedRoute } from '@angular/router';
 //services
 import { AuthenticationService } from '../../services/authentication/authentication.service';
 import { UserService } from '../../services/user/user.service';
+import { ToasterContainerComponent, ToasterService, ToasterConfig } from 'angular2-toaster';
+
 //models
 import { User } from '../../models/user.model';
 
 //wrappers
 import 'jquery';
 import 'bootstrap';
-import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 declare var $: any;
 
@@ -29,8 +30,8 @@ export class HomeComponent implements OnInit {
   constructor(
         private route: ActivatedRoute,
         private router: Router,
+        private toast: ToasterService,
         private authenticationService: AuthenticationService,
-        public toastr: ToastsManager,
         private userService: UserService)
   {
     this.model = new User();
@@ -50,13 +51,18 @@ export class HomeComponent implements OnInit {
       this.authenticationService.login(this.model.UserName, this.model.Password)
           .subscribe(
               data => {
-                  console.log('yes')
                   this.loading = true;
+                  var toast: any = {
+                    type: 'success',
+                    title: 'Hello!',
+                    body: 'Nice to see you ' + data.UserName + '!',
+                    timeout: 2500
+                  };
+                  this.toast.pop(toast)
                   //this.toasterService.pop('success', 'Hello', 'Welcome to Faragni');
                   this.router.navigate(['/welcome']);
               },
               error => {
-                  console.log('no');
                   //this.toasterService.pop('error', 'Error', 'Error while login');
                   this.loading = false;
               });
@@ -73,12 +79,10 @@ export class HomeComponent implements OnInit {
                   //this.toast.pop('success', 'Hello', 'Welcome to Faragni');
                   this.loginOrRegiser = !this.loginOrRegiser
                   this.loading = false;
-                  console.log('leh')
               },
               error => {
                   //this.toast.pop('error', 'Error', 'Error while login');
                   this.loading = false;
-                  console.log('ahhhh')
               });
   }
 

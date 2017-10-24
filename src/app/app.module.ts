@@ -4,11 +4,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { FormsModule } from '@angular/forms';
-import { ToastModule } from 'ng2-toastr/ng2-toastr';
+import { ToasterModule, ToasterService } from 'angular2-toaster';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { AlertModule } from 'ngx-bootstrap';
-
 
 //components
 import { AppComponent } from './app.component';
@@ -52,8 +51,8 @@ import 'jquery';
     HttpModule,
     RouterModule.forRoot(appRoutes),
     MDBBootstrapModule.forRoot(),
-    ToastModule.forRoot(),
-    AlertModule.forRoot()
+    AlertModule.forRoot(),
+    ToasterModule
   ],
   providers: [
     AuthenticationService,
