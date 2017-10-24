@@ -5,9 +5,7 @@
  */
 body {
   font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  /*overflow-x: hidden;*/
-  width: 100%;
-  height: 100%;
+  overflow-x: hidden;
   }
 
 .body-all{
