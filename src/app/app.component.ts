@@ -10,6 +10,14 @@ export class AppComponent implements OnInit {
   title = 'app';
   navAppearence: boolean;
 
+  public config1 : ToasterConfig = new ToasterConfig({
+            showCloseButton: false,
+            tapToDismiss: true,
+            timeout: 0,
+            positionClass: 'toast-bottom-center',
+            animation: 'slideUp'
+        });
+
   constructor(private route: ActivatedRoute){
     let path: string = this.route.snapshot.url.join('/');
     if(!path.includes('login'))

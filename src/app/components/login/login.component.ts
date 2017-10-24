@@ -77,6 +77,7 @@ export class LoginComponent implements OnInit {
               data => {
                   // set success message and pass true paramater to persist the message after redirecting to the login page
                   this.loginOrRegiser = !this.loginOrRegiser
+                  this.loading = false;
               },
               error => {
                   //this.toast.pop('error', 'Error', 'Error while login');

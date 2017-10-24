@@ -11,7 +11,18 @@
             <input class="form-control mr-sm-2 search" type="text" placeholder="Search" aria-label="Search">
         </form>
         <button class="nav-btn-outline my-2 my-sm-0" (click)="toggleModal()" *ngIf="hide">Sign in</button>
-        <button class="nav-btn-outline my-2 my-sm-0" (click)="toggleModal()" *ngIf="currentUser != null">Hello {{currentUser.UserName}}!</button>
+        <div class="btn-group">
+          <button class="nav-btn-outline my-2 my-sm-0" (click)="toggleModal()" *ngIf="currentUser != null"
+                  data-toggle="dropdown" aria-haspopup="true">Hello {{currentUser.UserName}}!</button>
+              <div class="dropdown-menu">
+                  <span data-toggle="dropdown"></span>
+                  <a class="dropdown-item">Profile</a>
+                  <a class="dropdown-item" >Movies</a>
+                  <a class="dropdown-item">Settings</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" (click)="logout()">Logout</a>
+              </div>
+        </div>
       </form>
     </div>
   </div>

@@ -16,7 +16,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component'
 import { WelcomeScreenComponent } from './components/welcome-screen/welcome-screen.component';
-import { RegisterComponent } from './components/register/register.component';
 
 
 //services
@@ -29,7 +28,6 @@ import { BaseRequestOptions } from '@angular/http';
 
 //routing
 import { appRoutes } from './app.routing';
-import { LoginSignupModalComponent } from './components/login-signup-modal/login-signup-modal.component';
 
 import 'jquery';
 
@@ -41,8 +39,6 @@ import 'jquery';
     WelcomeScreenComponent,
     LoginComponent,
     HomeComponent,
-    RegisterComponent,
-    LoginSignupModalComponent
   ],
   imports: [
     BrowserModule,
