@@ -131,10 +131,19 @@ div.login {
   background:  white;
   /*background: -webkit-linear-gradient(to left, #7b4397, #dc2430);
   background:  linear-gradient(to left, #7b4397, #dc2430);*/
-  height: 9px;}
+  height: 8px;}
   #mainNav a:focus {
     outline: none; }
   #mainNav .nav-link{
+    color: #7b4397;
+  }
+  #mainNav .nav-tab-active{
+    padding-top: 12px;
+    border-top: 5px solid white;
+    border-bottom: 5px solid #7b4397;
+    border-top:none;
+    border-left:none;
+    border-right:none;
     color: #7b4397;
   }
   #mainNav .navbar-brand {
@@ -187,6 +196,32 @@ div.login {
     padding-bottom: 10px; }
     #mainNav.navbar-shrink .navbar-brand {
       font-size: 1.5em; } }
+
+
+.nav-tab{
+  padding: 8px;
+  width: 120px;
+  border-top: 5px solid white;
+  border-bottom: 5px solid white;
+  border-left:none;
+  border-right:none;
+  color: #7b4397;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  background: transparent;
+}
+  .nav-tab.active, .nav-tab:active, .nav-tab:focus, .nav-tab:hover {
+    padding: 8px;
+    border-bottom: 5px solid #7b4397;
+    border-top: 5px solid white;
+    width: 120px;
+    border-left:none;
+    border-right:none;
+    transition: all 0.03s ease-in-out;
+    color: #7b4397;
+    cursor: pointer;
+    background: transparent;
+  }
 
 
 header.masthead {
@@ -425,7 +460,7 @@ footer {
       cursor: pointer;
       border: solid 2px #7b4397;
       background: transparent; }
-      .nav-btn-outline.active, .nav-btn-outline:active, .nav-btn-outline:focus, .nav-btn-outline:hover {
+      .nav-btn-outline.active, .nav-btn-outline:active, /*.nav-btn-outline:focus,*/ .nav-btn-outline:hover {
         color: white;
         border: solid 2px #7b4397;
         background: #7b4397; }
