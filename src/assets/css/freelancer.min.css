@@ -90,10 +90,6 @@ section.success {
   color: white;
   background: #18BC9C; }
 
-.search{
-  color: #7b4397;
-}
-
 @media (max-width: 767px) {
   section {
     padding: 75px 0; }
@@ -384,6 +380,13 @@ footer {
     padding: 0px 0;
     background-color: white;
   }
+
+  .dropdown-item-p{
+    background-color: white;
+  }
+  .dropdown-item-p.active, .dropdown-item-p:active, .dropdown-item-p:focus, .dropdown-item-p:hover {
+    color: white;
+    background: #7b4397; }
 
 .btn-outline {
   font-size: 20px;
