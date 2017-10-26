@@ -20,13 +20,13 @@ export class AppComponent implements OnInit {
 
   constructor(private route: ActivatedRoute){
     let path: string = this.route.snapshot.url.join('/');
-    if(!path.includes('login'))
-      this.navAppearence = true;
+    if(path.includes('login'))
+      this.navAppearence = false;
     console.log(this.route.snapshot.url.join('/'))
   }
 
   ngOnInit(){
-    this.navAppearence = false;
+    this.navAppearence = true;
   }
 
 }
