@@ -15,6 +15,7 @@ export class NavbarComponent implements OnInit {
   @Input() hide: boolean;
   @Input() currentUser: User;
   @Output() onModalOpen = new EventEmitter<any>();
+  @Output() screenID = new EventEmitter<number>();
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -26,6 +27,10 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  chooseScreen(id: number){
+    this.screenID.emit(id)
   }
 
   toggleModal() {
@@ -42,7 +47,7 @@ export class NavbarComponent implements OnInit {
     };
     this.toast.pop(toast)
     this.authService.logout();
-    this.router.navigate(['/']);
+    this.router.navigate(['/login']);
   }
 
 }

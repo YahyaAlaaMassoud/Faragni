@@ -7,9 +7,14 @@ import { UserService } from '../../services/user/user.service';
 import { User } from '../../models/user.model';
 import { ToasterContainerComponent, ToasterService, ToasterConfig } from 'angular2-toaster';
 
+//animations
+import { fadeInAnimation } from '../../animations/fade-in.animation'
+
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html'
+  templateUrl: './login.component.html',
+  animations: [fadeInAnimation],
+  host: { '[@fadeInAnimation]': '' }
 })
 export class LoginComponent implements OnInit {
 

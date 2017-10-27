@@ -129,8 +129,6 @@ div.login {
   text-transform: capitalize;
   border: none;
   background:  white;
-  /*background: -webkit-linear-gradient(to left, #7b4397, #dc2430);
-  background:  linear-gradient(to left, #7b4397, #dc2430);*/
   height: 8px;}
   #mainNav a:focus {
     outline: none; }
@@ -200,7 +198,7 @@ div.login {
 
 .nav-tab{
   padding: 8px;
-  width: 120px;
+  width: 200px;
   border-top: 5px solid white;
   border-bottom: 5px solid white;
   border-left:none;
@@ -214,7 +212,7 @@ div.login {
     padding: 8px;
     border-bottom: 5px solid #7b4397;
     border-top: 5px solid white;
-    width: 120px;
+    width: 200px;
     border-left:none;
     border-right:none;
     transition: all 0.03s ease-in-out;

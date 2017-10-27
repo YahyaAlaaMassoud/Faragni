@@ -1,18 +1,15 @@
 <nav id="mainNav" class="navbar navbar-expand-lg fixed-top" role="navigation">
   <div class="container">
     <a class="navbar-brand" href="/">Faragni</a>
-    <button class="nav-tab my-2 my-sm-0">Movies</button>
-    <button class="nav-tab my-2 my-sm-0">Activity</button>
-    <button class="nav-tab my-2 my-sm-0">Friends</button>
-    <button class="nav-tab my-2 my-sm-0">Alot</button>
-    <button class="nav-tab my-2 my-sm-0">of</button>
-    <button class="nav-tab my-2 my-sm-0">more</button>
-    <button class="nav-tab my-2 my-sm-0">tabs</button>
+    <button class="nav-tab my-2 my-sm-0" (click)="chooseScreen(1)">Movies</button>
+    <button class="nav-tab my-2 my-sm-0" (click)="chooseScreen(2)">Activity</button>
+    <button class="nav-tab my-2 my-sm-0" (click)="chooseScreen(3)">Friends</button>
+    <button class="nav-tab my-2 my-sm-0" (click)="chooseScreen(4)">News Feed</button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
       </ul>
       <form class="form-inline">
-        <input *ngIf="!hide" class="form-control" type="text" placeholder="Search" aria-label="Search">
+        <input *ngIf="!hide" class="form-control" type="search" placeholder="Search" aria-label="Search">
         <button class="nav-btn-outline my-2 my-sm-0" (click)="toggleModal()" *ngIf="hide">Sign in</button>
         <div class="btn-group">
           <button class="nav-btn-outline my-2 my-sm-0" (click)="toggleModal()" *ngIf="currentUser != null"

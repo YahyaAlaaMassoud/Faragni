@@ -13,11 +13,16 @@ import { User } from '../../models/user.model';
 import 'jquery';
 import 'bootstrap';
 
+//animations
+import { fadeInAnimation } from '../../animations/fade-in.animation'
+
 declare var $: any;
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html'
+  templateUrl: './home.component.html',
+  animations: [fadeInAnimation],
+  host: { '[@fadeInAnimation]': '' }
 })
 export class HomeComponent implements OnInit {
 
