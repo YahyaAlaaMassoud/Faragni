@@ -16,6 +16,7 @@ export class NavbarComponent implements OnInit {
   @Input() currentUser: User;
   @Output() onModalOpen = new EventEmitter<any>();
   @Output() screenID = new EventEmitter<number>();
+  currentScreen: number;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -24,12 +25,14 @@ export class NavbarComponent implements OnInit {
   {
     this.hide = true;
     this.currentUser = null;
+    this.currentScreen = 1;
   }
 
   ngOnInit() {
   }
 
   chooseScreen(id: number){
+    this.currentScreen = id;
     this.screenID.emit(id)
   }
 

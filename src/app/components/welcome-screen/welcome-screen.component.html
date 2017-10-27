@@ -1,8 +1,8 @@
 <app-navbar [hide]="false" [currentUser]="currentUser" (screenID)="chooseScreen($event)"></app-navbar>
-  <header class="masthead">
+<app-movies *ngIf="currentScreen == 1"></app-movies>
+  <header *ngIf="currentScreen == 3" class="masthead">
     <div class="container">
-      <app-movies *ngIf="currentScreen == 1"></app-movies>
-      <div *ngIf="currentScreen == 2" class="col-md-6 col-md-offset-3">
+      <div class="col-md-6 col-md-offset-3">
           <h1>Hi {{currentUser.FirstName}}!</h1>
           <p>You're logged in Faragni!!</p>
           <h3>All registered users:</h3>
@@ -14,7 +14,7 @@
           </ul>
           <p><a (click)="logout()">Logout</a></p>
       </div>
-      <app-activity *ngIf="currentScreen == 3"></app-activity>
     </div>
   </header>
+<app-activity *ngIf="currentScreen == 2"></app-activity>
 <app-footer></app-footer>

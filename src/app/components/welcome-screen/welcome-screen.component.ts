@@ -36,7 +36,7 @@ export class WelcomeScreenComponent implements OnInit {
         private userService: UserService)
   {
       this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-      this.currentScreen = 0;
+      this.currentScreen = 1;
   }
 
   ngOnInit() {
