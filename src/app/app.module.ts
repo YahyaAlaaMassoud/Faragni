@@ -30,6 +30,8 @@ import { BaseRequestOptions } from '@angular/http';
 import { appRoutes } from './app.routing';
 
 import 'jquery';
+import { MoviesComponent } from './components/movies/movies.component';
+import { ActivityComponent } from './components/activity/activity.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import 'jquery';
     WelcomeScreenComponent,
     LoginComponent,
     HomeComponent,
+    MoviesComponent,
+    ActivityComponent,
   ],
   imports: [
     BrowserModule,

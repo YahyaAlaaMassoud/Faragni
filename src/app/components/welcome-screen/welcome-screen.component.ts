@@ -8,14 +8,20 @@ import { AuthenticationService } from '../../services/authentication/authenticat
 //import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToasterContainerComponent, ToasterService, ToasterConfig } from 'angular2-toaster';
 
+//animations
+import { fadeInAnimation } from '../../animations/fade-in.animation'
+
 @Component({
   selector: 'app-welcome-screen',
-  templateUrl: './welcome-screen.component.html'
+  templateUrl: './welcome-screen.component.html',
+  animations: [fadeInAnimation],
+  host: { '[@fadeInAnimation]': '' }
 })
 export class WelcomeScreenComponent implements OnInit {
 
   currentUser: User;
   users: User[] = [];
+  currentScreen: number;
 
   public config1 : ToasterConfig = new ToasterConfig({
     positionClass: 'toast-top-right',
@@ -30,6 +36,7 @@ export class WelcomeScreenComponent implements OnInit {
         private userService: UserService)
   {
       this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      this.currentScreen = 0;
   }
 
   ngOnInit() {
@@ -64,5 +71,10 @@ export class WelcomeScreenComponent implements OnInit {
     console.log('goodbye')
     this.authenticationService.logout();
     this.router.navigate(['/login']);
+  }
+
+  chooseScreen(e){
+    console.log(e)
+    this.currentScreen = e;
   }
 }
