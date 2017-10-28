@@ -3,12 +3,22 @@
   <h1>Hello</h1>
   <div id="carouselExampleIndicators" class="carousel slide" data-interval="1000" data-ride="carousel">
     <ol class="carousel-indicators">
-      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" *ngFor="let m of movies;let i = index" [attr.data-slide-to]="i" ngClass="i == 0 ? 'active' : ''"></li>
+
+      <!--<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
       <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>-->
     </ol>
     <div class="carousel-inner" role="listbox">
-      <div class="carousel-item active">
+      <div class="card-group">
+      <div *ngFor="let j of movies; let k = index" [ngClass]="k == 0 ? 'carousel-item active' : 'carousel-item'">
+        <div class="card" style="padding:50px;">
+        <img class="card-img-top" style=" height:90px; width:90px;" src="https://lh3.googleusercontent.com/dB3Dvgf3VIglusoGJAfpNUAANhTXW8K9mvIsiIPkhJUAbAKGKJcEMPTf0mkSexzLM5o=w300" alt="Card image cap">
+        Movie {{k + 1}}
+        </div>
+      </div>
+      </div>
+      <!--<div class="carousel-item active">
         <div class="card-group">
         <div class="card" style="padding:50px;">
         <img class="card-img-top" src="https://lh3.googleusercontent.com/dB3Dvgf3VIglusoGJAfpNUAANhTXW8K9mvIsiIPkhJUAbAKGKJcEMPTf0mkSexzLM5o=w300" alt="Card image cap">
@@ -67,7 +77,7 @@
           Movie 12
           </div>
         </div>
-      </div>
+      </div>-->
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
