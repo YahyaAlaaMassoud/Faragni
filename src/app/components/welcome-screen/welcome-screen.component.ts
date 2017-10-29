@@ -10,6 +10,7 @@ import { ToasterContainerComponent, ToasterService, ToasterConfig } from 'angula
 
 //animations
 import { fadeInAnimation } from '../../animations/fade-in.animation'
+import { trigger, state, animate, transition, style, query, animateChild } from '@angular/animations';
 
 @Component({
   selector: 'app-welcome-screen',
