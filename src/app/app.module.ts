@@ -8,6 +8,7 @@ import { ToasterModule, ToasterService } from 'angular2-toaster';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { AlertModule } from 'ngx-bootstrap';
+import { SuiModule, SuiSidebarModule } from 'ng2-semantic-ui';
 
 //components
 import { AppComponent } from './app.component';
@@ -52,7 +53,9 @@ import { ActivityComponent } from './components/activity/activity.component';
     RouterModule.forRoot(appRoutes),
     MDBBootstrapModule.forRoot(),
     AlertModule.forRoot(),
-    ToasterModule
+    ToasterModule,
+    SuiModule,
+    SuiSidebarModule
   ],
   providers: [
     AuthenticationService,
