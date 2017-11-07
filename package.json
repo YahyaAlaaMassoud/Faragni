@@ -34,7 +34,6 @@
     "ng2-toastr": "^4.1.2",
     "ngx-bootstrap": "^1.9.3",
     "rxjs": "^5.4.2",
-    "semantic-ui": "^2.2.13",
     "tether": "^1.4.0",
     "zone.js": "^0.8.14"
   },
