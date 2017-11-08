@@ -200,8 +200,9 @@ div.login {
   padding-left: 100px;
   padding-right: 100px;
   padding-bottom: 50px;
-  height: auto;
-  min-height:500px;
+  max-height: none;
+  overflow-y: scroll;
+  min-height: 1000px;
   background-color:#eff2f7;
 }
 

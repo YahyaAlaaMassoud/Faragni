@@ -1,0 +1,224 @@
+/* entire container, keeps perspective */
+.flip-container {
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  width: 300px;
+  height: 390px;
+  float: left;
+  position: relative;
+	perspective: 1000px;
+  margin: 10px;
+  -webkit-transition: all 0.7s;
+  transition: all 0.7s;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition:  0.7s;
+}
+
+.card .front {
+  /*background: url(https://tvseriescritic.files.wordpress.com/2016/10/
+    stranger-things-bicycle-lights-children.jpg) center/cover no-repeat;*/
+  border-radius: 3px;
+  background-color: inherit;
+  margin: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  min-height: 390px;
+  position: relative;
+  -webkit-transition: all 0.7s;
+  transition: all 0.7s;
+  -webkit-text-fill-color: white;
+  overflow: hidden;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.2);
+}
+.card .front .header{
+  color: white;
+  padding: 1em;
+}
+.card .front .header .date {
+  float: left;
+  padding: 3px;
+  font-size: 12px;
+}
+.card .front .header .menu-content{
+  float: right;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.card .front .header .menu-content li {
+  margin: 0 5px;
+  position: relative;
+  display: inline-block;
+}
+.card .front .header .menu-content a {
+  color: white;
+}
+.card .front .header .menu-content span {
+  color: white;
+  -webkit-transition: all 0.7s;
+  transition: all 0.7s;
+  opacity: 0;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  font-size: 10px;
+  font-weight: bold;
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+}
+.card .front .data{
+  position: absolute;
+  bottom: 0;
+  color: white;
+  -webkit-transform: translateY(calc(70px + 1em));
+          transform: translateY(calc(70px + 1em));
+  -webkit-transition: -webkit-transform 0.7s;
+  transition: -webkit-transform 0.7s;
+  transition: transform 0.7s;
+  transition: transform 0.7s, -webkit-transform 0.7s;
+}
+.movie-card .data {
+  color: #fff;
+  -webkit-transform: translateY(calc(70px + 4em));
+          transform: translateY(calc(70px + 4em));
+}
+.card .front .data .content {
+  padding: 1.3em;
+  position: relative;
+  z-index: 1;
+}
+.card .title {
+  margin-top: 10px;
+  font-size: 23px;
+  font-weight: bolder;
+}
+.card .title a {
+  margin-top: 10px;
+  font-size: 23px;
+  font-weight: bolder;
+}
+.card .front .data .content .plot {
+  height: 50px;
+  font-size: 15px;
+  margin: 0;
+  opacity: 0;
+}
+.card .front .data .content a{
+  text-align: center;
+}
+.card .front:hover .data {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+.card .front:hover .data .content .plot{
+  opacity: 1;
+  height: auto;
+  -webkit-transition: all 0.7s;
+  transition: all 0.7s;
+}
+.card .front:hover .header .menu-content span {
+  -webkit-transform: translate(-50%, -10px);
+          transform: translate(-50%, -10px);
+  opacity: 1;
+}
+.movie-card .button {
+  filter: blur(0px);
+  display: block;
+  width: 100px;
+  margin: 2em auto 1em;
+  text-align: center;
+  font-size: 12px;
+  color: #fff;
+  line-height: 1;
+  position: relative;
+  font-weight: 700;
+}
+.movie-card .button::after {
+  filter: blur(0px);
+  content: '\2192';
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.movie-card .button:hover::after {
+  filter: blur(0px);
+  -webkit-transform: translate(5px, -50%);
+          transform: translate(5px, -50%);
+  opacity: 1;
+}
+
+
+
+.card .back {
+  border-radius: 3px;
+  background-color: inherit;
+  color: black;
+  margin: 0;
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  transform: rotateY( 180deg );
+}
+.card .back .backg{
+  /*background: url(https://tvseriescritic.files.wordpress.com/2016
+  /10/stranger-things-bicycle-lights-children.jpg) center/cover no-repeat;*/
+  -webkit-text-fill-color: black;
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  filter: blur(5px);
+}
+.card .back .title{
+  filter: blur(0px);
+  text-align: center;
+  margin-top: 10px;
+  font-size: 10px;
+  padding: 10px;
+  font-weight: bolder;
+  -webkit-text-fill-color: white;
+}
+.card .back .title a{
+  filter: blur(0px);
+  text-align: center;
+  margin-top: 10px;
+  font-size: 20px;
+  padding-top: 10px;
+  font-weight: bolder;
+  -webkit-text-fill-color: white;
+}
+.card .back .cast{
+  float: left;
+  margin: auto;
+  filter: blur(0px);
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  font-size: 15px;
+  -webkit-text-fill-color: white;
+}
+.card .back .cast span{
+  filter: blur(0px);
+  font-size: 15px;
+  font-weight: bolder;
+  -webkit-text-fill-color: white;
+}
+
+.card.flipped {
+  transform: rotateY( 180deg );
+}
