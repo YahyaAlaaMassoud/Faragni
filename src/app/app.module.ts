@@ -8,7 +8,7 @@ import { ToasterModule, ToasterService } from 'angular2-toaster';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { AlertModule } from 'ngx-bootstrap';
-import { SuiModule, SuiSidebarModule } from 'ng2-semantic-ui';
+import { SuiModule, SuiSidebarModule, SuiRatingModule } from 'ng2-semantic-ui';
 
 //components
 import { AppComponent } from './app.component';
@@ -22,6 +22,7 @@ import { WelcomeScreenComponent } from './components/welcome-screen/welcome-scre
 //services
 import { AuthenticationService } from './services/authentication/authentication.service';
 import { UserService } from './services/user/user.service';
+import { OmdbMoviesService } from './services/omdb/omdb-movies.service';
 import { AuthGuard } from './guards/auth-guard/auth-guard.guard';
 import { fakeBackendProvider } from './services/fake-backend';
 import { MockBackend, MockConnection } from '@angular/http/testing';
@@ -33,6 +34,7 @@ import { appRoutes } from './app.routing';
 import 'jquery';
 import { MoviesComponent } from './components/movies/movies.component';
 import { ActivityComponent } from './components/activity/activity.component';
+import { MovieThumbnailComponent } from './components/movies/movie-thumbnail/movie-thumbnail.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,7 @@ import { ActivityComponent } from './components/activity/activity.component';
     HomeComponent,
     MoviesComponent,
     ActivityComponent,
+    MovieThumbnailComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +58,8 @@ import { ActivityComponent } from './components/activity/activity.component';
     AlertModule.forRoot(),
     ToasterModule,
     SuiModule,
-    SuiSidebarModule
+    SuiSidebarModule,
+    SuiRatingModule
   ],
   providers: [
     AuthenticationService,
@@ -63,7 +67,8 @@ import { ActivityComponent } from './components/activity/activity.component';
     UserService,
     fakeBackendProvider,
     MockBackend,
-    BaseRequestOptions
+    BaseRequestOptions,
+    OmdbMoviesService
   ],
   bootstrap: [AppComponent],
   schemas: [ NO_ERRORS_SCHEMA ]

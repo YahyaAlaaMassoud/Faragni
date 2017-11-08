@@ -1,0 +1,71 @@
+
+<div class="flip-container">
+	<div class="card movie-card" [ngClass]="{'flipped': flip}">
+		<div class="front" [style.background]="photo">
+			<!-- front content
+      hamada
+      <a (click)="flip = !flip">Flip me!</a>-->
+			<!--header-->
+			<div class="header">
+				<div class="date">
+					<span>{{currentMovie.Released}}</span>
+				</div>
+				<ul class="menu-content">
+				  <li><a class="fa fa-bookmark-o"></a></li>
+				  <li><a class="fa fa-heart-o"><span>{{currentMovie.imdbVotes}}</span></a></li>
+				</ul>
+			</div>
+			<!--data-->
+			<div class="data">
+				<div class="content">
+				  <h1 class="title"><a>{{currentMovie.Title}}</a></h1>
+				  <p class="plot">{{currentMovie.Plot}}</p>
+					<a class="button" (click)="flip = !flip">More Info!</a>
+				</div>
+			</div>
+
+		</div>
+
+
+
+		<div class="back">
+			<!-- back content
+      hamada tany 5ales
+      <a (click)="flip = !flip">Flip again!</a>-->
+			<div class="backg" [style.background]="photo"></div>
+			<h1 class="title"><a>Stranger Things: The sound of the Upside Down</a></h1>
+			<h6 class="cast">Director: <span>Nolan</span></h6>
+			<h6 class="cast">Actors: <span>Yahya, Mohamed, Ashraf, Mahmoud</span></h6>
+			<h6 class="cast">Awards: <span>3 won, 10 nominations</span></h6>
+			<h6 class="cast">Genres: <span>Action, Drama</span></h6>
+			<a class="button" (click)="flip = !flip">Flip back!</a>
+		</div>
+	</div>
+</div>
+<!--<div class="example-2 card">
+	<div class="wrapper">
+		<div class="header">
+		<div class="date">
+			<span class="day">12</span>
+			<span class="month">Aug</span>
+			<span class="year">2016</span>
+		</div>
+		<ul class="menu-content">
+			<li>
+			<a href="#" class="fa fa-bookmark-o"></a>
+			</li>
+			<li><a href="#" class="fa fa-heart-o"><span>18</span></a></li>
+			<li><a href="#" class="fa fa-comment-o"><span>3</span></a></li>
+		</ul>
+		</div>
+		<div class="data">
+		<div class="content">
+			<span class="author">Jane Doe</span>
+			<h1 class="title"><a href="#">Stranger Things: The sound of the Upside Down</a></h1>
+			<p class="text">The antsy bingers of Netflix will eagerly anticipate the digital release of the Survive soundtrack, out today.</p>
+			<a href="#" class="button">Read more</a>
+		</div>
+		</div>
+	</div>
+</div>
+-->
