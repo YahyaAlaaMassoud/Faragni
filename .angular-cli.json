@@ -22,7 +22,6 @@
 			"../node_modules/font-awesome/scss/font-awesome.scss",
 			"../node_modules/angular-bootstrap-md/scss/bootstrap/bootstrap.scss",
 			"../node_modules/angular-bootstrap-md/scss/mdb-free.scss",
-			"./styles.scss",
 			"../node_modules/angular2-toaster/toaster.css"
       ],
       "scripts": [
@@ -63,7 +62,6 @@
     }
   },
   "defaults": {
-    "styleExt": "scss",
     "component": {}
   }
 }
