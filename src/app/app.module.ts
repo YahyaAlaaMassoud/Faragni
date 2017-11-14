@@ -35,6 +35,7 @@ import 'jquery';
 import { MoviesComponent } from './components/movies/movies.component';
 import { ActivityComponent } from './components/activity/activity.component';
 import { MovieThumbnailComponent } from './components/movies/movie-thumbnail/movie-thumbnail.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { MovieThumbnailComponent } from './components/movies/movie-thumbnail/mov
     MoviesComponent,
     ActivityComponent,
     MovieThumbnailComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
