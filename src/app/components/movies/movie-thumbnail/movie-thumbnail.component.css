@@ -1,14 +1,17 @@
 /* entire container, keeps perspective */
 .flip-container {
   font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  width: 300px;
-  height: 390px;
+  width: 200px;
+  height: 290px;
   float: left;
   position: relative;
 	perspective: 1000px;
   margin: 10px;
-  -webkit-transition: all 0.7s;
-  transition: all 0.7s;
+  -webkit-transition: all 0.9s;
+  transition: all 0.9s;
+}
+.flip-container:hover{
+
 }
 
 .card {
@@ -16,12 +19,19 @@
   height: 100%;
   position: relative;
   transform-style: preserve-3d;
-  transition:  0.7s;
+  -webkit-transition: all 0.9s;
+  transition: all 0.9s;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), 0 10px 7px rgba(0, 0, 0, 0.2);
 }
-
+.card:hover{
+  -webkit-transition: all 0.9s;
+  transition: all 0.9s;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.2);
+}
 .card .front {
   /*background: url(https://tvseriescritic.files.wordpress.com/2016/10/
     stranger-things-bicycle-lights-children.jpg) center/cover no-repeat;*/
+  background: center/cover no-repeat;
   border-radius: 3px;
   background-color: inherit;
   margin: 0;
@@ -29,22 +39,74 @@
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
-  min-height: 390px;
   position: relative;
-  -webkit-transition: all 0.7s;
-  transition: all 0.7s;
+  -webkit-transition: all 0.9s;
+  transition: all 0.9s;
   -webkit-text-fill-color: white;
   overflow: hidden;
-  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.2);
+
+}
+.card .front:hover{
+  -webkit-text-fill-color: #7b4397;
 }
 .card .front .header{
   color: white;
   padding: 1em;
+  -webkit-transition: all 0.9s;
+  transition: all 0.9s;
 }
-.card .front .header .date {
+.card .front .header .date{
   float: left;
   padding: 3px;
-  font-size: 12px;
+  font-size: 11px;
+  -webkit-transition: all 0.9s;
+  transition: all 0.9s;
+}
+.card .front .header .rate{
+  position: absolute;
+    background-color: transparent;
+    right: 0;
+    font-size: 20px;
+    padding: 5px;
+    margin: auto;
+    text-align: center;
+    top: 0;
+    width: auto;
+    height: auto;
+    border-radius: 10%;
+    -webkit-transition: all 0.9s;
+    transition: all 0.9s;
+}
+.card .back .rate{
+  position: absolute;
+    background-color: transparent;
+    font-weight: bold;
+    left: 0;
+    text-align: center;
+    top: 0;
+    width: auto;
+    height: auto;
+    border-radius: 10%;
+    border-color: red;
+    -webkit-transition: all 0.9s;
+    transition: all 0.9s;
+}
+.card .back .return{
+  position: absolute;
+    background-color: transparent;
+    color: #7b4397;
+    padding: 5px;
+    right: 0;
+    text-align: center;
+    top: 0;
+    width: auto;
+    height: auto;
+    border-radius: 10%;
+    -webkit-transition: all 0.9s;
+    transition: all 0.9s;
+}
+.card .front:hover .header .rate{
+  opacity: 0;
 }
 .card .front .header .menu-content{
   float: right;
@@ -58,17 +120,18 @@
   display: inline-block;
 }
 .card .front .header .menu-content a {
+  opacity: 0;
   color: white;
 }
 .card .front .header .menu-content span {
   color: white;
-  -webkit-transition: all 0.7s;
-  transition: all 0.7s;
+  -webkit-transition: all 0.9s;
+  transition: all 0.9s;
   opacity: 0;
   position: absolute;
   left: 50%;
   top: 0;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: bold;
   font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   -webkit-transform: translate(-50%, 0);
@@ -78,17 +141,26 @@
   position: absolute;
   bottom: 0;
   color: white;
+  opacity: 0;
   -webkit-transform: translateY(calc(70px + 1em));
           transform: translateY(calc(70px + 1em));
-  -webkit-transition: -webkit-transform 0.7s;
-  transition: -webkit-transform 0.7s;
-  transition: transform 0.7s;
-  transition: transform 0.7s, -webkit-transform 0.7s;
+  -webkit-transition: -webkit-transform 0.9s;
+  transition: -webkit-transform 0.9s;
+  -webkit-transition: all 0.9s;
+  transition: all 0.9s;
+}
+.card:hover .front .data{
+  opacity: 1;
+}
+.card .front:hover .data{
+  opacity: 1;
 }
 .movie-card .data {
   color: #fff;
   -webkit-transform: translateY(calc(70px + 4em));
           transform: translateY(calc(70px + 4em));
+          -webkit-transition: all 0.9s;
+          transition: all 0.9s;
 }
 .card .front .data .content {
   padding: 1.3em;
@@ -97,19 +169,25 @@
 }
 .card .title {
   margin-top: 10px;
-  font-size: 23px;
+  font-size: 17px;
   font-weight: bolder;
 }
 .card .title a {
   margin-top: 10px;
-  font-size: 23px;
+  font-size: 17px;
   font-weight: bolder;
+}
+.card .title span {
+  float: right;
 }
 .card .front .data .content .plot {
   height: 50px;
-  font-size: 15px;
+  font-size: 12px;
+  font-weight: bold;
   margin: 0;
   opacity: 0;
+  -webkit-transition: all 0.9s;
+  transition: all 0.9s;
 }
 .card .front .data .content a{
   text-align: center;
@@ -129,13 +207,16 @@
           transform: translate(-50%, -10px);
   opacity: 1;
 }
+.card .front:hover .header .menu-content a {
+  opacity: 1;
+}
 .movie-card .button {
   filter: blur(0px);
   display: block;
   width: 100px;
-  margin: 2em auto 1em;
+  margin: 1em auto 0.5em;
   text-align: center;
-  font-size: 12px;
+  font-size: 11px;
   color: #fff;
   line-height: 1;
   position: relative;
@@ -150,14 +231,16 @@
   top: 50%;
   -webkit-transform: translate(0, -50%);
           transform: translate(0, -50%);
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
+  -webkit-transition: all 0.7s;
+  transition: all 0.7s;
 }
 .movie-card .button:hover::after {
   filter: blur(0px);
   -webkit-transform: translate(5px, -50%);
           transform: translate(5px, -50%);
   opacity: 1;
+  -webkit-transition: all 0.7s;
+  transition: all 0.7s;
 }
 
 
@@ -165,58 +248,84 @@
 .card .back {
   border-radius: 3px;
   background-color: inherit;
-  color: black;
   margin: 0;
   display: block;
   position: absolute;
   width: 100%;
   height: 100%;
+  min-height: 290px;
   backface-visibility: hidden;
+  text-align: center;
   transform: rotateY( 180deg );
 }
-.card .back .backg{
+.card .front .backg{
   /*background: url(https://tvseriescritic.files.wordpress.com/2016
   /10/stranger-things-bicycle-lights-children.jpg) center/cover no-repeat;*/
   -webkit-text-fill-color: black;
   width: 100%;
   height: 100%;
   display: block;
+  object-fit: contain;
   position: absolute;
-  filter: blur(5px);
+  -webkit-transition: all 0.9s;
+  transition: all 0.9s;
+}
+.card .front:hover .backg{
+  opacity: 0.17;
+  -webkit-transition: all 0.9s;
+  transition: all 0.9s;
+}
+.card .back .backg{
+  /*background: url(https://tvseriescritic.files.wordpress.com/2016
+  /10/stranger-things-bicycle-lights-children.jpg) center/cover no-repeat;*/
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  position: absolute;
+  -webkit-transition: all 0.9s;
+  transition: all 0.9s;
+  opacity: 0.13;
+  -webkit-text-fill-color: #7b4397;
+  color: #7b4397;
 }
 .card .back .title{
-  filter: blur(0px);
   text-align: center;
   margin-top: 10px;
   font-size: 10px;
   padding: 10px;
   font-weight: bolder;
-  -webkit-text-fill-color: white;
+  -webkit-text-fill-color: #7b4397;
+  color: #7b4397;
 }
 .card .back .title a{
-  filter: blur(0px);
   text-align: center;
   margin-top: 10px;
-  font-size: 20px;
+  font-size: 16px;
   padding-top: 10px;
   font-weight: bolder;
-  -webkit-text-fill-color: white;
+  -webkit-text-fill-color: #7b4397;
+  color: #7b4397;
 }
 .card .back .cast{
-  float: left;
+  text-align: center;
   margin: auto;
-  filter: blur(0px);
+  -webkit-text-fill-color: #7b4397;
+  color: #7b4397;
   padding-left: 10px;
   padding-right: 10px;
   padding-bottom: 10px;
-  font-size: 15px;
-  -webkit-text-fill-color: white;
+  font-size: 13px;
 }
 .card .back .cast span{
   filter: blur(0px);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: bolder;
-  -webkit-text-fill-color: white;
+  -webkit-text-fill-color: #7b4397;
+  color: #7b4397;
+}
+.card .back .button{
+  -webkit-text-fill-color: #7b4397;
 }
 
 .card.flipped {
