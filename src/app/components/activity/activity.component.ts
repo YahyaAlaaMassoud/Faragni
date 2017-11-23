@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common'
+
 //animations
 import { fadeInAnimation } from '../../animations/fade-in.animation'
 
@@ -11,9 +13,10 @@ import { fadeInAnimation } from '../../animations/fade-in.animation'
 })
 export class ActivityComponent implements OnInit {
 
-  constructor() { }
+  constructor(private location: Location) { }
 
   ngOnInit() {
+    this.location.replaceState('/activity')
   }
 
 }

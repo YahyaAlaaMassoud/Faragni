@@ -8,7 +8,16 @@ import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-navbar',
-  templateUrl: './navbar.component.html'
+  templateUrl: './navbar.component.html',
+  styles: [`.active-purple-2 input[type=text]:focus:not([readonly]) {
+                border-bottom: 1px solid #7b4397;
+                box-shadow: 0 1px 0 0 #7b4397;
+                color: #7b4397;
+            }
+            .active-purple input[type=text] {
+                border-bottom: 1px solid #7b4397;
+                box-shadow: 0 1px 0 0 #7b4397;
+            }`]
 })
 export class NavbarComponent implements OnInit {
 

@@ -22,7 +22,9 @@
 			"../node_modules/font-awesome/scss/font-awesome.scss",
 			"../node_modules/angular-bootstrap-md/scss/bootstrap/bootstrap.scss",
 			"../node_modules/angular-bootstrap-md/scss/mdb-free.scss",
-			"../node_modules/angular2-toaster/toaster.css"
+			"./styles.scss",
+			"../node_modules/angular2-toaster/toaster.css",
+			"../node_modules/angular-star-rating/assets/scss/star-rating.scss"
       ],
       "scripts": [
 		  "../node_modules/jquery/dist/jquery.min.js",

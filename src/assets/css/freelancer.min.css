@@ -141,7 +141,9 @@ div.login {
     border-bottom: 5px solid #7b4397;
     border-top:none;
     border-left:none;
+    width: 200px;
     border-right:none;
+    position: relative;
     color: #7b4397;
   }
   #mainNav .navbar-brand {
@@ -195,15 +197,20 @@ div.login {
     #mainNav.navbar-shrink .navbar-brand {
       font-size: 1.5em; } }
 
+.movies-search-bar{
+  width: auto;
+  max-width: 600px;
+  font-size: 50px;
+  color: purple;
+  margin: 30px;
+}
+
 .screen-tab{
-  padding-top:80px;
-  padding-left: 100px;
-  padding-right: 100px;
-  padding-bottom: 50px;
+  padding: 100px;
   max-height: none;
   overflow-y: scroll;
   min-height: 1000px;
-  background-color:#eff2f7;
+  background-color: #eff2f7;
 }
 
 .nav-tab{
@@ -214,6 +221,7 @@ div.login {
   border-left:none;
   border-right:none;
   color: #7b4397;
+  position: relative;
   /*transition: all 0.2s ease-in-out;*/
   cursor: pointer;
   background: transparent;
@@ -228,6 +236,7 @@ div.login {
     /*transition: all 0.2s ease-in-out;*/
     color: #7b4397;
     cursor: pointer;
+    position: relative;
     background: transparent;
   }
 

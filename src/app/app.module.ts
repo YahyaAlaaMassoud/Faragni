@@ -9,6 +9,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { AlertModule } from 'ngx-bootstrap';
 import { SuiModule, SuiSidebarModule, SuiRatingModule } from 'ng2-semantic-ui';
+import { StarRatingModule } from 'angular-star-rating';
 
 //components
 import { AppComponent } from './app.component';
@@ -61,7 +62,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     ToasterModule,
     SuiModule,
     SuiSidebarModule,
-    SuiRatingModule
+    SuiRatingModule,
+    StarRatingModule.forRoot()
   ],
   providers: [
     AuthenticationService,

@@ -13,12 +13,19 @@ export class MovieThumbnailComponent implements OnInit {
 
     @Input() currentMovie: Movie;
     flip: boolean;
+    addedToList: boolean;
     photo: string;
     list: Movie[] = [];
     cur:Movie;
 
     constructor(private omdb: OmdbMoviesService) {
       this.flip = false;
+      this.addedToList = false;
+      /*let s = new ss();
+      let sss = "hamada";
+      s.sss = "hamoo";
+      console.log(s.sss)
+      console.log(typeof(s.sss))
       /*this.list = JSON.parse(localStorage.getItem('movies'))
       let i:number = 0;
       let j:number = 0;
@@ -79,5 +86,8 @@ export class MovieThumbnailComponent implements OnInit {
       })
       //console.log(li)
     }
+}
 
+export class ss {
+  [key: string]:any;
 }
