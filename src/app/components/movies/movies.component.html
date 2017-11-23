@@ -1,6 +1,7 @@
 
 <div class="screen-tab">
-  <div *ngFor="let movie of movies">
+  <input type="text" class="movies-search-bar"/>
+  <div *ngFor="let movie of movies; let i = index">
     <app-movie-thumbnail [currentMovie]="movie"></app-movie-thumbnail>
   </div>
   <!--<h1>Hello</h1>

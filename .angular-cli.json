@@ -23,7 +23,8 @@
 			"../node_modules/angular-bootstrap-md/scss/bootstrap/bootstrap.scss",
 			"../node_modules/angular-bootstrap-md/scss/mdb-free.scss",
 			"./styles.scss",
-			"../node_modules/angular2-toaster/toaster.css"
+			"../node_modules/angular2-toaster/toaster.css",
+			"../node_modules/angular-star-rating/assets/scss/star-rating.scss"
       ],
       "scripts": [
 		  "../node_modules/jquery/dist/jquery.min.js",
