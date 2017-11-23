@@ -64,7 +64,6 @@
     }
   },
   "defaults": {
-    "styleExt": "scss",
     "component": {}
   }
 }
