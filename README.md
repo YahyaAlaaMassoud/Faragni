@@ -1,27 +1,24 @@
-# Faragni
+# README
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.5.
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-## Development server
+Things you may want to cover:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+* Ruby version
 
-## Code scaffolding
+* System dependencies
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+* Configuration
 
-## Build
+* Database creation
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+* Database initialization
 
-## Running unit tests
+* How to run the test suite
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+* Services (job queues, cache servers, search engines, etc.)
 
-## Running end-to-end tests
+* Deployment instructions
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+* ...
