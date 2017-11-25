@@ -37,6 +37,7 @@ import { MoviesComponent } from './components/movies/movies.component';
 import { ActivityComponent } from './components/activity/activity.component';
 import { MovieThumbnailComponent } from './components/movies/movie-thumbnail/movie-thumbnail.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { FollowersComponent } from './components/followers/followers.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     ActivityComponent,
     MovieThumbnailComponent,
     ProfileComponent,
+    FollowersComponent,
   ],
   imports: [
     BrowserModule,
