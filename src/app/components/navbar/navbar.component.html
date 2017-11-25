@@ -15,7 +15,7 @@
         <button class="nav-btn-outline my-2 my-sm-0" (click)="toggleModal()" *ngIf="hide">Sign in</button>
         <div class="btn-group">
           <button class="nav-btn-outline my-2 my-sm-0" *ngIf="currentUser != null"
-                  data-toggle="dropdown" aria-haspopup="true">Hello {{currentUser.UserName}}!</button>
+                  data-toggle="dropdown" aria-haspopup="true">{{currentUser.UserName[0].toLocaleUpperCase()}}</button>
               <div class="dropdown-menu">
                   <span data-toggle="dropdown"></span>
                   <a class="dropdown-item" (click)="goToProfile()">Profile</a>

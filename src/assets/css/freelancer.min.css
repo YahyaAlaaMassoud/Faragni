@@ -198,15 +198,21 @@ div.login {
       font-size: 1.5em; } }
 
 .movies-search-bar{
-  width: auto;
-  max-width: 600px;
   font-size: 50px;
   color: purple;
-  margin: 30px;
+  padding-bottom:30px;
+}
+
+.search-text{
+  width: 200px;
+  font-size: 100px;
+  color: purple;
 }
 
 .screen-tab{
   padding: 100px;
+  padding-left: 130px;
+  align-content: center;
   max-height: none;
   overflow-y: scroll;
   min-height: 1000px;

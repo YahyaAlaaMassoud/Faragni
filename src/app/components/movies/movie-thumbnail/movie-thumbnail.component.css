@@ -1,8 +1,8 @@
 /* entire container, keeps perspective */
 .flip-container {
   font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  width: 200px;
-  height: 290px;
+  width: 250px;
+  height: 370px;
   float: left;
   position: relative;
 	perspective: 1000px;
@@ -10,9 +10,7 @@
   -webkit-transition: all 0.9s;
   transition: all 0.9s;
 }
-.flip-container:hover{
 
-}
 
 .card {
   width: 100%;
@@ -67,7 +65,7 @@
     right: 0;
     font-size: 14px;
     margin-top: -10px;
-    margin-right: 170px;
+    margin-right: 230px;
     color: white;
     text-align: center;
     top: 0;
@@ -85,7 +83,7 @@
     right: 0;
     font-size: 14px;
     margin-top: -10px;
-    margin-right: 170px;
+    margin-right: 230px;
     color: white;
     text-align: center;
     top: 0;
