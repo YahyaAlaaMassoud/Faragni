@@ -1,3 +1,5 @@
+import { User } from '../../models/user.model';
+
 import { Component, OnInit, Input } from '@angular/core';
 import { Location } from '@angular/common'
 

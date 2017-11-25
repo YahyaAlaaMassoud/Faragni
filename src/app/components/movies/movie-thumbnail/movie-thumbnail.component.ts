@@ -20,6 +20,7 @@ export class MovieThumbnailComponent implements OnInit {
 
     constructor(private omdb: OmdbMoviesService) {
       this.flip = false;
+
       this.addedToList = false;
       /*let s = new ss();
       let sss = "hamada";

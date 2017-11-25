@@ -3,7 +3,7 @@ import { Location } from '@angular/common'
 
 //animations
 import { fadeInAnimation } from '../../animations/fade-in.animation'
-
+import { User } from '../../models/user.model';
 @Component({
   selector: 'app-activity',
   templateUrl: './activity.component.html',
@@ -12,6 +12,7 @@ import { fadeInAnimation } from '../../animations/fade-in.animation'
   host: { '[@fadeInAnimation]': '' }
 })
 export class ActivityComponent implements OnInit {
+
 
   constructor(private location: Location) { }
 
