@@ -8,7 +8,10 @@
       <ul class="navbar-nav ml-auto">
       </ul>
       <form class="form-inline">
-        <input *ngIf="!hide" class="form-control" type="search" placeholder="Search" aria-label="Search">
+        <!--<input *ngIf="!hide" class="form-control" type="search" placeholder="Search" aria-label="Search">-->
+        <form *ngIf="!hide" class="form-inline active-purple active-purple-2">
+            <input class="form-control w-100" type="text" placeholder="Search" aria-label="Search">
+        </form>
         <button class="nav-btn-outline my-2 my-sm-0" (click)="toggleModal()" *ngIf="hide">Sign in</button>
         <div class="btn-group">
           <button class="nav-btn-outline my-2 my-sm-0" *ngIf="currentUser != null"

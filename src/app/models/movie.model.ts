@@ -1,5 +1,6 @@
 import { ProductionCompany } from './production-company.model'
 import { Genre } from './genre.model'
+import { Actor } from './actor.model'
 
 export class Movie {
   MovieID: number;
@@ -16,6 +17,7 @@ export class Movie {
   Language: string;
   Adult: boolean;
   Genres: Genre[];
+  ActorsList: Actor[];
   Actors: string;
   Awards: string;
   BoxOffice: string;

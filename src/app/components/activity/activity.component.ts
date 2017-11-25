@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common'
+
 //animations
 import { fadeInAnimation } from '../../animations/fade-in.animation'
 import { User } from '../../models/user.model';
@@ -11,18 +13,11 @@ import { User } from '../../models/user.model';
 })
 export class ActivityComponent implements OnInit {
 
-  currentUser:User;
-  currentScreen:number;
-  constructor() { 
-      this.currentUser = JSON.parse(localStorage.getItem('currentUser'))
-      this.currentScreen = 0;
-  }
+
+  constructor(private location: Location) { }
 
   ngOnInit() {
-  }
-  chooseScreen(temp)
-  {
-    this.currentScreen=temp;
+    this.location.replaceState('/activity')
   }
 
 }

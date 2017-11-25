@@ -1,5 +1,6 @@
 <app-navbar [hide]="false" [currentUser]="currentUser" (screenID)="chooseScreen($event)"></app-navbar>
 <app-movies *ngIf="currentScreen == 1"></app-movies>
+<app-activity *ngIf="currentScreen == 2"></app-activity>
   <header *ngIf="currentScreen == 3" class="masthead">
     <div class="container">
       <div class="col-md-6 col-md-offset-3">
@@ -16,5 +17,4 @@
       </div>
     </div>
   </header>
-<app-activity *ngIf="currentScreen == 2"></app-activity>
 <app-footer></app-footer>

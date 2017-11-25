@@ -1,18 +1,36 @@
+<!-- TODOS
+
+rating of every movie on top of the Cards
+back of the Cards
+
+-->
 
 <div class="flip-container">
 	<div class="card movie-card" [ngClass]="{'flipped': flip}">
-		<div class="front" [style.background]="photo">
+		<div class="front">
 			<!-- front content
       hamada
       <a (click)="flip = !flip">Flip me!</a>-->
 			<!--header-->
+			<div class="backg" [style.background-image]="photo"
+										 		[style.background-repeat]="'no-repeat'"
+												 [style.background-size]="'100% 100%'"></div>
 			<div class="header">
+				<div [ngClass]="{'hidden': flip}" class="rate"><span class="badge badge-pill purple">{{currentMovie.imdbRating}}</span></div>
 				<div class="date">
 					<span>{{currentMovie.Released}}</span>
 				</div>
 				<ul class="menu-content">
-				  <li><a class="fa fa-bookmark-o"></a></li>
-				  <li><a class="fa fa-heart-o"><span>{{currentMovie.imdbVotes}}</span></a></li>
+				  <li><a class="fa" [ngClass]="{'fa-bookmark-o': !addedToList, 'fa-bookmark': addedToList}"
+						 (click)="addedToList = !addedToList"></a></li>
+				  <li class="dropdown">
+						  <a><i class="fa fa-star-o" aria-hidden="true"></i><span>{{currentMovie.imdbVotes}}</span></a>
+						  <div class="dropdown-content">
+								<star-rating-comp [hoverEnabled]="true" [labelText]="'Rate it now!'" [numOfStars]="5"
+							   [labelPosition]="'top'"
+							  [starType]="'icon'" [rating]="2.5"></star-rating-comp>
+						  </div>
+					</li>
 				</ul>
 			</div>
 			<!--data-->
@@ -32,13 +50,25 @@
 			<!-- back content
       hamada tany 5ales
       <a (click)="flip = !flip">Flip again!</a>-->
-			<div class="backg" [style.background]="photo"></div>
-			<h1 class="title"><a>Stranger Things: The sound of the Upside Down</a></h1>
-			<h6 class="cast">Director: <span>Nolan</span></h6>
-			<h6 class="cast">Actors: <span>Yahya, Mohamed, Ashraf, Mahmoud</span></h6>
-			<h6 class="cast">Awards: <span>3 won, 10 nominations</span></h6>
-			<h6 class="cast">Genres: <span>Action, Drama</span></h6>
-			<a class="button" (click)="flip = !flip">Flip back!</a>
+			<div [ngClass]="{'hidden': !flip}" class="rate"><span class="badge badge-pill purple">{{currentMovie.imdbRating}}</span></div>
+			<div class="backg" [style.background-image]="photo"
+										 		[style.background-repeat]="'no-repeat'"
+												 [style.background-size]="'100% 100%'"></div>
+			<div class="return"><a class="fa fa-arrow-circle-right" (click)="flip = !flip"></a></div>
+			<h1 class="title">
+				<a>
+					{{currentMovie.Title}} ({{currentMovie.Year}})
+				</a>
+			</h1>
+			<h6 class="cast"><i class="fa fa-film" aria-hidden="true"></i> <span>{{currentMovie.Director}}</span></h6>
+			<h6  *ngFor="let act of currentMovie.ActorsList; let i = index" class="cast">
+				<i *ngIf="i != 0" class="fa fa-users" aria-hidden="true"></i>
+				<i *ngIf="i == 0" class="fa fa-star" aria-hidden="true"></i>
+				<span>{{act.Name}}</span>
+			</h6>
+			<h6 class="cast"><i class="fa fa-trophy" aria-hidden="true"></i> <span>{{currentMovie.Awards}}</span></h6>
+			<h6 class="cast"><i class="fa fa-clock-o" aria-hidden="true"></i> <span>{{currentMovie.Runtime}}</span></h6>
+			<span *ngFor="let genre of currentMovie.Genres" class="badge badge-pill purple">{{genre.Name}}</span>
 		</div>
 	</div>
 </div>
