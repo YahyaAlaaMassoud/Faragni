@@ -1,6 +1,12 @@
 
 <div class="screen-tab">
-  <input type="text" class="movies-search-bar"/>
+  <div class="row movies-search-bar">
+    <div class="col-8">
+      <h1>Popular Movies</h1>
+    </div>
+    <div class="col-4">
+    </div>
+  </div>
   <div *ngFor="let movie of movies; let i = index">
     <app-movie-thumbnail [currentMovie]="movie"></app-movie-thumbnail>
   </div>
@@ -172,32 +178,3 @@
   </a>
   </div>-->
 </div>
-
-
-
-<!--<div class="card-group">
-<div class="card">
-<img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(51).jpg" alt="Card image cap">
-<div class="card-block">
-  <h4 class="card-title">Card title</h4>
-  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-</div>
-</div>
-<div class="card">
-<img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(51).jpg" alt="Card image cap">
-<div class="card-block">
-  <h4 class="card-title">Card title</h4>
-  <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-</div>
-</div>
-<div class="card">
-<img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(51).jpg" alt="Card image cap">
-<div class="card-block">
-  <h4 class="card-title">Card title</h4>
-  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-</div>
-</div>
-</div>-->

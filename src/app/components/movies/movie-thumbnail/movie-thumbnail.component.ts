@@ -1,8 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { OmdbMoviesService } from '../../../services/omdb/omdb-movies.service';
-import { Movie } from '../../../models/movie.model'
+import { Movie } from '../../../models/movie.model';
+import { Rating } from '../../../models/rating.model';
 import { Genre } from '../../../models/genre.model';
-import { Actor } from '../../../models/actor.model'
+import { Actor } from '../../../models/actor.model';
+import { User } from '../../../models/user.model';
 
 @Component({
   selector: 'app-movie-thumbnail',
@@ -16,11 +18,12 @@ export class MovieThumbnailComponent implements OnInit {
     addedToList: boolean;
     photo: string;
     list: Movie[] = [];
-    cur:Movie;
+    cur: Movie;
+    currentUser: User;
+    currentMovieRating: Rating;
 
     constructor(private omdb: OmdbMoviesService) {
       this.flip = false;
-      this.addedToList = false;
       /*let s = new ss();
       let sss = "hamada";
       s.sss = "hamoo";
@@ -56,38 +59,103 @@ export class MovieThumbnailComponent implements OnInit {
     }
 
     ngOnInit() {
-      //console.log("hamadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-      //console.log(this.currentMovie.imdbRating)
-      this.exctractGenres()
-      this.exctractActors()
-      this.photo = `url(${this.currentMovie.Poster})`
+      // console.log("hamadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+      // console.log(this.currentMovie.imdbRating)
+      this.exctractGenres();
+      this.exctractActors();
+      this.getCurrentUser();
+      this.setMovieRating();
+      this.setWatchListMovie();
+      this.photo = `url(${this.currentMovie.Poster})`;
     }
 
-    exctractGenres(){
-      this.currentMovie.Genres = [];
-      var li = this.currentMovie.Genre.split(', ')
-      li.forEach((gn, index) => {
-        let gnr:Genre = new Genre();
-        gnr.Name = gn;
-        this.currentMovie.Genres.push(gnr)
-      })
-      //console.log(li)
-    }
-
-    exctractActors(){
-      this.currentMovie.ActorsList = [];
-      var li = this.currentMovie.Actors.split(', ')
-      li.forEach((ac, index) => {
-        if(index <= 1){
-          let actr: Actor = new Actor();
-          actr.Name = ac;
-          this.currentMovie.ActorsList.push(actr)
+    setWatchListMovie() {
+      if (this.currentUser.WatchList) {
+        const index: number = this.currentUser.WatchList
+          .findIndex(item => item === this.currentMovie.imdbID);
+        if (index !== -1) {
+          this.addedToList = true;
         }
-      })
-      //console.log(li)
+        else {
+          this.addedToList = false;
+        }
+      }
     }
-}
 
-export class ss {
-  [key: string]:any;
+    setMovieRating() {
+      // console.log(this.currentUser.MovieRatings);
+      const index: number = this.currentUser.MovieRatings
+      .findIndex(item => item.MovieID === this.currentMovie.imdbID && item.UserID === this.currentUser.UserID);
+      if (index === -1 || this.currentUser.MovieRatings.length === 0) {
+        this.currentMovieRating = new Rating();
+        this.currentMovieRating.MovieID = this.currentMovie.imdbID;
+        this.currentMovieRating.Rating = 0;
+        this.currentMovieRating.UserID = this.currentUser.UserID;
+        this.currentUser.MovieRatings.push(this.currentMovieRating);
+        // console.log('hhhh')
+        localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+      }
+      else {
+        // console.log(index)
+        // console.log(this.currentUser.MovieRatings[index].MovieID)
+        this.currentMovieRating = this.currentUser.MovieRatings[index];
+        console.log(this.currentMovieRating);
+      }
+      // // console.log(this.currentMovieRating);
+    }
+
+    saveNewRating(e) {
+      const index = this.currentUser.MovieRatings
+        .findIndex(item => item.MovieID === this.currentMovie.imdbID && item.UserID === this.currentUser.UserID);
+      this.currentUser.MovieRatings[index].Rating = e.rating;
+      localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+      // console.log(e.rating);
+      // console.log('fi eh');
+    }
+
+    getCurrentUser() {
+      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      // console.log(this.currentUser);
+    }
+
+    exctractGenres() {
+      this.currentMovie.Genres = [];
+      const li = this.currentMovie.Genre.split(', ');
+      li.forEach((gn, index) => {
+        const gnr: Genre = new Genre();
+        gnr.Name = gn;
+        this.currentMovie.Genres.push(gnr);
+      });
+      // console.log(li)
+    }
+
+    exctractActors() {
+      this.currentMovie.ActorsList = [];
+      const li = this.currentMovie.Actors.split(', ');
+      li.forEach((ac, index) => {
+          const actr: Actor = new Actor();
+          actr.Name = ac;
+          this.currentMovie.ActorsList.push(actr);
+      });
+      // console.log(li)
+    }
+
+    addToWatchList() {
+      if (this.addedToList === true) {
+        this.addedToList = false;
+        const index: number = this.currentUser.WatchList
+         .findIndex(item => item === this.currentMovie.imdbID);
+        this.currentUser.WatchList.splice(index, 1);
+        console.log('sheel');
+        localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+        console.log(this.currentUser.WatchList);
+      }
+      else if (this.addedToList === false) {
+        this.addedToList = true;
+        console.log('7ot');
+        this.currentUser.WatchList.push(this.currentMovie.imdbID);
+        localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+        console.log(this.currentUser.WatchList);
+      }
+    }
 }

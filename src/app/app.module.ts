@@ -1,4 +1,4 @@
-//modules
+// modules
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
@@ -8,10 +8,10 @@ import { ToasterModule, ToasterService } from 'angular2-toaster';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { AlertModule } from 'ngx-bootstrap';
-import { SuiModule, SuiSidebarModule, SuiRatingModule } from 'ng2-semantic-ui';
+import { SuiModule, SuiSidebarModule, SuiRatingModule, SuiSearchModule } from 'ng2-semantic-ui';
 import { StarRatingModule } from 'angular-star-rating';
 
-//components
+// components
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -20,7 +20,7 @@ import { HomeComponent } from './components/home/home.component'
 import { WelcomeScreenComponent } from './components/welcome-screen/welcome-screen.component';
 
 
-//services
+// services
 import { AuthenticationService } from './services/authentication/authentication.service';
 import { UserService } from './services/user/user.service';
 import { OmdbMoviesService } from './services/omdb/omdb-movies.service';
@@ -29,7 +29,7 @@ import { fakeBackendProvider } from './services/fake-backend';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { BaseRequestOptions } from '@angular/http';
 
-//routing
+// routing
 import { appRoutes } from './app.routing';
 
 import 'jquery';
@@ -63,7 +63,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     SuiModule,
     SuiSidebarModule,
     SuiRatingModule,
-    StarRatingModule.forRoot()
+    StarRatingModule.forRoot(),
+    SuiSearchModule
   ],
   providers: [
     AuthenticationService,
