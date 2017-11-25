@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { User } from '../../models/user.model';
 //animations
 import { fadeInAnimation } from '../../animations/fade-in.animation'
 

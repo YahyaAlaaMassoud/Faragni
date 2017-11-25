@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 //animations
 import { fadeInAnimation } from '../../animations/fade-in.animation'
-
+import { User } from '../../models/user.model';
 @Component({
   selector: 'app-activity',
   templateUrl: './activity.component.html',
@@ -11,9 +11,18 @@ import { fadeInAnimation } from '../../animations/fade-in.animation'
 })
 export class ActivityComponent implements OnInit {
 
-  constructor() { }
+  currentUser:User;
+  currentScreen:number;
+  constructor() { 
+      this.currentUser = JSON.parse(localStorage.getItem('currentUser'))
+      this.currentScreen = 0;
+  }
 
   ngOnInit() {
+  }
+  chooseScreen(temp)
+  {
+    this.currentScreen=temp;
   }
 
 }

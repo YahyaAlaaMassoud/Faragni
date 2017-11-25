@@ -16,7 +16,6 @@ export class MovieThumbnailComponent implements OnInit {
 
     constructor(private omdb: OmdbMoviesService) {
       this.flip = false;
-
       /*this.omdb.getMovieByImdbID("tt0137523")
       .subscribe(
         res => {

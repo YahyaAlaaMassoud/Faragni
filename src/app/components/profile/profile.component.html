@@ -1,30 +1,57 @@
 <app-navbar [hide]="false" [currentUser]="currentUser" (screenID)="chooseScreen($event)"></app-navbar>
-<div class = "container-fluid" style="background-color:#e6ecf0">
+
+<div  style="background-color:#e6ecf0">
     <div class="row" style="height:23rem;">
             <img   alt="" src="assets\img\sky.jpg" style="width:100%; height:100%;">
     </div>
 
-    <div class ="useravatar">
+    <div class ="useravatar" style="z-index:10;">
         <img class ="useravatar" src="assets/img/bg-cta.jpg" alt="Card image cap">
     </div>
 
-    <div class ="row" style="background-color:rgb(255, 255, 255); height:70px;">
-            <button class="nav-tab my-2 my-sm-0" style="margin-left:25rem" >MOVIES</button>
+    <nav class ="navbar navbar-expand-lg" style="background-color:rgb(255, 255, 255); height:70px;">
+            <button class="nav-tab my-2 my-sm-0" style="margin-left:22rem" >MOVIES</button>
             <button class="nav-tab my-2 my-sm-0"  >FOLLOWING</button>
-            <button class="nav-tab my-2 my-sm-0"  >FOLLOWERS</button>
+            <button class="nav-tab my-2 my-sm-0" (click)="showFollowers=1" >FOLLOWERS</button>
             <button class="nav-tab my-2 my-sm-0"  >RECOMMENDATION</button>
-    </div>
+            <button class="nav-tab my-2 my-sm-0" style="border-radius: 50%;margin-left:10rem; border-color:blueviolet;" (click)="takeAction($event.target)" >Edit Profile</button>
+    </nav>
 
-    <div class = "row" style="background-color:#e6ecf0; height:100rem ;border-style: solid;border-width: 5px;">
-        <div class="column "style="background-color:#e6ecf0;border-style: solid;border-width: 5px;">
-            <p></p>
+    <div class = "row" style="background-color:#e6ecf0; height:100rem ; margin-top:10px;">
+        <div class="col-md-4 cardOuter "style="background-color:#e6ecf0; margin-left:50px; margin-top:50px;">
+            <div class = "card-body" style="margin-left:15px;margin-top:40px;margin-left:30px;">
+                <div class ="input-group">
+                    <label *ngIf="!isEdit" style="font-size:30px; font-weight:bold ;"> {{currentUser.FirstName}} {{currentUser.LastName}}</label>
+                    <span *ngIf="isEdit" class="input-group-addon" id="basic-addon1">Fname</span>
+                    <input *ngIf="isEdit"  class="form-control" aria-describedby="basic-addon1" [(ngModel)] ="currentUser.FirstName">
+                    
+                </div>
+                <div class="input-group">
+                     <span *ngIf="isEdit" class="input-group-addon" id="basic-addon1">Lname</span>
+                     <input *ngIf="isEdit" class="form-control" aria-describedby="basic-addon1" [(ngModel)] ="currentUser.LastName">
+                </div>
+                <div class="input-group">
+                        <p *ngIf="!isEdit" style="font-style:normal;font-size:100%">{{myBio}}</p>
+                        <span *ngIf="isEdit" class="input-group-addon" id="basic-addon1">bio</span>
+                        <input *ngIf="isEdit" class="form-control" aria-describedby="basic-addon1" [(ngModel)] ="myBio">
+               </div>
+               <div class="input-group">
+                    <label *ngIf="!isEdit" class="fa fa-envelope-open-o" aria-hidden="true"> {{currentUser.Email}}</label>
+                    <span  *ngIf="isEdit" class="input-group-addon" id="basic-addon1">@</span>
+                    <input  *ngIf="isEdit" class="form-control" aria-describedby="basic-addon1" [(ngModel)] ="currentUser.Email">
+               </div>
+                 
+                 <label *ngIf="!isEdit" class="fa fa-at" aria-hidden="true"> {{currentUser.UserName}}</label><br>
+                
+                 <label *ngIf="!isEdit" class="fa fa-calendar" aria-hidden="true"> Joined on {{currentUser.JoiningDate}}</label>
+                 <br>
+                 <label *ngIf="!isEdit" class="fa fa-spinner" aria-hidden="true"> {{currentUser.Age}} years old </label>
+            </div>
         </div>
-        <p></p>
+
+        <div class="col-md-6 cardOuter "style=" margin-left:10px;background-color:WHITE; margin-top:50px;">
+            <app-followers *ngIf="showFollowers"></app-followers>
+        </div>
     </div>
 
-
-<!--<div class="column" style="margin-bottom:100">
-    <div >
-          <p class="khaled"> khaled </p>
-    </div> -->
 </div>

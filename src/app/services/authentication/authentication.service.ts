@@ -23,6 +23,7 @@ export class AuthenticationService {
                     curr.FirstName = user.firstName;
                     curr.LastName = user.lastName;
                     curr.token = user.token;
+                    console.log("email = " + user.email);
                     localStorage.setItem('currentUser', JSON.stringify(curr));
                 }
 

@@ -1,5 +1,10 @@
 <app-navbar (onModalOpen)="toggleModal()"></app-navbar>
 <header class="masthead">
+    <style>
+        body  {
+            background-image: url("img1.jpg");
+        }
+    </style>
   <div class="container">
     <div class="intro-text" style="padding-left:200px; padding-right:200px">
       <span class="name">Hello and welcome to</span>
@@ -10,7 +15,7 @@
   </div>
 </header>
 <app-footer></app-footer>
-
+<body>
 <div id="loginModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-full-height modal-right">
     <div class="modal-content modal-fluid">
@@ -49,3 +54,4 @@
     </div>
   </div>
 </div>
+</body>

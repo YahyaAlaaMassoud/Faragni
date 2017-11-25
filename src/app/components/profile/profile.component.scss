@@ -42,3 +42,18 @@
     color: black;
     text-decoration-line: underline;
 }
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid rgb(231, 43, 159);
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: white;
+}
+.cardOuter{
+    border: none;
+    border-radius: .28571429rem;
+    box-shadow: 0 100px 300px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+}
