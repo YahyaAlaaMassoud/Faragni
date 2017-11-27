@@ -4,11 +4,14 @@
     <div class="row" style="height:23rem;">
             <img   alt="" src="assets\img\sky.jpg" style="width:100%; height:100%;">
     </div>
-
-    <div class ="useravatar" style="z-index:10;">
-        <img class ="useravatar" src="assets/img/bg-cta.jpg" alt="Card image cap">
+    <div class ="useravatar" style="z-index:1;position:-ms-page;display:initial" >
+            <label for="file-upload" class="custom-file-upload" style="position:absolute;margin-top:10rem;" >
+                    <i class="fa fa-cloud-upload"></i> Upload
+                </label>
+            <input id="file-upload" type="file" (change)="onFileChange($event)" />
+         <img class ="useravatar"  [src]="currentUser.profilePic" #fileInput alt="error" id="pfimg">                 
     </div>
-
+    
     <nav class ="navbar navbar-expand-lg" style="background-color:rgb(255, 255, 255); height:70px;">
             <button class="nav-tab my-2 my-sm-0" style="margin-left:22rem" >MOVIES</button>
             <button class="nav-tab my-2 my-sm-0"  >FOLLOWING</button>
@@ -16,7 +19,6 @@
             <button class="nav-tab my-2 my-sm-0"  >RECOMMENDATION</button>
             <button class="nav-tab my-2 my-sm-0" style="border-radius: 50%;margin-left:10rem; border-color:blueviolet;" (click)="takeAction($event.target)" >Edit Profile</button>
     </nav>
-
     <div class = "row" style="background-color:#e6ecf0; height:100rem ; margin-top:10px;">
         <div class="col-md-4 cardOuter "style="background-color:#e6ecf0; margin-left:50px; margin-top:50px;">
             <div class = "card-body" style="margin-left:15px;margin-top:40px;margin-left:30px;">
@@ -24,6 +26,7 @@
                     <label *ngIf="!isEdit" style="font-size:30px; font-weight:bold ;"> {{currentUser.FirstName}} {{currentUser.LastName}}</label>
                     <span *ngIf="isEdit" class="input-group-addon" id="basic-addon1">Fname</span>
                     <input *ngIf="isEdit"  class="form-control" aria-describedby="basic-addon1" [(ngModel)] ="currentUser.FirstName">
+                    <img src="{{base64}}">
                     
                 </div>
                 <div class="input-group">
@@ -38,7 +41,7 @@
                <div class="input-group">
                     <label *ngIf="!isEdit" class="fa fa-envelope-open-o" aria-hidden="true"> {{currentUser.Email}}</label>
                     <span  *ngIf="isEdit" class="input-group-addon" id="basic-addon1">@</span>
-                    <input  *ngIf="isEdit" class="form-control" aria-describedby="basic-addon1" [(ngModel)] ="currentUser.Email">
+                    <input *ngIf="isEdit" class="form-control" aria-describedby="basic-addon1" [(ngModel)] ="currentUser.Email">
                </div>
                  
                  <label *ngIf="!isEdit" class="fa fa-at" aria-hidden="true"> {{currentUser.UserName}}</label><br>
@@ -50,6 +53,7 @@
         </div>
 
         <div class="col-md-6 cardOuter "style=" margin-left:10px;background-color:WHITE; margin-top:50px;">
+            <input class=""type="file" (change)="onFileChange($event)" value="Upload image..." />
             <app-followers *ngIf="showFollowers"></app-followers>
         </div>
     </div>

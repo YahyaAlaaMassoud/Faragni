@@ -18,7 +18,7 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
 
                 // find if any user matches login credentials
                 let filteredUsers = users.filter(user => {
-                    return user.UserName === params.username && user.Password === params.password;
+                    return user.UserName === params.username;
                 });
 
                 if (filteredUsers.length) {
@@ -31,6 +31,8 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
                             username: user.UserName,
                             firstName: user.FirstName,
                             lastName: user.LastName,
+                            email: user.Email,
+                            profilepic: user.profilePic,
                             token: 'fake-jwt-token'
                         }
                     })));
