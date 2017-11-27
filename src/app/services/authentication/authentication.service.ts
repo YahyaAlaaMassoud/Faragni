@@ -15,6 +15,7 @@ export class AuthenticationService {
                 // login successful if there's a jwt token in the response
                 console.log(username + ' ' + password)
                 let user = response.json();
+                console.log(response.json());
                 let curr = new User();
                 if (user && user.token) {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
@@ -23,10 +24,16 @@ export class AuthenticationService {
                     curr.UserName = user.username;
                     curr.FirstName = user.firstName;
                     curr.LastName = user.lastName;
+                    curr.Email = user.email;
+                    console.log(curr.Email);
+                    curr.profilePic = user.profilepic;
                     curr.token = user.token;
+<<<<<<< HEAD
                     curr.WatchList = user.watchlist;
                     curr.MovieRatings = user.ratings;
                     console.log("email = " + user.email);
+=======
+>>>>>>> 00c5f27dff44f974d032ab60c018b113dac3ed80
                     localStorage.setItem('currentUser', JSON.stringify(curr));
                 }
 

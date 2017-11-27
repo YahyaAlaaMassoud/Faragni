@@ -60,6 +60,7 @@ input[type=text] {
     border-radius: .28571429rem;
     box-shadow: 0 100px 300px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
 }
+<<<<<<< HEAD
 
 .tabs{
     min-height: 500px;
@@ -68,3 +69,20 @@ input[type=text] {
     background-color:#eff2f7;
     margin-top:50px;
 }
+=======
+.avatarEdit{
+    opacity:0.4;
+    background-color:black;
+}
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+  
+ 
+>>>>>>> 00c5f27dff44f974d032ab60c018b113dac3ed80
