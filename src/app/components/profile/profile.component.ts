@@ -14,20 +14,11 @@ export class ProfileComponent implements OnInit {
   isEdit: boolean;
   myBio: String;
   showFollowers: boolean;
-<<<<<<< HEAD
   showRatedMovies: boolean;
-  constructor(private router: Router) {
-      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-      this.currentUser.Email = ["khaledawaled@live.com"];
-=======
   currentScreen:number;
-  base64;
-  yourmodel;
-  logo;
   constructor(private router:Router) {
       this.currentUser = JSON.parse(localStorage.getItem('currentUser'));     
      // this.currentUser.Email=["khaledawaled@live.com"];
->>>>>>> 00c5f27dff44f974d032ab60c018b113dac3ed80
       this.currentUser.JoiningDate = new Date("May");
       this.currentUser.Age = 21;
       this.currentUser.bio = "";
@@ -35,13 +26,7 @@ export class ProfileComponent implements OnInit {
       this.currentScreen = 0;
       this.isEdit = false;
       this.showFollowers=false;
-<<<<<<< HEAD
       this.showRatedMovies=true;
-      console.log(this.currentUser);
-=======
-      console.log(this.currentUser);
-      
->>>>>>> 00c5f27dff44f974d032ab60c018b113dac3ed80
   }
 
   ngOnInit() {
@@ -58,11 +43,9 @@ export class ProfileComponent implements OnInit {
       localStorage.setItem('currentUser',JSON.stringify(this.currentUser)); 
       this.updateUsersList(this.currentUser);      
       element.textContent = "EDIT PROFILE";
-<<<<<<< HEAD
-=======
+
       myimg.className="useravatar";
     }
->>>>>>> 00c5f27dff44f974d032ab60c018b113dac3ed80
   }
   chooseScreen(e)
   {
