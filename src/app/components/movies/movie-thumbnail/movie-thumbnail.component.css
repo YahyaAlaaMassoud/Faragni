@@ -288,6 +288,9 @@
   text-align: center;
   transform: rotateY( 180deg );
 }
+.card .back .paddingTop{
+  padding-top: 10px;
+}
 .card .front .backg{
   /*background: url(https://tvseriescritic.files.wordpress.com/2016
   /10/stranger-things-bicycle-lights-children.jpg) center/cover no-repeat;*/
@@ -359,5 +362,5 @@
 }
 
 .card.flipped {
-  transform: rotateY( 180deg );
+  transform: rotateY( -180deg );
 }

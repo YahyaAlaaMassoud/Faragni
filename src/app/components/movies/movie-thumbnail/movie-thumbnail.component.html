@@ -20,7 +20,7 @@
 						  <div class="dropdown-content">
 								<star-rating-comp [hoverEnabled]="true" [labelText]="'Rate it now!'" 
 								[numOfStars]="5" [labelPosition]="'top'" [starType]="'icon'" 
-							    [rating]="currentMovieRating.Rating" (onRatingChange)="saveNewRating($event)"></star-rating-comp>
+							    [rating]="currentMovieRating.Rating" (onClick)="saveNewRating($event)"></star-rating-comp>
 						  </div>
 					</li>
 				</ul>
@@ -45,20 +45,22 @@
 										 		[style.background-repeat]="'no-repeat'"
 												 [style.background-size]="'100% 100%'"></div>
 			<div class="return"><a class="fa fa-arrow-circle-right" (click)="flip = !flip"></a></div>
-			<h1 class="title">
-				<a>
-					{{currentMovie.Title}} ({{currentMovie.Year}})
-				</a>
-			</h1>
-			<h6 class="cast"><i class="fa fa-film" aria-hidden="true"></i> <span>{{currentMovie.Director}}</span></h6>
-			<h6  *ngFor="let act of currentMovie.ActorsList; let i = index" class="cast">
-				<i *ngIf="i != 0" class="fa fa-users" aria-hidden="true"></i>
-				<i *ngIf="i == 0" class="fa fa-star" aria-hidden="true"></i>
-				<span>{{act.Name}}</span>
-			</h6>
-			<h6 class="cast"><i class="fa fa-trophy" aria-hidden="true"></i> <span>{{currentMovie.Awards}}</span></h6>
-			<h6 class="cast"><i class="fa fa-clock-o" aria-hidden="true"></i> <span>{{currentMovie.Runtime}}</span></h6>
-			<span *ngFor="let genre of currentMovie.Genres" class="badge badge-pill purple">{{genre.Name}}</span>
+			<div class="paddingTop">
+				<h1 class="title">
+					<a>
+						{{currentMovie.Title}} ({{currentMovie.Year}})
+					</a>
+				</h1>
+				<h6 class="cast"><i class="fa fa-film" aria-hidden="true"></i> <span>{{currentMovie.Director}}</span></h6>
+				<h6  *ngFor="let act of currentMovie.ActorsList; let i = index" class="cast">
+					<i *ngIf="i != 0" class="fa fa-users" aria-hidden="true"></i>
+					<i *ngIf="i == 0" class="fa fa-star" aria-hidden="true"></i>
+					<span>{{act.Name}}</span>
+				</h6>
+				<h6 class="cast"><i class="fa fa-trophy" aria-hidden="true"></i> <span>{{currentMovie.Awards}}</span></h6>
+				<h6 class="cast"><i class="fa fa-clock-o" aria-hidden="true"></i> <span>{{currentMovie.Runtime}}</span></h6>
+				<span *ngFor="let genre of currentMovie.Genres" class="badge badge-pill purple">{{genre.Name}}</span>
+			</div>
 		</div>
 	</div>
 </div>

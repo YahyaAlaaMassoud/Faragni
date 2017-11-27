@@ -13,6 +13,7 @@ export class AuthenticationService {
         return this.http.post('/api/authenticate', JSON.stringify({ username: username, password: password }))
             .map((response: Response) => {
                 // login successful if there's a jwt token in the response
+                console.log(username + ' ' + password)
                 let user = response.json();
                 let curr = new User();
                 if (user && user.token) {
@@ -23,6 +24,8 @@ export class AuthenticationService {
                     curr.FirstName = user.firstName;
                     curr.LastName = user.lastName;
                     curr.token = user.token;
+                    curr.WatchList = user.watchlist;
+                    curr.MovieRatings = user.ratings;
                     console.log("email = " + user.email);
                     localStorage.setItem('currentUser', JSON.stringify(curr));
                 }

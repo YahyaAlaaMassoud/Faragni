@@ -19,7 +19,9 @@
 .column {
     float: left;
     width: 33.3%;
-    height:100rem;
+    min-height:1000px;
+    max-height: none;
+    overflow-x: hidden;
     background-color: #f1f1f1;
 }
 
@@ -28,6 +30,7 @@
   width:105%;
   height:50px;
   background-color: #333;
+  
 }
 .row a {
     float: left;
@@ -56,4 +59,12 @@ input[type=text] {
     border: none;
     border-radius: .28571429rem;
     box-shadow: 0 100px 300px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+}
+
+.tabs{
+    min-height: 500px;
+    max-height: none;
+    margin-left:10px;
+    background-color:#eff2f7;
+    margin-top:50px;
 }

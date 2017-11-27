@@ -40,7 +40,7 @@ export class MovieThumbnailComponent implements OnInit {
         }
       }
       console.log(this.list.length)
-      localStorage.setItem('movies', JSON.stringify(this.list))*/
+      /*localStorage.setItem('movies', JSON.stringify(this.list))*/
       /*this.omdb.getMovieByImdbID("tt0102926")
       .subscribe(
         res => {
@@ -56,6 +56,20 @@ export class MovieThumbnailComponent implements OnInit {
           console.log("Error: ", error);
         }
       );*/
+    }
+
+    getMovieByID(id: string) {
+      this.omdb.getMovieByImdbID(id)
+            .subscribe(
+              res => {
+                this.cur = <Movie>res;
+                this.currentMovie = this.cur;
+                console.log(this.currentMovie);
+              },
+              error => {
+                console.log("Error: ", error);
+              }
+            );
     }
 
     ngOnInit() {
@@ -75,17 +89,24 @@ export class MovieThumbnailComponent implements OnInit {
           .findIndex(item => item === this.currentMovie.imdbID);
         if (index !== -1) {
           this.addedToList = true;
-        }
-        else {
+        } else {
           this.addedToList = false;
         }
       }
     }
 
+    updateUsersList(user: User) {
+      const users: User[] = JSON.parse(localStorage.getItem('users'));
+      const index: number = users
+        .findIndex(item => item.UserID === user.UserID);
+      users[index] = user;
+      localStorage.setItem('users', JSON.stringify(users));
+    }
+
     setMovieRating() {
       // console.log(this.currentUser.MovieRatings);
       const index: number = this.currentUser.MovieRatings
-      .findIndex(item => item.MovieID === this.currentMovie.imdbID && item.UserID === this.currentUser.UserID);
+       .findIndex(item => item.MovieID === this.currentMovie.imdbID);
       if (index === -1 || this.currentUser.MovieRatings.length === 0) {
         this.currentMovieRating = new Rating();
         this.currentMovieRating.MovieID = this.currentMovie.imdbID;
@@ -94,27 +115,35 @@ export class MovieThumbnailComponent implements OnInit {
         this.currentUser.MovieRatings.push(this.currentMovieRating);
         // console.log('hhhh')
         localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+        this.updateUsersList(this.currentUser);
       }
       else {
         // console.log(index)
         // console.log(this.currentUser.MovieRatings[index].MovieID)
         this.currentMovieRating = this.currentUser.MovieRatings[index];
-        console.log(this.currentMovieRating);
+        // console.log(index + ' ' + this.currentMovieRating.Rating);
       }
       // // console.log(this.currentMovieRating);
     }
 
     saveNewRating(e) {
+      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
       const index = this.currentUser.MovieRatings
-        .findIndex(item => item.MovieID === this.currentMovie.imdbID && item.UserID === this.currentUser.UserID);
+        .findIndex(item => item.MovieID === this.currentMovie.imdbID);
       this.currentUser.MovieRatings[index].Rating = e.rating;
+      this.currentMovieRating.Rating = e.rating;
       localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
-      // console.log(e.rating);
+      this.updateUsersList(this.currentUser);
+      console.log(index + ' ' + e.rating);
       // console.log('fi eh');
     }
 
     getCurrentUser() {
       this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      // this.currentUser.WatchList = [];
+      // this.currentUser.MovieRatings = [];
+      // localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+      // this.updateUsersList(this.currentUser);
       // console.log(this.currentUser);
     }
 
@@ -141,6 +170,7 @@ export class MovieThumbnailComponent implements OnInit {
     }
 
     addToWatchList() {
+      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
       if (this.addedToList === true) {
         this.addedToList = false;
         const index: number = this.currentUser.WatchList
@@ -157,5 +187,6 @@ export class MovieThumbnailComponent implements OnInit {
         localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
         console.log(this.currentUser.WatchList);
       }
+      this.updateUsersList(this.currentUser);
     }
 }

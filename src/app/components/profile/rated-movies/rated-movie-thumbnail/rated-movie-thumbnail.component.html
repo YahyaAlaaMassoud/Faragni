@@ -1,0 +1,17 @@
+<div class="rated-movie-card">
+  <img src="{{currentMovie.Poster}}">
+  <div class="content">
+    <div class="title">
+      {{currentMovie.Title}} <span class="date">{{currentMovie.Released}}</span>
+    </div>
+    <span *ngFor="let genre of currentMovie.Genres" class="badge badge-pill purple genre">
+      {{genre.Name}}
+    </span>    
+    <div class="plot">
+      {{currentMovie.Plot}}
+    </div>
+    <div class="buttons">
+      Your Rating: {{currentMovieRating.Rating}}
+    </div>
+  </div>
+</div>

@@ -38,6 +38,8 @@ import { ActivityComponent } from './components/activity/activity.component';
 import { MovieThumbnailComponent } from './components/movies/movie-thumbnail/movie-thumbnail.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { FollowersComponent } from './components/followers/followers.component';
+import { RatedMoviesComponent } from './components/profile/rated-movies/rated-movies.component';
+import { RatedMovieThumbnailComponent } from './components/profile/rated-movies/rated-movie-thumbnail/rated-movie-thumbnail.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import { FollowersComponent } from './components/followers/followers.component';
     MovieThumbnailComponent,
     ProfileComponent,
     FollowersComponent,
+    RatedMoviesComponent,
+    RatedMovieThumbnailComponent,
   ],
   imports: [
     BrowserModule,

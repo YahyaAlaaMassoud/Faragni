@@ -62,12 +62,15 @@ export class LoginComponent implements OnInit {
                     body: 'Nice to see you ' + data.UserName + '!',
                     timeout: 2500
                   };
+                  console.log(this.model.UserName);
+                  console.log(this.model.Password)
                   this.toast.pop(toast)
                   //this.toasterService.pop('success', 'Hello', 'Welcome to Faragni');
                   this.router.navigate(['/welcome']);
               },
               error => {
                   //this.toasterService.pop('error', 'Error', 'Error while login');
+                  console.log('error')
                   this.loading = false;
               });
   }

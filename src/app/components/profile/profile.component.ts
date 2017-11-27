@@ -14,14 +14,17 @@ export class ProfileComponent implements OnInit {
   isEdit: boolean;
   myBio: String;
   showFollowers: boolean;
-  constructor(private router:Router) {
-      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));     
-      this.currentUser.Email=["khaledawaled@live.com"];
+  showRatedMovies: boolean;
+  constructor(private router: Router) {
+      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      this.currentUser.Email = ["khaledawaled@live.com"];
       this.currentUser.JoiningDate = new Date("May");
       this.currentUser.Age = 21;
       this.isEdit = false;
       this.myBio = "";
       this.showFollowers=false;
+      this.showRatedMovies=true;
+      console.log(this.currentUser);
   }
 
   ngOnInit() {
@@ -33,8 +36,6 @@ export class ProfileComponent implements OnInit {
        element.textContent = "SAVE";
     else
       element.textContent = "EDIT PROFILE";
-
-
   }
   goToFollowers()
   {

@@ -18,8 +18,10 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
 
                 // find if any user matches login credentials
                 let filteredUsers = users.filter(user => {
-                    return user.UserName === params.username && user.Password === params.password;
+                    return user.UserName === params.username;
                 });
+
+                console.log(users)
 
                 if (filteredUsers.length) {
                     // if login details are valid return 200 OK with user details and fake jwt token
@@ -31,7 +33,9 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
                             username: user.UserName,
                             firstName: user.FirstName,
                             lastName: user.LastName,
-                            token: 'fake-jwt-token'
+                            token: 'fake-jwt-token',
+                            watchlist: user.WatchList,
+                            ratings: user.MovieRatings
                         }
                     })));
                 } else {

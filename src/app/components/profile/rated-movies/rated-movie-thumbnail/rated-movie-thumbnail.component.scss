@@ -1,0 +1,52 @@
+.rated-movie-card{
+    width: auto;
+    height: 250px;
+    max-height: 250px;
+    margin: 15px;
+    position: relative;
+    background-color: white;    
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), 0 10px 7px rgba(0, 0, 0, 0.2);    
+    -webkit-transition: all 0.9s;
+    transition: all 0.9s;
+    color: #7b4397;
+}
+
+.rated-movie-card:hover{
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.6), 0 20px 17px rgba(0, 0, 0, 0.5);    
+}
+
+.rated-movie-card img{
+    height: 100%;
+    width:20%;
+    float: left;
+    position: absolute;
+}
+
+.rated-movie-card .content{
+    padding: 20px;
+    height: 100%;
+    width:80%;
+    float: right;
+    position: relative;
+}
+
+.rated-movie-card .content .title{
+    font-size: 30px;
+    font-weight: bolder;
+    .date{
+        font-size: 15px;
+    }
+}
+
+.rated-movie-card .content .plot{
+    font-size: 15px;
+    padding-top: 20px;
+}
+
+.genre{
+    font-weight: 400;
+}
+
+.rated-movie-card .content .buttons{
+    bottom: 0;
+}
