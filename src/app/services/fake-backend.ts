@@ -33,15 +33,11 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
                             username: user.UserName,
                             firstName: user.FirstName,
                             lastName: user.LastName,
-<<<<<<< HEAD
                             token: 'fake-jwt-token',
                             watchlist: user.WatchList,
-                            ratings: user.MovieRatings
-=======
+                            ratings: user.MovieRatings,
                             email: user.Email,
-                            profilepic: user.profilePic,
-                            token: 'fake-jwt-token'
->>>>>>> 00c5f27dff44f974d032ab60c018b113dac3ed80
+                            profilepic: user.profilePic
                         }
                     })));
                 } else {

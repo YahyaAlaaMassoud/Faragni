@@ -10,8 +10,10 @@
     <div class="plot">
       {{currentMovie.Plot}}
     </div>
-    <div class="buttons">
-      Your Rating: {{currentMovieRating.Rating}}
+    <div class="rating">
+      <star-rating-comp [hoverEnabled]="true" [labelText]="'Your Rating:'" 
+      [numOfStars]="5" [labelPosition]="'left'" [starType]="'icon'" 
+        [rating]="currentMovieRating.Rating" (onClick)="saveNewRating($event)"></star-rating-comp>
     </div>
   </div>
 </div>

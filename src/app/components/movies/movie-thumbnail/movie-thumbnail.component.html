@@ -14,10 +14,10 @@
 				  <li><a class="fa" [ngClass]="{'fa-bookmark-o': !addedToList, 'fa-bookmark': addedToList}"
 						 (click)="addToWatchList()"></a></li>
 				  <li class="dropdown">
-						  <a><i class="fa" 
+						  <a><i class="fa" (click)="removeRating()"
 							[ngClass]="{'fa-star': currentMovieRating.Rating > 0, 'fa-star-o': currentMovieRating.Rating == 0}"
 							 aria-hidden="true"></i><span>{{currentMovie.imdbVotes}}</span></a>
-						  <div class="dropdown-content">
+						  <div class="dropdown-content">	
 								<star-rating-comp [hoverEnabled]="true" [labelText]="'Rate it now!'" 
 								[numOfStars]="5" [labelPosition]="'top'" [starType]="'icon'" 
 							    [rating]="currentMovieRating.Rating" (onClick)="saveNewRating($event)"></star-rating-comp>

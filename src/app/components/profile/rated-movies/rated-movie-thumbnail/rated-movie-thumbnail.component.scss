@@ -45,8 +45,11 @@
 
 .genre{
     font-weight: 400;
+    color: white;
 }
 
-.rated-movie-card .content .buttons{
-    bottom: 0;
+.rated-movie-card .content .rating{
+    padding-top: 20px;
+    -webkit-text-fill-color: #7b4397;    
+    left: 0;    
 }
