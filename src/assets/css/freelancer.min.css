@@ -217,11 +217,11 @@ div.login {
 .screen-tab{
   padding: 100px;
   padding-left: 130px;
-  align-content: center;
   max-height: none;
   overflow-y: scroll;
   min-height: 1000px;
   background-color: #eff2f7;
+  color: purple;
 }
 
 .nav-tab{

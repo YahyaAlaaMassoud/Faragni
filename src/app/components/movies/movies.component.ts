@@ -20,9 +20,11 @@ import { Movie } from '../../models/movie.model';
 export class MoviesComponent implements OnInit {
 
   movies: Movie[];
+  open: boolean;
 
   constructor(private location: Location) {
     this.movies = [];
+    this.open = false;
   }
 
   ngOnInit() {

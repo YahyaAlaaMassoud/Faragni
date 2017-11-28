@@ -116,8 +116,7 @@ export class MovieThumbnailComponent implements OnInit {
         // console.log('hhhh')
         localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
         this.updateUsersList(this.currentUser);
-      }
-      else {
+      } else {
         // console.log(index)
         // console.log(this.currentUser.MovieRatings[index].MovieID)
         this.currentMovieRating = this.currentUser.MovieRatings[index];
@@ -136,6 +135,16 @@ export class MovieThumbnailComponent implements OnInit {
       this.updateUsersList(this.currentUser);
       console.log(index + ' ' + e.rating);
       // console.log('fi eh');
+    }
+
+    removeRating() {
+      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      const index = this.currentUser.MovieRatings
+        .findIndex(item => item.MovieID === this.currentMovie.imdbID);
+      this.currentUser.MovieRatings[index].Rating = 0;
+      this.currentMovieRating.Rating = 0;
+      localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+      this.updateUsersList(this.currentUser);
     }
 
     getCurrentUser() {

@@ -30,6 +30,18 @@ export class RatedMovieThumbnailComponent implements OnInit {
     console.log(this.currentUser);
   }
 
+  saveNewRating(e) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const index = this.currentUser.MovieRatings
+      .findIndex(item => item.MovieID === this.currentMovie.imdbID);
+    this.currentUser.MovieRatings[index].Rating = e.rating;
+    this.currentMovieRating.Rating = e.rating;
+    localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+    this.updateUsersList(this.currentUser);
+    console.log(index + ' ' + e.rating);
+    // console.log('fi eh');
+  }
+
   getCurrentUser() {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     // this.currentUser.WatchList = [];
