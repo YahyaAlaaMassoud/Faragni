@@ -4,13 +4,13 @@
     <button [ngClass]="{'nav-tab my-2 my-sm-0': true, 'nav-tab-active my-2 my-sm-0': currentScreen == '1'}" (click)="chooseScreen(1)">Movies</button>
     <button [ngClass]="{'nav-tab my-2 my-sm-0': true, 'nav-tab-active my-2 my-sm-0': currentScreen == '2'}" (click)="chooseScreen(2)">Activity</button>
     <button [ngClass]="{'nav-tab my-2 my-sm-0': true, 'nav-tab-active my-2 my-sm-0': currentScreen == '3'}" (click)="chooseScreen(3)">Friends</button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
+    <div class="collapse navbar-collapse">
       <ul class="navbar-nav ml-auto">
       </ul>
       <form class="form-inline">
         <!--<input *ngIf="!hide" class="form-control" type="search" placeholder="Search" aria-label="Search">-->
         <form *ngIf="!hide" class="form-inline active-purple active-purple-2">
-            <input class="form-control w-100" type="text" placeholder="Search" aria-label="Search">
+            <input class="form-control w-100 response-search" type="text" placeholder="Search" aria-label="Search">
         </form>
         <button class="nav-btn-outline my-2 my-sm-0" (click)="toggleModal()" *ngIf="hide">Sign in</button>
         <div class="btn-group">

@@ -133,7 +133,8 @@ div.login {
   text-transform: capitalize;
   border: none;
   background:  white;
-  height: 8px;}
+  width: 100%;
+  height: 48px;}
   #mainNav a:focus {
     outline: none; }
   #mainNav .nav-link{
@@ -141,20 +142,21 @@ div.login {
   }
   #mainNav .nav-tab-active{
     padding-top: 12px;
-    border-top: 5px solid white;
+    border-top: 5px solid none;
     border-bottom: 5px solid #7b4397;
     border-top:none;
-    border-left:none;
-    max-width: 200px;
-    width:200px;
-    border-right:none;
+    width:18%; 
     position: relative;
     color: #7b4397;
   }
   #mainNav .navbar-brand {
-    padding-top: 10px;
-    font-size: 14px;
-    color: #dc2430; }
+    padding-top: 15px;
+    position: relative;
+    font-size: 1.5em;
+    color: #dc2430;
+    width:18%; 
+  /* target / parent */
+  }
     #mainNav .navbar-brand.active, #mainNav .navbar-brand:active, #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
       color: #dc2430; }
   #mainNav .navbar-nav {
@@ -166,7 +168,7 @@ div.login {
         outline: none; }
       #mainNav .navbar-nav li.nav-item a.nav-link:active, #mainNav .navbar-nav li.nav-item a.nav-link:focus {
         color: white; }
-  #mainNav .navbar-toggler {
+  /* #mainNav .navbar-toggler {
     font-size: 14px;
     padding: 11px;
     text-transform: uppercase;
@@ -175,32 +177,38 @@ div.login {
     #mainNav .navbar-toggler:focus, #mainNav .navbar-toggler:hover {
       color: white;
       border-color: #18BC9C;
-      background-color: #18BC9C; }
+      background-color: #18BC9C; } */
 
-@media (min-width: 992px) {
+/* @media (min-width: 992px) {
   #mainNav {
-    padding-top: 25px;
+    /* padding-top: 25px;
     padding-bottom: 25px;
     -webkit-transition: padding-top 0.3s, padding-bottom 0.3s;
     -moz-transition: padding-top 0.3s, padding-bottom 0.3s;
-    transition: padding-top 0.3s, padding-bottom 0.3s; }
+    transition: padding-top 0.3s, padding-bottom 0.3s; 
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+  }
     #mainNav .navbar-brand {
-      font-size: 2em;
+      font-size: 1.5em;
       -webkit-transition: all 0.3s;
       -moz-transition: all 0.3s;
       transition: all 0.3s; }
     #mainNav .navbar-nav > li.nav-item > a.nav-link.active {
       color: white;
-      border-radius: 3px;
-      background: #18BC9C; }
+      border-radius: 3px;}
       #mainNav .navbar-nav > li.nav-item > a.nav-link.active:active, #mainNav .navbar-nav > li.nav-item > a.nav-link.active:focus, #mainNav .navbar-nav > li.nav-item > a.nav-link.active:hover {
-        color: white;
-        background: #18BC9C; }
+        color: white;}
   #mainNav.navbar-shrink {
     padding-top: 10px;
     padding-bottom: 10px; }
     #mainNav.navbar-shrink .navbar-brand {
-      font-size: 1.5em; } }
+      font-size: 1.5em; } } */
+
+.response-search{
+  width:23%;
+}
 
 .movies-search-bar{
   font-size: 50px;
@@ -223,13 +231,15 @@ div.login {
   background-color: #eff2f7;
   color: purple;
 }
-
+/* 
+1108 navbar
+200 button
+*/
 .nav-tab{
   padding: 8px;
-  max-width: 200px;
-  width:200px;
-  border-top: 5px solid white;
-  border-bottom: 5px solid white;
+  width:18%;  
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
   border-left:none;
   border-right:none;
   color: #7b4397;
@@ -241,9 +251,8 @@ div.login {
   .nav-tab-active, .nav-tab:active, .nav-tab:focus, .nav-tab:hover {
     padding: 8px;
     border-bottom: 5px solid #7b4397;
-    border-top: 5px solid white;
-    max-width: 200px;
-    width:200px;
+    border-top: 5px solid transparent;
+    width:18%; 
     border-left:none;
     border-right:none;
     /*transition: all 0.2s ease-in-out;*/
