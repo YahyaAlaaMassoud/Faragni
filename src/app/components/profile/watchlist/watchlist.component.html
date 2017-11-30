@@ -1,0 +1,9 @@
+<div class="header">
+  Watchlist
+</div>
+<hr/>
+<div class="watchlistMovies">
+  <div *ngFor="let movie of watchlistMovies;">
+    <app-rated-movie-thumbnail [currentMovie]="movie"></app-rated-movie-thumbnail>
+  </div>
+</div>

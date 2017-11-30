@@ -15,7 +15,9 @@ export class ProfileComponent implements OnInit {
   myBio: String;
   showFollowers: boolean;
   showRatedMovies: boolean;
+  showWatchlistMovies: boolean;
   currentScreen:number;
+  
   constructor(private router:Router) {
       this.currentUser = JSON.parse(localStorage.getItem('currentUser'));     
      // this.currentUser.Email=["khaledawaled@live.com"];
@@ -27,6 +29,7 @@ export class ProfileComponent implements OnInit {
       this.isEdit = false;
       this.showFollowers=false;
       this.showRatedMovies=true;
+      this.showWatchlistMovies=false;
   }
 
   ngOnInit() {
