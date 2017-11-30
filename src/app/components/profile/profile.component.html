@@ -13,9 +13,10 @@
     </div>
     
     <nav class ="navbar navbar-expand-lg" style="background-color:rgb(255, 255, 255); height:70px;">
-            <button class="nav-tab my-2 my-sm-0" (click)="showRatedMovies=true;showFollowers=false; " style="margin-left:22rem" >MOVIES</button>
+            <button class="nav-tab my-2 my-sm-0" (click)="showRatedMovies=true;showFollowers=false;showWatchlistMovies=false;" style="margin-left:22rem" >MOVIES</button>
+            <button class="nav-tab my-2 my-sm-0" (click)="showRatedMovies=false;showFollowers=false;showWatchlistMovies=true;" >WATCHLIST</button>            
             <button class="nav-tab my-2 my-sm-0"  >FOLLOWING</button>
-            <button class="nav-tab my-2 my-sm-0" (click)="showFollowers=true;showRatedMovies=false;" >FOLLOWERS</button>
+            <button class="nav-tab my-2 my-sm-0" (click)="showFollowers=true;showRatedMovies=false;showWatchlistMovies=false;" >FOLLOWERS</button>
             <button class="nav-tab my-2 my-sm-0"  >RECOMMENDATION</button>
             <button class="nav-tab my-2 my-sm-0" style="border-radius: 50%;margin-left:10rem; border-color:blueviolet;" (click)="takeAction($event.target)" >Edit Profile</button>
     </nav>
@@ -58,6 +59,7 @@
             <input class=""type="file" (change)="onFileChange($event)" value="Upload image..." />
             <app-followers *ngIf="showFollowers"></app-followers>
             <rated-movies *ngIf="showRatedMovies"></rated-movies>
+            <watchlist *ngIf="showWatchlistMovies"></watchlist>
         </div>
     </div>
 

@@ -2,7 +2,10 @@
   <img src="{{currentMovie.Poster}}">
   <div class="content">
     <div class="title">
-      {{currentMovie.Title}} <span class="date">{{currentMovie.Released}}</span>
+      {{currentMovie.Title}}
+      <div class="row padd">
+        <span>{{currentMovie.Released}}</span>
+      </div>
     </div>
     <span *ngFor="let genre of currentMovie.Genres" class="badge badge-pill purple genre">
       {{genre.Name}}
@@ -11,9 +14,13 @@
       {{currentMovie.Plot}}
     </div>
     <div class="rating">
+      <!-- <span  class="rate">{{currentMovie.imdbRating}}</span> -->
       <star-rating-comp [hoverEnabled]="true" [labelText]="'Your Rating:'" 
       [numOfStars]="5" [labelPosition]="'left'" [starType]="'icon'" 
         [rating]="currentMovieRating.Rating" (onClick)="saveNewRating($event)"></star-rating-comp>
+        <star-rating-comp [hoverEnabled]="false" [labelText]="'Imdb Rating:'" [readOnly]="true"
+        [numOfStars]="5" [labelPosition]="'left'" [starType]="'icon'" style="padding-left:20px;"
+          [rating]="currentMovie.imdbRating / 2"></star-rating-comp>
     </div>
   </div>
 </div>

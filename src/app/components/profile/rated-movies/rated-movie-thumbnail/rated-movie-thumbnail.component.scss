@@ -1,7 +1,7 @@
 .rated-movie-card{
-    width: auto;
-    height: 250px;
-    max-height: 250px;
+    width: 80%;
+    height: 310px;
+    max-height: 310px;
     margin: 15px;
     position: relative;
     background-color: white;    
@@ -17,21 +17,43 @@
 
 .rated-movie-card img{
     height: 100%;
-    width:20%;
+    width:32%;
     float: left;
     position: absolute;
+}
+
+.padd{
+    padding-left: 20px;
+    padding-bottom: 10px;
+}
+
+.rate{
+    color:white;
+    right: 0;
+    top:0;
+    min-width: 5%;
+    background-color:  #7b4397;  
+    text-align: center;
+    font-size: 25px; 
+    width:5%;
+    padding: 3px;
+    border-radius: 100%;
+}
+ 
+span{
+    font-size: 15px;
 }
 
 .rated-movie-card .content{
     padding: 20px;
     height: 100%;
-    width:80%;
+    width:68%;
     float: right;
     position: relative;
 }
 
 .rated-movie-card .content .title{
-    font-size: 30px;
+    font-size: 27px;
     font-weight: bolder;
     .date{
         font-size: 15px;
@@ -50,6 +72,9 @@
 
 .rated-movie-card .content .rating{
     padding-top: 20px;
-    -webkit-text-fill-color: #7b4397;    
-    left: 0;    
+    -webkit-text-fill-color: #7b4397;
+    float: left;
+    bottom: 0;
+    position: absolute;
+    padding-bottom: 20px;
 }

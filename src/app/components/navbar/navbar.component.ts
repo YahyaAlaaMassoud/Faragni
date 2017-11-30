@@ -42,7 +42,7 @@ export class NavbarComponent implements OnInit {
 
   chooseScreen(id: number){
     this.currentScreen = id;
-    this.screenID.emit(id)
+    this.screenID.emit(id);
   }
 
   toggleModal() {
