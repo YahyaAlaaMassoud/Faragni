@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  resources :tags
+  resources :jobs
+  resources :awards
+  resources :cast_members
+  resources :casts
+  resources :genres
+  resources :production_companies
+  resources :movies
   scope '/api' do
     resources :users
   end
