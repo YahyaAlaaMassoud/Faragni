@@ -1,0 +1,35 @@
+CREATE TABLE "users" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "date_of_birth" date, "username" character varying, "email" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)
+CREATE UNIQUE INDEX  "index_users_on_username" ON "users"  ("username")
+
+CREATE TABLE "movies" ("id" bigserial primary key, "imdb_id" character varying, "title" character varying, "language" character varying, "adult" boolean, "release_date" timestamp, "popularity" decimal, "average_rating" decimal, "votes" integer, "production_company_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)
+CREATE  INDEX  "index_movies_on_production_company_id" ON "movies"  ("production_company_id")
+
+CREATE TABLE "production_companies" ("id" bigserial primary key, "company_name" character varying, "description" text, "headquarters" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)
+
+CREATE TABLE "genres" ("id" bigserial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)
+
+CREATE TABLE "cast_members" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "age" integer, "popularity" decimal, "date_of_birth" timestamp, "date_of_death" timestamp, "biography" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)
+
+CREATE TABLE "awards" ("id" bigserial primary key, "name" character varying, "description" text, "year" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)
+
+CREATE TABLE "jobs" ("id" bigserial primary key, "name" character varying, "description" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)
+
+CREATE TABLE "tags" ("id" bigserial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)
+
+CREATE TABLE "movies_tags" ("movie_id" bigint NOT NULL, "tag_id" bigint NOT NULL)
+CREATE  INDEX  "index_movies_tags_on_movie_id" ON "movies_tags"  ("movie_id")
+CREATE  INDEX  "index_movies_tags_on_tag_id" ON "movies_tags"  ("tag_id")
+
+CREATE TABLE "movie_casts" ("id" bigserial primary key, "movie_id" bigint, "cast_member_id" bigint, "job_id" bigint, "role" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)
+CREATE  INDEX  "index_movie_casts_on_movie_id" ON "movie_casts"  ("movie_id")
+CREATE  INDEX  "index_movie_casts_on_cast_member_id" ON "movie_casts"  ("cast_member_id")
+CREATE  INDEX  "index_movie_casts_on_job_id" ON "movie_casts"  ("job_id")
+
+CREATE TABLE "genres_movies" ("movie_id" bigint NOT NULL, "genre_id" bigint NOT NULL)
+CREATE  INDEX  "index_genres_movies_on_movie_id" ON "genres_movies"  ("movie_id")
+CREATE  INDEX  "index_genres_movies_on_genre_id" ON "genres_movies"  ("genre_id")
+
+CREATE TABLE "awards_winners" ("movie_cast_id" bigint NOT NULL, "award_id" bigint NOT NULL)
+CREATE  INDEX  "index_awards_winners_on_movie_cast_id" ON "awards_winners"  ("movie_cast_id")
+CREATE  INDEX  "index_awards_winners_on_award_id" ON "awards_winners"  ("award_id")
+
