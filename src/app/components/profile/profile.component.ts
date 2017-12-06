@@ -17,11 +17,10 @@ export class ProfileComponent implements OnInit {
   showRatedMovies: boolean;
   showWatchlistMovies: boolean;
   currentScreen:number;
-  
   constructor(private router:Router) {
-      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));     
-     // this.currentUser.Email=["khaledawaled@live.com"];
-      this.currentUser.JoiningDate = new Date("May");
+      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));    
+      console.log(this.currentUser); 
+      this.currentUser.Email=["khaledawaled@live.com"];
       this.currentUser.Age = 21;
       this.currentUser.bio = "";
       //localStorage.setItem('currentUser',JSON.stringify(this.currentUser));
@@ -30,6 +29,10 @@ export class ProfileComponent implements OnInit {
       this.showFollowers=false;
       this.showRatedMovies=true;
       this.showWatchlistMovies=false;
+      this.currentUser.Friends=[]
+     // this.currentUser.Friends.push(this.currentUser);
+      // localStorage.setItem('currentUser',JSON.stringify(this.currentUser));
+      console.log(this.currentUser.Friends);
   }
 
   ngOnInit() {
@@ -37,17 +40,13 @@ export class ProfileComponent implements OnInit {
   }
   takeAction(element){
     this.isEdit = !this.isEdit;
-    var myimg = document.getElementById("pfimg");
     if(this.isEdit){
        element.textContent = "SAVE";
-        myimg.className=myimg.className.concat(" avatarEdit");
     }
     else{
       localStorage.setItem('currentUser',JSON.stringify(this.currentUser)); 
       this.updateUsersList(this.currentUser);      
       element.textContent = "EDIT PROFILE";
-
-      myimg.className="useravatar";
     }
   }
   chooseScreen(e)

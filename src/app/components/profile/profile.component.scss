@@ -1,4 +1,3 @@
-
 .useravatar {
     position: absolute;
     left: 2rem;
@@ -6,10 +5,10 @@
     top: 35%;
 }
 .useravatar img {
-    width: 300px;
-    height: 300px;
-    max-width: 300px;
-    max-height: 300px;
+    width: 250px;
+    height: 250px;
+    max-width: 250px;
+    max-height: 250px;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
@@ -27,24 +26,16 @@
 
 .row{
   float: left;
-  width:105%;
-  height:50px;
+  height:650px;
   background-color: #333;
+  width: 100%;
+  border: solid blue;
+  border-radius: .28571429rem;
+  box-shadow: 0 100px 300px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+  position: absolute;
   
 }
-.row a {
-    float: left;
-    display: block;
-    color: RED;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration:none;
-}
-.row a:hover {
-    background-color: #ddd;
-    color: black;
-    text-decoration-line: underline;
-}
+
 input[type=text] {
     width: 100%;
     padding: 12px 20px;
@@ -80,3 +71,43 @@ input[type="file"] {
     padding: 6px 12px;
     cursor: pointer;
 }
+.card-body{
+
+    margin-left:15px;
+    margin-top:40px;
+    margin-left:30px;
+}
+
+.col1{
+        width:25%;
+        min-width: fit-content;
+        height:90%;
+        max-height: 1000px;
+        border: solid red;
+        border-radius: .28571429rem;
+        box-shadow: 0 100px 300px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+    }
+.col2{
+        width:70%;
+        height:550px;
+        border: solid black;
+        border-radius: .28571429rem;
+        box-shadow: 0 100px 300px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+        
+    }
+@media screen and (max-width: 1080px) {
+    .col2{
+        position: absolute;
+        margin-left: 20rem;
+    }
+    .maindiv{
+        overflow: auto;
+        white-space: nowrap;
+    }
+}
+
+
+
+
+
+   

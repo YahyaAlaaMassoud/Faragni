@@ -41,6 +41,7 @@ import { FollowersComponent } from './components/followers/followers.component';
 import { RatedMoviesComponent } from './components/profile/rated-movies/rated-movies.component';
 import { RatedMovieThumbnailComponent } from './components/profile/rated-movies/rated-movie-thumbnail/rated-movie-thumbnail.component';
 import { WatchlistComponent } from './components/profile/watchlist/watchlist.component';
+import { FollowersThumbnailComponent } from './components/followers/followers-thumbnail/followers-thumbnail.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { WatchlistComponent } from './components/profile/watchlist/watchlist.com
     RatedMoviesComponent,
     RatedMovieThumbnailComponent,
     WatchlistComponent,
+    FollowersThumbnailComponent,
   ],
   imports: [
     BrowserModule,
