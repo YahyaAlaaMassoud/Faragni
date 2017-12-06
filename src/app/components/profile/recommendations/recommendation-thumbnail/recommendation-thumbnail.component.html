@@ -1,0 +1,63 @@
+<div class="recommended-movie-card">
+  <div class="row">
+    <div class="col-20">
+      <img src="{{currentRecommendingUser.profilePic}}">
+    </div>
+    <div class="recommendation-content">
+      <div class="title">
+        <span *ngIf="currentRecommendingUser != undefined">
+          {{currentRecommendingUser.FirstName + ' ' + currentRecommendingUser.LastName}}
+        </span>
+        recommended you 
+        <span data-toggle="modal" [attr.data-target]="'#' + currentMovie.imdbID" 
+              *ngIf="currentMovie != undefined">
+          {{currentMovie.Title}}
+        </span>
+      </div>
+      <div class="message">
+        '{{currentRecommendation.Message}}'
+      </div>
+      <hr>
+      <star-rating-comp [hoverEnabled]="true" [labelText]="'Your ratingfor this movie:'"
+      [numOfStars]="5" [labelPosition]="'left'" [starType]="'icon'" [readOnly]="readOnly"
+      [rating]="currentRecommendation.UserRating"
+      (onClick)="saveRecommendationRating($event)"></star-rating-comp>
+      <hr>
+    </div>
+  </div>
+</div> 
+
+<!--Modal: Login with Avatar Form-->
+<div *ngIf="currentMovie != undefined" class="modal fade padd purple-text" [attr.id]="currentMovie.imdbID" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <!--Content-->
+        <div class="no-padd">
+
+			<!--Header-->
+			<div class="row">
+				<div class="col-30">
+					<img src="{{currentMovie.Poster}}" alt="movie poster" class="movie-poster-modal">
+				</div>
+				<!--Body-->
+				<div class="col-70">
+					<div class="padd">
+
+						<h3 class="mt-1 mb-2 recommendation-title">{{currentMovie.Title}}</h3>
+            <span *ngFor="let genre of currentMovie.Genres" class="badge badge-pill purple genre">
+              {{genre.Name}}
+            </span>  
+            <hr>
+            <h4 class="plot">{{currentMovie.Plot}}</h4>
+            <hr>
+            <h4 class="plot">{{currentMovie.Awards}}</h4>
+            <hr>
+            <h4 class="plot">Rating: <b>{{currentMovie.imdbRating}}</b>, Total number of votes: <b>{{currentMovie.imdbVotes}}</b></h4>
+					</div>
+				</div>
+			</div>
+
+        </div>
+        <!--/.Content-->
+    </div>
+</div>
+<!--Modal: Login with Avatar Form-->

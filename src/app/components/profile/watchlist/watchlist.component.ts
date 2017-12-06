@@ -21,6 +21,7 @@ export class WatchlistComponent implements OnInit {
    }
 
    getWatchListMovies() {
+     this.currentUser.WatchList = this.currentUser.WatchList  || [];
      this.currentUser.WatchList.forEach(item => {
         this.omdb.getMovieByImdbID(item)
         .subscribe(

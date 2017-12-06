@@ -6,4 +6,7 @@
   <div *ngFor="let movie of watchlistMovies;">
     <app-rated-movie-thumbnail [currentMovie]="movie"></app-rated-movie-thumbnail>
   </div>
+  <div *ngIf="!watchlistMovies.length">
+    lessa ma7adesh 3abarak
+  </div>
 </div>

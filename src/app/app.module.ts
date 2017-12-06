@@ -3,13 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgControl, ReactiveFormsModule } from '@angular/forms';
 import { ToasterModule, ToasterService } from 'angular2-toaster';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { AlertModule } from 'ngx-bootstrap';
 import { SuiModule, SuiSidebarModule, SuiRatingModule, SuiSearchModule } from 'ng2-semantic-ui';
 import { StarRatingModule } from 'angular-star-rating';
+// import { MatAutocompleteModule, MatInputModule, MatFormFieldModule, MatOptionModule } from '@angular/material';
+import 'hammerjs';
+import { NgbModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 
 // components
 import { AppComponent } from './app.component';
@@ -18,7 +21,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component'
 import { WelcomeScreenComponent } from './components/welcome-screen/welcome-screen.component';
-
+import { CustomSelectBoxComponent } from './components/common/custom-select-box/custom-select-box.component';
 
 // services
 import { AuthenticationService } from './services/authentication/authentication.service';
@@ -41,6 +44,9 @@ import { FollowersComponent } from './components/followers/followers.component';
 import { RatedMoviesComponent } from './components/profile/rated-movies/rated-movies.component';
 import { RatedMovieThumbnailComponent } from './components/profile/rated-movies/rated-movie-thumbnail/rated-movie-thumbnail.component';
 import { WatchlistComponent } from './components/profile/watchlist/watchlist.component';
+import { RecommendationsComponent } from './components/profile/recommendations/recommendations.component';
+import { StarRatingPipePipe } from './pipes/star-rating-pipe.pipe';
+import { RecommendationThumbnailComponent } from './components/profile/recommendations/recommendation-thumbnail/recommendation-thumbnail.component';
 import { FollowersThumbnailComponent } from './components/followers/followers-thumbnail/followers-thumbnail.component';
 
 @NgModule({
@@ -59,13 +65,19 @@ import { FollowersThumbnailComponent } from './components/followers/followers-th
     RatedMoviesComponent,
     RatedMovieThumbnailComponent,
     WatchlistComponent,
-    FollowersThumbnailComponent,
+    CustomSelectBoxComponent,
+    RecommendationsComponent,
+    StarRatingPipePipe,
+    RecommendationThumbnailComponent,
+    FollowersThumbnailComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
+    ReactiveFormsModule,
+    NgbModule.forRoot(),
     RouterModule.forRoot(appRoutes),
     MDBBootstrapModule.forRoot(),
     AlertModule.forRoot(),
@@ -74,8 +86,19 @@ import { FollowersThumbnailComponent } from './components/followers/followers-th
     SuiSidebarModule,
     SuiRatingModule,
     StarRatingModule.forRoot(),
-    SuiSearchModule
+    SuiSearchModule,
+    NgbDropdownModule
+    // MatFormFieldModule,
+    // MatInputModule,
+    // MatAutocompleteModule,
+    // MatOptionModule
   ],
+  // exports: [
+  //   MatFormFieldModule,
+  //   MatInputModule,
+  //   MatAutocompleteModule,
+  //   MatOptionModule
+  // ],
   providers: [
     AuthenticationService,
     AuthGuard,
@@ -85,7 +108,7 @@ import { FollowersThumbnailComponent } from './components/followers/followers-th
     BaseRequestOptions,
     OmdbMoviesService
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [ AppComponent ],
   schemas: [ NO_ERRORS_SCHEMA ]
 })
 export class AppModule { }

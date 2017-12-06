@@ -17,7 +17,7 @@ export class ActivityComponent implements OnInit {
   constructor(private location: Location) { }
 
   ngOnInit() {
-    this.location.replaceState('/activity')
+    // this.location.replaceState('/activity')
   }
 
 }

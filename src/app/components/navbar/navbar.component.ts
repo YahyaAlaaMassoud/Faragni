@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { AuthenticationService } from '../../services/authentication/authentication.service'
 import { ToasterContainerComponent, ToasterService, ToasterConfig } from 'angular2-toaster';
@@ -17,7 +18,8 @@ import { User } from '../../models/user.model';
             .active-purple input[type=text] {
                 border-bottom: 1px solid #7b4397;
                 box-shadow: 0 1px 0 0 #7b4397;
-            }`]
+            }`],
+  styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
 
@@ -30,7 +32,8 @@ export class NavbarComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private router: Router,
               private toast: ToasterService,
-              private authService: AuthenticationService)
+              private authService: AuthenticationService,
+              private location: Location)
   {
     this.hide = true;
     this.currentUser = null;
@@ -38,6 +41,7 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.location.path())
   }
 
   chooseScreen(id: number){
@@ -61,8 +65,22 @@ export class NavbarComponent implements OnInit {
     this.authService.logout();
     this.router.navigate(['/login']);
   }
+  
   goToProfile(){
-      this.router.navigate(['/profile'])
-    };
+    this.chooseScreen(0)    
+    this.router.navigate(['/profile'])
+  }
 
+  openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+      // document.getElementById("main").style.marginRight = "250px";
+      // document.getElementById("mySidenav").style.opacity = "1";
+      // document.getElementById("mainNav").style.opacity = "1";
+      // document.getElementById("main").style.opacity = "0.5";      
+  }
+
+  closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+      // document.getElementById("main").style.opacity = "1";     
+  }
 }

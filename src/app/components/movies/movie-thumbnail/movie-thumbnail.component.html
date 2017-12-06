@@ -6,22 +6,28 @@
 										 		[style.background-repeat]="'no-repeat'"
 												 [style.background-size]="'100% 100%'"></div>
 			<div class="header">
-				<div [ngClass]="{'hidden': flip}" class="rate"><span class="badge badge-pill purple">{{currentMovie.imdbRating}}</span></div>
+				<div [ngClass]="{'hidden': flip}" class="rate"><span class="badge badge-pill purple">{{(currentMovie.imdbRating)}}</span></div>
 				<div class="date">
 					<span>{{currentMovie.Released}}</span>
 				</div>
 				<ul class="menu-content">
-				  <li><a class="fa" [ngClass]="{'fa-bookmark-o': !addedToList, 'fa-bookmark': addedToList}"
-						 (click)="addToWatchList()"></a></li>
-				  <li class="dropdown">
-						  <a><i class="fa" (click)="removeRating()"
-							[ngClass]="{'fa-star': currentMovieRating.Rating > 0, 'fa-star-o': currentMovieRating.Rating == 0}"
-							 aria-hidden="true"></i><span>{{currentMovie.imdbVotes}}</span></a>
-						  <div class="dropdown-content">	
-								<star-rating-comp [hoverEnabled]="true" [labelText]="'Rate it now!'" 
-								[numOfStars]="5" [labelPosition]="'top'" [starType]="'icon'" 
-							    [rating]="currentMovieRating.Rating" (onClick)="saveNewRating($event)"></star-rating-comp>
-						  </div>
+					<li><a class="fa" [ngClass]="{'fa-paper-plane-o':!toggleSendButton, 'fa-paper-plane':toggleSendButton}"
+						(mouseenter)="toggleSendButton = true" (mouseleave)="toggleSendButton = false"
+						data-toggle="modal" data-backdrop="static" [attr.data-target]="'#' + currentMovie.imdbID"
+						(click)="newRecommendation()" *ngIf="currentMovieRating.Rating != 0"></a></li>
+					<li><a class="fa" [ngClass]="{'fa-bookmark-o': !addedToList, 'fa-bookmark': addedToList}"
+							(click)="addToWatchList()"></a></li>								
+					<li class="dropdown">
+							<a><i class="fa" (click)="removeRating()"
+								[ngClass]="{'fa-star': currentMovieRating.Rating > 0, 'fa-star-o': currentMovieRating.Rating == 0}"
+								aria-hidden="true"></i><span>{{currentMovie.imdbVotes}}</span></a>
+							
+							<div class="dropdown-content">	
+									<star-rating-comp [hoverEnabled]="true" [labelText]="'Rate it now!'" 
+									[numOfStars]="5" [labelPosition]="'top'" [starType]="'icon'" 
+									[step]="0.5" [showHalfStars]="true"
+									[rating]="currentMovieRating.Rating" (onClick)="saveNewRating($event)"></star-rating-comp>
+							</div>
 					</li>
 				</ul>
 			</div>
@@ -64,3 +70,86 @@
 		</div>
 	</div>
 </div>
+
+
+<!-- <div class="ui segment"> -->
+    <sui-dimmer class="page" [(isDimmed)]="pageDimmedOnRate">
+        <h2 class="ui inverted icon header purple-text">
+			<div *ngFor='let key of currentMovieRating.Rating | starRatingPipe' class="dimmer-stars">
+				<i class="star icon"></i>
+			</div>
+			<div>
+				Thank you for rating <span class="bolder">{{currentMovie.Title}}</span> Movie
+			</div>
+        </h2>
+    </sui-dimmer>
+<!-- </div> -->
+
+<!-- <div class="ui segment"> -->
+    <!-- <sui-dimmer class="page" [(isDimmed)]="pageDimmedOnRecommendation">
+        <h2 class="ui inverted icon header purple-text">
+			<i class="fa fa-paper-plane" aria-hidden="true" style="font-size: 100px; padding-bottom:10px;"></i>
+			<div>
+				Your recommendation has been sent to {{recommendation.ToUserID}}
+			</div>
+        </h2>
+    </sui-dimmer> -->
+<!-- </div> -->
+
+<!--Modal: Login with Avatar Form-->
+<div class="modal fade padd purple-text" [attr.id]="currentMovie.imdbID" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <!--Content-->
+        <div class="no-padd">
+
+			<!--Header-->
+			<div class="row">
+				<div class="col-30">
+					<img src="{{currentMovie.Poster}}" alt="movie poster" class="movie-poster-modal">
+				</div>
+				<!--Body-->
+				<div class="col-70">
+					<div class="padd">
+
+						<h5 class="mt-1 mb-2 recommendation-title">{{currentMovie.Title}}</h5>
+
+						<div class="md-form ml-0 mr-0">
+							<!-- <input type="text" [(ngModel)]="recommendation.ToUserID" placeholder="Recommend to" type="text" class="form-control validate ml-0"> -->
+							<custom-select-box *ngIf="users != undefined" [valueExpr]="'UserID'"
+								[displayExpr]="'UserName'" [itemName]="'User'"
+								[loadingMessage]="''" [(dataSource)]="users"
+								[value]="recommendation.ToUserID" (input)="recommendation.ToUserID=$event"
+								(click)="hh()"></custom-select-box>
+							<br>
+							<input type="text" [(ngModel)]="recommendation.Message" 
+							placeholder="Recommendation message (optional-maxlen 55)" type="text">	
+							<br>			
+							<div class="">
+								<br>							
+								<star-rating-comp [hoverEnabled]="true" [labelText]="'Expected rating'" 
+								[numOfStars]="5" [labelPosition]="'left'" [starType]="'icon'" 
+								[rating]="recommendation.ExpectedRating"
+								(onClick)="saveRecommendationRating($event)"></star-rating-comp>
+							</div>
+						</div>
+
+						<div class="text-center">
+							<button (click)="sendRecommendation()"
+							class="btn btn-outline-purple mt-1">Send Recommendation 
+							<i class="fa fa-paper-plane-o ml-1"></i>
+							</button>
+							<button data-dismiss="modal" 
+							class="btn btn-outline-purple mt-1">Cancel 
+							<i class="fa fa-close ml-1"></i>
+							</button>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+
+        </div>
+        <!--/.Content-->
+    </div>
+</div>
+<!--Modal: Login with Avatar Form-->

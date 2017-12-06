@@ -21,6 +21,7 @@ export class RatedMoviesComponent implements OnInit {
    }
 
    getRatedMovies() {
+     this.currentUser.MovieRatings = this.currentUser.MovieRatings || [];
      this.currentUser.MovieRatings.forEach(item => {
        if (item.Rating > 0) {
          console.log(item.MovieID);
