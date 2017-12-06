@@ -1,15 +1,5 @@
-<div class="card">
-    <img src="assets/img/img2.jpg" style="width:100%"/>
-        <div class="container">
-            <h4>khaled Waleed</h4>
-            <p style="color: grey;font-size: 18px;">action,romance,drama</p>
-            <div style="margin: 15px 0;">
-                <a href="#"><i class="fa fa-twitter"></i></a>  
-                <a href="#"><i class="fa fa-linkedin"></i></a>  
-                <a href="#"><i class="fa fa-facebook"></i></a> 
-             </div>
-             <div>
-                 <button>unfollow</button>
-             </div>
-        </div>
+<div class="container">
+    <div *ngFor="let currentFriend of friendList;">
+            <app-followers-thumbnail [friend] = "currentFriend "></app-followers-thumbnail>
+    </div>
 </div>

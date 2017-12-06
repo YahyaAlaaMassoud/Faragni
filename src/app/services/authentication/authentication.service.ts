@@ -25,8 +25,8 @@ export class AuthenticationService {
                     curr.FirstName = user.firstName;
                     curr.LastName = user.lastName;
                     curr.Email = user.email;
-                    console.log(curr.Email);
                     curr.profilePic = user.profilepic;
+                    console.log(curr.profilePic);
                     curr.token = user.token;
                     curr.WatchList = user.watchlist;
                     curr.MovieRatings = user.ratings;
