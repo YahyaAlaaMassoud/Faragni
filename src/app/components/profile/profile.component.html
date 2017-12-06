@@ -1,15 +1,27 @@
 <app-navbar [hide]="false" [currentUser]="currentUser" (screenID)="chooseScreen($event)"></app-navbar>
-
-<div  style="background-color:#e6ecf0">
-    <div class="row" style="height:23rem;">
+<head>
+       
+</head>
+<div  class="maindiv"style="background-color:#e6ecf0">
+    <div  style="height:23rem;">
             <img   alt="" src="assets\img\sky.jpg" style="width:100%; height:100%;">
     </div>
-    <div class ="useravatar" style="z-index:1;position:-ms-page;display:initial" >
+    <div class ="useravatar" style="z-index:3;position:-ms-page;display:initial" >
             <label for="file-upload" class="custom-file-upload" style="position:absolute;margin-top:10rem;" >
                     <i class="fa fa-cloud-upload"></i> Upload
                 </label>
             <input id="file-upload" type="file" (change)="onFileChange($event)" />
-         <img class ="useravatar"  [src]="currentUser.profilePic" #fileInput alt="error" id="pfimg">                 
+         <img  class= "useravatar" [ngClass]="{'avatarEdit':isEdit}"  [src]="currentUser.profilePic" alt="error" id="pfimg">                 
+    </div>
+    <div style="position:absolute;z-index:2" >
+        <nav class ="navbar navbar-expand-lg" style="background-color:rgb(255, 255, 255); height:70px;width:1350px;">
+                <button class="nav-tab" (click)="showRatedMovies=true;showFollowers=false;showWatchlistMovies=false;" style="margin-left:22rem" >MOVIES</button>
+                <button class="nav-tab" (click)="showRatedMovies=false;showFollowers=false;showWatchlistMovies=true;" >WATCHLIST</button>            
+                <button class="nav-tab"  >FOLLOWING</button>
+                <button class="nav-tab" (click)="showFollowers=true;showRatedMovies=false;showWatchlistMovies=false;" >FOLLOWERS</button>
+                <button class="nav-tab"  >RECOMMENDATION</button>
+                <button class="nav-tab" style="border-radius: 50%;margin-left:10rem; border-color:blueviolet;" (click)="takeAction($event.target)" >Edit Profile</button>
+        </nav>
     </div>
     
     <nav class ="navbar navbar-expand-lg" style="background-color:rgb(255, 255, 255); height:70px;">
@@ -21,15 +33,13 @@
             <button class="nav-btn-outline my-2 my-sm-0"  style="margin-left:10rem; border-color:blueviolet;" (click)="takeAction($event.target)" >Edit Profile</button>
     </nav>
     
-    <div class = "row" style="background-color:#e6ecf0; min-height:500px;max-height:none;margin-top:10px;">
-        <div class="col-md-3 cardOuter "style="background-color:#e6ecf0; margin-left:50px; margin-top:50px;">
-            <div class = "card-body" style="margin-left:15px;margin-top:40px;margin-left:30px;">
+    <div class = "row" style="background-color:#e6ecf0; margin-top:10px;">
+        <div class="col1"style="background-color:#e6ecf0; margin-left:50px; margin-top:50px;">
+            <div class = "card-body">
                 <div class ="input-group">
                     <label *ngIf="!isEdit" style="font-size:30px; font-weight:bold ;"> {{currentUser.FirstName}} {{currentUser.LastName}}</label>
                     <span *ngIf="isEdit" class="input-group-addon" id="basic-addon1">Fname</span>
-                    <input *ngIf="isEdit"  class="form-control" aria-describedby="basic-addon1" [(ngModel)] ="currentUser.FirstName">
-                    <img src="{{base64}}">
-                    
+                    <input *ngIf="isEdit"  class="form-control" aria-describedby="basic-addon1" [(ngModel)] ="currentUser.FirstName">                    
                 </div>
                 <div class="input-group">
                      <span *ngIf="isEdit" class="input-group-addon" id="basic-addon1">Lname</span>
@@ -55,7 +65,7 @@
         </div>
 
         
-        <div class="col-md-8 cardOuter tabs">
+        <div class="col2">
             <input class=""type="file" (change)="onFileChange($event)" value="Upload image..." />
             <app-followers *ngIf="showFollowers"></app-followers>
             <rated-movies *ngIf="showRatedMovies"></rated-movies>
@@ -63,5 +73,5 @@
             <recommendations *ngIf="showRecommendedMovies"></recommendations>
         </div>
     </div>
-
 </div>
+

@@ -47,6 +47,7 @@ import { WatchlistComponent } from './components/profile/watchlist/watchlist.com
 import { RecommendationsComponent } from './components/profile/recommendations/recommendations.component';
 import { StarRatingPipePipe } from './pipes/star-rating-pipe.pipe';
 import { RecommendationThumbnailComponent } from './components/profile/recommendations/recommendation-thumbnail/recommendation-thumbnail.component';
+import { FollowersThumbnailComponent } from './components/followers/followers-thumbnail/followers-thumbnail.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { RecommendationThumbnailComponent } from './components/profile/recommend
     CustomSelectBoxComponent,
     RecommendationsComponent,
     StarRatingPipePipe,
-    RecommendationThumbnailComponent
+    RecommendationThumbnailComponent,
+    FollowersThumbnailComponent
   ],
   imports: [
     BrowserModule,
