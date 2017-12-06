@@ -38,7 +38,7 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    console.log('fi eh')
   }
   takeAction(element){
     this.isEdit = !this.isEdit;
@@ -102,6 +102,7 @@ export class ProfileComponent implements OnInit {
       this.showFollowers = false;
       this.showWatchlistMovies = false;
       this.showRecommendedMovies = true;
+      console.log(id)
     }
   }
 }
