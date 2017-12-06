@@ -1,5 +1,7 @@
-import { Rating } from './rating.model'
-import { Recommendation } from './recommendation.model'
+import { Rating } from './rating.model';
+import { Recommendation } from './recommendation.model';
+import { Movie } from './movie.model';
+import { Url } from 'url';
 
 export class User {
   UserID: number;
@@ -14,4 +16,9 @@ export class User {
   Recommended: Recommendation[];
   Password: string;
   token: string;
+  WatchList: string[];
+  profilePic: string; 
+  Followers: User[];
+  Following: User[];
+  bio: string;
 }
