@@ -1,12 +1,58 @@
+.row{
+  background-color: white;
+  width:100%;
+}
+
+h1{
+  text-align: center;
+}
+
+.title{
+  text-align: center;
+}
+
+.white-bg{
+  background-color: white;
+}
+
 .col-30{
-    width:50%;
+    width:40%;
     float: left;
 }
 
 .col-70{
-    width:50%;
+    width:60%;
     float: right;
     text-align: right;
+}
+
+.sort-dropdown{
+  background-color: #7b4397;
+  color:white;
+}
+.sort-dropdown:hover{
+  background-color: #7b4397;
+  color:white;
+}
+.sort-dropdown:active{
+  background-color: #7b4397;
+  color:white;
+}
+.text, .icon{
+  color:white;
+}
+.item{
+  
+  background-color: white;
+  -webkit-text-fill-color: #7b4397;
+}
+.menu .item:hover{
+  background-color: #7b4397;
+  -webkit-text-fill-color: white;
+}
+
+.right{
+  float:right;
 }
 
 .row{
@@ -65,4 +111,23 @@
     display: none;
     -webkit-transition: all 0.9s;
     transition: all 0.9s;
+  }
+
+  .padd{
+    padding: 5px;
+  }
+
+  .padd-left{
+    padding-left: 40%;
+    padding-top: 10px;
+  }
+
+  .header{
+    padding-bottom: 30px;
+  }
+
+  .scroll{
+    overflow-y: scroll;
+    max-height: 1000px;
+    width: 100%;
   }

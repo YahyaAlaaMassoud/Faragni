@@ -1,0 +1,13 @@
+﻿<div class="custom" (click)="dropdown()">
+  <input class="textBox" type="text" [ngClass]="{'warning': warning, 'searchBar': !warning }" 
+         placeholder="Recommend to..." [(ngModel)]="selectedOption"
+         (input)="search()">
+  <a class="arrow"><i class="fa fa-caret-down arrow-down" [ngClass]="{ 'red': warning }"></i></a>
+  <div id="dropdown" class="dropdown-content-custom">
+    <div *ngFor="let op of searchSelections;">
+      <a *ngIf="!loadingMessage.length" (click)="changeValue(op)">{{op.dis.displayExpr}}</a>
+    </div>
+    <a class="underline" *ngIf="!loadingMessage.length && !searchSelections.length">Add new {{itemName}}</a>
+    <a *ngIf="loadingMessage.length">{{loadingMessage}}</a>
+  </div>
+</div>

@@ -1,16 +1,60 @@
 
 <div class="screen-tab">
-  <div class="row">
-    <div class="col-30">
+  <div class="header">
+    <div class="row padd-left">
       <h1>Popular Movies</h1>
     </div>
-    <div class="col-70">
-      drop down for filtering here
+    <div class="row">
+          <div class="col-30">
+            
+          </div>
+          <div class="col-70">
+              <div class="right">
+                  <sui-multi-select [options]="genres" [maxSelected]="3" icon="list" 
+                                [placeholder]="'Genres..'" (selectedOptionsChange)="hh($event)" #select>
+                    <div class="padd">
+                      <input suiSelectSearch type="text" placeholder="Search genres...">
+                    </div>
+                    <!-- <div class="divider"></div> -->
+                    <!-- <div class="header">
+                      <i class="list icon"></i>
+                      Genres
+                    </div> -->
+                    <div class="scrolling menu">
+                      <sui-select-option *ngFor="let o of select.filteredOptions" [value]="o"></sui-select-option>
+                    </div>
+                  </sui-multi-select>
+        
+              
+                  <div class="ui dropdown btn sort-dropdown" suiDropdown>
+                      <div class="text">Sort By</div>
+                      <!-- <i class="dropdown icon"></i> -->
+                      <div class="menu" suiDropdownMenu>
+                          <div class="item" (click)="sortByRating()">Rating</div>
+                          <div class="item" (click)="sortByDate()">Release Date</div>
+                          <!-- <div class="item">Awards</div> -->
+                      </div>
+                  </div>
+              </div>
+          </div>
     </div>
   </div>
-  <div *ngFor="let movie of movies; let i = index">
+  <!-- <div  class="scroll"> -->
+  <div *ngFor="let movie of displayedMovies; let i = index">
     <app-movie-thumbnail [currentMovie]="movie"></app-movie-thumbnail>
   </div>
+<!-- </div> -->
+  <!-- <div class="ui segments">
+      <div class="ui segment">
+          
+          <sui-pagination [collectionSize]="50"
+                          [pageSize]="3"
+                          [maxSize]="5"
+                          [canRotate]="true"
+                          [(page)]="selectedPage">
+          </sui-pagination>
+      </div>
+  </div> -->
   <!--<h1>Hello</h1>
   <div id="carouselExampleIndicators" class="carousel slide" data-interval="1000" data-ride="carousel">
     <ol class="carousel-indicators">

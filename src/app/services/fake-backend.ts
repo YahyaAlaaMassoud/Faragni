@@ -37,7 +37,8 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
                             watchlist: user.WatchList,
                             ratings: user.MovieRatings,
                             email: user.Email,
-                            profilepic: user.profilePic
+                            profilepic: user.profilePic,
+                            recommended: user.Recommended
                         }
                     })));
                 } else {

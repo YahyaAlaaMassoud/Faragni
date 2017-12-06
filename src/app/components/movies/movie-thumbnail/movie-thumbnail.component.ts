@@ -1,15 +1,24 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { OmdbMoviesService } from '../../../services/omdb/omdb-movies.service';
+import { FormControl, NgControl } from '@angular/forms';
+// import { MatInput, MatFormField, MatAutocomplete } from '@angular/material'
 import { Movie } from '../../../models/movie.model';
 import { Rating } from '../../../models/rating.model';
 import { Genre } from '../../../models/genre.model';
 import { Actor } from '../../../models/actor.model';
 import { User } from '../../../models/user.model';
+import { Recommendation } from '../../../models/recommendation.model';
+import { Observable } from 'rxjs/Observable';
+import { startWith } from 'rxjs/operators/startWith';
+import { map } from 'rxjs/operators/map';
+
+declare var $: any;
 
 @Component({
   selector: 'app-movie-thumbnail',
   templateUrl: './movie-thumbnail.component.html',
   styleUrls: ['./movie-thumbnail.component.css']
+  // providers: [MatInput, MatFormField, MatAutocomplete]
 })
 export class MovieThumbnailComponent implements OnInit {
 
@@ -21,9 +30,29 @@ export class MovieThumbnailComponent implements OnInit {
     cur: Movie;
     currentUser: User;
     currentMovieRating: Rating;
+    toggleSendButton: boolean;
+    recommendation: Recommendation;
+    pageDimmedOnRate: boolean;
+    pageDimmedOnRecommendation: boolean;
+
+    //for autocomplete
+    users: User[];
+    usersAutocomplete: FormControl;
+    filteredUsers: Observable<any[]>;
 
     constructor(private omdb: OmdbMoviesService) {
       this.flip = false;
+      this.toggleSendButton = false;
+      this.pageDimmedOnRate = false;
+      this.pageDimmedOnRecommendation = false;
+      this.recommendation = new Recommendation();
+      this.users = JSON.parse(localStorage.getItem('users'));
+      this.usersAutocomplete = new FormControl();
+      this.filteredUsers = this.usersAutocomplete.valueChanges
+      .pipe(
+        startWith(''),
+        map(user => user ? this.filterUsers(user.toString()) : this.users.slice())
+      );
       /*let s = new ss();
       let sss = "hamada";
       s.sss = "hamoo";
@@ -58,6 +87,13 @@ export class MovieThumbnailComponent implements OnInit {
       );*/
     }
 
+    filterUsers(name: string) {
+      var ret = this.users.filter(state =>
+        state.UserName.toLowerCase().indexOf(name.toLowerCase()) === 0);
+      console.log(ret)
+      return ret;
+    }
+
     getMovieByID(id: string) {
       this.omdb.getMovieByImdbID(id)
             .subscribe(
@@ -81,6 +117,7 @@ export class MovieThumbnailComponent implements OnInit {
       this.setMovieRating();
       this.setWatchListMovie();
       this.photo = `url(${this.currentMovie.Poster})`;
+      //this.currentMovie.imdbRating = (this.currentMovie.imdbRating / 2);
     }
 
     setWatchListMovie() {
@@ -134,6 +171,7 @@ export class MovieThumbnailComponent implements OnInit {
       localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
       this.updateUsersList(this.currentUser);
       console.log(index + ' ' + e.rating);
+      this.pageDimmedOnRate = true;
       // console.log('fi eh');
     }
 
@@ -197,5 +235,44 @@ export class MovieThumbnailComponent implements OnInit {
         console.log(this.currentUser.WatchList);
       }
       this.updateUsersList(this.currentUser);
+    }
+
+    newRecommendation() {
+      this.recommendation = new Recommendation();
+      this.recommendation.ByUserID = this.currentUser.UserID;
+      this.recommendation.MovieID = this.currentMovie.imdbID;
+      this.recommendation.ToUserID = 0;
+      this.recommendation.ExpectedRating = 0;
+      this.recommendation.Message = "";
+    }
+
+    hh(){
+      console.log('hamada')
+      console.log(this.recommendation)
+    }
+
+    saveRecommendationRating(e){
+      this.recommendation.ExpectedRating = e.rating;
+    }
+
+    sendRecommendation(){
+      if(this.recommendation.ExpectedRating && this.recommendation.ToUserID && this.recommendation.Message.length){
+          this.users.forEach(user=>{
+              if(user.UserID == this.recommendation.ToUserID){
+                if(user.Recommended == undefined)
+                  user.Recommended = [];
+                user.Recommended.push(this.recommendation);
+                this.updateUsersList(user);
+                console.log(this.users)
+                console.log('tamam')
+                $(`#${this.currentMovie.imdbID}`).modal('toggle');
+                // this.pageDimmedOnRecommendation = true;
+              }
+          })
+
+      }
+      else{
+        console.log('la2aaa')
+      }
     }
 }

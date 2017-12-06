@@ -16,6 +16,7 @@ export class ProfileComponent implements OnInit {
   showFollowers: boolean;
   showRatedMovies: boolean;
   showWatchlistMovies: boolean;
+  showRecommendedMovies: boolean;
   currentScreen:number;
   
   constructor(private router:Router) {
@@ -27,9 +28,10 @@ export class ProfileComponent implements OnInit {
       //localStorage.setItem('currentUser',JSON.stringify(this.currentUser));
       this.currentScreen = 0;
       this.isEdit = false;
-      this.showFollowers=false;
-      this.showRatedMovies=true;
-      this.showWatchlistMovies=false;
+      this.showFollowers = false;
+      this.showRatedMovies = false;
+      this.showWatchlistMovies = false;
+      this.showRecommendedMovies = true;
   }
 
   ngOnInit() {
@@ -53,6 +55,7 @@ export class ProfileComponent implements OnInit {
   chooseScreen(e)
   {
     this.currentScreen = e ; 
+    console.log(e)
   }
   onFileChange(fileInput: any){
     this.currentUser.profilePic = fileInput.target.files[0];
@@ -60,7 +63,9 @@ export class ProfileComponent implements OnInit {
 
     reader.onload = (e: any) => {
         this.currentUser.profilePic = e.target.result;
-        localStorage.setItem('currentUser',JSON.stringify(this.currentUser));              
+        localStorage.setItem('currentUser',JSON.stringify(this.currentUser));
+        console.log('tamam?')
+        this.updateUsersList(this.currentUser);           
     }
     reader.readAsDataURL(fileInput.target.files[0]);
   } 
@@ -69,6 +74,35 @@ export class ProfileComponent implements OnInit {
     const index: number = users
       .findIndex(item => item.UserID === user.UserID);
     users[index] = user;
+    console.log('tamam')
     localStorage.setItem('users', JSON.stringify(users));
+  }
+
+  chooseTab(id: number){
+    console.log(id)
+    if(id == 1){
+      this.showRatedMovies = true;
+      this.showFollowers = false;
+      this.showWatchlistMovies = false;
+      this.showRecommendedMovies = false;
+    }
+    else if(id == 2){
+      this.showRatedMovies = false;
+      this.showFollowers = false;
+      this.showWatchlistMovies = true;
+      this.showRecommendedMovies = false;
+    }
+    else if(id == 4){
+      this.showRatedMovies = false;
+      this.showFollowers = true;
+      this.showWatchlistMovies = false;
+      this.showRecommendedMovies = false;
+    }
+    else if(id == 5){
+      this.showRatedMovies = false;
+      this.showFollowers = false;
+      this.showWatchlistMovies = false;
+      this.showRecommendedMovies = true;
+    }
   }
 }

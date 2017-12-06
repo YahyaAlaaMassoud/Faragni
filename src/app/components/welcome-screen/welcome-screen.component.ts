@@ -42,6 +42,7 @@ export class WelcomeScreenComponent implements OnInit {
 
   ngOnInit() {
       this.loadAllUsers();
+      console.log(this.route.data)
   }
 
   deleteUser(id: number) {

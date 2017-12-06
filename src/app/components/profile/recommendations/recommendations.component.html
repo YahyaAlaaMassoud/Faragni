@@ -1,0 +1,49 @@
+<div class="header">
+    Recommendations
+</div>
+<hr/>
+<!-- <div class="recommendedMovies">
+  <div *ngFor="let recommendation of currentUser.Recommended;">
+    <recommendation-thumbnail [currentRecommendation]="recommendation"></recommendation-thumbnail>
+  </div>
+  <div *ngIf="!currentUser.Recommended">
+    lessa ma7adesh 3abarak
+  </div>
+</div>
+   -->
+
+<!-- <sui-accordion class="styled fluid"> -->
+<sui-accordion class="fluid">
+  <sui-accordion-panel [isOpen]="true">
+      <div title>
+        <i class="dropdown icon"></i>
+        Pending you rating
+      </div>
+      <div content>
+        <div class="recommendedMovies">
+          <div *ngFor="let recommendation of pendingRecommendations;">
+            <recommendation-thumbnail [readOnly]="false" [currentRecommendation]="recommendation"></recommendation-thumbnail>
+          </div>
+          <div *ngIf="!pendingRecommendations.length">
+            you have rated all your recommendations
+          </div>
+        </div>
+      </div>
+  </sui-accordion-panel>
+  <sui-accordion-panel>
+      <div title>
+        <i class="dropdown icon"></i>
+        Rated recommendations
+      </div>
+      <div content>
+          <div class="recommendedMovies">
+              <div *ngFor="let recommendation of ratedRecommendations;">
+                <recommendation-thumbnail [readOnly]="true" [currentRecommendation]="recommendation"></recommendation-thumbnail>
+              </div>
+              <div *ngIf="!ratedRecommendations.length">
+                you haven't rated any of your recommendations
+              </div>
+            </div>
+      </div>
+  </sui-accordion-panel>
+</sui-accordion>

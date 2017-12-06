@@ -30,6 +30,8 @@ export class AuthenticationService {
                     curr.token = user.token;
                     curr.WatchList = user.watchlist;
                     curr.MovieRatings = user.ratings;
+                    curr.Recommended = user.recommended
+                    console.log(curr)
                     console.log("email = " + user.email);
                     localStorage.setItem('currentUser', JSON.stringify(curr));
                 }
