@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  from_user_id: MyString
+  to_user_id: MyString
+  ExpectedRating: 9.99
+  UserRating: 9.99
+  Message: MyString
+
+two:
+  from_user_id: MyString
+  to_user_id: MyString
+  ExpectedRating: 9.99
+  UserRating: 9.99
+  Message: MyString
