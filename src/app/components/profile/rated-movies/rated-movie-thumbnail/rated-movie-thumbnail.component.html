@@ -1,7 +1,7 @@
 <div class="rated-movie-card">
   <img src="{{currentMovie.Poster}}">
   <div class="content">
-    <div class="title">
+    <div class="title" data-toggle="modal" [attr.data-target]="'#' + modalId" >
       {{currentMovie.Title}}
       <div class="close">
         <i class="fa fa-times" aria-hidden="true"></i>      
@@ -19,7 +19,7 @@
     <div class="rating">
       <!-- <span  class="rate">{{currentMovie.imdbRating}}</span> -->
       <star-rating-comp [hoverEnabled]="true" [labelText]="'Your Rating:'" 
-      [numOfStars]="5" [labelPosition]="'left'" [starType]="'icon'" 
+      [numOfStars]="5" [labelPosition]="'left'" [starType]="'icon'" [readOnly]="readOnly" 
         [rating]="currentMovieRating.Rating" (onClick)="saveNewRating($event)"></star-rating-comp>
         <star-rating-comp [hoverEnabled]="false" [labelText]="'Imdb Rating:'" [readOnly]="true"
         [numOfStars]="5" [labelPosition]="'left'" [starType]="'icon'" style="padding-left:20px;"
@@ -27,3 +27,39 @@
     </div>
   </div>
 </div>
+
+<!--Modal: Login with Avatar Form-->
+<div *ngIf="currentMovie != undefined" class="modal fade padd-modal purple-text" [attr.id]="modalId" 
+      tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <!--Content-->
+        <div class="no-padd-modal">
+
+			<!--Header-->
+			<div class="row-modal">
+				<div class="col-30-modal">
+					<img src="{{currentMovie.Poster}}" alt="movie poster" class="movie-poster-modal">
+				</div>
+				<!--Body-->
+				<div class="col-70-modal">
+					<div class="padd-modal">
+
+						<h3 class="mt-1 mb-2">{{currentMovie.Title}}</h3>
+            <span *ngFor="let genre of currentMovie.Genres" class="badge badge-pill purple genre-modal">
+              {{genre.Name}}
+            </span>  
+            <hr>
+            <h4 class="plot-modal">{{currentMovie.Plot}}</h4>
+            <hr>
+            <h4 class="plot-modal">{{currentMovie.Awards}}</h4>
+            <hr>
+            <h4 class="plot-modal">Rating: <b>{{currentMovie.imdbRating}}</b>, Total number of votes: <b>{{currentMovie.imdbVotes}}</b>, <a class="imdbLink" href="{{imdbPath}}" target="_blank">Go to IMDB</a></h4>
+					</div>
+				</div>
+			</div>
+
+        </div>
+        <!--/.Content-->
+    </div>
+</div>
+<!--Modal: Login with Avatar Form-->

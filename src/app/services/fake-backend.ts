@@ -21,7 +21,7 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
                     return user.UserName === params.username;
                 });
 
-                console.log(users)
+                // console.log(users)
 
                 if (filteredUsers.length) {
                     // if login details are valid return 200 OK with user details and fake jwt token
@@ -53,7 +53,7 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
             if (connection.request.url.endsWith('/api/users') && connection.request.method === RequestMethod.Get) {
                 // check for fake auth token in header and return users if valid, this security is implemented server side in a real application
                 if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
-                  console.log('aho')
+                //   console.log('aho')
                     connection.mockRespond(new Response(new ResponseOptions({ status: 200, body: users })));
                 } else {
                     // return 401 not authorised if token is null or invalid
@@ -111,15 +111,15 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
                 if (connection.request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
                     // find user by id in users array
                     let urlParts = connection.request.url.split('/');
-                    console.log('urlParts '+urlParts)
+                    // console.log('urlParts '+urlParts)
                     let id = parseInt(urlParts[urlParts.length - 1]);
-                    console.log('id '+id)
+                    // console.log('id '+id)
                     for (let i = 0; i < users.length; i++) {
                         let user = users[i];
-                        console.log(user)
+                        // console.log(user)
                         if (user.UserID == id) {
                             // delete user
-                            console.log('emsa7 ' + id)
+                            // console.log('emsa7 ' + id)
                             users.splice(i, 1);
                             localStorage.setItem('users', JSON.stringify(users));
                             break;

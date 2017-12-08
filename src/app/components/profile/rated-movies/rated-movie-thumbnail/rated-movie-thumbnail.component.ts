@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router, ActivatedRoute} from '@angular/router';
 import { Movie } from '../../../../models/movie.model';
 import { Genre } from '../../../../models/genre.model';
 import { Actor } from '../../../../models/actor.model';
@@ -16,18 +17,36 @@ export class RatedMovieThumbnailComponent implements OnInit {
   currentUser: User;
   addedToList: boolean;
   currentMovieRating: Rating;
+  modalId: string;
+  imdbPath: string;
+  readOnly: boolean;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute,
+              private router: Router) {
+      this.readOnly = true;
+  }
 
   ngOnInit() {
-    // console.log(this.currentMovie.Released);
+    this.getCurrentUser();
     this.exctractGenres();
     this.exctractActors();
     this.getCurrentUser();
     this.setMovieRating();
     this.setWatchListMovie();
-    console.log(this.currentMovieRating);
-    console.log(this.currentUser);
+    this.modalId = this.currentMovie.imdbID + "ratedMovie"
+    this.imdbPath = "http://www.imdb.com/title/" + this.currentMovie.imdbID + "/"      
+    
+    // console.log(this.currentMovieRating);
+    // console.log(this.currentUser);
+  }
+
+  getCurrentUser(){
+    if(this.route.snapshot.data['user'] === null)
+      this.router.navigate(['/404']);
+// // console.log(this.isLoggedInUser)
+    this.currentUser = this.route.snapshot.data['user'];
+    if(this.currentUser === JSON.parse(localStorage.getItem('currentUser')))
+      this.readOnly = false;
   }
 
   saveNewRating(e) {
@@ -38,18 +57,19 @@ export class RatedMovieThumbnailComponent implements OnInit {
     this.currentMovieRating.Rating = e.rating;
     localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
     this.updateUsersList(this.currentUser);
-    console.log(index + ' ' + e.rating);
+    // console.log(index + ' ' + e.rating);
     // console.log('fi eh');
   }
 
-  getCurrentUser() {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    // this.currentUser.WatchList = [];
-    // this.currentUser.MovieRatings = [];
-    // localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
-    // this.updateUsersList(this.currentUser);
-    // console.log(this.currentUser);
-  }
+  //remove this one
+  // getCurrentUser() {
+  //   this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  //   // this.currentUser.WatchList = [];
+  //   // this.currentUser.MovieRatings = [];
+  //   // localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+  //   // this.updateUsersList(this.currentUser);
+  //   // console.log(this.currentUser);
+  // }
 
   setWatchListMovie() {
     if (this.currentUser.WatchList) {

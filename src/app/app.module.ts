@@ -31,6 +31,8 @@ import { AuthGuard } from './guards/auth-guard/auth-guard.guard';
 import { fakeBackendProvider } from './services/fake-backend';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { BaseRequestOptions } from '@angular/http';
+import { ProfileResolver } from './services/resolvers/profile.resolver';
+import { PagerService } from './services/pager/pager.service';
 
 // routing
 import { appRoutes } from './app.routing';
@@ -48,6 +50,7 @@ import { RecommendationsComponent } from './components/profile/recommendations/r
 import { StarRatingPipePipe } from './pipes/star-rating-pipe.pipe';
 import { RecommendationThumbnailComponent } from './components/profile/recommendations/recommendation-thumbnail/recommendation-thumbnail.component';
 import { FollowersThumbnailComponent } from './components/followers/followers-thumbnail/followers-thumbnail.component';
+import { NotFound404Component } from './components/common/not-found-404/not-found-404.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +72,8 @@ import { FollowersThumbnailComponent } from './components/followers/followers-th
     RecommendationsComponent,
     StarRatingPipePipe,
     RecommendationThumbnailComponent,
-    FollowersThumbnailComponent
+    FollowersThumbnailComponent,
+    NotFound404Component
   ],
   imports: [
     BrowserModule,
@@ -106,7 +110,9 @@ import { FollowersThumbnailComponent } from './components/followers/followers-th
     fakeBackendProvider,
     MockBackend,
     BaseRequestOptions,
-    OmdbMoviesService
+    OmdbMoviesService,
+    ProfileResolver,
+    PagerService
   ],
   bootstrap: [ AppComponent ],
   schemas: [ NO_ERRORS_SCHEMA ]

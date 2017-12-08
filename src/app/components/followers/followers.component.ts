@@ -12,7 +12,7 @@ export class FollowersComponent implements OnInit {
   constructor() { 
     this.currentUser=JSON.parse(localStorage.getItem("currentUser"));
     this.friendList = this.currentUser.Friends;
-    console.log(this.friendList);
+    // console.log(this.friendList);
   }
 
 

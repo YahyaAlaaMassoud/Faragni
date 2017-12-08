@@ -5,6 +5,7 @@
 
 hr{
     color: #7b4397;
+    width: 100%;
 }
 
 .header{
@@ -13,4 +14,15 @@ hr{
     padding-left: 20px;
     font-size: 30px;
     color: #7b4397;
+}
+
+.section{
+    padding-right: 20px;
+    padding-left: 20px;
+    font-size: 20px;
+    color: #7b4397;
+}
+
+.options{
+    float: right;
 }

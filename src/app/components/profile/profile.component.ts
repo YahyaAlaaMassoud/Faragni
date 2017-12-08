@@ -1,7 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnChanges, OnInit, ViewChild } from '@angular/core';
 import { User } from '../../models/user.model';
 import { Event, document } from 'angular-bootstrap-md/utils/facade/browser';
 import { Router, ActivatedRoute } from '@angular/router';
+
+//services
+import { UserService } from '../../services/user/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -18,12 +21,21 @@ export class ProfileComponent implements OnInit {
   showWatchlistMovies: boolean;
   showRecommendedMovies: boolean;
   currentScreen:number;
-  constructor(private router:Router) {
+  isLoggedInUser: boolean;
+  isFollowed: boolean;
+  fullName: string;
+
+  loggedUser: User;
+
+  constructor(private router:Router, 
+              private route: ActivatedRoute, 
+              private userService: UserService,
+              private cdRef: ChangeDetectorRef) {
       this.currentUser = JSON.parse(localStorage.getItem('currentUser'));    
-      console.log(this.currentUser); 
-      this.currentUser.Email=["khaledawaled@live.com"];
-      this.currentUser.Age = 21;
-      this.currentUser.bio = "";
+      // // console.log(this.currentUser); 
+      // this.currentUser.Email=["khaledawaled@live.com"];
+      // this.currentUser.Age = 21;
+      // this.currentUser.bio = "";
       //localStorage.setItem('currentUser',JSON.stringify(this.currentUser));
       this.currentScreen = 0;
       this.isEdit = false;
@@ -34,11 +46,35 @@ export class ProfileComponent implements OnInit {
       this.currentUser.Friends=[]
      // this.currentUser.Friends.push(this.currentUser);
        localStorage.setItem('currentUser',JSON.stringify(this.currentUser));
-      console.log(this.currentUser.Friends);
+      // console.log(this.currentUser.Friends);
   }
 
   ngOnInit() {
-    console.log('fi eh')
+    // console.log(this.cdRef.detectChanges())
+    const id = +this.route.snapshot.paramMap.get('id');
+    console.log(id)
+    console.log(this.route.snapshot.data)
+    if(this.route.snapshot.data['user'] === null)
+      this.router.navigate(['/404']);
+    this.isLoggedInUser = (this.currentUser.UserID === this.route.snapshot.data['user'].UserID) ? true : false;
+    if(!this.isLoggedInUser){
+      let ok: boolean = false;
+      this.currentUser.Following = this.currentUser.Following || [];
+      this.currentUser.Following.forEach(usr =>{
+        if(usr.UserID === id){
+          ok = true;
+        }
+      })
+      this.isFollowed = ok;
+    }
+    // // console.log(this.isLoggedInUser)
+    this.currentUser = this.route.snapshot.data['user'];
+
+    this.fullName = this.currentUser.FirstName + ' ' + this.currentUser.LastName;
+    this.currentUser.bio = "ana esmy hamada"
+
+    this.loggedUser = JSON.parse(localStorage.getItem('currentUser'))
+    // console.log(this.currentUser)
   }
   takeAction(element){
     this.isEdit = !this.isEdit;
@@ -104,5 +140,29 @@ export class ProfileComponent implements OnInit {
       this.showRecommendedMovies = true;
       console.log(id)
     }
+  }
+
+  hh(){
+    console.log('hamada')
+  }
+
+  follow(){
+    let usr: User = JSON.parse(localStorage.getItem('currentUser'));  
+    usr.Following = usr.Following || [] 
+    usr.Following.push(this.currentUser);
+    localStorage.setItem('currentUser', JSON.stringify(usr));
+    this.updateUsersList(usr);
+    this.isFollowed = !this.isFollowed;
+    console.log(this.isFollowed)
+  }
+
+  unfollow(){
+    let usr: User = JSON.parse(localStorage.getItem('currentUser')); 
+    usr.Following = usr.Following || []     
+    const index: number = usr.Following.findIndex(item => item.UserID === this.currentUser.UserID);
+    usr.Following.splice(index, 1);
+    localStorage.setItem('currentUser', JSON.stringify(usr));
+    this.updateUsersList(usr);
+    this.isFollowed = !this.isFollowed;    
   }
 }

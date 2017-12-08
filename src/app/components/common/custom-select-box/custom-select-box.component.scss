@@ -4,8 +4,8 @@
   left: 0;
   bottom: 0;
   text-align: left;
-  -webkit-transition: all 0.9s;
-  transition: all 0.9s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
 
 .custom-warning {
@@ -52,8 +52,8 @@
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1000;
   display: none;
-  -webkit-transition: all 0.9s;
-  transition: all 0.9s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
   max-height:200px;
   overflow-y:scroll;
 }
@@ -81,6 +81,6 @@
 .hide {
   display: none;
   visibility: hidden;
-  -webkit-transition: all 0.9s;
-  transition: all 0.9s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }

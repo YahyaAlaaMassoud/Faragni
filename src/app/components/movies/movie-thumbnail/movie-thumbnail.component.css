@@ -7,8 +7,8 @@
   position: relative;
 	perspective: 1000px;
   margin: 10px;
-  -webkit-transition: all 0.9s;
-  transition: all 0.9s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
 
 
@@ -17,13 +17,13 @@
   height: 100%;
   position: relative;
   transform-style: preserve-3d;
-  -webkit-transition: all 0.9s;
-  transition: all 0.9s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), 0 10px 7px rgba(0, 0, 0, 0.2);
 }
 .card:hover{
-  -webkit-transition: all 0.9s;
-  transition: all 0.9s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.6), 0 20px 17px rgba(0, 0, 0, 0.5);
 }
 .card .front {
@@ -38,8 +38,8 @@
   height: 100%;
   backface-visibility: hidden;
   position: relative;
-  -webkit-transition: all 0.9s;
-  transition: all 0.9s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
   -webkit-text-fill-color: white;
   overflow: hidden;
 
@@ -50,15 +50,15 @@
 .card .front .header{
   color: white;
   padding: 1em;
-  -webkit-transition: all 0.9s;
-  transition: all 0.9s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
 .card .front .header .date{
   float: left;
   padding: 3px;
   font-size: 11px;
-  -webkit-transition: all 0.9s;
-  transition: all 0.9s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
 .card .front .rate span{
   position: fixed;
@@ -72,8 +72,8 @@
     width: auto;
     height: auto;
     border-radius: 100%;
-    -webkit-transition: all 0.9s;
-    transition: all 0.9s;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
 }
 .card .front:hover .rate span{
   -webkit-text-fill-color: white;
@@ -90,14 +90,14 @@
     width: auto;
     height: auto;
     border-radius: 100%;
-    -webkit-transition: all 0.9s;
-    transition: all 0.9s;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
     opacity: 1;
 }
 .hidden{
   display: none;
-  -webkit-transition: all 0.9s ease-in-out;
-  transition: all 0.9s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 .card .back .return{
   position: absolute;
@@ -110,8 +110,8 @@
     width: auto;
     height: auto;
     border-radius: 10%;
-    -webkit-transition: all 0.9s;
-    transition: all 0.9s;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
 }
 .card .front .header .menu-content{
   float: right;
@@ -130,8 +130,8 @@
 }
 .card .front .header .menu-content span {
   color: white;
-  -webkit-transition: all 0.9s;
-  transition: all 0.9s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
   opacity: 0;
   position: absolute;
   left: 50%;
@@ -149,8 +149,8 @@
 .card .front .header .menu-content .dropdown-content {
     display: none;
     border-radius: 5px;
-    -webkit-transition: all 0.9s;
-    transition: all 0.9s;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
     position: relative;
     background-color: #eff2f7;
     width: 100%;
@@ -164,8 +164,8 @@
     display: inline-block;
     position: fixed;
     left:auto;
-    -webkit-transition: all 0.9s;
-    transition: all 0.9s;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
     right:0;
 }
 
@@ -176,10 +176,10 @@
   opacity: 0;
   -webkit-transform: translateY(calc(70px + 1em));
           transform: translateY(calc(70px + 1em));
-  -webkit-transition: -webkit-transform 0.9s;
-  transition: -webkit-transform 0.9s;
-  -webkit-transition: all 0.9s;
-  transition: all 0.9s;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
 .card:hover .front .data{
   opacity: 1;
@@ -191,8 +191,8 @@
   color: #fff;
   -webkit-transform: translateY(calc(70px + 4em));
           transform: translateY(calc(70px + 4em));
-          -webkit-transition: all 0.9s;
-          transition: all 0.9s;
+          -webkit-transition: all 0.5s;
+          transition: all 0.5s;
 }
 .card .front .data .content {
   padding: 1.3em;
@@ -219,8 +219,8 @@
   font-weight: bold;
   margin: 0;
   opacity: 0;
-  -webkit-transition: all 0.9s;
-  transition: all 0.9s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
 .card .front .data .content a{
   text-align: center;
@@ -303,13 +303,13 @@
   display: block;
   object-fit: contain;
   position: absolute;
-  -webkit-transition: all 0.9s;
-  transition: all 0.9s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
 .card .front:hover .backg{
   opacity: 0.17;
-  -webkit-transition: all 0.9s;
-  transition: all 0.9s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
 .card .back .backg{
   /*background: url(https://tvseriescritic.files.wordpress.com/2016
@@ -319,8 +319,8 @@
   display: block;
   object-fit: contain;
   position: absolute;
-  -webkit-transition: all 0.9s;
-  transition: all 0.9s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
   opacity: 0.13;
   -webkit-text-fill-color: #7b4397;
   color: #7b4397;
@@ -419,4 +419,13 @@
 
 .bolder{
   font-weight: bolder;
+}
+
+.imdbLink{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+a{
+  cursor: pointer;
 }

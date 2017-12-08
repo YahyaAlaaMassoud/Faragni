@@ -49,7 +49,7 @@ export class WelcomeScreenComponent implements OnInit {
     console.log(id)
       this.userService.delete(id)
         .subscribe(() => {
-          console.log('deleted')
+          // console.log('deleted')
           this.loadAllUsers()
         });
   }
@@ -58,7 +58,7 @@ export class WelcomeScreenComponent implements OnInit {
       this.userService.getAll()
         .subscribe(users => {
           this.users = users;
-          console.log(users)
+          // console.log(users)
         });
   }
 
@@ -70,13 +70,13 @@ export class WelcomeScreenComponent implements OnInit {
       timeout: 2500
     };
     this.toast.pop(toast)
-    console.log('goodbye')
+    // console.log('goodbye')
     this.authenticationService.logout();
     this.router.navigate(['/login']);
   }
 
   chooseScreen(e){
-    console.log(e)
+    // console.log(e)
     this.currentScreen = e;
   }
 }

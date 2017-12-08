@@ -1,77 +1,97 @@
-<app-navbar [hide]="false" [currentUser]="currentUser" (screenID)="chooseScreen($event)"></app-navbar>
-<head>
-       
-</head>
-<div  class="maindiv"style="background-color:#e6ecf0">
-    <div  style="height:23rem;">
-            <img   alt="" src="assets\img\sky.jpg" style="width:100%; height:100%;">
+<app-navbar [hide]="false" [currentUser]="loggedUser" (screenID)="chooseScreen($event)"></app-navbar>
+
+<div class="maindiv">
+    <div class="cover-photo-height">
+        <!-- <img alt="" [src]="currentUser.profilePic" style="height:100%;"> -->
     </div>
-    <div class ="useravatar" style="z-index:3;position:-ms-page;display:initial" >
-            <label for="file-upload" class="custom-file-upload" style="position:absolute;margin-top:10rem;" >
-                    <i class="fa fa-cloud-upload"></i> Upload
-                </label>
-            <input id="file-upload" type="file" (change)="onFileChange($event)" />
-         <img  class= "useravatar" [ngClass]="{'avatarEdit':isEdit}"  [src]="currentUser.profilePic" alt="error" id="pfimg">                 
+    <div class="useravatar">
+        <label for="file-upload" class="custom-file-upload">
+            <i class="fa fa-cloud-upload"></i> Upload
+        </label>
+        <input id="file-upload" type="file" (change)="onFileChange($event)" />
+        <img  class= "useravatar" [ngClass]="{'avatarEdit':isEdit}"  [src]="currentUser.profilePic" alt="error" id="pfimg">                 
     </div>
-    <div style="position:absolute;z-index:2" >
-        <nav class ="navbar navbar-expand-lg" style="background-color:rgb(255, 255, 255); height:70px;width:1350px;">
-                <button class="nav-tab" (click)="showRatedMovies=true;showFollowers=false;showWatchlistMovies=false;" style="margin-left:22rem" >MOVIES</button>
-                <button class="nav-tab" (click)="showRatedMovies=false;showFollowers=false;showWatchlistMovies=true;" >WATCHLIST</button>            
-                <button class="nav-tab"  >FOLLOWING</button>
-                <button class="nav-tab" (click)="showFollowers=true;showRatedMovies=false;showWatchlistMovies=false;" >FOLLOWERS</button>
-                <button class="nav-tab"  >RECOMMENDATION</button>
-                <button class="nav-tab" style="border-radius: 50%;margin-left:10rem; border-color:blueviolet;" (click)="takeAction($event.target)" >Edit Profile</button>
-        </nav>
+    <div class="tabs-row">
+        <div class="h-100 shift-tabs">
+            <button class="tab" [ngClass]="{'tab-active':showRatedMovies}" (click)="chooseTab(1)">
+                Rated Movies
+            </button>
+            <button class="tab" [ngClass]="{'tab-active':showWatchlistMovies}" (click)="chooseTab(2)">
+                Watchlist
+            </button>
+            <button class="tab">
+                Following
+            </button>
+            <button class="tab" [ngClass]="{'tab-active':showFollowers}" (click)="chooseTab(4)">
+                Followers
+            </button>
+            <button class="tab" [ngClass]="{'tab-active':showRecommendedMovies}" (click)="chooseTab(5)">
+                Recommendations
+            </button>
+            <button class="action-button" *ngIf="isLoggedInUser" (click)="takeAction($event.target)">
+                Edit Profile
+            </button>
+            <button class="action-button" *ngIf="!isLoggedInUser && !isFollowed" (click)="follow()">
+                Follow
+            </button>                
+            <button class="action-button" *ngIf="!isLoggedInUser && isFollowed" (click)="unfollow()">
+                Unfollow
+            </button>      
+        </div>
     </div>
     
-    <nav class ="navbar navbar-expand-lg" style="background-color:rgb(255, 255, 255); height:70px;">
-            <button class="nav-tab my-2 my-sm-0" (click)="chooseTab(1)" style="margin-left:22rem" >MOVIES</button>
-            <button class="nav-tab my-2 my-sm-0" (click)="chooseTab(2)" >WATCHLIST</button>
-            <button class="nav-tab my-2 my-sm-0"  >FOLLOWING</button>
-            <button class="nav-tab my-2 my-sm-0" (click)="chooseTab(4)" >FOLLOWERS</button>
-            <button class="nav-tab my-2 my-sm-0" (click)="chooseTab(5)" >RECOMMENDATION</button>
-            <button class="nav-btn-outline my-2 my-sm-0"  style="margin-left:10rem; border-color:blueviolet;" (click)="takeAction($event.target)" >Edit Profile</button>
-    </nav>
-    
-    <div class = "row" style="background-color:#e6ecf0; margin-top:10px;">
-        <div class="col1"style="background-color:#e6ecf0; margin-left:50px; margin-top:50px;">
-            <div class = "card-body">
+    <div class="content">
+        <div class="user-info">
+            <div class="info" [ngClass]="{'edit':isEdit}">
                 <div class ="input-group">
-                    <label *ngIf="!isEdit" style="font-size:30px; font-weight:bold ;"> {{currentUser.FirstName}} {{currentUser.LastName}}</label>
-                    <span *ngIf="isEdit" class="input-group-addon" id="basic-addon1">Fname</span>
-                    <input *ngIf="isEdit"  class="form-control" aria-describedby="basic-addon1" [(ngModel)] ="currentUser.FirstName">                    
+                    <label *ngIf="!isEdit" class="data">
+                        <i class="fa fa-user-circle-o" aria-hidden="true"></i>                            
+                        {{fullName}}
+                    </label>
+                    <input *ngIf="isEdit" [(ngModel)]="fullName" placeholder="Full Name.."
+                     type="text" class="update-info data" name="username" required />
                 </div>
                 <div class="input-group">
-                     <span *ngIf="isEdit" class="input-group-addon" id="basic-addon1">Lname</span>
-                     <input *ngIf="isEdit" class="form-control" aria-describedby="basic-addon1" [(ngModel)] ="currentUser.LastName">
+                    <label class="data">
+                        <i class="fa fa-at" aria-hidden="true"></i>
+                        {{currentUser.UserName}}
+                    </label>
+                </div>
+                <!-- <div class="input-group">
+                    <p *ngIf="!isEdit" class="data">{{currentUser.bio}}</p>
+                    <textarea *ngIf="isEdit" [(ngModel)]="currentUser.bio" 
+                                type="text" class="form-control update-info data"></textarea>
+                </div> -->
+                <div class="input-group ">                      
+                    <label *ngIf="!isEdit" class="data">
+                        <i class="fa fa-address-book-o" aria-hidden="true"></i>                            
+                        {{currentUser.Email}}
+                    </label>
+                    <input *ngIf="isEdit" [(ngModel)]="currentUser.Email" placeholder="Full Name.."
+                    type="text" class="form-control update-info data" name="username" required />               
                 </div>
                 <div class="input-group">
-                        <p *ngIf="!isEdit" style="font-style:normal;font-size:100%">{{myBio}}</p>
-                        <span *ngIf="isEdit" class="input-group-addon" id="basic-addon1">bio</span>
-                        <input *ngIf="isEdit" class="form-control" aria-describedby="basic-addon1" [(ngModel)] ="myBio">
-               </div>
-               <div class="input-group">
-                    <label *ngIf="!isEdit" class="fa fa-envelope-open-o" aria-hidden="true"> {{currentUser.Email}}</label>
-                    <span  *ngIf="isEdit" class="input-group-addon" id="basic-addon1">@</span>
-                    <input *ngIf="isEdit" class="form-control" aria-describedby="basic-addon1" [(ngModel)] ="currentUser.Email">
-               </div>
-                 
-                 <label *ngIf="!isEdit" class="fa fa-at" aria-hidden="true"> {{currentUser.UserName}}</label><br>
-                
-                 <label *ngIf="!isEdit" class="fa fa-calendar" aria-hidden="true"> Joined on {{currentUser.JoiningDate}}</label>
-                 <br>
-                 <label *ngIf="!isEdit" class="fa fa-spinner" aria-hidden="true"> {{currentUser.Age}} years old </label>
-            </div>
+                    <label class="data">
+                        <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                        {{currentUser.JoiningDate}}
+                    </label>
+                </div>
+            </div> 
         </div>
 
         
         <div class="col2">
-            <input class=""type="file" (change)="onFileChange($event)" value="Upload image..." />
-            <app-followers *ngIf="showFollowers"></app-followers>
-            <rated-movies *ngIf="showRatedMovies"></rated-movies>
-            <watchlist *ngIf="showWatchlistMovies"></watchlist>
-            <recommendations *ngIf="showRecommendedMovies"></recommendations>
+            <div class="tab-content">
+                <!-- <input class=""type="file" (change)="onFileChange($event)" value="Upload image..." /> -->
+                <app-followers *ngIf="showFollowers"></app-followers>
+                <rated-movies *ngIf="showRatedMovies"></rated-movies>
+                <watchlist *ngIf="showWatchlistMovies"></watchlist>
+                <recommendations *ngIf="showRecommendedMovies"></recommendations>
+            </div>
         </div>
-    </div>
+    </div> 
+    <app-footer></app-footer>    
 </div>
+
+
 

@@ -14,7 +14,7 @@ export class FollowersThumbnailComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.friend)
+    // console.log(this.friend)
   }
   unfollowUser(){
     const index: number = this.currentUser.Friends

@@ -1,5 +1,6 @@
 import { Recommendation } from '../../../models/recommendation.model';
 import { Component, OnInit, Input } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../../../models/user.model';
 import { Movie } from '../../../models/movie.model';
 import { OmdbMoviesService } from '../../../services/omdb/omdb-movies.service';
@@ -25,32 +26,46 @@ export class RecommendationsComponent implements OnInit {
     const index: number = users
       .findIndex(item => item.UserID === user.UserID);
     users[index] = user;
-    console.log('tamam')
+    // console.log('tamam')
     localStorage.setItem('users', JSON.stringify(users));
   }
 
-  constructor(private omdb: OmdbMoviesService) {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  ngOnInit() {
+    this.getCurrentUser();   
     this.currentUser.Recommended = this.currentUser.Recommended || [];   
-    console.log(this.currentUser.Recommended) 
+    
+    // console.log(this.currentUser.Recommended) 
     this.users = JSON.parse(localStorage.getItem('users'));
-
-
+    
+    
     this.pendingRecommendations = [];
     this.ratedRecommendations = [];
-
-
+    
+    
     this.currentUser.Recommended.forEach(rec=>{
       if(rec.UserRating == 0 || rec.UserRating == undefined)
         this.pendingRecommendations.push(rec)
       else
         this.ratedRecommendations.push(rec)
-    })
+    }) 
+  }
+
+  constructor(private omdb: OmdbMoviesService,
+              private route: ActivatedRoute,
+              private router: Router) {
+
     
     // this.recommendedMovies = [];
     // this.recommendingUsers = [];
     // this.getRecommendedMovies();
     // this.getRecommendingUsers();
+  }
+
+  getCurrentUser(){
+    if(this.route.snapshot.data['user'] === null)
+      this.router.navigate(['/404']);
+// // console.log(this.isLoggedInUser)
+    this.currentUser = this.route.snapshot.data['user'];
   }
 
   getRecommendedMovies() {
@@ -79,7 +94,6 @@ export class RecommendationsComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-  }
+
 
 }

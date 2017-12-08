@@ -34,6 +34,7 @@ export class MovieThumbnailComponent implements OnInit {
     recommendation: Recommendation;
     pageDimmedOnRate: boolean;
     pageDimmedOnRecommendation: boolean;
+    imdbPath: string;
 
     //for autocomplete
     users: User[];
@@ -117,6 +118,7 @@ export class MovieThumbnailComponent implements OnInit {
       this.setMovieRating();
       this.setWatchListMovie();
       this.photo = `url(${this.currentMovie.Poster})`;
+      this.imdbPath = "http://www.imdb.com/title/" + this.currentMovie.imdbID + "/"      
       //this.currentMovie.imdbRating = (this.currentMovie.imdbRating / 2);
     }
 
@@ -262,6 +264,7 @@ export class MovieThumbnailComponent implements OnInit {
                 if(user.Recommended == undefined)
                   user.Recommended = [];
                 user.Recommended.push(this.recommendation);
+                localStorage.setItem('currentUser', JSON.stringify(this.currentUser))
                 this.updateUsersList(user);
                 console.log(this.users)
                 console.log('tamam')

@@ -63,8 +63,10 @@ export class HomeComponent implements OnInit {
                     body: 'Nice to see you ' + data.UserName + '!',
                     timeout: 2500
                   };
+                  
                   this.toast.pop(toast)
                   //this.toasterService.pop('success', 'Hello', 'Welcome to Faragni');
+
                   this.router.navigate(['/welcome']);
               },
               error => {
