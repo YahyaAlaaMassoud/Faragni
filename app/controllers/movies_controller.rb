@@ -50,7 +50,7 @@ class MoviesController < ApplicationController
   # not implemented yet, this should call the training model
   def get_new_recommendations
     user = current_user
-    @recommended_movies = Movie.all
+    @recommended_movies = RecommendationEngine::Recommender.recommend(user)
     render json: @recommended_movies.to_json
   end
 
