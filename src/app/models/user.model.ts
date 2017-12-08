@@ -12,6 +12,7 @@ export class User {
   JoiningDate: Date;
   Email: string[];
   Age: number;
+  DateOfBirth: Date;
   Friends: User[];
   Recommended: Recommendation[];
   Password: string;
