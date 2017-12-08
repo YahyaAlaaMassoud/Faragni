@@ -4,25 +4,15 @@
 </head>
 <div  class="maindiv"style="background-color:#e6ecf0">
     <div  style="height:23rem;">
-            <img   alt="" src="assets\img\sky.jpg" style="width:100%; height:100%;">
+            <img alt="" src="assets\img\sky.jpg" style="width:100%; height:100%;">
     </div>
     <div class ="useravatar" style="z-index:3;position:-ms-page;display:initial" >
-            <label for="file-upload" class="custom-file-upload" style="position:absolute;margin-top:10rem;" >
-                    <i class="fa fa-cloud-upload"></i> Upload
-                </label>
-            <input id="file-upload" type="file" (change)="onFileChange($event)" />
-         <img  class= "useravatar" [ngClass]="{'avatarEdit':isEdit}"  [src]="currentUser.profilePic" alt="error" id="pfimg">                 
+        <label for="file-upload" >
+             <img  class= "useravatar" [ngClass]="{'avatarEdit':isEdit}"  [src]="currentUser.profilePic" alt="error" id="pfimg">
+        </label>
+        <input *ngIf="isEdit" id="file-upload" type="file" accept="image/*" (change)="onFileChange($event)" />               
     </div>
-    <div style="position:absolute;z-index:2" >
-        <nav class ="navbar navbar-expand-lg" style="background-color:rgb(255, 255, 255); height:70px;width:1350px;">
-                <button class="nav-tab" (click)="showRatedMovies=true;showFollowers=false;showWatchlistMovies=false;" style="margin-left:22rem" >MOVIES</button>
-                <button class="nav-tab" (click)="showRatedMovies=false;showFollowers=false;showWatchlistMovies=true;" >WATCHLIST</button>            
-                <button class="nav-tab"  >FOLLOWING</button>
-                <button class="nav-tab" (click)="showFollowers=true;showRatedMovies=false;showWatchlistMovies=false;" >FOLLOWERS</button>
-                <button class="nav-tab"  >RECOMMENDATION</button>
-                <button class="nav-tab" style="border-radius: 50%;margin-left:10rem; border-color:blueviolet;" (click)="takeAction($event.target)" >Edit Profile</button>
-        </nav>
-    </div>
+  
     
     <nav class ="navbar navbar-expand-lg" style="background-color:rgb(255, 255, 255); height:70px;">
             <button class="nav-tab my-2 my-sm-0" (click)="chooseTab(1)" style="margin-left:22rem" >MOVIES</button>
@@ -46,9 +36,9 @@
                      <input *ngIf="isEdit" class="form-control" aria-describedby="basic-addon1" [(ngModel)] ="currentUser.LastName">
                 </div>
                 <div class="input-group">
-                        <p *ngIf="!isEdit" style="font-style:normal;font-size:100%">{{myBio}}</p>
+                        <p *ngIf="!isEdit" style="font-style:normal;font-size:100%">{{currentUser.bio}}</p>
                         <span *ngIf="isEdit" class="input-group-addon" id="basic-addon1">bio</span>
-                        <input *ngIf="isEdit" class="form-control" aria-describedby="basic-addon1" [(ngModel)] ="myBio">
+                        <input *ngIf="isEdit" class="form-control" aria-describedby="basic-addon1" [(ngModel)] ="currentUser.bio">
                </div>
                <div class="input-group">
                     <label *ngIf="!isEdit" class="fa fa-envelope-open-o" aria-hidden="true"> {{currentUser.Email}}</label>
@@ -63,14 +53,11 @@
                  <label *ngIf="!isEdit" class="fa fa-spinner" aria-hidden="true"> {{currentUser.Age}} years old </label>
             </div>
         </div>
-
-        
         <div class="col2">
-            <input class=""type="file" (change)="onFileChange($event)" value="Upload image..." />
-            <app-followers *ngIf="showFollowers"></app-followers>
+            <app-followers-thumbnail *ngIf="showFollowers"></app-followers-thumbnail>
             <rated-movies *ngIf="showRatedMovies"></rated-movies>
             <watchlist *ngIf="showWatchlistMovies"></watchlist>
-            <recommendations *ngIf="showRecommendedMovies"></recommendations>
+            <recommendations *ngIf="showRecommendedMovies"></recommendations> 
         </div>
     </div>
 </div>

@@ -61,9 +61,7 @@ input[type=text] {
 .avatarEdit{
     opacity:0.4;
     background-color:black;
-}
-input[type="file"] {
-    display: none;
+    cursor: pointer;
 }
 .custom-file-upload {
     border: 1px solid #ccc;
@@ -98,12 +96,16 @@ input[type="file"] {
 @media screen and (max-width: 1080px) {
     .col2{
         position: absolute;
-        margin-left: 20rem;
+        margin-left: 23rem;
     }
     .maindiv{
         overflow: auto;
         white-space: nowrap;
     }
+}
+.useravatar > input
+{
+    display: none;
 }
 
 
