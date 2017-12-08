@@ -64,32 +64,58 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.changeMeOnUpdate()
+    
     // console.log(this.cdRef.detectChanges())
     const id = +this.route.snapshot.paramMap.get('id');
     console.log(id)
     console.log(this.route.snapshot.data)
-    if(this.route.snapshot.data['user'] === null)
+    if(this.route.snapshot.data['user'] === null){
       this.router.navigate(['/404']);
-    this.isLoggedInUser = (this.currentUser.UserID === this.route.snapshot.data['user'].UserID) ? true : false;
-    if(!this.isLoggedInUser){
-      let ok: boolean = false;
-      this.currentUser.Following = this.currentUser.Following || [];
-      this.currentUser.Following.forEach(usr =>{
-        if(usr.UserID === id){
-          ok = true;
-        }
-      })
-      this.isFollowed = ok;
     }
-    // // console.log(this.isLoggedInUser)
-    this.currentUser = this.route.snapshot.data['user'];
+    else{
+      this.isLoggedInUser = (this.currentUser.UserID === this.route.snapshot.data['user'].UserID) ? true : false;
+      if(!this.isLoggedInUser){
+        let ok: boolean = false;
+        this.currentUser.Following = this.currentUser.Following || [];
+        this.currentUser.Following.forEach(usr =>{
+          if(usr.UserID === id){
+            ok = true;
+          }
+        })
+        this.isFollowed = ok;
+      }
+      // // console.log(this.isLoggedInUser)
+      this.currentUser = this.route.snapshot.data['user'];
 
-    this.fullName = this.currentUser.FirstName + ' ' + this.currentUser.LastName;
-    this.currentUser.bio = "ana esmy hamada"
+      this.fullName = this.currentUser.FirstName + ' ' + this.currentUser.LastName;
+      this.currentUser.bio = "ana esmy hamada"
 
-    this.loggedUser = JSON.parse(localStorage.getItem('currentUser'))
+      this.loggedUser = JSON.parse(localStorage.getItem('currentUser'))
+    }
     // console.log(this.currentUser)
   }
+
+  changeMeOnUpdate(){
+    this.route
+        .params
+        .subscribe(params => {
+          this.userService.getById(params['id'])
+          .subscribe(res=>{
+            if(res === null){
+              this.router.navigate(['/404']);
+            }
+            else{
+              console.log(res)
+              this.currentUser = res;
+              console.log(this.currentUser);
+              this.isLoggedInUser = (this.currentUser.UserID === this.route.snapshot.data['user'].UserID) ? true : false;            
+              this.chooseTab(1)
+              window.scrollTo(0,0);
+            }
+          })
+        })
+    }
 
   takeAction(element){
     this.isEdit = !this.isEdit;

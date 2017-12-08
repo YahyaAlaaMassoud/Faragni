@@ -27,14 +27,17 @@ export class RatedMoviesComponent implements OnInit {
 
    ngOnInit() {
       this.getCurrentUser();
-     this.getRatedMovies();
+     
     }
 
     getCurrentUser(){
       if(this.route.snapshot.data['user'] === null)
-      this.router.navigate(['/404']);
+        this.router.navigate(['/404']);
   // // console.log(this.isLoggedInUser)
-    this.currentUser = this.route.snapshot.data['user'];
+      else{
+        this.currentUser = this.route.snapshot.data['user'];
+        this.getRatedMovies();
+      }
     }
 
    getRatedMovies() {
