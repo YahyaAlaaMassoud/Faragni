@@ -5,8 +5,8 @@ class CreateRecommendations < ActiveRecord::Migration[5.1]
       t.integer :to_user_id
       t.belongs_to :movie
       t.decimal :ExpectedRating
-      t.decimal :UserRating
-      t.string :Message
+      t.decimal :UserRating, null: true
+      t.string :Message, null: true
 
       t.timestamps
     end

@@ -1,30 +1,43 @@
 Rails.application.routes.draw do
 
-
   scope '/api' do
     post 'authenticate' => 'user_token#create'
     
     resources :users do
-      resources :ratings
-      # recommend action
+      resources :ratings, only: [:show, :index]
+      resources :followers, controller: "users"
+      resources :followings, controller: "users"
+      post '/recommend', to: 'recommendations#create'
+      get '/follow', to: 'users#follow'
+      get '/unfollow', to: 'users#unfollow'
     end
 
     resource :user do
       resources :followers, controller: "users"
-      resources :following, controller: "users"
+      resources :followings, controller: "users"
       resources :watchlist, controller: "movies"
       resources :ratings
-      resources :recommendations # this should have a status pramater
+      resources :recommendations, only: [:index, :show]
+      get '/recommendations/status/:status', to: 'recommendations#index'
+      get '/get_new_recommendations', to: 'movies#get_new_recommendations'
     end
+    
     resources :movies do
-      resources :ratings
+      resources :ratings, only: [:show, :index]
       resources :recommendations
+      get '/add_to_watchlist', to: 'movies#add_to_watchlist'
+      get '/remove_from_watchlist', to: 'movies#remove_from_watchlist'
     end
-    resources :recommendations do
-      
+    get '/movies/sort_by/:criteria', to: 'movies#index'
+    get '/movies/genre/:genre', to: 'movies#index'
+    
+    resources :recommendations, only:[:index, :show] do
+      patch '/rate', to: 'recommendations#update'
     end
     resources :genres
-    resources :ratings
+
+    # we don;t need these, do we?
+    resources :ratings, only: [:show, :index]
     # resources :watchlists
 
 

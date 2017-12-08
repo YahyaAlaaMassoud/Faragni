@@ -27,11 +27,7 @@ class User < ApplicationRecord
     validates_attachment_content_type :profilePic, content_type: /\Aimage\/.*\z/
     attr_accessor :profilePic_base
 
-    # get the profile picture url for sending through the GET requests
-    def profilePic_url
-        self.profilePic.url
-    end
-
+    # specifies how log in is carried out
     def self.from_token_request request
         email = request.params["auth"].try(:[], "Email")
         if(email.present?)
@@ -39,7 +35,64 @@ class User < ApplicationRecord
         else
             return nil
         end
-    end        
+    end
+
+    def follow user_id
+        user_to_follow = User.find(user_id)
+            
+        if(self == user_to_follow)
+            self.errors[:base] << "You can't follow yourself"
+            return false
+        end
+        if(self.followings.where(id: user_id).first.present?)
+            self.errors[:base] << "You already follow this user"
+            return false
+        end
+
+        self.followings << user_to_follow
+        return true
+    end
+
+    def unfollow user_id
+        user_to_unfollow = User.find(user_id)
+        
+        if(self == user_to_unfollow)
+            self.errors[:base] << "You can't unfollow yourself"
+            return false
+        end
+
+        if(self.followings.where(id: user_id).first.blank?)
+            self.errors[:base] << "You aren't following this user"
+            return false
+        end
+
+        self.followings.delete(user_to_unfollow)
+        return true
+    end
+
+    def add_to_watchlist movie_id
+        movie_to_add = Movie.find(movie_id)
+
+        if(self.watchlist.where(id: movie_id).first.present?)
+            self.errors[:base] << "Movie already exists in watchlist"
+            return false
+        end
+
+        self.watchlist << movie_to_add
+        return true
+    end
+
+    def remove_from_watchlist movie_id
+        movie_to_remove = Movie.find(movie_id)
+
+        if(self.watchlist.where(id: movie_id).first.blank?)
+            self.errors[:base] << "Movie doesn't exist in watchlist"
+            return false
+        end
+
+        self.watchlist.delete(movie_to_remove)
+        return true
+    end
 
     private
         # parses a base64 image into a paperclip attachment

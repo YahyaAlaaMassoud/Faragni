@@ -1,9 +1,18 @@
 class RatingsController < ApplicationController
   before_action :set_rating, only: [:show, :update, :destroy]
-
+  before_action :set_single_user, only: :index
+  
   # GET /ratings
   def index
-    @ratings = Rating.all
+    if(@single_user.present?)
+      @ratings = @single_user.ratings
+    else
+      if params[:movie_id].present?
+        @ratings = Rating.where(movie_id: params[:movie_id]).all
+      else
+        @ratings = Rating.all
+      end
+    end
 
     render json: @ratings
   end
@@ -44,8 +53,26 @@ class RatingsController < ApplicationController
       @rating = Rating.find(params[:id])
     end
 
+    def set_single_user
+      if(params[:user_id].blank? && request.url["users"].blank? && request.url["user"].present?)
+        @single_user = current_user
+      elsif (params[:user_id].present?)
+        @single_user = User.find(params[:user_id])
+      else
+        @single_user = nil
+      end
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def rating_params
-      params.require(:rating).permit(:rating, :review)
+      p = params.require(:rating).permit(:Rating, :Review, :MovieID)
+      p[:rating] = p[:Rating]
+      p[:review] = p[:Review]
+      p[:movie_id] = p[:MovieID]
+      p.delete :Rating
+      p.delete :Review
+      p.delete :MovieID
+      p[:user_id] = current_user.id
+      return p
     end
 end

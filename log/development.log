@@ -4509,3 +4509,1825 @@ Processing by MoviesController#index as */*
 Completed 200 OK in 10ms (Views: 0.1ms | ActiveRecord: 3.9ms)
 
 
+Started GET "/api/user" for 127.0.0.1 at 2017-12-08 15:08:26 +0200
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#show as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 42ms (Views: 0.1ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/api/user" for 127.0.0.1 at 2017-12-08 15:11:28 +0200
+Processing by UsersController#show as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 25ms (Views: 0.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/movies" for 127.0.0.1 at 2017-12-08 15:12:21 +0200
+Processing by MoviesController#index as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.4ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+Completed 200 OK in 69ms (Views: 0.1ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/api/user" for 127.0.0.1 at 2017-12-08 15:12:36 +0200
+Processing by UsersController#show as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 45ms (Views: 0.1ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/api/users" for 127.0.0.1 at 2017-12-08 15:14:11 +0200
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 78789ms (Views: 0.8ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/api/user/followers" for 127.0.0.1 at 2017-12-08 15:15:36 +0200
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 2348ms (Views: 0.3ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/api/user/followers" for 127.0.0.1 at 2017-12-08 15:15:44 +0200
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (4.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 722905ms (Views: 0.3ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/api/users" for 127.0.0.1 at 2017-12-08 15:28:06 +0200
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 8402ms (Views: 0.8ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/api/user/followers" for 127.0.0.1 at 2017-12-08 15:28:23 +0200
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 21200ms (ActiveRecord: 5.3ms)
+
+
+  
+NoMethodError (undefined method `call' for #<User:0x0000000423c860>):
+  
+app/controllers/users_controller.rb:9:in `index'
+Started GET "/api/user/followers" for 127.0.0.1 at 2017-12-08 15:29:19 +0200
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" INNER JOIN "followings" ON "users"."id" = "followings"."follower_id" WHERE "followings"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" INNER JOIN "followings" ON "users"."id" = "followings"."follower_id" WHERE "followings"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 11]]
+Completed 500 Internal Server Error in 113348ms (ActiveRecord: 1.3ms)
+
+
+  
+NoMethodError (undefined method `call' for #<User:0x007f17ecbfdf50>):
+  
+app/controllers/users_controller.rb:9:in `index'
+Started GET "/api/user/followers" for 127.0.0.1 at 2017-12-08 15:31:16 +0200
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "followings" ON "users"."id" = "followings"."follower_id" WHERE "followings"."user_id" = $1[0m  [["user_id", 1]]
+Completed 200 OK in 1382ms (Views: 0.3ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/api/user/following" for 127.0.0.1 at 2017-12-08 15:31:42 +0200
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 41ms (ActiveRecord: 0.3ms)
+
+
+  
+NoMethodError (undefined method `following' for #<User:0x000000041bc7f0>
+Did you mean?  followings
+               followings=
+               followers):
+  
+app/controllers/users_controller.rb:8:in `index'
+Started GET "/api/user/followings" for 127.0.0.1 at 2017-12-08 15:32:19 +0200
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "followings" ON "users"."id" = "followings"."user_id" WHERE "followings"."follower_id" = $1[0m  [["follower_id", 1]]
+Completed 200 OK in 36ms (Views: 0.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/users/1" for 127.0.0.1 at 2017-12-08 15:32:28 +0200
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 6ms (Views: 0.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/users/1" for 127.0.0.1 at 2017-12-08 15:34:03 +0200
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 65ms (Views: 0.1ms | ActiveRecord: 6.6ms)
+
+
+Started GET "/api/users/1/followers" for 127.0.0.1 at 2017-12-08 15:34:10 +0200
+Processing by UsersController#index as */*
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "followings" ON "users"."id" = "followings"."follower_id" WHERE "followings"."user_id" = $1[0m  [["user_id", 1]]
+Completed 200 OK in 32398ms (Views: 0.1ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/api/users/1/followings" for 127.0.0.1 at 2017-12-08 15:34:50 +0200
+Processing by UsersController#index as */*
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "followings" ON "users"."id" = "followings"."user_id" WHERE "followings"."follower_id" = $1[0m  [["follower_id", 1]]
+Completed 200 OK in 2301ms (Views: 0.8ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/users/3/followings" for 127.0.0.1 at 2017-12-08 15:35:07 +0200
+Processing by UsersController#index as */*
+  Parameters: {"user_id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "followings" ON "users"."id" = "followings"."user_id" WHERE "followings"."follower_id" = $1[0m  [["follower_id", 3]]
+Completed 200 OK in 42ms (Views: 0.1ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/users/3/followers" for 127.0.0.1 at 2017-12-08 15:35:23 +0200
+Processing by UsersController#index as */*
+  Parameters: {"user_id"=>"3"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "followings" ON "users"."id" = "followings"."follower_id" WHERE "followings"."user_id" = $1[0m  [["user_id", 3]]
+Completed 200 OK in 7ms (Views: 0.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/user" for 127.0.0.1 at 2017-12-08 15:37:55 +0200
+Processing by UsersController#show as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 35ms (Views: 0.1ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/api/user/watchlist" for 127.0.0.1 at 2017-12-08 15:38:01 +0200
+Processing by MoviesController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.5ms)[0m  [1m[34mSELECT "movies".* FROM "movies" INNER JOIN "watchlists" ON "movies"."id" = "watchlists"."movie_id" WHERE "watchlists"."user_id" = $1[0m  [["user_id", 1]]
+Completed 200 OK in 46ms (Views: 0.1ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/api/movies" for 127.0.0.1 at 2017-12-08 15:38:11 +0200
+Processing by MoviesController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.6ms)[0m  [1m[34mSELECT "movies".* FROM "movies" INNER JOIN "watchlists" ON "movies"."id" = "watchlists"."movie_id" WHERE "watchlists"."user_id" = $1[0m  [["user_id", 1]]
+Completed 200 OK in 7ms (Views: 0.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/movies" for 127.0.0.1 at 2017-12-08 15:38:49 +0200
+Processing by MoviesController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.4ms)[0m  [1m[34mSELECT "movies".* FROM "movies" INNER JOIN "watchlists" ON "movies"."id" = "watchlists"."movie_id" WHERE "watchlists"."user_id" = $1[0m  [["user_id", 1]]
+Completed 200 OK in 83258ms (Views: 0.1ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/api/movies" for 127.0.0.1 at 2017-12-08 15:40:16 +0200
+Processing by MoviesController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.5ms)[0m  [1m[34mSELECT "movies".* FROM "movies" INNER JOIN "watchlists" ON "movies"."id" = "watchlists"."movie_id" WHERE "watchlists"."user_id" = $1[0m  [["user_id", 1]]
+Completed 200 OK in 16540ms (Views: 0.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/movies" for 127.0.0.1 at 2017-12-08 15:40:36 +0200
+Processing by MoviesController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.4ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+Completed 200 OK in 4321ms (Views: 0.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/user/watchlist" for 127.0.0.1 at 2017-12-08 15:41:03 +0200
+Processing by MoviesController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMovie Load (1.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" INNER JOIN "watchlists" ON "movies"."id" = "watchlists"."movie_id" WHERE "watchlists"."user_id" = $1[0m  [["user_id", 1]]
+Completed 200 OK in 7857ms (Views: 0.3ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/user/ratings" for 127.0.0.1 at 2017-12-08 15:44:06 +0200
+Processing by RatingsController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRating Load (0.3ms)[0m  [1m[34mSELECT "ratings".* FROM "ratings" WHERE "ratings"."user_id" = $1[0m  [["user_id", 1]]
+Completed 200 OK in 48ms (Views: 9.7ms | ActiveRecord: 7.6ms)
+
+
+Started GET "/api/users/3/ratings" for 127.0.0.1 at 2017-12-08 15:44:14 +0200
+Processing by RatingsController#index as */*
+  Parameters: {"user_id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mRating Load (0.4ms)[0m  [1m[34mSELECT "ratings".* FROM "ratings" WHERE "ratings"."user_id" = $1[0m  [["user_id", 3]]
+Completed 200 OK in 8ms (Views: 3.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/users/ratings" for 127.0.0.1 at 2017-12-08 15:44:22 +0200
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"ratings"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 3ms (ActiveRecord: 0.4ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=ratings):
+  
+app/controllers/users_controller.rb:50:in `set_user'
+Started GET "/api/ratings" for 127.0.0.1 at 2017-12-08 15:44:28 +0200
+Processing by RatingsController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRating Load (0.3ms)[0m  [1m[34mSELECT "ratings".* FROM "ratings"[0m
+Completed 200 OK in 4ms (Views: 1.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/users/1" for 127.0.0.1 at 2017-12-08 15:44:41 +0200
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/user/get_new_recommendations" for 127.0.0.1 at 2017-12-08 16:09:20 +0200
+  [1m[35m (26.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MoviesController#get_new_recommendations as */*
+  [1m[36mUser Load (50.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMovie Load (41.5ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+Completed 200 OK in 503ms (Views: 0.1ms | ActiveRecord: 176.8ms)
+
+
+Started GET "/api/user/get_new_recommendations" for 127.0.0.1 at 2017-12-08 16:09:28 +0200
+Processing by MoviesController#get_new_recommendations as */*
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.8ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+Completed 200 OK in 62ms (Views: 0.2ms | ActiveRecord: 14.1ms)
+
+
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mUser Load (36.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" INNER JOIN "followings" ON "users"."id" = "followings"."user_id" WHERE "followings"."follower_id" = $1 LIMIT $2[0m  [["follower_id", 3], ["LIMIT", 11]]
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" INNER JOIN "followings" ON "users"."id" = "followings"."user_id" WHERE "followings"."follower_id" = $1 AND "users"."id" = $2 LIMIT $3[0m  [["follower_id", 3], ["id", 1], ["LIMIT", 11]]
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mFollowing Load (0.3ms)[0m  [1m[34mSELECT  "followings".* FROM "followings" WHERE "followings"."follower_id" = $1 LIMIT $2[0m  [["follower_id", 3], ["LIMIT", 11]]
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mFollowing Load (0.9ms)[0m  [1m[34mSELECT  "followings".* FROM "followings" WHERE "followings"."follower_id" = $1 AND "followings"."user_id" = $2 LIMIT $3[0m  [["follower_id", 3], ["user_id", 1], ["LIMIT", 11]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mFollowing Load (0.9ms)[0m  [1m[34mSELECT  "followings".* FROM "followings" WHERE "followings"."follower_id" = $1 AND "followings"."user_id" = $2 ORDER BY "followings"."id" ASC LIMIT $3[0m  [["follower_id", 3], ["user_id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (127.9ms)[0m  [1m[31mDELETE FROM "followings" WHERE "followings"."id" = $1[0m  [["id", 1]]
+  [1m[36mUser Load (3.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mFollowing Load (0.3ms)[0m  [1m[34mSELECT  "followings".* FROM "followings" WHERE "followings"."follower_id" = $1 AND "followings"."user_id" = $2 ORDER BY "followings"."id" ASC LIMIT $3[0m  [["follower_id", 3], ["user_id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" INNER JOIN "followings" ON "users"."id" = "followings"."user_id" WHERE "followings"."follower_id" = $1 LIMIT $2[0m  [["follower_id", 3], ["LIMIT", 11]]
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (4.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" INNER JOIN "followings" ON "users"."id" = "followings"."follower_id" WHERE "followings"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (28.7ms)[0m  [1m[32mINSERT INTO "followings" ("user_id", "follower_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["follower_id", 3], ["created_at", "2017-12-08 14:14:52.834188"], ["updated_at", "2017-12-08 14:14:52.834188"]]
+  [1m[35m (30.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" INNER JOIN "followings" ON "users"."id" = "followings"."follower_id" WHERE "followings"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mFollowing Load (0.8ms)[0m  [1m[34mSELECT  "followings".* FROM "followings" WHERE "followings"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" INNER JOIN "followings" ON "users"."id" = "followings"."user_id" WHERE "followings"."follower_id" = $1 LIMIT $2[0m  [["follower_id", 3], ["LIMIT", 11]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "followings" WHERE "followings"."follower_id" = $1 AND "followings"."user_id" = 1[0m  [["follower_id", 3]]
+  [1m[35m (26.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" INNER JOIN "followings" ON "users"."id" = "followings"."user_id" WHERE "followings"."follower_id" = $1 LIMIT $2[0m  [["follower_id", 3], ["LIMIT", 11]]
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" INNER JOIN "followings" ON "users"."id" = "followings"."follower_id" WHERE "followings"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 11]]
+Started GET "/api/users/3/follow" for 127.0.0.1 at 2017-12-08 16:20:42 +0200
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/api/users/3/follow"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/api/users/3/follow" for 127.0.0.1 at 2017-12-08 16:22:09 +0200
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#follow as */*
+  Parameters: {"user_id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+Completed 404 Not Found in 40ms (ActiveRecord: 4.7ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=):
+  
+app/models/user.rb:41:in `follow'
+app/controllers/users_controller.rb:48:in `follow'
+Started GET "/api/users/3/follow" for 127.0.0.1 at 2017-12-08 16:22:45 +0200
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#follow as */*
+  Parameters: {"user_id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "followings" ("user_id", "follower_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["follower_id", 3], ["created_at", "2017-12-08 14:22:45.907238"], ["updated_at", "2017-12-08 14:22:45.907238"]]
+  [1m[35m (27.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "followings" ON "users"."id" = "followings"."user_id" WHERE "followings"."follower_id" = $1[0m  [["follower_id", 1]]
+Completed 200 OK in 88ms (Views: 5.7ms | ActiveRecord: 34.3ms)
+
+
+Started GET "/api/user/following" for 127.0.0.1 at 2017-12-08 16:23:02 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/user/following"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/api/user/followings" for 127.0.0.1 at 2017-12-08 16:23:04 +0200
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "followings" ON "users"."id" = "followings"."user_id" WHERE "followings"."follower_id" = $1[0m  [["follower_id", 1]]
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/api/users/3/followers" for 127.0.0.1 at 2017-12-08 16:23:10 +0200
+Processing by UsersController#index as */*
+  Parameters: {"user_id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "followings" ON "users"."id" = "followings"."follower_id" WHERE "followings"."user_id" = $1[0m  [["user_id", 3]]
+Completed 200 OK in 6ms (Views: 0.1ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/users/3/follow" for 127.0.0.1 at 2017-12-08 16:23:17 +0200
+Processing by UsersController#follow as */*
+  Parameters: {"user_id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "followings" ("user_id", "follower_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["follower_id", 3], ["created_at", "2017-12-08 14:23:17.378895"], ["updated_at", "2017-12-08 14:23:17.378895"]]
+  [1m[35m (21.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "followings" ON "users"."id" = "followings"."user_id" WHERE "followings"."follower_id" = $1[0m  [["follower_id", 1]]
+Completed 200 OK in 32ms (Views: 2.6ms | ActiveRecord: 23.2ms)
+
+
+Started GET "/api/users/3/follow" for 127.0.0.1 at 2017-12-08 16:24:11 +0200
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#follow as */*
+  Parameters: {"user_id"=>"3"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "followings" ("user_id", "follower_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 3], ["follower_id", 1], ["created_at", "2017-12-08 14:24:12.056695"], ["updated_at", "2017-12-08 14:24:12.056695"]]
+  [1m[35m (22.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "followings" ON "users"."id" = "followings"."user_id" WHERE "followings"."follower_id" = $1[0m  [["follower_id", 1]]
+Completed 200 OK in 94ms (Views: 5.2ms | ActiveRecord: 29.0ms)
+
+
+Started GET "/api/user/followings" for 127.0.0.1 at 2017-12-08 16:24:19 +0200
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "followings" ON "users"."id" = "followings"."user_id" WHERE "followings"."follower_id" = $1[0m  [["follower_id", 1]]
+Completed 200 OK in 15ms (Views: 0.1ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/api/user/followers" for 127.0.0.1 at 2017-12-08 16:24:22 +0200
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "followings" ON "users"."id" = "followings"."follower_id" WHERE "followings"."user_id" = $1[0m  [["user_id", 1]]
+Completed 200 OK in 6ms (Views: 0.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/users/3/follow" for 127.0.0.1 at 2017-12-08 16:32:58 +0200
+  
+SyntaxError (/home/hazefully/deep-recommendation/app/controllers/users_controller.rb:92: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/users_controller.rb:92: syntax error, unexpected end-of-input, expecting keyword_end
+Started GET "/api/users/3/follow" for 127.0.0.1 at 2017-12-08 16:34:21 +0200
+Processing by UsersController#follow as */*
+  Parameters: {"user_id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" INNER JOIN "followings" ON "users"."id" = "followings"."user_id" WHERE "followings"."follower_id" = $1 AND "users"."user_id" = $2 ORDER BY "users"."id" ASC LIMIT $3[0m  [["follower_id", 1], ["user_id", "3"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 3.1ms)
+
+
+  
+ActiveRecord::StatementInvalid (PG::UndefinedColumn: ERROR:  column users.user_id does not exist
+LINE 1: ...ser_id" WHERE "followings"."follower_id" = $1 AND "users"."u...
+                                                             ^
+: SELECT  "users".* FROM "users" INNER JOIN "followings" ON "users"."id" = "followings"."user_id" WHERE "followings"."follower_id" = $1 AND "users"."user_id" = $2 ORDER BY "users"."id" ASC LIMIT $3):
+  
+app/models/user.rb:47:in `follow'
+app/controllers/users_controller.rb:48:in `follow'
+Started GET "/api/users/3/follow" for 127.0.0.1 at 2017-12-08 16:34:55 +0200
+Processing by UsersController#follow as */*
+  Parameters: {"user_id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" INNER JOIN "followings" ON "users"."id" = "followings"."user_id" WHERE "followings"."follower_id" = $1 AND "users"."id" = $2 ORDER BY "users"."id" ASC LIMIT $3[0m  [["follower_id", 1], ["id", 3], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 26ms (Views: 0.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/users/3/followers" for 127.0.0.1 at 2017-12-08 16:35:05 +0200
+Processing by UsersController#index as */*
+  Parameters: {"user_id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "followings" ON "users"."id" = "followings"."follower_id" WHERE "followings"."user_id" = $1[0m  [["user_id", 3]]
+Completed 200 OK in 7ms (Views: 0.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/users/3/followings" for 127.0.0.1 at 2017-12-08 16:35:09 +0200
+Processing by UsersController#index as */*
+  Parameters: {"user_id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "followings" ON "users"."id" = "followings"."user_id" WHERE "followings"."follower_id" = $1[0m  [["follower_id", 3]]
+Completed 200 OK in 6ms (Views: 0.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/users/3" for 127.0.0.1 at 2017-12-08 16:36:13 +0200
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/api/authenticate" for 127.0.0.1 at 2017-12-08 16:36:28 +0200
+Processing by UserTokenController#create as */*
+  Parameters: {"auth"=>{"Email"=>"he@gmail.com", "password"=>"[FILTERED]"}, "user_token"=>{"auth"=>{"Email"=>"he@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["Email", "he@gmail.com"], ["LIMIT", 1]]
+Unpermitted parameter: :Email
+Completed 404 Not Found in 73ms (ActiveRecord: 1.0ms)
+
+
+Started POST "/api/authenticate" for 127.0.0.1 at 2017-12-08 16:36:42 +0200
+Processing by UserTokenController#create as */*
+  Parameters: {"auth"=>{"Email"=>"he@gmail.com", "password"=>"[FILTERED]"}, "user_token"=>{"auth"=>{"Email"=>"he@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["Email", "he@gmail.com"], ["LIMIT", 1]]
+Unpermitted parameter: :Email
+Completed 404 Not Found in 74ms (ActiveRecord: 1.7ms)
+
+
+Started POST "/api/authenticate" for 127.0.0.1 at 2017-12-08 16:36:46 +0200
+Processing by UserTokenController#create as */*
+  Parameters: {"auth"=>{"Email"=>"he@gmail.com", "password"=>"[FILTERED]"}, "user_token"=>{"auth"=>{"Email"=>"he@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."Email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["Email", "he@gmail.com"], ["LIMIT", 1]]
+Unpermitted parameter: :Email
+Completed 201 Created in 69ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/users" for 127.0.0.1 at 2017-12-08 16:39:11 +0200
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as */*
+Filter chain halted as :authenticate_user rendered or redirected
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/api/users/" for 127.0.0.1 at 2017-12-08 16:39:22 +0200
+Processing by UsersController#index as HTML
+Filter chain halted as :authenticate_user rendered or redirected
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2017-12-08 16:39:22 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/api/v1/authorize" for 127.0.0.1 at 2017-12-08 16:40:44 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/authorize"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/api/movies" for 127.0.0.1 at 2017-12-08 16:40:50 +0200
+Processing by MoviesController#index as */*
+Filter chain halted as :authenticate_user rendered or redirected
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/api/users/1/unfollow" for 127.0.0.1 at 2017-12-08 16:41:19 +0200
+Processing by UsersController#unfollow as */*
+  Parameters: {"user_id"=>"1", "user"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "followings" WHERE "followings"."follower_id" = $1 AND "followings"."user_id" = 1[0m  [["follower_id", 3]]
+  [1m[35m (27.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "followings" ON "users"."id" = "followings"."user_id" WHERE "followings"."follower_id" = $1[0m  [["follower_id", 3]]
+Completed 200 OK in 68ms (Views: 4.4ms | ActiveRecord: 34.5ms)
+
+
+Started GET "/api/user/followers" for 127.0.0.1 at 2017-12-08 16:41:29 +0200
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "followings" ON "users"."id" = "followings"."follower_id" WHERE "followings"."user_id" = $1[0m  [["user_id", 3]]
+Completed 200 OK in 8ms (Views: 0.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/user/followings" for 127.0.0.1 at 2017-12-08 16:41:33 +0200
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "followings" ON "users"."id" = "followings"."user_id" WHERE "followings"."follower_id" = $1[0m  [["follower_id", 3]]
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/users/1/unfollow" for 127.0.0.1 at 2017-12-08 16:41:41 +0200
+Processing by UsersController#unfollow as */*
+  Parameters: {"user_id"=>"1", "user"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM "followings" WHERE "followings"."follower_id" = $1 AND "followings"."user_id" = 1[0m  [["follower_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "followings" ON "users"."id" = "followings"."user_id" WHERE "followings"."follower_id" = $1[0m  [["follower_id", 3]]
+Completed 200 OK in 8ms (Views: 2.8ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/api/users/1/unfollow" for 127.0.0.1 at 2017-12-08 16:43:00 +0200
+Processing by UsersController#unfollow as */*
+  Parameters: {"user_id"=>"1", "user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 32ms (ActiveRecord: 3.1ms)
+
+
+  
+NameError (undefined local variable or method `user_to_follow' for #<User:0x00000003e36770>):
+  
+app/models/user.rb:59:in `unfollow'
+app/controllers/users_controller.rb:57:in `unfollow'
+Started GET "/api/users/1/unfollow" for 127.0.0.1 at 2017-12-08 16:43:37 +0200
+Processing by UsersController#unfollow as */*
+  Parameters: {"user_id"=>"1", "user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" INNER JOIN "followings" ON "users"."id" = "followings"."user_id" WHERE "followings"."follower_id" = $1 AND "users"."id" = $2 ORDER BY "users"."id" ASC LIMIT $3[0m  [["follower_id", 3], ["id", 1], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 17ms (Views: 0.2ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/api/users/1/follow" for 127.0.0.1 at 2017-12-08 16:43:44 +0200
+Processing by UsersController#follow as */*
+  Parameters: {"user_id"=>"1", "user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" INNER JOIN "followings" ON "users"."id" = "followings"."user_id" WHERE "followings"."follower_id" = $1 AND "users"."id" = $2 ORDER BY "users"."id" ASC LIMIT $3[0m  [["follower_id", 3], ["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "followings" ("user_id", "follower_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["follower_id", 3], ["created_at", "2017-12-08 14:43:44.988529"], ["updated_at", "2017-12-08 14:43:44.988529"]]
+  [1m[35m (26.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "followings" ON "users"."id" = "followings"."user_id" WHERE "followings"."follower_id" = $1[0m  [["follower_id", 3]]
+Completed 200 OK in 47ms (Views: 2.5ms | ActiveRecord: 30.4ms)
+
+
+Started GET "/api/users/1/followers" for 127.0.0.1 at 2017-12-08 16:43:50 +0200
+Processing by UsersController#index as */*
+  Parameters: {"user_id"=>"1", "user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "followings" ON "users"."id" = "followings"."follower_id" WHERE "followings"."user_id" = $1[0m  [["user_id", 1]]
+Completed 200 OK in 8ms (Views: 0.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/users/1/follow" for 127.0.0.1 at 2017-12-08 16:43:54 +0200
+Processing by UsersController#follow as */*
+  Parameters: {"user_id"=>"1", "user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" INNER JOIN "followings" ON "users"."id" = "followings"."user_id" WHERE "followings"."follower_id" = $1 AND "users"."id" = $2 ORDER BY "users"."id" ASC LIMIT $3[0m  [["follower_id", 3], ["id", 1], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 7ms (Views: 0.2ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/users/1/followers" for 127.0.0.1 at 2017-12-08 16:43:56 +0200
+Processing by UsersController#index as */*
+  Parameters: {"user_id"=>"1", "user"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "followings" ON "users"."id" = "followings"."follower_id" WHERE "followings"."user_id" = $1[0m  [["user_id", 1]]
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/users/1/followeings" for 127.0.0.1 at 2017-12-08 16:43:59 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/users/1/followeings"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/api/users/1/followeing" for 127.0.0.1 at 2017-12-08 16:44:00 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/users/1/followeing"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/api/users/1/followings" for 127.0.0.1 at 2017-12-08 16:44:03 +0200
+Processing by UsersController#index as */*
+  Parameters: {"user_id"=>"1", "user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "followings" ON "users"."id" = "followings"."user_id" WHERE "followings"."follower_id" = $1[0m  [["follower_id", 1]]
+Completed 200 OK in 7ms (Views: 0.1ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/user/followers" for 127.0.0.1 at 2017-12-08 16:44:08 +0200
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "followings" ON "users"."id" = "followings"."follower_id" WHERE "followings"."user_id" = $1[0m  [["user_id", 3]]
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/user/following" for 127.0.0.1 at 2017-12-08 16:44:11 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/user/following"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/api/user/followings" for 127.0.0.1 at 2017-12-08 16:44:12 +0200
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "followings" ON "users"."id" = "followings"."user_id" WHERE "followings"."follower_id" = $1[0m  [["follower_id", 3]]
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.6ms)
+
+
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (48.3ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "action"], ["created_at", "2017-12-08 14:50:04.349833"], ["updated_at", "2017-12-08 14:50:04.349833"]]
+  [1m[35m (169.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "comedy"], ["created_at", "2017-12-08 14:50:12.673064"], ["updated_at", "2017-12-08 14:50:12.673064"]]
+  [1m[35m (22.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mGenre Load (1.2ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGenre Load (0.3ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (23.1ms)[0m  [1m[32mINSERT INTO "movies" ("imdbID", "Title", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["imdbID", "12342"], ["Title", "hazem"], ["created_at", "2017-12-08 14:51:01.933466"], ["updated_at", "2017-12-08 14:51:01.933466"]]
+  [1m[35mSQL (28.0ms)[0m  [1m[32mINSERT INTO "genres_movies" ("movie_id", "genre_id") VALUES ($1, $2)[0m  [["movie_id", 3], ["genre_id", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "genres_movies" ("movie_id", "genre_id") VALUES ($1, $2)[0m  [["movie_id", 3], ["genre_id", 2]]
+  [1m[35m (42.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mMovie Load (1.5ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" ORDER BY "movies"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mGenre Load (0.8ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" INNER JOIN "genres_movies" ON "genres"."id" = "genres_movies"."genre_id" WHERE "genres_movies"."movie_id" = $1 LIMIT $2[0m  [["movie_id", 3], ["LIMIT", 11]]
+  [1m[36mMovie Load (1.2ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" ORDER BY "movies"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mGenre Load (1.6ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "genres_movies" ON "genres"."id" = "genres_movies"."genre_id" WHERE "genres_movies"."movie_id" = $1[0m  [["movie_id", 3]]
+  [1m[36mGenre Load (1.1ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = $1 ORDER BY "genres"."id" ASC LIMIT $2[0m  [["name", "action"], ["LIMIT", 1]]
+  [1m[36mGenre Load (0.9ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = $1 ORDER BY "genres"."id" ASC LIMIT $2[0m  [["name", " comedy"], ["LIMIT", 1]]
+  [1m[36mGenre Load (0.2ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = $1 ORDER BY "genres"."id" ASC LIMIT $2[0m  [["name", "action"], ["LIMIT", 1]]
+  [1m[36mGenre Load (0.2ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = $1 ORDER BY "genres"."id" ASC LIMIT $2[0m  [["name", "comedy"], ["LIMIT", 1]]
+Started GET "/api/movies" for 127.0.0.1 at 2017-12-08 16:56:47 +0200
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/home/hazefully/deep-recommendation/app/controllers/movies_controller.rb:12: syntax error, unexpected ',', expecting ')'
+.to_json(:methods => (:Poster, :Genres))
+                              ^
+/home/hazefully/deep-recommendation/app/controllers/movies_controller.rb:17: syntax error, unexpected ',', expecting ')'
+.to_json(:methods => (:Poster, :Genres))    
+                              ^
+/home/hazefully/deep-recommendation/app/controllers/movies_controller.rb:25: syntax error, unexpected '(', expecting keyword_end
+   render json: @movieto_json(:methods => (:Poster, :Genres)
+                              ^
+/home/hazefully/deep-recommendation/app/controllers/movies_controller.rb:25: syntax error, unexpected ',', expecting ')'
+eto_json(:methods => (:Poster, :Genres)), status: :created, 
+                              ^
+/home/hazefully/deep-recommendation/app/controllers/movies_controller.rb:25: syntax error, unexpected ')', expecting keyword_end
+methods => (:Poster, :Genres)), status: :created, location: 
+                              ^
+/home/hazefully/deep-recommendation/app/controllers/movies_controller.rb:34: syntax error, unexpected ',', expecting ')'
+.to_json(:methods => (:Poster, :Genres))
+                              ^):
+  
+app/controllers/movies_controller.rb:12: syntax error, unexpected ',', expecting ')'
+app/controllers/movies_controller.rb:17: syntax error, unexpected ',', expecting ')'
+app/controllers/movies_controller.rb:25: syntax error, unexpected '(', expecting keyword_end
+app/controllers/movies_controller.rb:25: syntax error, unexpected ',', expecting ')'
+app/controllers/movies_controller.rb:25: syntax error, unexpected ')', expecting keyword_end
+app/controllers/movies_controller.rb:34: syntax error, unexpected ',', expecting ')'
+Started GET "/api/movies" for 127.0.0.1 at 2017-12-08 16:58:14 +0200
+  
+SyntaxError (/home/hazefully/deep-recommendation/app/controllers/movies_controller.rb:25: syntax error, unexpected '(', expecting keyword_end
+   render json: @movieto_json(:methods => [:Poster, :Genres]
+                              ^
+/home/hazefully/deep-recommendation/app/controllers/movies_controller.rb:25: syntax error, unexpected ')', expecting keyword_end
+methods => [:Poster, :Genres]), status: :created, location: 
+                              ^):
+  
+app/controllers/movies_controller.rb:25: syntax error, unexpected '(', expecting keyword_end
+app/controllers/movies_controller.rb:25: syntax error, unexpected ')', expecting keyword_end
+Started GET "/api/movies" for 127.0.0.1 at 2017-12-08 16:58:51 +0200
+Processing by MoviesController#index as */*
+Filter chain halted as :authenticate_user rendered or redirected
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/api/movies" for 127.0.0.1 at 2017-12-08 16:59:10 +0200
+Processing by MoviesController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.4ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  [1m[36mGenre Load (0.4ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "genres_movies" ON "genres"."id" = "genres_movies"."genre_id" WHERE "genres_movies"."movie_id" = $1[0m  [["movie_id", 1]]
+  [1m[36mGenre Load (0.3ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "genres_movies" ON "genres"."id" = "genres_movies"."genre_id" WHERE "genres_movies"."movie_id" = $1[0m  [["movie_id", 2]]
+  [1m[36mGenre Load (0.3ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "genres_movies" ON "genres"."id" = "genres_movies"."genre_id" WHERE "genres_movies"."movie_id" = $1[0m  [["movie_id", 3]]
+Completed 200 OK in 90ms (Views: 0.1ms | ActiveRecord: 9.9ms)
+
+
+Started GET "/api/movies" for 127.0.0.1 at 2017-12-08 16:59:34 +0200
+Processing by MoviesController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  [1m[36mGenre Load (0.3ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "genres_movies" ON "genres"."id" = "genres_movies"."genre_id" WHERE "genres_movies"."movie_id" = $1[0m  [["movie_id", 1]]
+  [1m[36mGenre Load (0.3ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "genres_movies" ON "genres"."id" = "genres_movies"."genre_id" WHERE "genres_movies"."movie_id" = $1[0m  [["movie_id", 2]]
+  [1m[36mGenre Load (0.3ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "genres_movies" ON "genres"."id" = "genres_movies"."genre_id" WHERE "genres_movies"."movie_id" = $1[0m  [["movie_id", 3]]
+Completed 200 OK in 61ms (Views: 0.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/users/1/recommendations" for 127.0.0.1 at 2017-12-08 17:00:26 +0200
+Processing by RecommendationsController#index as */*
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRecommendation Load (49.3ms)[0m  [1m[34mSELECT "recommendations".* FROM "recommendations" WHERE "recommendations"."to_user_id" = $1[0m  [["to_user_id", 1]]
+Completed 200 OK in 60ms (Views: 3.4ms | ActiveRecord: 52.0ms)
+
+
+Started POST "/api/users/1/recommendations" for 127.0.0.1 at 2017-12-08 17:02:02 +0200
+Processing by RecommendationsController#create as */*
+  Parameters: {"recommendation"=>{"movie_id"=>1, "from_user_id"=>1}, "user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Unpermitted parameter: :movie_id
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."imdbVotes" IS NULL LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[35m (43.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "movies" WHERE "movies"."imdbVotes" IS NULL[0m
+Unpermitted parameter: :movie_id
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 3429437ms (Views: 0.3ms | ActiveRecord: 24.2ms)
+
+
+Started POST "/api/movies" for 127.0.0.1 at 2017-12-08 17:59:57 +0200
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MoviesController#create as */*
+  Parameters: {"movie"=>{"imdbID"=>"12424", "Title"=>"hello its me", "Genres"=>"action, comedy"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 41ms (ActiveRecord: 3.1ms)
+
+
+  
+NoMethodError (undefined method `[]' for nil:NilClass):
+  
+app/controllers/movies_controller.rb:99:in `movie_params'
+app/controllers/movies_controller.rb:90:in `create_movie_params'
+app/controllers/movies_controller.rb:25:in `create'
+Started POST "/api/movies" for 127.0.0.1 at 2017-12-08 18:00:32 +0200
+Processing by MoviesController#create as */*
+  Parameters: {"movie"=>{"imdbID"=>"12424", "Title"=>"hello its me", "Genres"=>"action, comedy"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 59ms (ActiveRecord: 0.3ms)
+
+
+  
+NoMethodError (undefined method `get_genres_from_string' for #<MoviesController:0x00000003288fb8>):
+  
+app/controllers/movies_controller.rb:99:in `movie_params'
+app/controllers/movies_controller.rb:90:in `create_movie_params'
+app/controllers/movies_controller.rb:25:in `create'
+Started POST "/api/movies" for 127.0.0.1 at 2017-12-08 18:00:56 +0200
+Processing by MoviesController#create as */*
+  Parameters: {"movie"=>{"imdbID"=>"12424", "Title"=>"hello its me", "Genres"=>"action, comedy"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 38ms (ActiveRecord: 0.2ms)
+
+
+  
+NoMethodError (undefined method `get_genres_from_string' for #<Class:0x000000043fbc78>):
+  
+app/controllers/movies_controller.rb:99:in `movie_params'
+app/controllers/movies_controller.rb:90:in `create_movie_params'
+app/controllers/movies_controller.rb:25:in `create'
+Started POST "/api/movies" for 127.0.0.1 at 2017-12-08 18:01:19 +0200
+Processing by MoviesController#create as */*
+  Parameters: {"movie"=>{"imdbID"=>"12424", "Title"=>"hello its me", "Genres"=>"action, comedy"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mGenre Load (0.4ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = $1 ORDER BY "genres"."id" ASC LIMIT $2[0m  [["name", "action"], ["LIMIT", 1]]
+  [1m[36mGenre Load (0.3ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = $1 ORDER BY "genres"."id" ASC LIMIT $2[0m  [["name", "comedy"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.1ms)[0m  [1m[32mINSERT INTO "movies" ("imdbID", "Title", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["imdbID", "12424"], ["Title", "hello its me"], ["created_at", "2017-12-08 16:01:23.425919"], ["updated_at", "2017-12-08 16:01:23.425919"]]
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "genres_movies" ("movie_id", "genre_id") VALUES ($1, $2)[0m  [["movie_id", 4], ["genre_id", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "genres_movies" ("movie_id", "genre_id") VALUES ($1, $2)[0m  [["movie_id", 4], ["genre_id", 2]]
+  [1m[35m (40.5ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 4211ms (Views: 2.7ms | ActiveRecord: 50.3ms)
+
+
+Started POST "/api/user/ratings" for 127.0.0.1 at 2017-12-08 18:04:29 +0200
+Processing by RatingsController#create as */*
+  Parameters: {"rating"=>{"Review"=>"shfbsnfsjknf", "Rating"=>3.5, "MovieID"=>1}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 95425ms (Views: 0.2ms | ActiveRecord: 16.2ms)
+
+
+Started POST "/api/user/ratings" for 127.0.0.1 at 2017-12-08 18:06:09 +0200
+Processing by RatingsController#create as */*
+  Parameters: {"rating"=>{"Review"=>"shfbsnfsjknf", "Rating"=>3.5, "MovieID"=>1}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 0.3ms)
+
+
+  
+ArgumentError (When assigning attributes, you must pass a hash as an argument.):
+  
+app/controllers/ratings_controller.rb:26:in `create'
+Started POST "/api/user/ratings" for 127.0.0.1 at 2017-12-08 18:06:26 +0200
+Processing by RatingsController#create as */*
+  Parameters: {"rating"=>{"Review"=>"shfbsnfsjknf", "Rating"=>3.5, "MovieID"=>1}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (90.1ms)[0m  [1m[32mINSERT INTO "ratings" ("rating", "review", "user_id", "movie_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["rating", "3.5"], ["review", "shfbsnfsjknf"], ["user_id", 3], ["movie_id", 1], ["created_at", "2017-12-08 16:06:26.360651"], ["updated_at", "2017-12-08 16:06:26.360651"]]
+  [1m[35m (37.1ms)[0m  [1m[35mCOMMIT[0m
+Completed 500 Internal Server Error in 236ms (ActiveRecord: 127.9ms)
+
+
+  
+NoMethodError (undefined method `rating_url' for #<RatingsController:0x007fe245163800>):
+  
+app/controllers/ratings_controller.rb:29:in `create'
+Started POST "/api/user/ratings" for 127.0.0.1 at 2017-12-08 18:08:21 +0200
+Processing by RatingsController#create as */*
+  Parameters: {"rating"=>{"Review"=>"shfbsnfsjknf", "Rating"=>3.5, "MovieID"=>1}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "ratings" ("rating", "review", "user_id", "movie_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["rating", "3.5"], ["review", "shfbsnfsjknf"], ["user_id", 3], ["movie_id", 1], ["created_at", "2017-12-08 16:08:22.051558"], ["updated_at", "2017-12-08 16:08:22.051558"]]
+  [1m[35m (28.1ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 95ms (Views: 1.4ms | ActiveRecord: 29.2ms)
+
+
+Started POST "/api/movies/1/ratings" for 127.0.0.1 at 2017-12-08 18:08:46 +0200
+  
+ActionController::RoutingError (No route matches [POST] "/api/movies/1/ratings"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/api/movies/1/ratings" for 127.0.0.1 at 2017-12-08 18:08:54 +0200
+Processing by RatingsController#index as */*
+  Parameters: {"movie_id"=>"1", "rating"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mRating Load (0.4ms)[0m  [1m[34mSELECT "ratings".* FROM "ratings" WHERE "ratings"."movie_id" = $1[0m  [["movie_id", 1]]
+Completed 200 OK in 31ms (Views: 5.1ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/api/user/ratings" for 127.0.0.1 at 2017-12-08 18:12:28 +0200
+  
+NoMethodError (undefined method `validates_uniquness_of' for #<Class:0x007fe244c91548>
+Did you mean?  validates_uniqueness_of):
+  
+app/models/rating.rb:4:in `<class:Rating>'
+app/models/rating.rb:1:in `<top (required)>'
+Started POST "/api/user/ratings" for 127.0.0.1 at 2017-12-08 18:12:42 +0200
+Processing by RatingsController#create as */*
+  Parameters: {"rating"=>{"Review"=>"shfbsnfsjknf", "Rating"=>3.5, "MovieID"=>1}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mRating Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "ratings" WHERE "ratings"."user_id" = $1 AND "ratings"."movie_id" = 1 LIMIT $2[0m  [["user_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 54ms (Views: 0.2ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/api/user/ratings" for 127.0.0.1 at 2017-12-08 18:12:50 +0200
+Processing by RatingsController#create as */*
+  Parameters: {"rating"=>{"Review"=>"shfbsnfsjknf", "Rating"=>3.5, "MovieID"=>3}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMovie Load (0.4ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mRating Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "ratings" WHERE "ratings"."user_id" = $1 AND "ratings"."movie_id" = 3 LIMIT $2[0m  [["user_id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "ratings" ("rating", "review", "user_id", "movie_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["rating", "3.5"], ["review", "shfbsnfsjknf"], ["user_id", 3], ["movie_id", 3], ["created_at", "2017-12-08 16:12:50.606807"], ["updated_at", "2017-12-08 16:12:50.606807"]]
+  [1m[35m (24.6ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 36ms (Views: 0.9ms | ActiveRecord: 26.8ms)
+
+
+Started POST "/api/movies/sort_by/Title" for 127.0.0.1 at 2017-12-08 18:13:38 +0200
+  
+ActionController::RoutingError (No route matches [POST] "/api/movies/sort_by/Title"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/api/movies/sort_by/Title" for 127.0.0.1 at 2017-12-08 18:13:49 +0200
+Processing by MoviesController#index as */*
+  Parameters: {"criteria"=>"Title", "movie"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" ORDER BY "movies"."Title" ASC[0m
+  [1m[36mGenre Load (0.3ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "genres_movies" ON "genres"."id" = "genres_movies"."genre_id" WHERE "genres_movies"."movie_id" = $1[0m  [["movie_id", 3]]
+  [1m[36mGenre Load (0.3ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "genres_movies" ON "genres"."id" = "genres_movies"."genre_id" WHERE "genres_movies"."movie_id" = $1[0m  [["movie_id", 4]]
+  [1m[36mGenre Load (0.2ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "genres_movies" ON "genres"."id" = "genres_movies"."genre_id" WHERE "genres_movies"."movie_id" = $1[0m  [["movie_id", 1]]
+  [1m[36mGenre Load (0.2ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "genres_movies" ON "genres"."id" = "genres_movies"."genre_id" WHERE "genres_movies"."movie_id" = $1[0m  [["movie_id", 2]]
+Completed 200 OK in 22ms (Views: 0.1ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/api/movies/sort_by/imdbID" for 127.0.0.1 at 2017-12-08 18:14:08 +0200
+Processing by MoviesController#index as */*
+  Parameters: {"criteria"=>"imdbID", "movie"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.5ms)[0m  [1m[34mSELECT "movies".* FROM "movies" ORDER BY "movies"."imdbID" ASC[0m
+  [1m[36mGenre Load (0.3ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "genres_movies" ON "genres"."id" = "genres_movies"."genre_id" WHERE "genres_movies"."movie_id" = $1[0m  [["movie_id", 3]]
+  [1m[36mGenre Load (0.3ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "genres_movies" ON "genres"."id" = "genres_movies"."genre_id" WHERE "genres_movies"."movie_id" = $1[0m  [["movie_id", 4]]
+  [1m[36mGenre Load (0.3ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "genres_movies" ON "genres"."id" = "genres_movies"."genre_id" WHERE "genres_movies"."movie_id" = $1[0m  [["movie_id", 2]]
+  [1m[36mGenre Load (0.3ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "genres_movies" ON "genres"."id" = "genres_movies"."genre_id" WHERE "genres_movies"."movie_id" = $1[0m  [["movie_id", 1]]
+Completed 200 OK in 13ms (Views: 0.1ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/api/movies/1/add_to_watchlist" for 127.0.0.1 at 2017-12-08 18:14:55 +0200
+Processing by MoviesController#add_to_watchlist as */*
+  Parameters: {"movie_id"=>"1", "movie"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMovie Load (22.0ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" INNER JOIN "watchlists" ON "movies"."id" = "watchlists"."movie_id" WHERE "watchlists"."user_id" = $1 AND "movies"."id" = $2 ORDER BY "movies"."id" ASC LIMIT $3[0m  [["user_id", 3], ["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (6.7ms)[0m  [1m[32mINSERT INTO "watchlists" ("movie_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["movie_id", 1], ["user_id", 3], ["created_at", "2017-12-08 16:14:55.759712"], ["updated_at", "2017-12-08 16:14:55.759712"]]
+  [1m[35m (33.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mMovie Load (0.5ms)[0m  [1m[34mSELECT "movies".* FROM "movies" INNER JOIN "watchlists" ON "movies"."id" = "watchlists"."movie_id" WHERE "watchlists"."user_id" = $1[0m  [["user_id", 3]]
+Completed 200 OK in 84ms (Views: 4.0ms | ActiveRecord: 64.9ms)
+
+
+Started GET "/api/user/watchlist" for 127.0.0.1 at 2017-12-08 18:15:08 +0200
+Processing by MoviesController#index as */*
+  Parameters: {"movie"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.4ms)[0m  [1m[34mSELECT "movies".* FROM "movies" INNER JOIN "watchlists" ON "movies"."id" = "watchlists"."movie_id" WHERE "watchlists"."user_id" = $1[0m  [["user_id", 3]]
+  [1m[36mGenre Load (0.3ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "genres_movies" ON "genres"."id" = "genres_movies"."genre_id" WHERE "genres_movies"."movie_id" = $1[0m  [["movie_id", 1]]
+Completed 200 OK in 6ms (Views: 0.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/movies/1/remove_from_watchlist" for 127.0.0.1 at 2017-12-08 18:15:15 +0200
+Processing by MoviesController#remove_from_watchlist as */*
+  Parameters: {"movie_id"=>"1", "movie"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.5ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" INNER JOIN "watchlists" ON "movies"."id" = "watchlists"."movie_id" WHERE "watchlists"."user_id" = $1 AND "movies"."id" = $2 ORDER BY "movies"."id" ASC LIMIT $3[0m  [["user_id", 3], ["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.9ms)
+
+
+  
+NameError (undefined local variable or method `movie_to_add' for #<User:0x007fe244cd0cc0>):
+  
+app/models/user.rb:93:in `remove_from_watchlist'
+app/controllers/movies_controller.rb:67:in `remove_from_watchlist'
+Started GET "/api/movies/1/remove_from_watchlist" for 127.0.0.1 at 2017-12-08 18:15:35 +0200
+Processing by MoviesController#remove_from_watchlist as */*
+  Parameters: {"movie_id"=>"1", "movie"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.5ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" INNER JOIN "watchlists" ON "movies"."id" = "watchlists"."movie_id" WHERE "watchlists"."user_id" = $1 AND "movies"."id" = $2 ORDER BY "movies"."id" ASC LIMIT $3[0m  [["user_id", 3], ["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "watchlists" WHERE "watchlists"."user_id" = $1 AND "watchlists"."movie_id" = 1[0m  [["user_id", 3]]
+  [1m[35m (30.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" INNER JOIN "watchlists" ON "movies"."id" = "watchlists"."movie_id" WHERE "watchlists"."user_id" = $1[0m  [["user_id", 3]]
+Completed 200 OK in 76ms (Views: 1.7ms | ActiveRecord: 32.0ms)
+
+
+Started GET "/api/user/watchlist" for 127.0.0.1 at 2017-12-08 18:15:43 +0200
+Processing by MoviesController#index as */*
+  Parameters: {"movie"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.5ms)[0m  [1m[34mSELECT "movies".* FROM "movies" INNER JOIN "watchlists" ON "movies"."id" = "watchlists"."movie_id" WHERE "watchlists"."user_id" = $1[0m  [["user_id", 3]]
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/api/users/3/recommend" for 127.0.0.1 at 2017-12-08 18:18:38 +0200
+Processing by RecommendationsController#create as */*
+  Parameters: {"recommendation"=>{"movie_id"=>3, "UserRating"=>3.5, "ExpectedRating"=>3, "Message"=>"sfsgfs"}, "user_id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 2.3ms)
+
+
+  
+ArgumentError (When assigning attributes, you must pass a hash as an argument.):
+  
+app/controllers/recommendations_controller.rb:27:in `create'
+Started POST "/api/users/3/recommend" for 127.0.0.1 at 2017-12-08 18:18:52 +0200
+Processing by RecommendationsController#create as */*
+  Parameters: {"recommendation"=>{"movie_id"=>3, "UserRating"=>3.5, "ExpectedRating"=>3, "Message"=>"sfsgfs"}, "user_id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 55ms (Views: 0.2ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/api/users/3/recommend" for 127.0.0.1 at 2017-12-08 18:19:15 +0200
+Processing by RecommendationsController#create as */*
+  Parameters: {"recommendation"=>{"movie_id"=>3, "UserRating"=>3.5, "ExpectedRating"=>3, "Message"=>"sfsgfs"}, "user_id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 500 Internal Server Error in 22248ms (ActiveRecord: 0.9ms)
+
+
+  
+NoMethodError (undefined method `add_to_base' for #<ActiveModel::Errors:0x007fe2441fc010>):
+  
+app/models/recommendation.rb:14:in `parties_not_equal'
+app/controllers/recommendations_controller.rb:29:in `create'
+Started POST "/api/users/3/recommend" for 127.0.0.1 at 2017-12-08 18:20:14 +0200
+Processing by RecommendationsController#create as */*
+  Parameters: {"recommendation"=>{"movie_id"=>3, "UserRating"=>3.5, "ExpectedRating"=>3, "Message"=>"sfsgfs"}, "user_id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 1316ms (Views: 0.2ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/api/users/1/recommend" for 127.0.0.1 at 2017-12-08 18:20:22 +0200
+Processing by RecommendationsController#create as */*
+  Parameters: {"recommendation"=>{"movie_id"=>3, "UserRating"=>3.5, "ExpectedRating"=>3, "Message"=>"sfsgfs"}, "user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMovie Load (1.3ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (23.6ms)[0m  [1m[32mINSERT INTO "recommendations" ("from_user_id", "to_user_id", "movie_id", "ExpectedRating", "UserRating", "Message", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["from_user_id", 3], ["to_user_id", 1], ["movie_id", 3], ["ExpectedRating", "3.0"], ["UserRating", "3.5"], ["Message", "sfsgfs"], ["created_at", "2017-12-08 16:20:23.912032"], ["updated_at", "2017-12-08 16:20:23.912032"]]
+  [1m[35m (34.8ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 1680ms (Views: 4.2ms | ActiveRecord: 61.7ms)
+
+
+Started GET "/api/us" for 127.0.0.1 at 2017-12-08 18:22:10 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/us"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/api/users/1" for 127.0.0.1 at 2017-12-08 18:22:15 +0200
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+Filter chain halted as :authenticate_user rendered or redirected
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/api/users/1" for 127.0.0.1 at 2017-12-08 18:23:10 +0200
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1", "user"=>{}}
+Filter chain halted as :authenticate_user rendered or redirected
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/api/users/1" for 127.0.0.1 at 2017-12-08 18:23:40 +0200
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1", "user"=>{}}
+Filter chain halted as :authenticate_user rendered or redirected
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/api/users/1" for 127.0.0.1 at 2017-12-08 18:23:41 +0200
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1", "user"=>{}}
+Filter chain halted as :authenticate_user rendered or redirected
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/api/users/1" for 127.0.0.1 at 2017-12-08 18:23:45 +0200
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1", "user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/user/recommendations" for 127.0.0.1 at 2017-12-08 18:23:56 +0200
+Processing by RecommendationsController#index as */*
+  Parameters: {"recommendation"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mRecommendation Load (0.3ms)[0m  [1m[34mSELECT "recommendations".* FROM "recommendations" WHERE "recommendations"."to_user_id" = $1[0m  [["to_user_id", 3]]
+Completed 200 OK in 5ms (Views: 1.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/user/recommendations" for 127.0.0.1 at 2017-12-08 18:24:09 +0200
+Processing by RecommendationsController#index as */*
+  Parameters: {"recommendation"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRecommendation Load (0.3ms)[0m  [1m[34mSELECT "recommendations".* FROM "recommendations" WHERE "recommendations"."to_user_id" = $1[0m  [["to_user_id", 1]]
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/user/recommendations/rated" for 127.0.0.1 at 2017-12-08 18:24:19 +0200
+Processing by RecommendationsController#show as */*
+  Parameters: {"id"=>"rated", "recommendation"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRecommendation Load (0.2ms)[0m  [1m[34mSELECT  "recommendations".* FROM "recommendations" WHERE "recommendations"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 3ms (ActiveRecord: 0.4ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Recommendation with 'id'=rated):
+  
+app/controllers/recommendations_controller.rb:53:in `set_recommendation'
+Started GET "/api/user/recommendations/status/rated" for 127.0.0.1 at 2017-12-08 18:24:25 +0200
+Processing by RecommendationsController#index as */*
+  Parameters: {"status"=>"rated", "recommendation"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRecommendation Load (0.2ms)[0m  [1m[34mSELECT "recommendations".* FROM "recommendations" WHERE "recommendations"."to_user_id" = $1[0m  [["to_user_id", 1]]
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/user/recommendations/status/pending" for 127.0.0.1 at 2017-12-08 18:24:28 +0200
+Processing by RecommendationsController#index as */*
+  Parameters: {"status"=>"pending", "recommendation"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRecommendation Load (0.3ms)[0m  [1m[34mSELECT "recommendations".* FROM "recommendations" WHERE "recommendations"."to_user_id" = $1[0m  [["to_user_id", 1]]
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 0.4ms)
+
+
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mRecommendation Load (0.4ms)[0m  [1m[34mSELECT  "recommendations".* FROM "recommendations" WHERE "recommendations"."to_user_id" = $1 LIMIT $2[0m  [["to_user_id", 1], ["LIMIT", 11]]
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mRecommendation Load (0.8ms)[0m  [1m[34mSELECT  "recommendations".* FROM "recommendations" WHERE "recommendations"."to_user_id" = $1 AND "recommendations"."UserRating" IS NULL LIMIT $2[0m  [["to_user_id", 1], ["LIMIT", 11]]
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mRecommendation Load (0.9ms)[0m  [1m[34mSELECT  "recommendations".* FROM "recommendations" WHERE "recommendations"."to_user_id" = $1 AND ("recommendations"."UserRating" IS NOT NULL) LIMIT $2[0m  [["to_user_id", 1], ["LIMIT", 11]]
+Started GET "/api/user/recommendations/status/pending" for 127.0.0.1 at 2017-12-08 18:25:21 +0200
+Processing by RecommendationsController#index as */*
+  Parameters: {"status"=>"pending", "recommendation"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRecommendation Load (0.2ms)[0m  [1m[34mSELECT "recommendations".* FROM "recommendations" WHERE "recommendations"."to_user_id" = $1[0m  [["to_user_id", 1]]
+Completed 200 OK in 31ms (Views: 6.3ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/api/user/recommendations/status/rated" for 127.0.0.1 at 2017-12-08 18:25:33 +0200
+Processing by RecommendationsController#index as */*
+  Parameters: {"status"=>"rated", "recommendation"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRecommendation Load (0.2ms)[0m  [1m[34mSELECT "recommendations".* FROM "recommendations" WHERE "recommendations"."to_user_id" = $1[0m  [["to_user_id", 1]]
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/user/recommendations/status/rated" for 127.0.0.1 at 2017-12-08 18:26:48 +0200
+  
+SyntaxError (/home/hazefully/deep-recommendation/app/controllers/recommendations_controller.rb:76: syntax error, unexpected keyword_end, expecting end-of-input):
+  
+app/controllers/recommendations_controller.rb:76: syntax error, unexpected keyword_end, expecting end-of-input
+Started GET "/api/user/recommendations/status/rated" for 127.0.0.1 at 2017-12-08 18:27:25 +0200
+Processing by RecommendationsController#index as */*
+  Parameters: {"status"=>"rated", "recommendation"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRecommendation Load (0.4ms)[0m  [1m[34mSELECT  "recommendations".* FROM "recommendations" WHERE "recommendations"."to_user_id" = $1 LIMIT $2[0m  [["to_user_id", 1], ["LIMIT", 11]]
+Completed 500 Internal Server Error in 3070ms (ActiveRecord: 3.5ms)
+
+
+  
+  [1m[36mCACHE Recommendation Load (0.0ms)[0m  [1m[34mSELECT  "recommendations".* FROM "recommendations" WHERE "recommendations"."to_user_id" = $1 LIMIT $2[0m  [["to_user_id", 1], ["LIMIT", 11]]
+NoMethodError (undefined method `call' for #<Recommendation::ActiveRecord_Associations_CollectionProxy:0x007fe2505bfd08>):
+  
+app/controllers/recommendations_controller.rb:10:in `index'
+  [1m[36mCACHE Recommendation Load (0.0ms)[0m  [1m[34mSELECT  "recommendations".* FROM "recommendations" WHERE "recommendations"."to_user_id" = $1 LIMIT $2[0m  [["to_user_id", 1], ["LIMIT", 11]]
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mRecommendation Load (0.3ms)[0m  [1m[34mSELECT  "recommendations".* FROM "recommendations" WHERE "recommendations"."to_user_id" = $1 AND ("recommendations"."UserRating" IS NOT NULL) LIMIT $2[0m  [["to_user_id", 1], ["LIMIT", 11]]
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mRecommendation Load (1.0ms)[0m  [1m[34mSELECT  "recommendations".* FROM "recommendations" WHERE "recommendations"."to_user_id" = $1 LIMIT $2[0m  [["to_user_id", 1], ["LIMIT", 11]]
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mRecommendation Load (0.5ms)[0m  [1m[34mSELECT  "recommendations".* FROM "recommendations" WHERE "recommendations"."to_user_id" = $1 AND ("recommendations"."UserRating" IS NOT NULL) LIMIT $2[0m  [["to_user_id", 1], ["LIMIT", 11]]
+Started GET "/api/user/recommendations/status/rated" for 127.0.0.1 at 2017-12-08 18:28:50 +0200
+Processing by RecommendationsController#index as */*
+  Parameters: {"status"=>"rated", "recommendation"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRecommendation Load (1.6ms)[0m  [1m[34mSELECT "recommendations".* FROM "recommendations" WHERE "recommendations"."to_user_id" = $1 AND ("recommendations"."UserRating" IS NOT NULL)[0m  [["to_user_id", 1]]
+Completed 200 OK in 6398ms (Views: 27.7ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/api/user/recommendations/status/pending" for 127.0.0.1 at 2017-12-08 18:29:04 +0200
+Processing by RecommendationsController#index as */*
+  Parameters: {"status"=>"pending", "recommendation"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRecommendation Load (0.4ms)[0m  [1m[34mSELECT "recommendations".* FROM "recommendations" WHERE "recommendations"."to_user_id" = $1 AND "recommendations"."UserRating" IS NULL[0m  [["to_user_id", 1]]
+Completed 200 OK in 24ms (Views: 0.5ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/api/recommendations/1/rate" for 127.0.0.1 at 2017-12-08 18:29:59 +0200
+Processing by RecommendationsController#update as */*
+  Parameters: {"recommendations"=>{"UserRating"=>1.2}, "recommendation_id"=>"1", "recommendation"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRecommendation Load (0.2ms)[0m  [1m[34mSELECT  "recommendations".* FROM "recommendations" WHERE "recommendations"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+Completed 404 Not Found in 6ms (ActiveRecord: 2.5ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Recommendation with 'id'=):
+  
+app/controllers/recommendations_controller.rb:53:in `set_recommendation'
+Started POST "/api/recommendations/1/rate" for 127.0.0.1 at 2017-12-08 18:30:56 +0200
+Processing by RecommendationsController#update as */*
+  Parameters: {"recommendations"=>{"UserRating"=>1.2}, "recommendation_id"=>"1", "recommendation"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRecommendation Load (0.2ms)[0m  [1m[34mSELECT  "recommendations".* FROM "recommendations" WHERE "recommendations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 400 Bad Request in 28ms (ActiveRecord: 4.8ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: recommendation):
+  
+app/controllers/recommendations_controller.rb:68:in `recommendation_params'
+app/controllers/recommendations_controller.rb:38:in `update'
+Started POST "/api/recommendations/1/rate" for 127.0.0.1 at 2017-12-08 18:31:13 +0200
+Processing by RecommendationsController#update as */*
+  Parameters: {"recommendation"=>{"UserRating"=>1.2}, "recommendation_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRecommendation Load (0.2ms)[0m  [1m[34mSELECT  "recommendations".* FROM "recommendations" WHERE "recommendations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 3957ms (Views: 0.2ms | ActiveRecord: 4.9ms)
+
+
+Started PATCH "/api/recommendations/1/rate" for 127.0.0.1 at 2017-12-08 18:31:52 +0200
+  
+ActionController::RoutingError (No route matches [PATCH] "/api/recommendations/1/rate"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started PATCH "/api/recommendations/1/rate" for 127.0.0.1 at 2017-12-08 18:32:13 +0200
+Processing by RecommendationsController#update as */*
+  Parameters: {"recommendation"=>{"UserRating"=>1.2}, "recommendation_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRecommendation Load (0.2ms)[0m  [1m[34mSELECT  "recommendations".* FROM "recommendations" WHERE "recommendations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 64ms (Views: 0.2ms | ActiveRecord: 6.8ms)
+
+
+Started PATCH "/api/recommendations/1/rate" for 127.0.0.1 at 2017-12-08 18:33:45 +0200
+Processing by RecommendationsController#update as */*
+  Parameters: {"recommendation"=>{"UserRating"=>1.2}, "recommendation_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRecommendation Load (0.3ms)[0m  [1m[34mSELECT  "recommendations".* FROM "recommendations" WHERE "recommendations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (6.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.5ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 45674ms (Views: 0.2ms | ActiveRecord: 7.5ms)
+
+
+Started PATCH "/api/recommendations/1/rate" for 127.0.0.1 at 2017-12-08 18:34:33 +0200
+Processing by RecommendationsController#update as */*
+  Parameters: {"recommendation"=>{"UserRating"=>1.2}, "recommendation_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRecommendation Load (0.3ms)[0m  [1m[34mSELECT  "recommendations".* FROM "recommendations" WHERE "recommendations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.6ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 39610ms (Views: 1.0ms | ActiveRecord: 2.3ms)
+
+
+Started PATCH "/api/recommendations/1/rate" for 127.0.0.1 at 2017-12-08 18:35:31 +0200
+Processing by RecommendationsController#update as */*
+  Parameters: {"recommendation"=>{"UserRating"=>1.2}, "recommendation_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRecommendation Load (0.3ms)[0m  [1m[34mSELECT  "recommendations".* FROM "recommendations" WHERE "recommendations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 28395ms (Views: 0.2ms | ActiveRecord: 2.2ms)
+
+
+Started PATCH "/api/recommendations/1/rate" for 127.0.0.1 at 2017-12-08 18:36:02 +0200
+Processing by RecommendationsController#update as */*
+  Parameters: {"recommendation"=>{"UserRating"=>1.2}, "recommendation_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRecommendation Load (0.3ms)[0m  [1m[34mSELECT  "recommendations".* FROM "recommendations" WHERE "recommendations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "recommendations" SET "UserRating" = $1, "updated_at" = $2 WHERE "recommendations"."id" = $3[0m  [["UserRating", "1.2"], ["updated_at", "2017-12-08 16:36:03.904119"], ["id", 1]]
+  [1m[35m (69.4ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 1610ms (Views: 1.7ms | ActiveRecord: 72.0ms)
+
+
+Started PATCH "/api/users/1" for 127.0.0.1 at 2017-12-08 18:37:10 +0200
+Processing by UsersController#update as */*
+  Parameters: {"user"=>{"Email"=>"h.h@g.com"}, "id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "users" SET "Email" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["Email", "h.h@g.com"], ["updated_at", "2017-12-08 16:37:10.873944"], ["id", 1]]
+  [1m[35m (56.8ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 72ms (Views: 0.7ms | ActiveRecord: 57.7ms)
+
+
+Started PATCH "/api/users/1" for 127.0.0.1 at 2017-12-08 18:37:27 +0200
+Processing by UsersController#update as */*
+  Parameters: {"user"=>{"password"=>"[FILTERED]"}, "id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameter: :password
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 5ms (Views: 0.8ms | ActiveRecord: 0.6ms)
+
+
+Started PATCH "/api/users/1" for 127.0.0.1 at 2017-12-08 18:39:06 +0200
+Processing by UsersController#update as */*
+  Parameters: {"user"=>{"Password"=>"[FILTERED]"}, "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 2.5ms)
+
+
+  
+NoMethodError (undefined method `delete' for nil:NilClass):
+  
+app/controllers/users_controller.rb:92:in `create_user_params'
+app/controllers/users_controller.rb:34:in `update'
+Started PATCH "/api/users/1" for 127.0.0.1 at 2017-12-08 18:39:43 +0200
+Processing by UsersController#update as */*
+  Parameters: {"user"=>{"Password"=>"[FILTERED]"}, "id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 9730ms (ActiveRecord: 0.4ms)
+
+
+  
+NoMethodError (undefined method `delete' for nil:NilClass):
+  
+app/controllers/users_controller.rb:93:in `create_user_params'
+app/controllers/users_controller.rb:34:in `update'
+Started POST "/api/users/" for 127.0.0.1 at 2017-12-08 18:40:21 +0200
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"Email"=>"aa@g.com", "Password"=>"[FILTERED]", "UserName"=>"aaaa"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 10335ms (ActiveRecord: 0.1ms)
+
+
+  
+NoMethodError (undefined method `delete' for nil:NilClass):
+  
+app/controllers/users_controller.rb:93:in `create_user_params'
+app/controllers/users_controller.rb:23:in `create'
+Started POST "/api/users/" for 127.0.0.1 at 2017-12-08 18:40:53 +0200
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"Email"=>"aa@g.com", "Password"=>"[FILTERED]", "UserName"=>"aaaa"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (58.4ms)[0m  [1m[32mINSERT INTO "users" ("UserName", "Email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["UserName", "aaaa"], ["Email", "aa@g.com"], ["password_digest", "$2a$10$2jRRczCx9H8JxEkl5pVua.hH2L4/cHmS/cmoHu/UWg/p0e6HoLYqO"], ["created_at", "2017-12-08 16:40:53.804769"], ["updated_at", "2017-12-08 16:40:53.804769"]]
+  [1m[35m (52.9ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 195ms (Views: 4.0ms | ActiveRecord: 113.5ms)
+
+
+Started PATCH "/api/users/" for 127.0.0.1 at 2017-12-08 18:41:05 +0200
+  
+ActionController::RoutingError (No route matches [PATCH] "/api/users"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started PATCH "/api/users/3" for 127.0.0.1 at 2017-12-08 18:41:12 +0200
+Processing by UsersController#update as */*
+  Parameters: {"user"=>{"Email"=>"aa@g.com", "Password"=>"[FILTERED]", "UserName"=>"aaaa"}, "id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "users" SET "UserName" = $1, "Email" = $2, "password_digest" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["UserName", "aaaa"], ["Email", "aa@g.com"], ["password_digest", "$2a$10$Vt3ef7jZ4YcW6jNtGsMqkevw/xOZg5BR/9xQP4Cye/GD.XxfzS2de"], ["updated_at", "2017-12-08 16:41:12.257307"], ["id", 3]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+Completed 500 Internal Server Error in 65ms (ActiveRecord: 1.1ms)
+
+
+  
+ActiveRecord::RecordNotUnique (PG::UniqueViolation: ERROR:  duplicate key value violates unique constraint "index_users_on_UserName"
+DETAIL:  Key ("UserName")=(aaaa) already exists.
+: UPDATE "users" SET "UserName" = $1, "Email" = $2, "password_digest" = $3, "updated_at" = $4 WHERE "users"."id" = $5):
+  
+app/controllers/users_controller.rb:34:in `update'
+Started PATCH "/api/users/4" for 127.0.0.1 at 2017-12-08 18:41:14 +0200
+Processing by UsersController#update as */*
+  Parameters: {"user"=>{"Email"=>"aa@g.com", "Password"=>"[FILTERED]", "UserName"=>"aaaa"}, "id"=>"4"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "users" SET "password_digest" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["password_digest", "$2a$10$ytk2pnEJEO4pVZz6UbqegOdksb6Md4UuyWPd7qRpIJC1HfvH2NEqW"], ["updated_at", "2017-12-08 16:41:14.263133"], ["id", 4]]
+  [1m[35m (56.2ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 122ms (Views: 0.4ms | ActiveRecord: 56.9ms)
+
+
+Started PATCH "/api/movies/recommendations" for 127.0.0.1 at 2017-12-08 18:43:00 +0200
+Processing by MoviesController#update as */*
+  Parameters: {"user"=>{"Email"=>"aa@g.com", "Password"=>"[FILTERED]", "UserName"=>"aaaa"}, "id"=>"recommendations", "movie"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 20ms (ActiveRecord: 2.7ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Movie with 'id'=recommendations):
+  
+app/controllers/movies_controller.rb:77:in `set_movie'
+Started PATCH "/api/movies/1/recommendations" for 127.0.0.1 at 2017-12-08 18:43:08 +0200
+  
+ActionController::RoutingError (No route matches [PATCH] "/api/movies/1/recommendations"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/api/movies/1/recommendations" for 127.0.0.1 at 2017-12-08 18:43:14 +0200
+Processing by RecommendationsController#index as */*
+  Parameters: {"movie_id"=>"1", "recommendation"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRecommendation Load (0.2ms)[0m  [1m[34mSELECT "recommendations".* FROM "recommendations" WHERE "recommendations"."movie_id" = $1[0m  [["movie_id", 1]]
+Completed 200 OK in 26ms (Views: 1.4ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/api/movies/3/recommendations" for 127.0.0.1 at 2017-12-08 18:43:17 +0200
+Processing by RecommendationsController#index as */*
+  Parameters: {"movie_id"=>"3", "recommendation"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mRecommendation Load (0.2ms)[0m  [1m[34mSELECT "recommendations".* FROM "recommendations" WHERE "recommendations"."movie_id" = $1[0m  [["movie_id", 3]]
+Completed 200 OK in 12ms (Views: 8.3ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/api/genres" for 127.0.0.1 at 2017-12-08 18:43:43 +0200
+Processing by GenresController#index as */*
+  Parameters: {"genre"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGenre Load (0.3ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+Completed 200 OK in 9ms (Views: 5.1ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/api/movies/genre/comedy" for 127.0.0.1 at 2017-12-08 18:46:02 +0200
+  
+SyntaxError (/home/hazefully/deep-recommendation/app/controllers/movies_controller.rb:9: syntax error, unexpected tCONSTANT, expecting keyword_end
+params[:genre].present?) Genre.where(name: params[:genre]).m
+                              ^
+/home/hazefully/deep-recommendation/app/controllers/movies_controller.rb:9: syntax error, unexpected ':'
+name: params[:genre]).movies : Movie.all
+                              ^):
+  
+app/controllers/movies_controller.rb:9: syntax error, unexpected tCONSTANT, expecting keyword_end
+app/controllers/movies_controller.rb:9: syntax error, unexpected ':'
+Started GET "/api/movies/genre/comedy" for 127.0.0.1 at 2017-12-08 18:46:22 +0200
+  
+SyntaxError (/home/hazefully/deep-recommendation/app/controllers/movies_controller.rb:9: syntax error, unexpected tCONSTANT, expecting ')'
+arams[:genre].present??) Genre.where(name: params[:genre]).m
+                              ^
+/home/hazefully/deep-recommendation/app/controllers/movies_controller.rb:9: syntax error, unexpected ':'
+name: params[:genre]).movies : Movie.all
+                              ^
+/home/hazefully/deep-recommendation/app/controllers/movies_controller.rb:15: syntax error, unexpected keyword_end, expecting ')'
+    end
+       ^
+/home/hazefully/deep-recommendation/app/controllers/movies_controller.rb:17: syntax error, unexpected keyword_end, expecting ')'
+  end
+     ^
+/home/hazefully/deep-recommendation/app/controllers/movies_controller.rb:105: syntax error, unexpected keyword_end, expecting ')'):
+  
+app/controllers/movies_controller.rb:9: syntax error, unexpected tCONSTANT, expecting ')'
+app/controllers/movies_controller.rb:9: syntax error, unexpected ':'
+app/controllers/movies_controller.rb:15: syntax error, unexpected keyword_end, expecting ')'
+app/controllers/movies_controller.rb:17: syntax error, unexpected keyword_end, expecting ')'
+app/controllers/movies_controller.rb:105: syntax error, unexpected keyword_end, expecting ')'
+Started GET "/api/movies/genre/comedy" for 127.0.0.1 at 2017-12-08 18:46:44 +0200
+Processing by MoviesController#index as */*
+  Parameters: {"genre"=>"comedy", "movie"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGenre Load (0.3ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = $1 LIMIT $2[0m  [["name", "comedy"], ["LIMIT", 11]]
+Completed 500 Internal Server Error in 31ms (ActiveRecord: 4.3ms)
+
+
+  
+  [1m[36mCACHE Genre Load (0.0ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = $1 LIMIT $2[0m  [["name", "comedy"], ["LIMIT", 11]]
+NoMethodError (undefined method `movies' for #<Genre::ActiveRecord_Relation:0x007fe24c58ca60>):
+  
+app/controllers/movies_controller.rb:9:in `index'
+  [1m[36mCACHE Genre Load (0.0ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = $1 LIMIT $2[0m  [["name", "comedy"], ["LIMIT", 11]]
+  [1m[36mGenre Load (0.3ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" ORDER BY "genres"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mGenre Load (0.3ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" ORDER BY "genres"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mMovie Load (0.5ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" INNER JOIN "genres_movies" ON "movies"."id" = "genres_movies"."movie_id" WHERE "genres_movies"."genre_id" = $1 LIMIT $2[0m  [["genre_id", 1], ["LIMIT", 11]]
+Started GET "/api/movies/genre/comedy" for 127.0.0.1 at 2017-12-08 18:47:21 +0200
+Processing by MoviesController#index as */*
+  Parameters: {"genre"=>"comedy", "movie"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGenre Load (0.3ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = $1 ORDER BY "genres"."id" ASC LIMIT $2[0m  [["name", "comedy"], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.4ms)[0m  [1m[34mSELECT "movies".* FROM "movies" INNER JOIN "genres_movies" ON "movies"."id" = "genres_movies"."movie_id" WHERE "genres_movies"."genre_id" = $1[0m  [["genre_id", 2]]
+  [1m[36mGenre Load (0.3ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "genres_movies" ON "genres"."id" = "genres_movies"."genre_id" WHERE "genres_movies"."movie_id" = $1[0m  [["movie_id", 3]]
+  [1m[36mGenre Load (0.4ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "genres_movies" ON "genres"."id" = "genres_movies"."genre_id" WHERE "genres_movies"."movie_id" = $1[0m  [["movie_id", 4]]
+Completed 200 OK in 52ms (Views: 0.1ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/api/movies/genre/action" for 127.0.0.1 at 2017-12-08 18:47:35 +0200
+Processing by MoviesController#index as */*
+  Parameters: {"genre"=>"action", "movie"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGenre Load (0.7ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = $1 ORDER BY "genres"."id" ASC LIMIT $2[0m  [["name", "action"], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.4ms)[0m  [1m[34mSELECT "movies".* FROM "movies" INNER JOIN "genres_movies" ON "movies"."id" = "genres_movies"."movie_id" WHERE "genres_movies"."genre_id" = $1[0m  [["genre_id", 1]]
+  [1m[36mGenre Load (0.4ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "genres_movies" ON "genres"."id" = "genres_movies"."genre_id" WHERE "genres_movies"."movie_id" = $1[0m  [["movie_id", 3]]
+  [1m[36mGenre Load (0.2ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "genres_movies" ON "genres"."id" = "genres_movies"."genre_id" WHERE "genres_movies"."movie_id" = $1[0m  [["movie_id", 4]]
+Completed 200 OK in 12ms (Views: 0.1ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/api/movies/genre/rom" for 127.0.0.1 at 2017-12-08 18:47:38 +0200
+Processing by MoviesController#index as */*
+  Parameters: {"genre"=>"rom", "movie"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGenre Load (0.4ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = $1 ORDER BY "genres"."id" ASC LIMIT $2[0m  [["name", "rom"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.6ms)
+
+
+  
+NoMethodError (undefined method `movies' for nil:NilClass):
+  
+app/controllers/movies_controller.rb:9:in `index'
+Started GET "/api/movies/sort_by/Title" for 127.0.0.1 at 2017-12-08 18:47:50 +0200
+Processing by MoviesController#index as */*
+  Parameters: {"criteria"=>"Title", "movie"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" ORDER BY "movies"."Title" ASC[0m
+  [1m[36mGenre Load (0.2ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "genres_movies" ON "genres"."id" = "genres_movies"."genre_id" WHERE "genres_movies"."movie_id" = $1[0m  [["movie_id", 3]]
+  [1m[36mGenre Load (0.2ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "genres_movies" ON "genres"."id" = "genres_movies"."genre_id" WHERE "genres_movies"."movie_id" = $1[0m  [["movie_id", 4]]
+  [1m[36mGenre Load (0.2ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "genres_movies" ON "genres"."id" = "genres_movies"."genre_id" WHERE "genres_movies"."movie_id" = $1[0m  [["movie_id", 1]]
+  [1m[36mGenre Load (0.2ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "genres_movies" ON "genres"."id" = "genres_movies"."genre_id" WHERE "genres_movies"."movie_id" = $1[0m  [["movie_id", 2]]
+Completed 200 OK in 12ms (Views: 0.2ms | ActiveRecord: 1.2ms)
+
+

@@ -15,9 +15,10 @@ class Movie < ApplicationRecord
     validates_attachment_content_type :Poster, content_type: /\Aimage\/.*\z/
     attr_accessor :poster_base
 
-
-    def poster_url
-        self.Poster.url
+    def Genres
+        ret = ""
+        self.genres.each{|genre| ret += "#{genre.name}, "}
+        return ret.chomp(", ");
     end
 
     private
