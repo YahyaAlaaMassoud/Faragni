@@ -2,7 +2,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
   def change
     create_table :users do |t|
       t.string :FirstName
-      t.string :LastMame
+      t.string :LastName
       t.date :DateOfBirth
       t.string :UserName, null: false
       t.string :Email, null: false

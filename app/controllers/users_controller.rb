@@ -10,12 +10,12 @@ class UsersController < ApplicationController
       @users = User.all
     end
 
-    render json: @users.to_json(:methods => :profilePic)
+    render json: @users.to_json(:only => [:FirstName, :LastName, :UserName, :DateOfBirth, :JoiningDate, :bio, :Email], :methods => :profilePic)
   end
 
   # GET /users/1
   def show
-    render json: @user.to_json(:methods => :profilePic)
+    render json: @user.to_json(:only => [:FirstName, :LastName, :UserName, :DateOfBirth, :JoiningDate, :bio, :Email], :methods => :profilePic)
   end
 
   # POST /users
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     @user = User.new(create_user_params)
 
     if @user.save
-      render json: @user, status: :created, location: @user
+      render json: @user.to_json(:only => [:FirstName, :LastName, :UserName, :DateOfBirth, :JoiningDate, :bio, :Email], :methods => :profilePic), status: :created, location: @user
     else
       render json: @user.errors, status: :unprocessable_entity
     end
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   def update
     if @user.update(create_user_params)
-      render json: @user
+      render json: @user.to_json(:only => [:FirstName, :LastName, :UserName, :DateOfBirth, :JoiningDate, :bio, :Email], :methods => :profilePic)
     else
       render json: @user.errors, status: :unprocessable_entity
     end
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
   # GET /users/:user_id/follow
   def follow
     if current_user.follow(params[:user_id])
-      render json: current_user.followings
+      render json: current_user.followings.to_json(:only => [:FirstName, :LastName, :UserName, :DateOfBirth, :JoiningDate, :bio, :Email], :methods => :profilePic)
     else
       render json: current_user.errors, status: :unprocessable_entity
     end
@@ -55,7 +55,7 @@ class UsersController < ApplicationController
   # GET /users/:user_id/unfollow
   def unfollow
     if current_user.unfollow(params[:user_id])
-      render json: current_user.followings
+      render json: current_user.followings.to_json(:only => [:FirstName, :LastName, :UserName, :DateOfBirth, :JoiningDate, :bio, :Email], :methods => :profilePic)
     else
       render json: current_user.errors, status: :unprocessable_entity
     end
