@@ -67,9 +67,7 @@
 .avatarEdit{
     opacity:0.4;
     background-color:black;
-}
-input[type="file"] {
-    display: none;
+    cursor: pointer;
 }
 .custom-file-upload {
     border: 1px solid #ccc;
@@ -150,6 +148,10 @@ textarea{
         min-width:1080px;
     }
 
+}
+.useravatar > input
+{
+    display: none;
 }
 
 @media screen and (max-width:1080px){

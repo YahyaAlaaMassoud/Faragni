@@ -24,19 +24,20 @@ export class ProfileComponent implements OnInit {
   isLoggedInUser: boolean;
   isFollowed: boolean;
   fullName: string;
-
+  louda:User;
+  user1:User;
   loggedUser: User;
 
   constructor(private router:Router, 
               private route: ActivatedRoute, 
               private userService: UserService,
               private cdRef: ChangeDetectorRef) {
-      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));    
-      // // console.log(this.currentUser); 
-      // this.currentUser.Email=["khaledawaled@live.com"];
-      // this.currentUser.Age = 21;
-      // this.currentUser.bio = "";
-      //localStorage.setItem('currentUser',JSON.stringify(this.currentUser));
+      this.currentUser = JSON.parse(localStorage.getItem('currentUser')); 
+
+      this.louda = new User();
+      this.user1 = new User();
+      this.currentUser.Email=["khaledawaled@live.com"];
+      this.currentUser.Age = 21;
       this.currentScreen = 0;
       this.isEdit = false;
       this.showFollowers = false;
@@ -47,6 +48,19 @@ export class ProfileComponent implements OnInit {
      // this.currentUser.Friends.push(this.currentUser);
        localStorage.setItem('currentUser',JSON.stringify(this.currentUser));
       // console.log(this.currentUser.Friends);
+      this.louda.bio="hamada ra7 wa magash";
+      this.louda.FirstName = "louda";
+      this.louda.LastName = "hamada";
+      this.louda.profilePic = this.currentUser.profilePic;
+      this.user1.FirstName = "tftf";
+      this.user1.LastName = "2f2f";
+      this.user1.bio = "hanafy comes first";
+      this.user1.profilePic = this.currentUser.profilePic;
+      this.currentUser.Followers=[];
+      this.currentUser.Followers.push(this.louda);
+      this.currentUser.Followers.push(this.user1);
+      localStorage.setItem('currentUser',JSON.stringify(this.currentUser));
+      console.log(this.currentUser.Followers);
   }
 
   ngOnInit() {
@@ -76,6 +90,7 @@ export class ProfileComponent implements OnInit {
     this.loggedUser = JSON.parse(localStorage.getItem('currentUser'))
     // console.log(this.currentUser)
   }
+
   takeAction(element){
     this.isEdit = !this.isEdit;
     if(this.isEdit){
@@ -90,7 +105,6 @@ export class ProfileComponent implements OnInit {
   chooseScreen(e)
   {
     this.currentScreen = e ; 
-    console.log(e)
   }
   onFileChange(fileInput: any){
     this.currentUser.profilePic = fileInput.target.files[0];
@@ -99,7 +113,6 @@ export class ProfileComponent implements OnInit {
     reader.onload = (e: any) => {
         this.currentUser.profilePic = e.target.result;
         localStorage.setItem('currentUser',JSON.stringify(this.currentUser));
-        console.log('tamam?')
         this.updateUsersList(this.currentUser);           
     }
     reader.readAsDataURL(fileInput.target.files[0]);
@@ -109,12 +122,10 @@ export class ProfileComponent implements OnInit {
     const index: number = users
       .findIndex(item => item.UserID === user.UserID);
     users[index] = user;
-    console.log('tamam')
     localStorage.setItem('users', JSON.stringify(users));
   }
 
   chooseTab(id: number){
-    console.log(id)
     if(id == 1){
       this.showRatedMovies = true;
       this.showFollowers = false;

@@ -11,8 +11,8 @@ export class FollowersComponent implements OnInit {
   currentUser:User;
   constructor() { 
     this.currentUser=JSON.parse(localStorage.getItem("currentUser"));
-    this.friendList = this.currentUser.Friends;
-    // console.log(this.friendList);
+
+    this.friendList = this.currentUser.Followers;
   }
 
 

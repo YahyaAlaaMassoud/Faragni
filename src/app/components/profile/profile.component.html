@@ -5,11 +5,10 @@
         <!-- <img alt="" [src]="currentUser.profilePic" style="height:100%;"> -->
     </div>
     <div class="useravatar">
-        <label for="file-upload" class="custom-file-upload">
-            <i class="fa fa-cloud-upload"></i> Upload
+        <label for="file-upload" >
+             <img  class= "useravatar" [ngClass]="{'avatarEdit':isEdit}"  [src]="currentUser.profilePic" alt="error" id="pfimg">
         </label>
-        <input id="file-upload" type="file" (change)="onFileChange($event)" />
-        <img  class= "useravatar" [ngClass]="{'avatarEdit':isEdit}"  [src]="currentUser.profilePic" alt="error" id="pfimg">                 
+        <input *ngIf="isEdit" id="file-upload" type="file" accept="image/*" (change)="onFileChange($event)" />      
     </div>
     <div class="tabs-row">
         <div class="h-100 shift-tabs">
@@ -39,6 +38,7 @@
             </button>      
         </div>
     </div>
+  
     
     <div class="content">
         <div class="user-info">
@@ -77,13 +77,13 @@
                     </label>
                 </div>
             </div> 
+                <!--        <p *ngIf="!isEdit" style="font-style:normal;font-size:100%">{{currentUser.bio}}</p>
+                        <span *ngIf="isEdit" class="input-group-addon" id="basic-addon1">bio</span>
+                        <input *ngIf="isEdit" class="form-control" aria-describedby="basic-addon1" [(ngModel)] ="currentUser.bio">-->
         </div>
-
-        
         <div class="col2">
             <div class="tab-content">
-                <!-- <input class=""type="file" (change)="onFileChange($event)" value="Upload image..." /> -->
-                <app-followers *ngIf="showFollowers"></app-followers>
+            <app-followers-thumbnail *ngIf="showFollowers"></app-followers-thumbnail>
                 <rated-movies *ngIf="showRatedMovies"></rated-movies>
                 <watchlist *ngIf="showWatchlistMovies"></watchlist>
                 <recommendations *ngIf="showRecommendedMovies"></recommendations>
