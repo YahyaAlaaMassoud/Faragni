@@ -6,6 +6,10 @@ class Recommendation < ApplicationRecord
   belongs_to :movie
   before_save :update_from_user_points
   validate :parties_not_equal
+  alias_attribute :ByUserID, :from_user_id
+  alias_attribute :ToUserID, :to_user_id
+  alias_attribute :MovieID, :movie_id
+  alias_attribute :RecommendationID, :id
   scope :pending, -> {where(UserRating: nil)}
   scope :rated, -> {where.not(UserRating: nil )}
   private

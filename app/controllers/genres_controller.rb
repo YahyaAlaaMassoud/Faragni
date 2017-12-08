@@ -4,13 +4,12 @@ class GenresController < ApplicationController
   # GET /genres
   def index
     @genres = Genre.all
-
-    render json: @genres
+    render json: @genres.to_json(:except => :id, :methods => :GenreID)
   end
 
   # GET /genres/1
   def show
-    render json: @genre
+    render json: @genres.to_json(:except => :id, :methods => :GenreID)
   end
 
   # POST /genres
@@ -18,7 +17,7 @@ class GenresController < ApplicationController
     @genre = Genre.new(genre_params)
 
     if @genre.save
-      render json: @genre, status: :created, location: @genre
+      render json: @genres.to_json(:except => :id, :methods => :GenreID), status: :created, location: @genre
     else
       render json: @genre.errors, status: :unprocessable_entity
     end
@@ -27,7 +26,7 @@ class GenresController < ApplicationController
   # PATCH/PUT /genres/1
   def update
     if @genre.update(genre_params)
-      render json: @genre
+      render json: @genres.to_json(:except => :id, :methods => :GenreID)
     else
       render json: @genre.errors, status: :unprocessable_entity
     end
@@ -46,6 +45,6 @@ class GenresController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def genre_params
-      params.require(:genre).permit(:name)
+      params.permit(:Name)
     end
 end

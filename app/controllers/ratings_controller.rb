@@ -14,12 +14,12 @@ class RatingsController < ApplicationController
       end
     end
 
-    render json: @ratings
+    render json: @ratings.to_json(:except => [:movie_id, :user_id], :methods => [:MovieID, :UserID])
   end
 
   # GET /ratings/1
   def show
-    render json: @rating
+    render json: @rating.to_json(:except => [:movie_id, :user_id], :methods => [:MovieID, :UserID])
   end
 
   # POST /ratings
@@ -27,7 +27,7 @@ class RatingsController < ApplicationController
     @rating = Rating.new(rating_params)
 
     if @rating.save
-      render json: @rating, status: :created, location: @rating
+      render json: @rating.to_json(:except => [:movie_id, :user_id], :methods => [:MovieID, :UserID]), status: :created, location: @rating
     else
       render json: @rating.errors, status: :unprocessable_entity
     end
@@ -36,7 +36,7 @@ class RatingsController < ApplicationController
   # PATCH/PUT /ratings/1
   def update
     if @rating.update(rating_params)
-      render json: @rating
+      render json: @rating.to_json(:except => [:movie_id, :user_id], :methods => [:MovieID, :UserID])
     else
       render json: @rating.errors, status: :unprocessable_entity
     end
@@ -65,7 +65,7 @@ class RatingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def rating_params
-      p = params.require(:rating).permit(:Rating, :Review, :MovieID)
+      p = params.permit(:Rating, :Review, :MovieID)
       p[:rating] = p[:Rating]
       p[:review] = p[:Review]
       p[:movie_id] = p[:MovieID]

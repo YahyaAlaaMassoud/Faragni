@@ -27,6 +27,7 @@ class User < ApplicationRecord
     validates_attachment_content_type :profilePic, content_type: /\Aimage\/.*\z/
     attr_accessor :profilePic_base
 
+    alias_attribute :UserID, :id
     # specifies how log in is carried out
     def self.from_token_request request
         email = request.params["auth"].try(:[], "Email")

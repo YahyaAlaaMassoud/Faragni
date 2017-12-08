@@ -16,12 +16,14 @@ class RecommendationsController < ApplicationController
         @recommendations = Recommendation.all
     end
 
-    render json: @recommendations
+    render json: @recommendations.to_json(:except => [:movie_id, :from_user_id, :to_user_id, :id],
+                                          :methods => [:MovieID, :ByUserID, :ToUserID, :RecommendationID])
   end
 
   # GET /recommendations/1
   def show 
-    render json: @recommendation
+    render json: @recommendation.to_json(:except => [:movie_id, :from_user_id, :to_user_id, :id],
+                                         :methods => [:MovieID, :ByUserID, :ToUserID, :RecommendationID])
   end
 
   # POST /users/:id/recommend
@@ -29,7 +31,10 @@ class RecommendationsController < ApplicationController
     @recommendation = Recommendation.new(recommendation_params)
 
     if @recommendation.save
-      render json: @recommendation, status: :created, location: @recommendation
+      render json: @recommendation.to_json(:except => [:movie_id, :from_user_id, :to_user_id, :id],
+                                           :methods => [:MovieID, :ByUserID, :ToUserID, :RecommendationID]),
+                                           status: :created,
+                                           location: @recommendation
     else
       render json: @recommendation.errors, status: :unprocessable_entity
     end
@@ -38,7 +43,10 @@ class RecommendationsController < ApplicationController
   # PATCH/PUT /recommendations/1
   def update
     if @recommendation.update(recommendation_params)
-      render json: @recommendation, status: :ok, location: @recommendation
+      render json: @recommendation.to_json(:except => [:movie_id, :from_user_id, :to_user_id, :id],
+                                           :methods => [:MovieID, :ByUserID, :ToUserID, :RecommendationID]),
+                                           status: :ok,
+                                           location: @recommendation   
     else
       render json: @recommendation.errors, status: :unprocessable_entity
     end
@@ -67,9 +75,11 @@ class RecommendationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def recommendation_params
-      p = params.require(:recommendation).permit(:from_user_id, :to_user_id, :movie_id, :ExpectedRating, :UserRating, :Message, :status)
+      p = params.permit(:ByUserID, :ToUserID, :MovieID, :ExpectedRating, :UserRating, :Message)
       p[:to_user_id] = params[:user_id] if p[:to_user_id].blank? && p[:user_id].present?
       p[:from_user_id] = current_user.id unless request.method == "PATCH" || request.method == "PUT"
+      p[:movie_id] = p[:MovieID]
+      p.delete :MovieID
       return p
     end
 end
