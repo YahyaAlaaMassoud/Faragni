@@ -5,17 +5,17 @@ class UsersController < ApplicationController
   def index
     @users = User.all
 
-    render json: @users
+    render json: @users.to_json(:methods => :profilePic_url)
   end
 
   # GET /users/1
   def show
-    render json: @user
+    render json: @user.to_json(:methods => :profilePic_url)
   end
 
   # POST /users
   def create
-    @user = User.new(user_params)
+    @user = User.new(create_user_params)
 
     if @user.save
       render json: @user, status: :created, location: @user
@@ -41,11 +41,23 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      if(params[:id].present?)
+        @user = User.find(params[:id])
+      else
+        @user = User.first
+      end
     end
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :date_of_birth, :username)
+      params.require(:user).permit(:FirstName, :LastName, :DateOfBirth, :UserName, :Email, :Password, :bio, :profilePic)
+    end
+
+    def create_user_params
+      p = user_params
+      p[:user][:profilePic_base] = p[:profilePic]
+      p[:user].delete :profilePic
+      p[:user][:password] = p[:Password]
+      p[:user].delete :Password
     end
 end

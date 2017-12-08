@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171201163145) do
+ActiveRecord::Schema.define(version: 20171208002303) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,13 @@ ActiveRecord::Schema.define(version: 20171201163145) do
     t.datetime "date_of_birth"
     t.datetime "date_of_death"
     t.text "biography"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "followings", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "follower_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -98,10 +105,8 @@ ActiveRecord::Schema.define(version: 20171201163145) do
     t.string "Website"
     t.string "Writer"
     t.integer "Year"
-    t.bigint "production_company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["production_company_id"], name: "index_movies_on_production_company_id"
   end
 
   create_table "movies_tags", id: false, force: :cascade do |t|
@@ -119,6 +124,29 @@ ActiveRecord::Schema.define(version: 20171201163145) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "ratings", force: :cascade do |t|
+    t.decimal "rating"
+    t.text "review"
+    t.bigint "user_id"
+    t.bigint "movie_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_ratings_on_movie_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
+  end
+
+  create_table "recommendations", force: :cascade do |t|
+    t.integer "from_user_id"
+    t.integer "to_user_id"
+    t.bigint "movie_id"
+    t.decimal "ExpectedRating"
+    t.decimal "UserRating"
+    t.string "Message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_recommendations_on_movie_id"
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -133,10 +161,24 @@ ActiveRecord::Schema.define(version: 20171201163145) do
     t.string "Email", null: false
     t.string "password_digest"
     t.date "JoiningDate", default: -> { "now()" }, null: false
+    t.string "bio"
+    t.string "profilePic_file_name"
+    t.string "profilePic_content_type"
+    t.integer "profilePic_file_size"
+    t.datetime "profilePic_updated_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["Email"], name: "index_users_on_Email", unique: true
     t.index ["UserName"], name: "index_users_on_UserName", unique: true
+  end
+
+  create_table "watchlists", force: :cascade do |t|
+    t.bigint "movie_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_watchlists_on_movie_id"
+    t.index ["user_id"], name: "index_watchlists_on_user_id"
   end
 
 end

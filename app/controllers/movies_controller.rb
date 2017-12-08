@@ -5,12 +5,12 @@ class MoviesController < ApplicationController
   def index
     @movies = Movie.all
 
-    render json: @movies
+    render json: @movies.to_json(:methods => :poster_url)
   end
 
   # GET /movies/1
   def show
-    render json: @movie
+    render json: @movie.to_json(:methods => :poster_url)    
   end
 
   # POST /movies
@@ -46,12 +46,16 @@ class MoviesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def create_movie_params
-      p = params.require(:movie).permit(:imdbID, :imdbVotes, :imdbRating, :Title, :Language, :TagLine, :ReleaseDate, :Poster, :Popularity, :Actors, :BoxOffice, :Country, :Director, :Metascore, :Plot, :Runtime, :Website, :Writer, :Year, :ProductionCompany)
-      p[:poster_base] = p[:poster]
-      p.delete :poster
+      p = movie_params
+      p[:poster_base] = p[:Poster]
+      p.delete :Poster
+      p.delete :ProductionCompany
+      return p
     end
     
     def movie_params
       params.require(:movie).permit(:imdbID, :imdbVotes, :imdbRating, :Title, :Language, :TagLine, :ReleaseDate, :Poster, :Popularity, :Actors, :BoxOffice, :Country, :Director, :Metascore, :Plot, :Runtime, :Website, :Writer, :Year, :ProductionCompany)
+      p.delete :ProductionCompany
+      return p
     end
 end

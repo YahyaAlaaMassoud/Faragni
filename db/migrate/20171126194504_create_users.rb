@@ -8,6 +8,8 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :Email, null: false
       t.string :password_digest
       t.date :JoiningDate, null: false, default: -> { 'CURRENT_TIMESTAMP' }
+      t.string :bio, null: true
+      t.attachment :profilePic
       t.timestamps
     end
 
