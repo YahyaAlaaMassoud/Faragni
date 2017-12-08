@@ -1,3 +1,4 @@
+// import * as console from 'console';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
@@ -41,7 +42,9 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.location.path())
+    // console.log(this.location.path())
+    if(this.route.snapshot.url[0].path === "profile" || this.route.snapshot.url[0].path === "home")
+      this.currentScreen = 0;
   }
 
   chooseScreen(id: number){
@@ -54,7 +57,7 @@ export class NavbarComponent implements OnInit {
   }
 
   logout(){
-    console.log('logout')
+    // console.log('logout')
     var toast: any = {
       type: 'info',
       title: 'Good Bye!',
@@ -67,11 +70,15 @@ export class NavbarComponent implements OnInit {
   }
   
   goToProfile(){
-    this.chooseScreen(0)    
-    this.router.navigate(['/profile'])
+    this.currentScreen = 0
+    this.router.navigate(['/profile', 1])
   }
 
   openNav() {
+      if(document.getElementById("mySidenav").style.width == "250px"){
+        this.closeNav();
+        return;
+      }
       document.getElementById("mySidenav").style.width = "250px";
       // document.getElementById("main").style.marginRight = "250px";
       // document.getElementById("mySidenav").style.opacity = "1";

@@ -1,82 +1,32 @@
-    
-<!-- remove navbar-expand-lg and search for a better navar -->
-<!-- <nav id="mainNav" class="navbar navbar-expand-lg fixed-top" role="navigation">
-  <div class="container">
-    <a class="navbar-brand" href="/">Faragni</a>
-    <button [ngClass]="{'nav-tab my-2 my-sm-0': true, 'nav-tab-active my-2 my-sm-0': currentScreen == '1'}" (click)="chooseScreen(1)">Movies</button>
-    <button [ngClass]="{'nav-tab my-2 my-sm-0': true, 'nav-tab-active my-2 my-sm-0': currentScreen == '2'}" (click)="chooseScreen(2)">Activity</button>
-    <button [ngClass]="{'nav-tab my-2 my-sm-0': true, 'nav-tab-active my-2 my-sm-0': currentScreen == '3'}" (click)="chooseScreen(3)">Friends</button>
-    <div class="collapse navbar-collapse">
-      <ul class="navbar-nav ml-auto">
-      </ul>
-      <!-- <form class="form-inline"> -->
-        <!--<input *ngIf="!hide" class="form-control" type="search" placeholder="Search" aria-label="Search">
-        <form *ngIf="!hide" class="form-inline active-purple active-purple-2">
-            <input class="form-control w-100 response-search" type="text" placeholder="Search" aria-label="Search">
-        </form>
-        <button class="nav-btn-outline my-2 my-sm-0" (click)="toggleModal()" *ngIf="hide">Sign in</button>
-        <div class="btn-group">
-          <button class="nav-btn-outline my-2 my-sm-0" *ngIf="currentUser != null" (click)="openNav()">
-            {{currentUser.UserName[0].toLocaleUpperCase()}}
-          </button>
-              <!-- <div class="dropdown-menu">
-                  <span data-toggle="dropdown"></span>
-                  <a class="dropdown-item">Profile</a>
-                  <a class="dropdown-item">Friends</a>
-                  <a class="dropdown-item">Movies</a>
-                  <a class="dropdown-item">Settings</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" (click)="logout()">Logout</a>
-              </div> 
-        </div>
-      <!-- </form> 
-    </div>
-  </div>
-</nav> -->
 
-<!--Navbar-->
-<nav id="new-nav" class="navbar navbar-expand-lg navbar-dark fixed-top ">
-  
-      <!-- Navbar brand -->
-      <a class="navbar-brand" href="#">Navbar</a>
-  
-      <!-- Collapse button -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-          aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon" style="color:red;"></span>
-      </button>
-  
-      <!-- Collapsible content -->
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-  
-          <!-- Links -->
-          <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="#">Features</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="#">Pricing</a>
-              </li>
-  
-          </ul>
-          <!-- Links -->
-  
-          <!-- Search form -->
-          <form class="form-inline">
-              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-              <!-- <button class="nav-btn-outline my-2 my-sm-0" (click)="toggleModal()" *ngIf="hide">Sign in</button>
-              <button class="nav-btn-outline my-2 my-sm-0" *ngIf="currentUser != null" (click)="openNav()">
-                {{currentUser.UserName[0].toLocaleUpperCase()}}
-              </button> -->
-          </form>
-      </div>
-      <!-- Collapsible content -->
-  
-  </nav>
-  <!--/.Navbar-->
+
+<div class="tabs-row">
+    <div class="h-100 shift-brand">
+        <button class="tab" [ngClass]="{'tab-active': currentScreen === 1}" (click)="chooseScreen(1)">
+            Movies
+        </button>
+        <button class="tab" [ngClass]="{'tab-active': currentScreen === 2}" (click)="chooseScreen(2)">
+            Activity
+        </button>
+        <button class="tab" [ngClass]="{'tab-active': currentScreen === 3}" (click)="chooseScreen(3)">
+            Friends
+        </button>
+        <!-- TODO HOME BUTTON -->
+        <!-- <button class="action-button logo">
+            F
+        </button> -->
+    </div>
+    <div class="h-100 shift-tabs">
+        <!-- <button class="tab" [hidden]="true">
+            Rated Movies
+        </button> -->
+        <button (click)="toggleModal()" *ngIf="hide" class="action-button">
+            Sign in
+        </button>
+        <img [src]="currentUser.profilePic" *ngIf="currentUser != null" (click)="openNav()" class="rounded-circle img-responsive profile">
+        
+    </div>
+</div>
 
 <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>

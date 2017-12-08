@@ -40,8 +40,27 @@
     </div>
   </div>
   <!-- <div  class="scroll"> -->
-  <div *ngFor="let movie of displayedMovies; let i = index">
+  <div *ngFor="let movie of pagedItems; let i = index">
     <app-movie-thumbnail [currentMovie]="movie"></app-movie-thumbnail>
+  </div>
+  <i *ngIf="pagedItems.length" class="fa fa-arrow-left previous" (click)="setPage(pager.currentPage - 1)" aria-hidden="true"></i>            
+  <i *ngIf="pagedItems.length" class="fa fa-arrow-right next" aria-hidden="true" (click)="setPage(pager.currentPage + 1)"></i>            
+  
+  <div class="pages">
+    <div class="pagination" *ngIf="pagedItems.length">
+        <!-- <button class="page gradient" (click)="setPage(1)">First</button> -->
+
+        <li *ngFor="let page of pager.pages" [ngClass]="{'active':pager.currentPage === page}">
+          <button class="page number gradient" (click)="setPage(page)">{{page}}</button>
+        </li>
+
+        <!-- <button class="page gradient" (click)="setPage(pager.totalPages)">Last</button> -->
+    </div>
+    <div class="pagination" *ngIf="!pagedItems.length">
+      <h1>
+        There are no movies matching those filters.
+      </h1>
+    </div>
   </div>
 <!-- </div> -->
   <!-- <div class="ui segments">

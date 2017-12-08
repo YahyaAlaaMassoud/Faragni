@@ -11,10 +11,15 @@
 					<span>{{currentMovie.Released}}</span>
 				</div>
 				<ul class="menu-content">
-					<li><a class="fa" [ngClass]="{'fa-paper-plane-o':!toggleSendButton, 'fa-paper-plane':toggleSendButton}"
+					<li>
+						<a href="{{imdbPath}}" target="_blank">
+							<i class="fa fa-film" aria-hidden="true"></i>								
+						</a>
+					</li>
+					<li *ngIf="currentMovieRating.Rating != 0"><a class="fa" [ngClass]="{'fa-paper-plane-o':!toggleSendButton, 'fa-paper-plane':toggleSendButton}"
 						(mouseenter)="toggleSendButton = true" (mouseleave)="toggleSendButton = false"
-						data-toggle="modal" data-backdrop="static" [attr.data-target]="'#' + currentMovie.imdbID"
-						(click)="newRecommendation()" *ngIf="currentMovieRating.Rating != 0"></a></li>
+						data-toggle="modal" [attr.data-target]="'#' + currentMovie.imdbID"
+						(click)="newRecommendation()"></a></li>
 					<li><a class="fa" [ngClass]="{'fa-bookmark-o': !addedToList, 'fa-bookmark': addedToList}"
 							(click)="addToWatchList()"></a></li>								
 					<li class="dropdown">
@@ -34,7 +39,7 @@
 			<!--data-->
 			<div class="data">
 				<div class="content">
-				  <h1 class="title"><a>{{currentMovie.Title}}</a></h1>
+				  <h1 class="title"><a href="{{imdbPath}}" target="_blank">{{currentMovie.Title}}</a></h1>
 				  <p class="plot">{{currentMovie.Plot}}</p>
 					<a class="button" (click)="flip = !flip">More Info!</a>
 				</div>

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../../../models/user.model';
 import { Movie } from '../../../models/movie.model';
 import { OmdbMoviesService } from '../../../services/omdb/omdb-movies.service';
@@ -13,12 +14,23 @@ export class WatchlistComponent implements OnInit {
   currentUser: User;
   watchlistMovies: Movie[];
 
-  constructor(private omdb: OmdbMoviesService) {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    console.log(this.currentUser);
+  ngOnInit() {
+    this.getCurrentUser();
     this.watchlistMovies = [];
     this.getWatchListMovies();
-   }
+  }
+
+  getCurrentUser(){
+    if(this.route.snapshot.data['user'] === null)
+      this.router.navigate(['/404']);
+// console.log(this.isLoggedInUser)
+    this.currentUser = this.route.snapshot.data['user'];
+  }
+
+  constructor(private omdb: OmdbMoviesService,
+              private route: ActivatedRoute,
+              private router: Router) {
+  }
 
    getWatchListMovies() {
      this.currentUser.WatchList = this.currentUser.WatchList  || [];
@@ -31,13 +43,10 @@ export class WatchlistComponent implements OnInit {
             this.watchlistMovies.push(cur);
           },
           error => {
-            console.log('Error: ', error);
+            // console.log('Error: ', error);
           }
         );
      });
    }
-
-  ngOnInit() {
-  }
 
 }

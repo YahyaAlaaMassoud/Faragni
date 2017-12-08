@@ -47,11 +47,11 @@ export class LoginComponent implements OnInit {
       this.authenticationService.logout();
       // get return url from route parameters or default to '/'
       this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-      console.log(localStorage.getItem('currentUser'))
+    //   console.log(localStorage.getItem('currentUser'))
   }
 
   login() {
-      console.log('logged in')
+    //   console.log('logged in')
       this.authenticationService.login(this.model.UserName, this.model.Password)
           .subscribe(
               data => {
@@ -62,15 +62,15 @@ export class LoginComponent implements OnInit {
                     body: 'Nice to see you ' + data.UserName + '!',
                     timeout: 2500
                   };
-                  console.log(this.model.UserName);
-                  console.log(this.model.Password)
+                //   console.log(this.model.UserName);
+                //   console.log(this.model.Password)
                   this.toast.pop(toast)
                   //this.toasterService.pop('success', 'Hello', 'Welcome to Faragni');
                   this.router.navigate(['/welcome']);
               },
               error => {
                   //this.toasterService.pop('error', 'Error', 'Error while login');
-                  console.log('error')
+                //   console.log('error')
                   this.loading = false;
               });
   }
@@ -79,7 +79,7 @@ export class LoginComponent implements OnInit {
       this.loading = true;
       this.model.Email = [];
       this.model.Email.push(this.email)
-      console.log(this.model)
+    //   console.log(this.model)
       this.userService.create(this.model)
           .subscribe(
               data => {

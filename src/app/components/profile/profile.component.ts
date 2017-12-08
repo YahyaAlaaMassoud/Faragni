@@ -1,7 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnChanges, OnInit, ViewChild } from '@angular/core';
 import { User } from '../../models/user.model';
 import { Event, document } from 'angular-bootstrap-md/utils/facade/browser';
 import { Router, ActivatedRoute } from '@angular/router';
+
+//services
+import { UserService } from '../../services/user/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -18,12 +21,21 @@ export class ProfileComponent implements OnInit {
   showWatchlistMovies: boolean;
   showRecommendedMovies: boolean;
   currentScreen:number;
+  isLoggedInUser: boolean;
+  isFollowed: boolean;
+  fullName: string;
   louda:User;
   user1:User;
-  constructor(private router:Router) {
+  loggedUser: User;
+
+  constructor(private router:Router, 
+              private route: ActivatedRoute, 
+              private userService: UserService,
+              private cdRef: ChangeDetectorRef) {
+      this.currentUser = JSON.parse(localStorage.getItem('currentUser')); 
+
       this.louda = new User();
       this.user1 = new User();
-      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));    
       this.currentUser.Email=["khaledawaled@live.com"];
       this.currentUser.Age = 21;
       this.currentScreen = 0;
@@ -31,7 +43,11 @@ export class ProfileComponent implements OnInit {
       this.showFollowers = false;
       this.showRatedMovies = true;
       this.showWatchlistMovies = false;
-      this.showRecommendedMovies = false; 
+      this.showRecommendedMovies = false;
+      this.currentUser.Friends=[]
+     // this.currentUser.Friends.push(this.currentUser);
+       localStorage.setItem('currentUser',JSON.stringify(this.currentUser));
+      // console.log(this.currentUser.Friends);
       this.louda.bio="hamada ra7 wa magash";
       this.louda.FirstName = "louda";
       this.louda.LastName = "hamada";
@@ -45,10 +61,36 @@ export class ProfileComponent implements OnInit {
       this.currentUser.Followers.push(this.user1);
       localStorage.setItem('currentUser',JSON.stringify(this.currentUser));
       console.log(this.currentUser.Followers);
-      }
-  ngOnInit() {
-
   }
+
+  ngOnInit() {
+    // console.log(this.cdRef.detectChanges())
+    const id = +this.route.snapshot.paramMap.get('id');
+    console.log(id)
+    console.log(this.route.snapshot.data)
+    if(this.route.snapshot.data['user'] === null)
+      this.router.navigate(['/404']);
+    this.isLoggedInUser = (this.currentUser.UserID === this.route.snapshot.data['user'].UserID) ? true : false;
+    if(!this.isLoggedInUser){
+      let ok: boolean = false;
+      this.currentUser.Following = this.currentUser.Following || [];
+      this.currentUser.Following.forEach(usr =>{
+        if(usr.UserID === id){
+          ok = true;
+        }
+      })
+      this.isFollowed = ok;
+    }
+    // // console.log(this.isLoggedInUser)
+    this.currentUser = this.route.snapshot.data['user'];
+
+    this.fullName = this.currentUser.FirstName + ' ' + this.currentUser.LastName;
+    this.currentUser.bio = "ana esmy hamada"
+
+    this.loggedUser = JSON.parse(localStorage.getItem('currentUser'))
+    // console.log(this.currentUser)
+  }
+
   takeAction(element){
     this.isEdit = !this.isEdit;
     if(this.isEdit){
@@ -109,5 +151,29 @@ export class ProfileComponent implements OnInit {
       this.showRecommendedMovies = true;
       console.log(id)
     }
+  }
+
+  hh(){
+    console.log('hamada')
+  }
+
+  follow(){
+    let usr: User = JSON.parse(localStorage.getItem('currentUser'));  
+    usr.Following = usr.Following || [] 
+    usr.Following.push(this.currentUser);
+    localStorage.setItem('currentUser', JSON.stringify(usr));
+    this.updateUsersList(usr);
+    this.isFollowed = !this.isFollowed;
+    console.log(this.isFollowed)
+  }
+
+  unfollow(){
+    let usr: User = JSON.parse(localStorage.getItem('currentUser')); 
+    usr.Following = usr.Following || []     
+    const index: number = usr.Following.findIndex(item => item.UserID === this.currentUser.UserID);
+    usr.Following.splice(index, 1);
+    localStorage.setItem('currentUser', JSON.stringify(usr));
+    this.updateUsersList(usr);
+    this.isFollowed = !this.isFollowed;    
   }
 }

@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
     let path: string = this.route.snapshot.url.join('/');
     if(path.includes('login'))
       this.navAppearence = false;
-    console.log(this.route.snapshot.url.join('/'))
+    // console.log(this.route.snapshot.url.join('/'))
     this.movies = [];
   }
 

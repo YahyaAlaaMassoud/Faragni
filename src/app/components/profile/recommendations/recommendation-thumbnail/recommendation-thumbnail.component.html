@@ -5,7 +5,7 @@
     </div>
     <div class="recommendation-content">
       <div class="title">
-        <span *ngIf="currentRecommendingUser != undefined">
+        <span *ngIf="currentRecommendingUser != undefined" (click)="goToProfile()">
           {{currentRecommendingUser.FirstName + ' ' + currentRecommendingUser.LastName}}
         </span>
         recommended you 
@@ -51,7 +51,7 @@
             <hr>
             <h4 class="plot">{{currentMovie.Awards}}</h4>
             <hr>
-            <h4 class="plot">Rating: <b>{{currentMovie.imdbRating}}</b>, Total number of votes: <b>{{currentMovie.imdbVotes}}</b></h4>
+            <h4 class="plot">Rating: <b>{{currentMovie.imdbRating}}</b>, Total number of votes: <b>{{currentMovie.imdbVotes}}</b>, <a class="imdbLink" href="{{imdbPath}}" target="_blank">Go to IMDB</a></h4>
 					</div>
 				</div>
 			</div>

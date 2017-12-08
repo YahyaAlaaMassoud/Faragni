@@ -1,16 +1,16 @@
 .recommended-movie-card{
-    width: 90%;
+    width: inherit;
     height: 200px;
     max-height: 200px;
     margin: 15px;
     position: relative;
     background-color: white;    
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), 0 10px 7px rgba(0, 0, 0, 0.2);    
-    -webkit-transition: all 0.9s;
-    transition: all 0.9s;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
     -webkit-text-fill-color: #7b4397;
     left:10px;
-    // border-top-left-radius: 8%;
+    // border-top-left-radius: 80%;
     // border-bottom-left-radius: 9%;
     text-align: center;
 }
@@ -41,7 +41,7 @@
 }
 
 .recommended-movie-card .recommendation-content{
-    padding: 20px;
+    padding: 15px;
     height: 100%;
     width:75%;
     float: right;
@@ -72,6 +72,9 @@
     font-size: 20px;
     font-weight: bold;
     text-align: center;
+    display: block;
+    max-width: inherit;
+    overflow-x: hidden;    
 }
 
 .padd{
@@ -106,4 +109,10 @@ hr{
 }
 .plot{
     font-size:17px;
+}
+a.imdbLink{
+    text-decoration: underline;
+}
+a.imdbLink:hover{
+    text-decoration: underline;    
 }

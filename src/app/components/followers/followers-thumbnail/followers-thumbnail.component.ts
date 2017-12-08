@@ -16,6 +16,7 @@ export class FollowersThumbnailComponent implements OnInit {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
   ngOnInit() {
+
   }
   unfollowUser(){
     console.log(this.currentUser.Followers);
