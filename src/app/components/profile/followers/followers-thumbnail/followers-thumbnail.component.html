@@ -1,0 +1,26 @@
+<!-- this is the markup. you can change the details (your own name, your own avatar etc.) but don’t change the basic structure! -->
+
+<aside class="profile-card">
+        
+          <header>
+        
+            <!-- here’s the avatar -->
+            <a href="#">
+              <img [src]="currentFollower.profilePic">
+            </a>
+        
+            <!-- the username -->
+            <h1>{{currentFollower.FirstName}} {{currentFollower.LastName}}</h1>
+        
+            <!-- and role or location -->
+        
+          </header>
+        
+          <!-- bit of a bio; who are you? -->
+          <div class="profile-bio">
+        
+            <p>{{currentFollower.bio}}</p>
+            <p><button *ngIf = "isFollowing == false"  class="nav-btn-outline my-2 my-sm-0 followBtn1" (click)="followUser()">follow</button></p>
+            <p><button *ngIf = "isFollowing" class="nav-btn-outline my-2 my-sm-0 followBtn"  (click)="unfollowUser()">unfollow</button></p>
+          </div>
+</aside>

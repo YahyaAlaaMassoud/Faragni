@@ -42,15 +42,17 @@ import { MoviesComponent } from './components/movies/movies.component';
 import { ActivityComponent } from './components/activity/activity.component';
 import { MovieThumbnailComponent } from './components/movies/movie-thumbnail/movie-thumbnail.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { FollowersComponent } from './components/followers/followers.component';
+import { FollowersComponent } from './components/profile/followers/followers.component';
 import { RatedMoviesComponent } from './components/profile/rated-movies/rated-movies.component';
 import { RatedMovieThumbnailComponent } from './components/profile/rated-movies/rated-movie-thumbnail/rated-movie-thumbnail.component';
 import { WatchlistComponent } from './components/profile/watchlist/watchlist.component';
 import { RecommendationsComponent } from './components/profile/recommendations/recommendations.component';
 import { StarRatingPipePipe } from './pipes/star-rating-pipe.pipe';
 import { RecommendationThumbnailComponent } from './components/profile/recommendations/recommendation-thumbnail/recommendation-thumbnail.component';
-import { FollowersThumbnailComponent } from './components/followers/followers-thumbnail/followers-thumbnail.component';
+import { FollowersThumbnailComponent } from './components/profile/followers/followers-thumbnail/followers-thumbnail.component';
 import { NotFound404Component } from './components/common/not-found-404/not-found-404.component';
+import { FollowingComponent } from './components/profile/following/following.component';
+import { FollowingThumbnailComponent } from './components/profile/following/following-thumbnail/following-thumbnail.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +75,9 @@ import { NotFound404Component } from './components/common/not-found-404/not-foun
     StarRatingPipePipe,
     RecommendationThumbnailComponent,
     FollowersThumbnailComponent,
-    NotFound404Component
+    NotFound404Component,
+    FollowingComponent,
+    FollowingThumbnailComponent
   ],
   imports: [
     BrowserModule,

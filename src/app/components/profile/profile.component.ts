@@ -20,6 +20,7 @@ export class ProfileComponent implements OnInit {
   showRatedMovies: boolean;
   showWatchlistMovies: boolean;
   showRecommendedMovies: boolean;
+  showFollowing: boolean;
   currentScreen:number;
   isLoggedInUser: boolean;
   isFollowed: boolean;
@@ -27,6 +28,7 @@ export class ProfileComponent implements OnInit {
   louda:User;
   user1:User;
   loggedUser: User;
+  user2: User;
 
   constructor(private router:Router, 
               private route: ActivatedRoute, 
@@ -36,6 +38,7 @@ export class ProfileComponent implements OnInit {
 
       this.louda = new User();
       this.user1 = new User();
+      this.user2 = new User();
       this.currentUser.Email=["khaledawaled@live.com"];
       this.currentUser.Age = 21;
       this.currentScreen = 0;
@@ -44,14 +47,22 @@ export class ProfileComponent implements OnInit {
       this.showRatedMovies = true;
       this.showWatchlistMovies = false;
       this.showRecommendedMovies = false;
+      this.showFollowing = false;
       this.currentUser.Friends=[]
      // this.currentUser.Friends.push(this.currentUser);
        localStorage.setItem('currentUser',JSON.stringify(this.currentUser));
       // console.log(this.currentUser.Friends);
+      this.user2.FirstName = "waleed";
+      this.user2.LastName = "elnaser";
+      this.user2.bio = "ana raye7 fen ";
+      this.user2.profilePic = this.currentUser.profilePic;
       this.louda.bio="hamada ra7 wa magash";
       this.louda.FirstName = "louda";
       this.louda.LastName = "hamada";
       this.louda.profilePic = this.currentUser.profilePic;
+      this.louda.UserID = 2 ; 
+      this.user1.UserID = 3 ; 
+      this.user2.UserID = 4 ;
       this.user1.FirstName = "tftf";
       this.user1.LastName = "2f2f";
       this.user1.bio = "hanafy comes first";
@@ -59,6 +70,8 @@ export class ProfileComponent implements OnInit {
       this.currentUser.Followers=[];
       this.currentUser.Followers.push(this.louda);
       this.currentUser.Followers.push(this.user1);
+      this.currentUser.Following=[];
+      this.currentUser.Following.push(this.user2);
       localStorage.setItem('currentUser',JSON.stringify(this.currentUser));
       console.log(this.currentUser.Followers);
   }
@@ -131,25 +144,37 @@ export class ProfileComponent implements OnInit {
       this.showFollowers = false;
       this.showWatchlistMovies = false;
       this.showRecommendedMovies = false;
+      this.showFollowing = false ;
     }
     else if(id == 2){
       this.showRatedMovies = false;
       this.showFollowers = false;
       this.showWatchlistMovies = true;
       this.showRecommendedMovies = false;
+      this.showFollowing = false ;
     }
     else if(id == 4){
       this.showRatedMovies = false;
       this.showFollowers = true;
       this.showWatchlistMovies = false;
       this.showRecommendedMovies = false;
+      this.showFollowing = false ;
     }
     else if(id == 5){
       this.showRatedMovies = false;
       this.showFollowers = false;
       this.showWatchlistMovies = false;
+      this.showFollowing = false ;       
       this.showRecommendedMovies = true;
       console.log(id)
+    }
+    else if(id == 6)
+    {
+      this.showRatedMovies = false;
+      this.showFollowers = false;
+      this.showWatchlistMovies = false;
+      this.showRecommendedMovies = false;
+      this.showFollowing = true ; 
     }
   }
 
