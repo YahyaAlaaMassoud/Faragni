@@ -32,6 +32,15 @@ class User < ApplicationRecord
         self.profilePic.url
     end
 
+    def self.from_token_request request
+        email = request.params["auth"].try(:[], "Email")
+        if(email.present?)
+            return User.where(Email: email).first
+        else
+            return nil
+        end
+    end        
+
     private
         # parses a base64 image into a paperclip attachment
         def parse_image

@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
 
   scope '/api' do
+    post 'authenticate' => 'user_token#create'
+    
     resources :users do
       resources :ratings
       # recommend action

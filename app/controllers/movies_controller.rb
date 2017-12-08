@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :update, :destroy]
-
+  
   # GET /movies
   def index
     @movies = Movie.all
