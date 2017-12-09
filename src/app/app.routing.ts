@@ -9,7 +9,7 @@ import { HomeComponent } from './components/home/home.component'
 import { WelcomeScreenComponent } from './components/welcome-screen/welcome-screen.component';
 import { NotFound404Component } from './components/common/not-found-404/not-found-404.component';
 
-import { FollowersComponent } from './components/followers/followers.component';
+import { FollowersComponent } from './components/profile/followers/followers.component';
 import { ProfileComponent } from './components/profile/profile.component'
 import { ActivityComponent } from './components/activity/activity.component'
 

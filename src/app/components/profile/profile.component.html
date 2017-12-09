@@ -21,7 +21,7 @@
             <button class="tab" [ngClass]="{'tab-active':showWatchlistMovies}" (click)="chooseTab(2)">
                 Watchlist
             </button>
-            <button class="tab">
+            <button class="tab" [ngClass]="{'tab-active':showFollowing}" (click)="chooseTab(6)">
                 Following
             </button>
             <button class="tab" [ngClass]="{'tab-active':showFollowers}" (click)="chooseTab(4)">
@@ -86,10 +86,11 @@
         </div>
         <div class="col2">
             <div class="tab-content">
-            <app-followers-thumbnail *ngIf="showFollowers"></app-followers-thumbnail>
+                <app-followers *ngIf ="showFollowers"></app-followers>
                 <rated-movies *ngIf="showRatedMovies"></rated-movies>
                 <watchlist *ngIf="showWatchlistMovies"></watchlist>
                 <recommendations *ngIf="showRecommendedMovies"></recommendations>
+                <app-following *ngIf="showFollowing"></app-following>
             </div>
         </div>
     </div> 
