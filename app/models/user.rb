@@ -32,7 +32,7 @@ class User < ApplicationRecord
     alias_attribute :UserID, :id
 
     def profilePic_url
-        add_host_prefix(profilePic.url)
+        add_host_prefix(self.profilePic.url)
     end
     
     # specifies how log in is carried out

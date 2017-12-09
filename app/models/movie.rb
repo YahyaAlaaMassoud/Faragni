@@ -18,7 +18,7 @@ class Movie < ApplicationRecord
     attr_accessor :poster_base
 
     def Poster_url
-        add_host_prefix(Poster.url)
+        add_host_prefix(self.Poster.url)
     end
 
     def Genres

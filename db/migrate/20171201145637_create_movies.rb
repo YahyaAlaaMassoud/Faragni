@@ -24,5 +24,6 @@ class CreateMovies < ActiveRecord::Migration[5.1]
       # t.belongs_to :production_company, null: true
       t.timestamps
     end
+    add_index :movies, :imdbID, unique: true
   end
 end

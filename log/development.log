@@ -22460,3 +22460,152 @@ puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
 puma (3.11.0) lib/puma/server.rb:438:in `process_client'
 puma (3.11.0) lib/puma/server.rb:302:in `block in run'
 puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mGenre Load (0.7ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = $1 LIMIT $2[0m  [["name", "Animation"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Animation"], ["created_at", "2017-12-09 03:47:45.910985"], ["updated_at", "2017-12-09 03:47:45.910985"]]
+  [1m[35m (73.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mGenre Load (0.5ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = $1 LIMIT $2[0m  [["name", "Animation"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mGenre Load (0.5ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = $1 LIMIT $2[0m  [["name", "Animation"], ["LIMIT", 1]]
+  [1m[36mGenre Load (0.4ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = $1 LIMIT $2[0m  [["name", "Adventure"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Adventure"], ["created_at", "2017-12-09 03:48:19.244329"], ["updated_at", "2017-12-09 03:48:19.244329"]]
+  [1m[35m (45.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mGenre Load (1.1ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = $1 LIMIT $2[0m  [["name", "Comedy"], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Comedy"], ["created_at", "2017-12-09 03:48:19.309206"], ["updated_at", "2017-12-09 03:48:19.309206"]]
+  [1m[35m (19.8ms)[0m  [1m[35mCOMMIT[0m
+Command :: file -b --mime '/tmp/f0f77e92978cf0665e74159fc278901320171209-11145-1jmepsf.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/e5118127cc7c9ff82bb2e56c404091c920171209-11145-1kjqmsg.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/e5118127cc7c9ff82bb2e56c404091c920171209-11145-1kjqmsg.jpg[0]'
+Command :: convert '/tmp/e5118127cc7c9ff82bb2e56c404091c920171209-11145-1kjqmsg.jpg[0]' -auto-orient -resize "300x300>" '/tmp/481be893afe8ffc6019e441ee8970adb20171209-11145-1lm1te1'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/e5118127cc7c9ff82bb2e56c404091c920171209-11145-1kjqmsg.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/e5118127cc7c9ff82bb2e56c404091c920171209-11145-1kjqmsg.jpg[0]'
+Command :: convert '/tmp/e5118127cc7c9ff82bb2e56c404091c920171209-11145-1kjqmsg.jpg[0]' -auto-orient -resize "100x100>" '/tmp/481be893afe8ffc6019e441ee8970adb20171209-11145-3r43ds'
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.9ms)[0m  [1m[32mINSERT INTO "movies" ("imdbID", "imdbVotes", "imdbRating", "Title", "Language", "ReleaseDate", "Poster_file_name", "Actors", "BoxOffice", "Country", "Director", "Metascore", "Runtime", "Website", "Writer", "Year", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18) RETURNING "id"[0m  [["imdbID", "tt0114709"], ["imdbVotes", "700,233"], ["imdbRating", "8.3"], ["Title", "Toy Story"], ["Language", "English"], ["ReleaseDate", "1995-11-22"], ["Poster_file_name", nil], ["Actors", "Tom Hanks, Tim Allen, Don Rickles, Jim Varney"], ["BoxOffice", "N/A"], ["Country", "USA"], ["Director", "John Lasseter"], ["Metascore", "95.0"], ["Runtime", "81 min"], ["Website", "http://www.disney.com/ToyStory"], ["Writer", "John Lasseter (original story by), Pete Docter (original story by), Andrew Stanton (original story by), Joe Ranft (original story by), Joss Whedon (screenplay by), Andrew Stanton (screenplay by), Joel Cohen (screenplay by), Alec Sokolow (screenplay by)"], ["Year", 1995], ["created_at", "2017-12-09 03:48:31.333923"], ["updated_at", "2017-12-09 03:48:31.333923"]]
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "genres_movies" ("movie_id", "genre_id") VALUES ($1, $2)[0m  [["movie_id", 6], ["genre_id", 4]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "genres_movies" ("movie_id", "genre_id") VALUES ($1, $2)[0m  [["movie_id", 6], ["genre_id", 5]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "genres_movies" ("movie_id", "genre_id") VALUES ($1, $2)[0m  [["movie_id", 6], ["genre_id", 6]]
+  [1m[35m (39.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mGenre Load (1.4ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = $1 LIMIT $2[0m  [["name", "Action"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Action"], ["created_at", "2017-12-09 03:48:41.004833"], ["updated_at", "2017-12-09 03:48:41.004833"]]
+  [1m[35m (74.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mGenre Load (1.0ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = $1 LIMIT $2[0m  [["name", "Adventure"], ["LIMIT", 1]]
+  [1m[36mGenre Load (0.9ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = $1 LIMIT $2[0m  [["name", "Family"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Family"], ["created_at", "2017-12-09 03:48:41.096046"], ["updated_at", "2017-12-09 03:48:41.096046"]]
+  [1m[35m (5.4ms)[0m  [1m[35mCOMMIT[0m
+Command :: file -b --mime '/tmp/e1af135b0d21b6c4be97fa18d4a02a6f20171209-11145-1b4e5ld.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/4f17d39cbf97a264797c3c6756aac44320171209-11145-vxo6fm.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/4f17d39cbf97a264797c3c6756aac44320171209-11145-vxo6fm.jpg[0]'
+Command :: convert '/tmp/4f17d39cbf97a264797c3c6756aac44320171209-11145-vxo6fm.jpg[0]' -auto-orient -resize "300x300>" '/tmp/6ea4d36f427db9f8958118cf23c9b65020171209-11145-1c2qw65'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/4f17d39cbf97a264797c3c6756aac44320171209-11145-vxo6fm.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/4f17d39cbf97a264797c3c6756aac44320171209-11145-vxo6fm.jpg[0]'
+Command :: convert '/tmp/4f17d39cbf97a264797c3c6756aac44320171209-11145-vxo6fm.jpg[0]' -auto-orient -resize "100x100>" '/tmp/6ea4d36f427db9f8958118cf23c9b65020171209-11145-11birxr'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "movies" ("imdbID", "imdbVotes", "imdbRating", "Title", "Language", "ReleaseDate", "Poster_file_name", "Actors", "BoxOffice", "Country", "Director", "Metascore", "Runtime", "Website", "Writer", "Year", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18) RETURNING "id"[0m  [["imdbID", "tt0113497"], ["imdbVotes", "234,352"], ["imdbRating", "6.9"], ["Title", "Jumanji"], ["Language", "English, French"], ["ReleaseDate", "1995-12-15"], ["Poster_file_name", nil], ["Actors", "Robin Williams, Jonathan Hyde, Kirsten Dunst, Bradley Pierce"], ["BoxOffice", "N/A"], ["Country", "USA"], ["Director", "Joe Johnston"], ["Metascore", "39.0"], ["Runtime", "104 min"], ["Website", "N/A"], ["Writer", "Jonathan Hensleigh (screenplay), Greg Taylor (screenplay), Jim Strain (screenplay), Greg Taylor (screen story), Jim Strain (screen story), Chris Van Allsburg (screen story), Chris Van Allsburg (book)"], ["Year", 1995], ["created_at", "2017-12-09 03:48:43.574648"], ["updated_at", "2017-12-09 03:48:43.574648"]]
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "genres_movies" ("movie_id", "genre_id") VALUES ($1, $2)[0m  [["movie_id", 7], ["genre_id", 7]]
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "genres_movies" ("movie_id", "genre_id") VALUES ($1, $2)[0m  [["movie_id", 7], ["genre_id", 5]]
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "genres_movies" ("movie_id", "genre_id") VALUES ($1, $2)[0m  [["movie_id", 7], ["genre_id", 8]]
+  [1m[35m (74.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mMovie Load (1.3ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" ORDER BY "movies"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mGenre Load (0.5ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = $1 LIMIT $2[0m  [["name", "Action"], ["LIMIT", 1]]
+  [1m[36mGenre Load (0.4ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = $1 LIMIT $2[0m  [["name", "Crime"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Crime"], ["created_at", "2017-12-09 04:41:34.352339"], ["updated_at", "2017-12-09 04:41:34.352339"]]
+  [1m[35m (56.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mGenre Load (0.8ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = $1 LIMIT $2[0m  [["name", "Drama"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Drama"], ["created_at", "2017-12-09 04:41:34.424019"], ["updated_at", "2017-12-09 04:41:34.424019"]]
+  [1m[35m (16.0ms)[0m  [1m[35mCOMMIT[0m
+Command :: file -b --mime '/tmp/9501ad775703994d053f17a62769a32c20171209-14045-151x3im.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/16caccd970eb5775474eeea790f8d6aa20171209-14045-bxzrh5.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/16caccd970eb5775474eeea790f8d6aa20171209-14045-bxzrh5.jpg[0]'
+Command :: convert '/tmp/16caccd970eb5775474eeea790f8d6aa20171209-14045-bxzrh5.jpg[0]' -auto-orient -resize "300x300>" '/tmp/607207ba5fbd667517c25683408a38b720171209-14045-jqg1ql'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/16caccd970eb5775474eeea790f8d6aa20171209-14045-bxzrh5.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/16caccd970eb5775474eeea790f8d6aa20171209-14045-bxzrh5.jpg[0]'
+Command :: convert '/tmp/16caccd970eb5775474eeea790f8d6aa20171209-14045-bxzrh5.jpg[0]' -auto-orient -resize "100x100>" '/tmp/607207ba5fbd667517c25683408a38b720171209-14045-17yc89r'
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+Command :: file -b --mime '/tmp/49e20b8766c85b92858bdf473be281af20171209-14045-aqq60t.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/8d777f385d3dfec8815d20f7496026dc20171209-14045-15yg2g4[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/8d777f385d3dfec8815d20f7496026dc20171209-14045-15yg2g4[0]'
+Command :: convert '/tmp/8d777f385d3dfec8815d20f7496026dc20171209-14045-15yg2g4[0]' -auto-orient -resize "300x300>" '/tmp/0a93c5e0dd317a010df5fe6e6401434620171209-14045-yzpco6'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/8d777f385d3dfec8815d20f7496026dc20171209-14045-15yg2g4[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/8d777f385d3dfec8815d20f7496026dc20171209-14045-15yg2g4[0]'
+Command :: convert '/tmp/8d777f385d3dfec8815d20f7496026dc20171209-14045-15yg2g4[0]' -auto-orient -resize "100x100>" '/tmp/0a93c5e0dd317a010df5fe6e6401434620171209-14045-l89rms'
+Command :: file -b --mime '/tmp/49e20b8766c85b92858bdf473be281af20171209-14045-qot6rq.jpg'
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "movies" ("imdbID", "imdbVotes", "imdbRating", "Title", "Language", "ReleaseDate", "Poster_file_name", "Poster_content_type", "Poster_file_size", "Poster_updated_at", "Actors", "BoxOffice", "Country", "Director", "Metascore", "Runtime", "Website", "Writer", "Year", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21) RETURNING "id"[0m  [["imdbID", "tt0113277"], ["imdbVotes", "473,243"], ["imdbRating", "8.2"], ["Title", "Heat"], ["Language", "English, Spanish"], ["ReleaseDate", "1995-12-15"], ["Poster_file_name", "poster.jpg"], ["Poster_content_type", "image/jpeg"], ["Poster_file_size", 27600], ["Poster_updated_at", "2017-12-09 04:41:44.007770"], ["Actors", "Al Pacino, Robert De Niro, Val Kilmer, Jon Voight"], ["BoxOffice", "N/A"], ["Country", "USA"], ["Director", "Michael Mann"], ["Metascore", "76.0"], ["Runtime", "170 min"], ["Website", "N/A"], ["Writer", "Michael Mann"], ["Year", 1995], ["created_at", "2017-12-09 04:41:44.078532"], ["updated_at", "2017-12-09 04:41:44.078532"]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "genres_movies" ("movie_id", "genre_id") VALUES ($1, $2)[0m  [["movie_id", 8], ["genre_id", 7]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "genres_movies" ("movie_id", "genre_id") VALUES ($1, $2)[0m  [["movie_id", 8], ["genre_id", 9]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "genres_movies" ("movie_id", "genre_id") VALUES ($1, $2)[0m  [["movie_id", 8], ["genre_id", 10]]
+  [1m[35m (75.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mMovie Load (1.7ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" ORDER BY "movies"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mMovie Load (1.2ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" ORDER BY "movies"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mMovie Load (1.2ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" ORDER BY "movies"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mMovie Load (1.3ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" ORDER BY "movies"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mGenre Load (1.0ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = $1 LIMIT $2[0m  [["name", "Comedy"], ["LIMIT", 1]]
+  [1m[36mGenre Load (0.8ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = $1 LIMIT $2[0m  [["name", "Drama"], ["LIMIT", 1]]
+Command :: file -b --mime '/tmp/dede9843b87de5b98e538ee29a6b398220171209-14045-8g4f1a.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/042caec31b0298c55021a7b2466177a920171209-14045-czih57.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/042caec31b0298c55021a7b2466177a920171209-14045-czih57.jpg[0]'
+Command :: convert '/tmp/042caec31b0298c55021a7b2466177a920171209-14045-czih57.jpg[0]' -auto-orient -resize "300x300>" '/tmp/6190ab64c43bc31e789ecbf3aeafa8d720171209-14045-1t7tqzf'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/042caec31b0298c55021a7b2466177a920171209-14045-czih57.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/042caec31b0298c55021a7b2466177a920171209-14045-czih57.jpg[0]'
+Command :: convert '/tmp/042caec31b0298c55021a7b2466177a920171209-14045-czih57.jpg[0]' -auto-orient -resize "100x100>" '/tmp/6190ab64c43bc31e789ecbf3aeafa8d720171209-14045-8h8gzl'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Command :: file -b --mime '/tmp/49e20b8766c85b92858bdf473be281af20171209-14045-cd7fap.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/8d777f385d3dfec8815d20f7496026dc20171209-14045-mrf092[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/8d777f385d3dfec8815d20f7496026dc20171209-14045-mrf092[0]'
+Command :: convert '/tmp/8d777f385d3dfec8815d20f7496026dc20171209-14045-mrf092[0]' -auto-orient -resize "300x300>" '/tmp/fa4f3057a31f1ea08ca43d5c93096d5620171209-14045-1n7tet5'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/8d777f385d3dfec8815d20f7496026dc20171209-14045-mrf092[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/8d777f385d3dfec8815d20f7496026dc20171209-14045-mrf092[0]'
+Command :: convert '/tmp/8d777f385d3dfec8815d20f7496026dc20171209-14045-mrf092[0]' -auto-orient -resize "100x100>" '/tmp/fa4f3057a31f1ea08ca43d5c93096d5620171209-14045-6mh5i0'
+Command :: file -b --mime '/tmp/49e20b8766c85b92858bdf473be281af20171209-14045-1t0cm4y.jpg'
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "movies" ("imdbID", "imdbVotes", "imdbRating", "Title", "Language", "ReleaseDate", "Poster_file_name", "Poster_content_type", "Poster_file_size", "Poster_updated_at", "Actors", "BoxOffice", "Country", "Director", "Metascore", "Runtime", "Website", "Writer", "Year", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21) RETURNING "id"[0m  [["imdbID", "tt0114319"], ["imdbVotes", "31,541"], ["imdbRating", "6.3"], ["Title", "Sabrina"], ["Language", "English, French"], ["ReleaseDate", "1995-12-15"], ["Poster_file_name", "poster.jpg"], ["Poster_content_type", "image/jpeg"], ["Poster_file_size", 25299], ["Poster_updated_at", "2017-12-09 04:42:55.890695"], ["Actors", "Harrison Ford, Julia Ormond, Greg Kinnear, Nancy Marchand"], ["BoxOffice", "N/A"], ["Country", "Germany, USA"], ["Director", "Sydney Pollack"], ["Metascore", "56.0"], ["Runtime", "127 min"], ["Website", "N/A"], ["Writer", "Samuel A. Taylor (play), Billy Wilder (earlier screenplay), Samuel A. Taylor (earlier screenplay), Ernest Lehman (earlier screenplay), Barbara Benedek (screenplay), David Rayfiel (screenplay)"], ["Year", 1995], ["created_at", "2017-12-09 04:42:55.943163"], ["updated_at", "2017-12-09 04:42:55.943163"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "genres_movies" ("movie_id", "genre_id") VALUES ($1, $2)[0m  [["movie_id", 9], ["genre_id", 6]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "genres_movies" ("movie_id", "genre_id") VALUES ($1, $2)[0m  [["movie_id", 9], ["genre_id", 10]]
+  [1m[35m (70.7ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/api/movies" for 127.0.0.1 at 2017-12-09 06:43:21 +0200
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MoviesController#index as */*
+  Parameters: {"movie"=>{}}
+  [1m[36mMovie Load (0.7ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 4.4ms)
+
+
+  
+NameError (uninitialized constant Movie::Poster):
+  
+app/models/movie.rb:19:in `Poster_url'
+app/controllers/movies_controller.rb:18:in `index'
+Started GET "/api/movies" for 127.0.0.1 at 2017-12-09 06:43:39 +0200
+Processing by MoviesController#index as */*
+  Parameters: {"movie"=>{}}
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  [1m[36mGenre Load (0.4ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "genres_movies" ON "genres"."id" = "genres_movies"."genre_id" WHERE "genres_movies"."movie_id" = $1[0m  [["movie_id", 1]]
+  [1m[36mGenre Load (0.3ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "genres_movies" ON "genres"."id" = "genres_movies"."genre_id" WHERE "genres_movies"."movie_id" = $1[0m  [["movie_id", 2]]
+  [1m[36mGenre Load (0.3ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "genres_movies" ON "genres"."id" = "genres_movies"."genre_id" WHERE "genres_movies"."movie_id" = $1[0m  [["movie_id", 4]]
+  [1m[36mGenre Load (0.3ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "genres_movies" ON "genres"."id" = "genres_movies"."genre_id" WHERE "genres_movies"."movie_id" = $1[0m  [["movie_id", 5]]
+  [1m[36mGenre Load (0.3ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "genres_movies" ON "genres"."id" = "genres_movies"."genre_id" WHERE "genres_movies"."movie_id" = $1[0m  [["movie_id", 6]]
+  [1m[36mGenre Load (0.3ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "genres_movies" ON "genres"."id" = "genres_movies"."genre_id" WHERE "genres_movies"."movie_id" = $1[0m  [["movie_id", 7]]
+  [1m[36mGenre Load (0.3ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "genres_movies" ON "genres"."id" = "genres_movies"."genre_id" WHERE "genres_movies"."movie_id" = $1[0m  [["movie_id", 8]]
+  [1m[36mGenre Load (0.2ms)[0m  [1m[34mSELECT "genres".* FROM "genres" INNER JOIN "genres_movies" ON "genres"."id" = "genres_movies"."genre_id" WHERE "genres_movies"."movie_id" = $1[0m  [["movie_id", 9]]
+Completed 200 OK in 55ms (Views: 0.1ms | ActiveRecord: 6.1ms)
+
+
