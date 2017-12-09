@@ -7,7 +7,7 @@
         <span>{{currentMovie.ReleaseDate}}</span>
       </div>
     </div>
-    <div class="close">
+    <div *ngIf="!readOnly" class="close">
       <i (click)="removeRatingOrWatchlist()" class="fa fa-times" aria-hidden="true"></i>      
     </div>
     <span *ngFor="let genre of currentMovie.Genres" class="badge badge-pill purple genre">

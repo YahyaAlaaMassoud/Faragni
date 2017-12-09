@@ -91,6 +91,7 @@ export class ProfileComponent implements OnInit {
     this.currentUser.bio = "ana esmy hamada";
 
     this.getAuthenticatedUser();
+    this.isFollowedUser()
     this.changeMeOnUpdate();
     
     if(usr === null){
@@ -203,6 +204,18 @@ export class ProfileComponent implements OnInit {
     reader.readAsDataURL(fileInput.target.files[0]);
   } 
 
+  isFollowedUser() {
+    this.userService.isFollowing(this.currentUser.UserID)
+                    .subscribe(
+                      res => {
+                        this.isFollowed = !res.follows_me;
+                      },
+                      error => {
+                        console.log('Error: ' + error)
+                      }
+                    )
+  }
+
   chooseTab(id: number){
     if(id == 1){
       this.showRatedMovies = true;
@@ -243,20 +256,28 @@ export class ProfileComponent implements OnInit {
   }
 
   follow(){
-    let usr: User = JSON.parse(localStorage.getItem('currentUser'));  
-    usr.Following = usr.Following || [] 
-    usr.Following.push(this.currentUser);
-    localStorage.setItem('currentUser', JSON.stringify(usr));
-    this.isFollowed = !this.isFollowed;
-    console.log(this.isFollowed)
+    this.userService.followUser(this.currentUser.UserID).subscribe(
+
+                res => {
+                  console.log(res);
+                  this.isFollowed = true;
+                },
+                error =>{
+                  console.log("error: " + error);
+                }
+                
+
+    )
   }
 
   unfollow(){
-    let usr: User = JSON.parse(localStorage.getItem('currentUser')); 
-    usr.Following = usr.Following || []     
-    const index: number = usr.Following.findIndex(item => item.UserID === this.currentUser.UserID);
-    usr.Following.splice(index, 1);
-    localStorage.setItem('currentUser', JSON.stringify(usr));
-    this.isFollowed = !this.isFollowed;    
+    this.userService.unfollowUser(this.currentUser.UserID).subscribe(
+                      res => {
+                        console.log(res);
+                       this.isFollowed = false
+                      },
+                      error =>{
+                        console.log("error: " + error);
+                      }  )
   }
 }
