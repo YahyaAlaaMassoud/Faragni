@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewEncapsulation, Input  } from '@angular/core';
 import { User } from '../../../../models/user.model';
 import { Output } from '@angular/core/src/metadata/directives';
+//<!-- LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAA START -->
+
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-followers-thumbnail',
@@ -11,7 +14,9 @@ export class FollowersThumbnailComponent implements OnInit {
   @Input() currentFollower:User;
   currentUser:User;
   isFollowing:boolean;
-  constructor() { 
+  //        <!-- LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAA START -->
+
+  constructor(private router: Router) { 
     //console.log(this.currentFollower.UserID);
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.isFollowing = false;
@@ -23,6 +28,9 @@ export class FollowersThumbnailComponent implements OnInit {
     {
      this.isFollowing = true;
     }
+  }
+  goToProfile(){
+    this.router.navigate(['/profile', this.currentFollower.UserID]);
   }
   updateUsersList(user: User) {
     const users: User[] = JSON.parse(localStorage.getItem('users'));
@@ -59,4 +67,5 @@ export class FollowersThumbnailComponent implements OnInit {
   //       bt.click = function(){this.followUser();}
   //   }
   // }
+  
 }

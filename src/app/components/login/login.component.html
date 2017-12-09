@@ -15,23 +15,25 @@
           <a (click)="loginOrRegiser = !loginOrRegiser" style="cursor: pointer;">Not a member?</a>
         </div>
         <!--register form-->
+        <!-- LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA  START -->
         <div class="login" *ngIf="loginOrRegiser">
           <h2 style="font-size:22px;">Create a new account</h2>
-          <input style="width:270px;" placeholder="First Name.." type="text" class="form-control"
-                        [(ngModel)]="model.FirstName" required />
-          <input style="width:270px;" placeholder="Last Name.." type="text" class="form-control"
-                        [(ngModel)]="model.LastName" required />
-          <input style="width:270px;" placeholder="Username.." type="text" class="form-control"
-                        [(ngModel)]="model.UserName" required />
-          <input style="width:270px;" placeholder="Email.." type="text" class="form-control"
-                        [(ngModel)]="model.Email" required />
+          <input style="width:270px;" placeholder="First Name.." name="fn" #firstName type="text" class="form-control"
+                        [(ngModel)]="model.FirstName" (change)="checkInput(firstName)" required />
+          <input style="width:270px;" placeholder="Last Name.." name="ln" #lastName type="text" class="form-control"
+                        [(ngModel)]="model.LastName" (change)="checkInput(lastName)" required />
+          <input style="width:270px;" placeholder="Username.." name="un" #username type="text" class="form-control"
+                        [(ngModel)]="model.UserName" (change)="checkInput(username)" required />
+          <input style="width:270px;" placeholder="Email.." name="email" #email type="email" class="form-control" 
+                        [(ngModel)]="model.Email" (change)="checkInput(email)" required />
           <input style="width:270px;" placeholder="Age.." type="date" class="form-control"
                         [(ngModel)]="model.Age" required />
-          <input style="width:270px;" placeholder="Password.." type="password" class="form-control"
-                        [(ngModel)]="model.Password" required />
+          <input style="width:270px;" placeholder="Password.." name="pw" #password type="password" class="form-control"
+                        [(ngModel)]="model.Password" (change)="checkInput(password)" required />
           <hr>
           <button style="width:270px;" [disabled]="loading" class="login-btn-outline btn-lg btn-block" (click)="register()">Register</button>
           <a (click)="loginOrRegiser = !loginOrRegiser" style="cursor: pointer;">Already have an account?</a>
+          <!-- LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA  END -->
         </div>
       </div>
     </div>

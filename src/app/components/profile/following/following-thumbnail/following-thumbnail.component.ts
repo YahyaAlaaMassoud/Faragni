@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import { User } from '../../../../models/user.model';
 import { Output } from '@angular/core/src/metadata/directives';
+//<!-- LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAA START -->
+
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-following-thumbnail',
@@ -13,8 +16,9 @@ export class FollowingThumbnailComponent implements OnInit {
   @Input() currentFollowing:User;
   currentUser:User;
 
-
-  constructor() { 
+  //<!-- LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAA START -->
+  
+  constructor(private router: Router) { 
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
   ngOnInit() {
@@ -26,6 +30,9 @@ export class FollowingThumbnailComponent implements OnInit {
       .findIndex(item => item.UserID === user.UserID);
     users[index] = user;
     localStorage.setItem('users', JSON.stringify(users));
+  }
+  goToProfile(){
+    this.router.navigate(['/profile', this.currentFollowing.UserID]);
   }
   unfollowUser(){
     const index: number = this.currentUser.Following
