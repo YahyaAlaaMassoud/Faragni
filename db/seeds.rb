@@ -6,5 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create
-)
+require 'csv'
+require 'rest-client'
+
+CSV.foreach("movies.csv", :headers => true) do |row|
+  movie = row.to_hash
+  imdb_id = movie[:imdbID]
+  imdb_movie = RestClient.get "https://www.omdbapi.com/?i=tt#{imdb_id}&apikey=ddd4a842";
+end

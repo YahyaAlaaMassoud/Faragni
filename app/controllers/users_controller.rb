@@ -11,12 +11,12 @@ class UsersController < ApplicationController
       @users = User.all
     end
 
-    render json: @users.to_json(:only => [:FirstName, :LastName, :UserName, :DateOfBirth, :JoiningDate, :bio, :Email], :methods => [:profilePic, :UserID])
+    render json: @users.to_json(:only => [:FirstName, :LastName, :UserName, :DateOfBirth, :JoiningDate, :bio, :Email], :methods => [:profilePic_url, :UserID])
   end
 
   # GET /users/1
   def show
-    render json: @user.to_json(:only => [:FirstName, :LastName, :UserName, :DateOfBirth, :JoiningDate, :bio, :Email], :methods => [:profilePic, :UserID])
+    render json: @user.to_json(:only => [:FirstName, :LastName, :UserName, :DateOfBirth, :JoiningDate, :bio, :Email], :methods => [:profilePic_url, :UserID])
   end
 
   # POST /users
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     @user = User.new(create_user_params)
 
     if @user.save
-      render json: @user.to_json(:only => [:FirstName, :LastName, :UserName, :DateOfBirth, :JoiningDate, :bio, :Email], :methods => [:profilePic, :UserID]), status: :created, location: @user
+      render json: @user.to_json(:only => [:FirstName, :LastName, :UserName, :DateOfBirth, :JoiningDate, :bio, :Email], :methods => [:profilePic_url, :UserID]), status: :created, location: @user
     else
       render json: @user.errors, status: :unprocessable_entity
     end
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   def update
     if @user.update(create_user_params)
-      render json: @user.to_json(:only => [:FirstName, :LastName, :UserName, :DateOfBirth, :JoiningDate, :bio, :Email], :methods => [:profilePic, :UserID])
+      render json: @user.to_json(:only => [:FirstName, :LastName, :UserName, :DateOfBirth, :JoiningDate, :bio, :Email], :methods => [:profilePic_url, :UserID])
     else
       render json: @user.errors, status: :unprocessable_entity
     end
@@ -47,7 +47,7 @@ class UsersController < ApplicationController
   # GET /users/:user_id/follow
   def follow
     if current_user.follow(params[:user_id])
-      render json: current_user.followings.to_json(:only => [:FirstName, :LastName, :UserName, :DateOfBirth, :JoiningDate, :bio, :Email], :methods => [:profilePic, :UserID])
+      render json: current_user.followings.to_json(:only => [:FirstName, :LastName, :UserName, :DateOfBirth, :JoiningDate, :bio, :Email], :methods => [:profilePic_url, :UserID])
     else
       render json: current_user.errors, status: :unprocessable_entity
     end
@@ -56,7 +56,7 @@ class UsersController < ApplicationController
   # GET /users/:user_id/unfollow
   def unfollow
     if current_user.unfollow(params[:user_id])
-      render json: current_user.followings.to_json(:only => [:FirstName, :LastName, :UserName, :DateOfBirth, :JoiningDate, :bio, :Email], :methods => [:profilePic, :UserID])
+      render json: current_user.followings.to_json(:only => [:FirstName, :LastName, :UserName, :DateOfBirth, :JoiningDate, :bio, :Email], :methods => [:profilePic_url, :UserID])
     else
       render json: current_user.errors, status: :unprocessable_entity
     end
@@ -89,8 +89,8 @@ class UsersController < ApplicationController
 
     def create_user_params
       p = user_params
-      p[:profilePic_base] = p[:profilePic] if p[:profilePic].present?
-      p.delete :profilePic 
+      p[:profilePic_base] = p[:profilePic_url] if p[:profilePic_url].present?
+      p.delete :profilePic_url
       p[:password] = p[:Password] if p[:Password].present?
       p.delete :Password
       return p

@@ -15,6 +15,10 @@ class Movie < ApplicationRecord
     validates_attachment_content_type :Poster, content_type: /\Aimage\/.*\z/
     attr_accessor :poster_base
 
+    def Poster_url
+        add_host_prefix(Poster.url)
+    end
+
     def Genres
         ret = ""
         self.genres.each{|genre| ret += "#{genre.name}, "}
@@ -27,6 +31,10 @@ class Movie < ApplicationRecord
             image = Paperclip.io_adapters.for(poster_base)
             image.original_filename = "poster.jpg"
             self.Poster = image;
+        end
+        
+        def add_host_prefix(url)
+            URI.join(ActionController::Base.asset_host, url)
         end
 
 end

@@ -28,6 +28,11 @@ class User < ApplicationRecord
     attr_accessor :profilePic_base
 
     alias_attribute :UserID, :id
+
+    def profilePic_url
+        add_host_prefix(profilePic.url)
+    end
+    
     # specifies how log in is carried out
     def self.from_token_request request
         email = request.params["auth"].try(:[], "Email")
@@ -103,4 +108,7 @@ class User < ApplicationRecord
             self.profilePic = image;
         end
 
+        def add_host_prefix(url)
+            URI.join(ActionController::Base.asset_host, url)
+        end
 end

@@ -27,9 +27,12 @@ gem 'bcrypt', '~> 3.1.11'
 gem 'rack-cors'
 gem 'knock'
 gem 'paperclip'
+gem 'crack'
+gem 'rest-client'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'awesome_print'
 end
 
 group :development do
