@@ -7,6 +7,6 @@ class CreateRatings < ActiveRecord::Migration[5.1]
       t.belongs_to :movie, index: true
       t.timestamps
     end
-    add_index :one_rating, [:user_id, :movie_id], unique: true
+    add_index :ratings, [:user_id, :movie_id], unique: true
   end
 end

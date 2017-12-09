@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
   before_action :set_single_user, only: [:index]
-
+  skip_before_action :authenticate_user, only: :create
+  
   # GET /users
   def index
     if(@single_user.present?)

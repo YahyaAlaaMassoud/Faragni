@@ -1,5 +1,6 @@
 class GenresController < ApplicationController
   before_action :set_genre, only: [:show, :update, :destroy]
+  skip_before_action :authenticate_user, only: [:index, :show]  
 
   # GET /genres
   def index

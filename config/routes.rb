@@ -5,14 +5,14 @@ Rails.application.routes.draw do
     
     resources :users do
       resources :ratings, only: [:show, :index]
-      resources :followers, controller: "users"
-      resources :followings, controller: "users"
+      resources :followers, controller: "users", only: [:index]
+      resources :followings, controller: "users", only: [:index]
       post '/recommend', to: 'recommendations#create'
       get '/follow', to: 'users#follow'
       get '/unfollow', to: 'users#unfollow'
     end
 
-    resource :user do
+    resource :user, only: [:show] do
       resources :followers, controller: "users"
       resources :followings, controller: "users"
       resources :watchlist, controller: "movies"
@@ -36,7 +36,6 @@ Rails.application.routes.draw do
     end
     resources :genres
 
-    # we don;t need these, do we?
     resources :ratings, only: [:show, :index]
     # resources :watchlists
 

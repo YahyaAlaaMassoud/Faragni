@@ -6611,3 +6611,18 @@ Processing by RatingsController#index as */*
 Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 0.5ms)
 
 
+Started DELETE "/api/movies/3/" for 127.0.0.1 at 2017-12-09 01:05:05 +0200
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MoviesController#destroy as */*
+  Parameters: {"imdbID"=>"12243", "Title"=>"henfiuonsdkjgndsjngusdn", "id"=>"3", "movie"=>{"imdbID"=>"12243", "Title"=>"henfiuonsdkjgndsjngusdn"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.4ms)[0m  [1m[34mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "genres_movies" WHERE "genres_movies"."movie_id" = $1[0m  [["movie_id", 3]]
+  [1m[35mSQL (64.5ms)[0m  [1m[31mDELETE FROM "movies_tags" WHERE "movies_tags"."movie_id" = $1[0m  [["movie_id", 3]]
+  [1m[35mSQL (1.3ms)[0m  [1m[31mDELETE FROM "movies" WHERE "movies"."id" = $1[0m  [["id", 3]]
+  [1m[35m (12.1ms)[0m  [1m[35mCOMMIT[0m
+No template found for MoviesController#destroy, rendering head :no_content
+Completed 204 No Content in 185ms (ActiveRecord: 85.9ms)
+
+
