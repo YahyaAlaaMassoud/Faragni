@@ -93,5 +93,54 @@ export class LoginComponent implements OnInit {
                   this.loading = false;
               });
   }
+  //<!-- LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAA START -->
+  
+   checkInput(ev)
+  {
+    var myInput =ev;
+    var rg ;
+    console.log(myInput.name);
+    if(myInput.name=="email"){
+      rg = new RegExp("([a-zA-Z][\w]*[@][a-zA-Z0-9]+[.][a-z]{2,3})");
+      if(!rg.test(myInput.value))
+      {
+        alert("Please enter valid email address : example@example.abc");
+        return false;
+      }
+    }
+    else if(myInput.name =="fn" || myInput.name=="ln")
+    {
+      rg = new RegExp("([a-zA-Z]+)");
+      if(!rg.test(myInput.value))
+      {
+        alert("Please enter valid Name : example");
+        return false;
+      }
+    }
+    else if(myInput.name=="pw")
+    {
+      rg = new RegExp("((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,})");
+      if(!rg.test(myInput.value))
+      {
+        alert("Password must have atleast one small character"+
+                                        ",one capital character"+
+                                        ",one special character"+
+                                        "and one digit");
+        return false;
+      }
+    }
+    else if(myInput.name=="un")
+    {
+      rg = new RegExp("([a-zA-z_][\w]{5,12})");      
+      if(!rg.test(myInput.value))
+      {
+        alert("please enter valid username"+
+              "username must be at least 6 characters and at most 13 characters");
+        return false;
+      }
+    }
+}
+//        <!-- LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAA START -->
+
 
 }

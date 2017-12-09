@@ -31,8 +31,15 @@
 <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
     <a (click)="goToProfile()">Profile</a>
-    <a>Services</a>
-    <a>Clients</a>
+            <!-- LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAA START -->
+
+    <a (click)="goToRecommendation()">Recommendation</a>
+    <a (click)="goToRatedMovies()">Rated Movies</a>
+    <a (click)="goToMyWatchList()">My Watchlist </a>
+    <a (click)="goToFollowers()">Followers </a>
+    <a (click)="goToFollowing()">Following </a>
+            <!-- LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAA START -->
+
     <hr>
     <a (click)="logout()">Logout</a>
 </div>

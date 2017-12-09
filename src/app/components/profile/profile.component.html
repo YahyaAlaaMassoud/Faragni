@@ -1,5 +1,7 @@
-          
-<app-navbar [hide]="false" [currentUser]="loggedUser" (screenID)="chooseScreen($event)"></app-navbar>
+
+<app-navbar [hide]="false" [currentUser]="loggedUser" (screenID)="chooseScreen($event)" (CurrentTab) = "chooseTab($event)"></app-navbar>
+        <!-- LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAA START -->
+
 <div class="maindiv">
     <div class="cover-photo-height">
         <!-- <img alt="" [src]="currentUser.profilePic" style="height:100%;"> -->

@@ -29,6 +29,11 @@ export class NavbarComponent implements OnInit {
   @Input() currentUser: User;
   @Output() onModalOpen = new EventEmitter<any>();
   @Output() screenID = new EventEmitter<number>();
+  //<!-- LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAA START -->
+  
+  @Output() CurrentTab = new EventEmitter<number>();
+ // <!-- LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAA START -->
+  
   currentScreen: number;
 
   constructor(private route: ActivatedRoute,
@@ -73,7 +78,31 @@ export class NavbarComponent implements OnInit {
   
   goToProfile(){
     this.currentScreen = 0
+    this.CurrentTab.emit(1)
     this.router.navigate(['/profile', this.currentUser.UserID])
+  }
+  goToRecommendation()
+  {
+    this.CurrentTab.emit(5);
+    this.router.navigate(['/profile', this.currentUser.UserID]);
+  }
+  goToRatedMovies()
+  {
+    this.CurrentTab.emit(1);
+    this.router.navigate(['/profile', this.currentUser.UserID]);
+  }
+  goToMyWatchList()
+  {
+    this.CurrentTab.emit(2);
+    this.router.navigate(['/profile', this.currentUser.UserID]);
+  }
+  goToFollowers(){
+    this.CurrentTab.emit(4);
+    this.router.navigate(['/profile', this.currentUser.UserID]);
+  }
+  goToFollowing(){
+    this.CurrentTab.emit(6);
+    this.router.navigate(['/profile', this.currentUser.UserID]);
   }
 
   getAuthenticatedUser() {

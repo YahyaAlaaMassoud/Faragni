@@ -1,6 +1,10 @@
 import { Component, OnInit, ViewEncapsulation, Input  } from '@angular/core';
 import { User } from '../../../../models/user.model';
 import { Output } from '@angular/core/src/metadata/directives';
+//<!-- LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAA START -->
+
+import { Router, ActivatedRoute } from '@angular/router';
+
 import { UserService } from '../../../../services/user/user.service';
 // /users/:id/follows_me
 // /users/:id/follows_him
@@ -13,12 +17,26 @@ export class FollowersThumbnailComponent implements OnInit {
   
   @Input() currentFollower:User;
   isFollowing:boolean;
+  //        <!-- LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAA START -->
 
-  constructor(private userService: UserService) {
+  constructor(private router: Router,private userService: UserService) { 
+    this.isFollowing = false;
+
   }
 
   ngOnInit() {
-    this.isFollowingUser();
+        this.isFollowingUser();
+
+//     const index: number = this.currentUser.Following
+//     .findIndex(item => item.UserID === this.currentFollower.UserID)
+//     if(index!=-1)
+//     {
+//      this.isFollowing = true;
+//     }
+  }
+  goToProfile(){
+    this.router.navigate(['/profile', this.currentFollower.UserID]);
+  
   }
 
   unfollowUser(){
@@ -26,6 +44,9 @@ export class FollowersThumbnailComponent implements OnInit {
                     .subscribe(
                       res => {
                         this.isFollowing = false;
+                      },
+                      error => {
+                        console.log('Error: ' + error)
                       }
                     )
   }
