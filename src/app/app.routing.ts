@@ -24,9 +24,9 @@ export const appRoutes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'profile/:id' , component: ProfileComponent, resolve: { user: ProfileResolver } },
     { path: 'followers' , component: FollowersComponent},
-    { path: '404', component: NotFound404Component}
+    { path: '404', component: NotFound404Component},
     
 
     // otherwise redirect to home
-    //{ path: '**', redirectTo: '' }
+    { path: '**', redirectTo: '404' }
 ];

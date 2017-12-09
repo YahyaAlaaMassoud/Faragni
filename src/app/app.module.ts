@@ -10,7 +10,7 @@ import { RouterModule } from '@angular/router';
 import { AlertModule } from 'ngx-bootstrap';
 import { SuiModule, SuiSidebarModule, SuiRatingModule, SuiSearchModule } from 'ng2-semantic-ui';
 import { StarRatingModule } from 'angular-star-rating';
-// import { MatAutocompleteModule, MatInputModule, MatFormFieldModule, MatOptionModule } from '@angular/material';
+import { CoreModule } from './modules/core-module.module';
 import 'hammerjs';
 import { NgbModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -33,6 +33,7 @@ import { MockBackend, MockConnection } from '@angular/http/testing';
 import { BaseRequestOptions } from '@angular/http';
 import { ProfileResolver } from './services/resolvers/profile.resolver';
 import { PagerService } from './services/pager/pager.service';
+import { LoaderService } from './services/loader/loader.service';
 
 // routing
 import { appRoutes } from './app.routing';
@@ -51,6 +52,7 @@ import { StarRatingPipePipe } from './pipes/star-rating-pipe.pipe';
 import { RecommendationThumbnailComponent } from './components/profile/recommendations/recommendation-thumbnail/recommendation-thumbnail.component';
 import { FollowersThumbnailComponent } from './components/profile/followers/followers-thumbnail/followers-thumbnail.component';
 import { NotFound404Component } from './components/common/not-found-404/not-found-404.component';
+import { LoaderComponent } from './components/common/loader/loader.component';
 import { FollowingComponent } from './components/profile/following/following.component';
 import { FollowingThumbnailComponent } from './components/profile/following/following-thumbnail/following-thumbnail.component';
 
@@ -95,17 +97,15 @@ import { FollowingThumbnailComponent } from './components/profile/following/foll
     SuiRatingModule,
     StarRatingModule.forRoot(),
     SuiSearchModule,
-    NgbDropdownModule
+    NgbDropdownModule,
+    CoreModule
     // MatFormFieldModule,
     // MatInputModule,
     // MatAutocompleteModule,
     // MatOptionModule
   ],
   // exports: [
-  //   MatFormFieldModule,
-  //   MatInputModule,
-  //   MatAutocompleteModule,
-  //   MatOptionModule
+  //   MatProgressBarModule
   // ],
   providers: [
     AuthenticationService,
