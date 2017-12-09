@@ -18,7 +18,7 @@ aside {
   display: block;
   height: 150px;
   width: 150px;
-  background-color: #eff2f7;  
+  /* background-color: #eff2f7;   */
   background-size: cover;
   overflow: hidden;
   box-shadow: 0 0 100px 10px #fff;

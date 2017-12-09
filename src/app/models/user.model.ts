@@ -10,7 +10,7 @@ export class User {
   LastName: string;
   UserName: string;
   JoiningDate: Date;
-  Email: string[];
+  Email: string;
   Age: number;
   DateOfBirth: Date;
   Friends: User[];
@@ -18,7 +18,7 @@ export class User {
   Password: string;
   token: string;
   WatchList: string[];
-  profilePic: string; 
+  profilePic_url: string; 
   Followers: User[];
   Following: User[];
   bio: string;

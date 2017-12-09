@@ -10,7 +10,7 @@
             <a (click)="goToProfile()">
                       <!-- LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAA START -->
 
-              <img [src]="currentFollower.profilePic">
+              <img [src]="currentFollower.profilePic_url">
             </a>
         
             <!-- the username -->
@@ -24,7 +24,8 @@
           <div class="profile-bio">
         
             <p>{{currentFollower.bio}}</p>
-            <p><button *ngIf = "isFollowing == false"  class="nav-btn-outline my-2 my-sm-0 followBtn1" (click)="followUser()">follow</button></p>
-            <p><button *ngIf = "isFollowing" class="nav-btn-outline my-2 my-sm-0 followBtn"  (click)="unfollowUser()">unfollow</button></p>
+            <!-- <button *ngIf = "isFollowing"  class="nav-btn-outline my-2 my-sm-0 followBtn1" (click)="followUser()">follow</button> -->
+            <button [hidden]="isFollowing" class="nav-btn-outline my-2 my-sm-0 followBtn" 
+                 (click)="unfollowUser()">unfollow</button>
           </div>
 </aside>

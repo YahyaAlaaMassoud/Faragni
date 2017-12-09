@@ -58,6 +58,7 @@ span{
 .rated-movie-card .content .title{
     font-size: 17px;
     font-weight: bolder;
+    width: auto;
     .date{
         font-size: 5px;
     }
@@ -165,4 +166,8 @@ a.imdbLink{
 }
 a.imdbLink:hover{
     text-decoration: underline;    
+}
+
+.pointer{
+    cursor: pointer;
 }

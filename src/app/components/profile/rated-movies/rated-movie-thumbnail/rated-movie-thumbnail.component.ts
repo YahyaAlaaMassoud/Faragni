@@ -1,10 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute} from '@angular/router';
 import { Movie } from '../../../../models/movie.model';
 import { Genre } from '../../../../models/genre.model';
 import { Actor } from '../../../../models/actor.model';
 import { User } from '../../../../models/user.model';
 import { Rating } from '../../../../models/rating.model';
+import { UserService } from '../../../../services/user/user.service';
+import { MovieService } from '../../../../services/movie/movie.service';
 
 @Component({
   selector: 'app-rated-movie-thumbnail',
@@ -14,6 +16,11 @@ import { Rating } from '../../../../models/rating.model';
 export class RatedMovieThumbnailComponent implements OnInit {
 
   @Input() currentMovie: Movie;
+  @Input() componentID: number;
+
+  @Output() watchlistDatasource = new EventEmitter<Movie[]>();  
+  @Output() ratedMoviesDatasource = new EventEmitter<number>();  
+  
   currentUser: User;
   addedToList: boolean;
   currentMovieRating: Rating;
@@ -22,98 +29,123 @@ export class RatedMovieThumbnailComponent implements OnInit {
   readOnly: boolean;
 
   constructor(private route: ActivatedRoute,
-              private router: Router) {
-      this.readOnly = true;
+              private router: Router,
+              private userService: UserService,
+              private movieService: MovieService) {
+      this.readOnly = false;
   }
 
   ngOnInit() {
     this.getCurrentUser();
+    this.currentMovieRating = new Rating();
+    this.currentMovieRating.MovieID = this.currentMovie.MovieID;
+    this.currentMovieRating.UserID = this.currentUser.UserID;
+    this.currentMovieRating.Review = "";
+    this.currentMovieRating.Rating = 0;
+    this.getAuthUser();
     this.exctractGenres();
     this.exctractActors();
-    this.getCurrentUser();
-    this.setMovieRating();
-    this.setWatchListMovie();
+    this.getUserRatings();
     this.modalId = this.currentMovie.imdbID + "ratedMovie"
-    this.imdbPath = "http://www.imdb.com/title/" + this.currentMovie.imdbID + "/"      
-    
-    // console.log(this.currentMovieRating);
-    // console.log(this.currentUser);
+    this.imdbPath = "http://www.imdb.com/title/" + this.currentMovie.imdbID + "/";
   }
 
   getCurrentUser(){
     if(this.route.snapshot.data['user'] === null)
       this.router.navigate(['/404']);
-// // console.log(this.isLoggedInUser)
-    this.currentUser = this.route.snapshot.data['user'];
-    if(this.currentUser === JSON.parse(localStorage.getItem('currentUser')))
-      this.readOnly = false;
+    else
+      this.currentUser = this.route.snapshot.data['user'];
+  }
+
+  getAuthUser(){
+    this.userService.getAuthenticatedUser()
+                    .subscribe(
+                      res => {
+                        if(res.UserID !== this.currentUser.UserID){
+                          this.readOnly = true;
+                          console.log('leh')
+                        }
+                      },
+                      error => {
+                        console.log('Error: ' + error)
+                      }
+                    )
+  }
+
+  getUserRatings() {
+    this.userService.getRatingsForUser(this.currentUser.UserID) 
+                    .subscribe(
+                      res => {
+                        this.currentUser.MovieRatings = res;
+                        console.log(res)
+                        this.currentUser.MovieRatings.forEach(item => {
+                          if(item.MovieID === this.currentMovie.MovieID){
+                            this.currentMovieRating.RatingID = item.RatingID;
+                            this.currentMovieRating.Rating = item.Rating;
+                          }
+                        })
+                      },
+                      error => {
+                        console.log('Error: ' + error)
+                      }
+                    )
   }
 
   saveNewRating(e) {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    const index = this.currentUser.MovieRatings
-      .findIndex(item => item.MovieID === this.currentMovie.imdbID);
-    this.currentUser.MovieRatings[index].Rating = e.rating;
-    this.currentMovieRating.Rating = e.rating;
-    localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
-    this.updateUsersList(this.currentUser);
-    // console.log(index + ' ' + e.rating);
-    // console.log('fi eh');
-  }
-
-  //remove this one
-  // getCurrentUser() {
-  //   this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-  //   // this.currentUser.WatchList = [];
-  //   // this.currentUser.MovieRatings = [];
-  //   // localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
-  //   // this.updateUsersList(this.currentUser);
-  //   // console.log(this.currentUser);
-  // }
-
-  setWatchListMovie() {
-    if (this.currentUser.WatchList) {
-      const index: number = this.currentUser.WatchList
-        .findIndex(item => item === this.currentMovie.imdbID);
-      if (index !== -1) {
-        this.addedToList = true;
-      } else {
-        this.addedToList = false;
-      }
+    if(this.currentMovieRating.Rating === 0){
+      this.currentMovieRating.Rating = e.rating;
+      this.userService.rateMovie(this.currentMovieRating)
+                      .subscribe(
+                        res => {
+                          console.log(res)
+                          this.currentMovieRating.RatingID = res.RatingID
+                        },
+                        error => {
+                          console.log('Error: ' + error)
+                        }
+                      )
+    }
+    else{
+      this.currentMovieRating.Rating = e.rating;
+      this.userService.updateRating(this.currentMovieRating.RatingID, this.currentMovieRating)
+                      .subscribe(
+                        res => {
+                          console.log(res)
+                        },
+                        error => {
+                          console.log('Error: ' + error)
+                        }
+                      )
     }
   }
 
-  updateUsersList(user: User) {
-    const users: User[] = JSON.parse(localStorage.getItem('users'));
-    const index: number = users
-      .findIndex(item => item.UserID === user.UserID);
-    users[index] = user;
-    localStorage.setItem('users', JSON.stringify(users));
-  }
-
-  setMovieRating() {
-    // console.log(this.currentUser.MovieRatings);
-    const index: number = this.currentUser.MovieRatings
-     .findIndex(item => item.MovieID === this.currentMovie.imdbID);
-    if (index === -1 || this.currentUser.MovieRatings.length === 0) {
-      this.currentMovieRating = new Rating();
-      this.currentMovieRating.MovieID = this.currentMovie.imdbID;
-      this.currentMovieRating.Rating = 0;
-      this.currentMovieRating.UserID = this.currentUser.UserID;
-      this.currentUser.MovieRatings.push(this.currentMovieRating);
-      // console.log('hhhh')
-      localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
-      this.updateUsersList(this.currentUser);
-    } else {
-      // console.log(index)
-      // console.log(this.currentUser.MovieRatings[index].MovieID)
-      this.currentMovieRating = this.currentUser.MovieRatings[index];
-      // console.log(index + ' ' + this.currentMovieRating.Rating);
+  removeRatingOrWatchlist() {
+    if(this.componentID == 1){
+      this.userService.deleteRating(this.currentMovieRating.RatingID)
+                      .subscribe(
+                        res => {
+                          console.log(res)
+                          this.ratedMoviesDatasource.emit(this.currentMovieRating.MovieID)
+                        },
+                        error => {
+                          console.log('Error: ' + error)
+                        }
+                      )
     }
-    // // console.log(this.currentMovieRating);
+    else{
+      this.movieService.removeFromWatchlist(this.currentMovie.MovieID)
+                      .subscribe(
+                        res => {
+                          console.log(res)
+                          this.watchlistDatasource.emit(res);
+                        },
+                        error => {
+                          console.log('Error: ' + error)
+                        }
+                      )
+    }
   }
-
-
+  
   exctractGenres() {
     this.currentMovie.Genres = [];
     const li = this.currentMovie.Genre.split(', ');
@@ -122,7 +154,6 @@ export class RatedMovieThumbnailComponent implements OnInit {
       gnr.Name = gn;
       this.currentMovie.Genres.push(gnr);
     });
-    // console.log(li)
   }
 
   exctractActors() {
@@ -133,7 +164,6 @@ export class RatedMovieThumbnailComponent implements OnInit {
         actr.Name = ac;
         this.currentMovie.ActorsList.push(actr);
     });
-    // console.log(li)
   }
 
 }

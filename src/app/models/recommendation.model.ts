@@ -4,7 +4,7 @@ export class Recommendation {
   RecommendationID: number;
   ByUserID: number;
   ToUserID: number;
-  MovieID: string;
+  MovieID: number;
   ExpectedRating: number;
   UserRating: number;
   Message: string;

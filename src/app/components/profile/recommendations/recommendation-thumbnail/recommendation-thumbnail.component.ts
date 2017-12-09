@@ -5,6 +5,8 @@ import { User } from '../../../../models/user.model';
 import { Genre } from '../../../../models/genre.model';
 import { Recommendation } from '../../../../models/recommendation.model';
 import { OmdbMoviesService } from '../../../../services/omdb/omdb-movies.service';
+import { UserService } from '../../../../services/user/user.service';
+import { MovieService } from '../../../../services/movie/movie.service';
 
 @Component({
   selector: 'recommendation-thumbnail',
@@ -17,97 +19,74 @@ export class RecommendationThumbnailComponent implements OnInit {
   @Input() currentRecommendation: Recommendation;
   currentRecommendingUser: User;
   currentMovie: Movie;
-  users: User[];
   currentUser: User;
   imdbPath: string;
-  readOnly: boolean;
 
   constructor(private omdb: OmdbMoviesService,
               private route: ActivatedRoute,
-              private router: Router) {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.readOnly = true;
+              private router: Router,
+              private userService: UserService,
+              private movieService: MovieService) 
+  { 
+    this.currentUser = new User();
+    this.currentRecommendingUser = new User();
+    this.currentMovie = new Movie();
   }
-
-  getMovie(id: string) {
-        this.omdb.getMovieByImdbID(id)
-        .subscribe(
-          res => {
-            const cur: Movie = <Movie>res;
-            // console.log(cur);
-            this.currentMovie = cur;
-            this.imdbPath = "http://www.imdb.com/title/" + this.currentMovie.imdbID + "/"                  
-            this.exctractGenres();
-          },
-          error => {
-            console.log('Error: ', error);
-          }
-        );
-  }
-
-  updateUsersList(user: User) {
-    const users: User[] = JSON.parse(localStorage.getItem('users'));
-    const index: number = users
-      .findIndex(item => item.UserID === user.UserID);
-    users[index] = user;
-    console.log('tamam')
-    localStorage.setItem('users', JSON.stringify(users));
-  }
-
+  
   ngOnInit() {
     this.getCurrentUser();
-    // let cur: User = JSON.parse(localStorage.getItem('currentUser'));
-    // cur.Recommended.forEach(item=>{
-    //   item.UserRating = 0;
-    // })
-    // localStorage.setItem('currentUser', JSON.stringify(cur));
-    // this.updateUsersList(cur)
+    this.getRecommendingUser();
+    this.getCurrentMovie();
+    if(this.currentRecommendation.UserRating === null)
+      this.currentRecommendation.UserRating = 0;
+  }
 
+  getCurrentMovie() {
+    this.movieService.getById(this.currentRecommendation.MovieID)
+                      .subscribe(
+                        res => {
+                          this.currentMovie = res;
+                          this.imdbPath = "http://www.imdb.com/title/" + this.currentMovie.imdbID + "/";                              
+                          console.log(res)
+                        },
+                        error => {
+                          console.log('Error: ' + error)
+                        }
+                      )
+  }
 
-
-
-    // console.log(this.currentRecommendation)
-    this.users = JSON.parse(localStorage.getItem('users'));
-    const index: number = this.users
-      .findIndex(user => user.UserID === this.currentRecommendation.ByUserID);
-    this.currentRecommendingUser = (this.users[index]);
-    this.getMovie(this.currentRecommendation.MovieID);
-
-    
-    // console.log(this.currentRecommendingUser.profilePic)
+  getRecommendingUser() {
+    this.userService.getById(this.currentRecommendation.ByUserID)
+                    .subscribe(
+                      res => {
+                        this.currentRecommendingUser = res;
+                        console.log(res)
+                      },
+                      error => {
+                        console.log('Error: ' + error)
+                      }
+                    )
   }
 
   getCurrentUser(){
     if(this.route.snapshot.data['user'] === null)
       this.router.navigate(['/404']);
-// // console.log(this.isLoggedInUser)
-    this.currentUser = this.route.snapshot.data['user'];
-    if(this.currentUser === JSON.parse(localStorage.getItem('currentUser')))
-      this.readOnly = false;
+    else
+      this.currentUser = this.route.snapshot.data['user'];
   }
 
   saveRecommendationRating(e){
-    const index: number = this.currentUser.Recommended
-      .findIndex(rec => rec.MovieID === this.currentMovie.imdbID);
     this.currentRecommendation.UserRating = e.rating;
-    console.log(this.currentRecommendation)
-    console.log(index)
-    this.currentUser.Recommended[index] = this.currentRecommendation
-    console.log(this.currentUser.Recommended)
-    localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
-    this.updateUsersList(this.currentUser);
-    console.log(this.currentUser)
-  }
-
-  exctractGenres() {
-    this.currentMovie.Genres = [];
-    const li = this.currentMovie.Genre.split(', ');
-    li.forEach((gn, index) => {
-      const gnr: Genre = new Genre();
-      gnr.Name = gn;
-      this.currentMovie.Genres.push(gnr);
-    });
-    // console.log(li)
+    this.userService.updateRecommendation(this.currentRecommendation.RecommendationID, this.currentRecommendation)
+                    .subscribe(
+                      res => {
+                        console.log('updated')
+                        console.log(res)
+                      },
+                      error => {
+                        console.log('Error: ' + error)
+                      }
+                    )
   }
 
   goToProfile(){

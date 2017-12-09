@@ -4,16 +4,13 @@
   <header *ngIf="currentScreen == 3" class="masthead">
     <div class="container">
       <div class="col-md-6 col-md-offset-3">
-          <h1>Hi {{currentUser.FirstName}}!</h1>
           <p>You're logged in Faragni!!</p>
           <h3>All registered users:</h3>
           <ul>
               <li *ngFor="let user of users">
-                  {{user.UserName}} ({{user.FirstName}}, {{user.LastName}})
-                  <p><a (click)="deleteUser(user.UserID)" style="cursor: pointer;">Delete</a></p>
+                <app-followers-thumbnail [currentFollower]="user"></app-followers-thumbnail>
               </li>
           </ul>
-          <p><a (click)="logout()">Logout</a></p>
       </div>
     </div>
   </header>

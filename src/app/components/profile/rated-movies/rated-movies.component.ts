@@ -2,8 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router} from '@angular/router'
 import { User } from '../../../models/user.model';
 import { Movie } from '../../../models/movie.model';
+import { Rating } from '../../../models/rating.model';
 import { OmdbMoviesService } from '../../../services/omdb/omdb-movies.service';
 import { UserService } from '../../../services/user/user.service';
+import { MovieService } from '../../../services/movie/movie.service';
 
 @Component({
   selector: 'rated-movies',
@@ -13,50 +15,59 @@ import { UserService } from '../../../services/user/user.service';
 export class RatedMoviesComponent implements OnInit {
 
   currentUser: User;
+  ratings: Rating[];
   ratedMovies: Movie[];
 
   constructor(private omdb: OmdbMoviesService, 
               private userService: UserService, 
               private route: ActivatedRoute,
-              private router:Router) {
-    // this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    // console.log(this.currentUser);
+              private router:Router,
+              private movieService: MovieService) {
     this.ratedMovies = [];
-    
+    this.ratings = [];
    }
 
    ngOnInit() {
       this.getCurrentUser();
-     this.getRatedMovies();
+      this.getRatings();
     }
 
     getCurrentUser(){
       if(this.route.snapshot.data['user'] === null)
-      this.router.navigate(['/404']);
-  // // console.log(this.isLoggedInUser)
-    this.currentUser = this.route.snapshot.data['user'];
+        this.router.navigate(['/404']);
+      else
+        this.currentUser = this.route.snapshot.data['user'];
     }
 
-   getRatedMovies() {
-     this.currentUser.MovieRatings = this.currentUser.MovieRatings || [];
-     this.currentUser.MovieRatings.forEach(item => {
-       if (item.Rating > 0) {
-        //  console.log(item.MovieID);
-        this.omdb.getMovieByImdbID(item.MovieID)
-          .subscribe(
-            res => {
-              const cur: Movie = <Movie>res;
-              console.log(cur);
-              this.ratedMovies.push(cur);
-            },
-            error => {
-              // console.log('Error: ', error);
-            }
-          );      
-       }
-     });
-   }
+    getMovieByID(id: number){
+      this.movieService.getById(id) 
+                       .subscribe(
+                         res => {
+                           this.ratedMovies.push(res);
+                           console.log(res)
+                         },
+                         error => {
+                           console.log('Error: ' + error)
+                         }
+                       )
+    }
 
+    getRatings() {
+      this.userService.getRatingsForUser(this.currentUser.UserID)
+                      .subscribe(
+                        res => {
+                          this.ratings = res;
+                          this.ratings.forEach(rating => {
+                            this.getMovieByID(rating.MovieID)
+                          })
+                        },
+                        error => {
+                          console.log('Error: ' + error)
+                        }
+                      )
+    }
 
-
+    refreshList(e){
+      this.ratedMovies = this.ratedMovies.filter(item => item.MovieID !== e);
+    }
 }

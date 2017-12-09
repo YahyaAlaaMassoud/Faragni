@@ -19,14 +19,14 @@ import { Profile } from 'selenium-webdriver/firefox';
 export const appRoutes: Routes = [
     { path: '', component: HomeComponent },//, canActivate: [AuthGuard] }
     { path: 'login', component: LoginComponent },
-    { path: 'welcome', component: WelcomeScreenComponent, canActivate: [AuthGuard], data: { title: 'Heroes List' } },
+    { path: 'welcome', component: WelcomeScreenComponent, canActivate: [AuthGuard] },
     { path: 'movies', component: WelcomeScreenComponent, canActivate: [AuthGuard]},
     { path: 'home', component: HomeComponent },
     { path: 'profile/:id' , component: ProfileComponent, resolve: { user: ProfileResolver } },
     { path: 'followers' , component: FollowersComponent},
-    { path: '404', component: NotFound404Component}
+    { path: '404', component: NotFound404Component},
     
 
     // otherwise redirect to home
-    //{ path: '**', redirectTo: '' }
+    { path: '**', redirectTo: '404' }
 ];

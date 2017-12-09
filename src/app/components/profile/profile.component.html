@@ -1,4 +1,3 @@
-        <!-- LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAA START -->
 
 <app-navbar [hide]="false" [currentUser]="loggedUser" (screenID)="chooseScreen($event)" (CurrentTab) = "chooseTab($event)"></app-navbar>
         <!-- LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAA START -->
@@ -9,7 +8,7 @@
     </div>
     <div class="useravatar">
         <label for="file-upload" >
-             <img  class= "useravatar" [ngClass]="{'avatarEdit':isEdit}"  [src]="currentUser.profilePic" alt="error" id="pfimg">
+            <img  [ngClass]="{'avatarEdit':isEdit}"  [src]="currentUser.profilePic_url" alt="error" id="pfimg">
         </label>
         <input *ngIf="isEdit" id="file-upload" type="file" accept="image/*" (change)="onFileChange($event)" />      
     </div>
@@ -18,7 +17,7 @@
             <button class="tab" [ngClass]="{'tab-active':showRatedMovies}" (click)="chooseTab(1)">
                 Rated Movies
             </button>
-            <button class="tab" [ngClass]="{'tab-active':showWatchlistMovies}" (click)="chooseTab(2)">
+            <button [hidden]="noAccess" class="tab" [ngClass]="{'tab-active':showWatchlistMovies}" (click)="chooseTab(2)">
                 Watchlist
             </button>
             <button class="tab" [ngClass]="{'tab-active':showFollowing}" (click)="chooseTab(6)">
@@ -27,7 +26,7 @@
             <button class="tab" [ngClass]="{'tab-active':showFollowers}" (click)="chooseTab(4)">
                 Followers
             </button>
-            <button class="tab" [ngClass]="{'tab-active':showRecommendedMovies}" (click)="chooseTab(5)">
+            <button [hidden]="noAccess" class="tab" [ngClass]="{'tab-active':showRecommendedMovies}" (click)="chooseTab(5)">
                 Recommendations
             </button>
             <button class="action-button" *ngIf="isLoggedInUser" (click)="takeAction($event.target)">
@@ -49,10 +48,18 @@
                 <div class ="input-group">
                     <label *ngIf="!isEdit" class="data">
                         <i class="fa fa-user-circle-o" aria-hidden="true"></i>                            
-                        {{fullName}}
+                        {{currentUser.FirstName}}
                     </label>
-                    <input *ngIf="isEdit" [(ngModel)]="fullName" placeholder="Full Name.."
-                     type="text" class="update-info data" name="username" required />
+                    <input *ngIf="isEdit" [(ngModel)]="currentUser.FirstName" placeholder="First Name.."
+                     type="text" class="update-info data" required />
+                </div>
+                <div class ="input-group">
+                    <label *ngIf="!isEdit" class="data">
+                        <i class="fa fa-user-circle-o" aria-hidden="true"></i>                            
+                        {{currentUser.LastName}}
+                    </label>
+                    <input *ngIf="isEdit" [(ngModel)]="currentUser.LastName" placeholder="Last Name.."
+                     type="text" class="update-info data" required />
                 </div>
                 <div class="input-group">
                     <label class="data">
