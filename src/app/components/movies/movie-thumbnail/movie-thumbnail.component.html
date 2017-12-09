@@ -8,7 +8,7 @@
 			<div class="header">
 				<div [ngClass]="{'hidden': flip}" class="rate"><span class="badge badge-pill purple">{{(currentMovie.imdbRating)}}</span></div>
 				<div class="date">
-					<span>{{currentMovie.Released}}</span>
+					<span>{{currentMovie.ReleaseDate}}</span>
 				</div>
 				<ul class="menu-content">
 					<li>
@@ -21,7 +21,7 @@
 						data-toggle="modal" [attr.data-target]="'#' + currentMovie.imdbID"
 						(click)="newRecommendation()"></a></li>
 					<li><a class="fa" [ngClass]="{'fa-bookmark-o': !addedToList, 'fa-bookmark': addedToList}"
-							(click)="addToWatchList()"></a></li>								
+							(click)="toggleWatchList()"></a></li>								
 					<li class="dropdown">
 							<a><i class="fa" (click)="removeRating()"
 								[ngClass]="{'fa-star': currentMovieRating.Rating > 0, 'fa-star-o': currentMovieRating.Rating == 0}"
@@ -68,7 +68,7 @@
 					<i *ngIf="i == 0" class="fa fa-star" aria-hidden="true"></i>
 					<span>{{act.Name}}</span>
 				</h6>
-				<h6 class="cast"><i class="fa fa-trophy" aria-hidden="true"></i> <span>{{currentMovie.Awards}}</span></h6>
+				<h6 class="cast" *ngIf=""><i class="fa fa-trophy" aria-hidden="true"></i> <span>{{currentMovie.Awards}}</span></h6>
 				<h6 class="cast"><i class="fa fa-clock-o" aria-hidden="true"></i> <span>{{currentMovie.Runtime}}</span></h6>
 				<span *ngFor="let genre of currentMovie.Genres" class="badge badge-pill purple">{{genre.Name}}</span>
 			</div>
@@ -123,8 +123,7 @@
 							<custom-select-box *ngIf="users != undefined" [valueExpr]="'UserID'"
 								[displayExpr]="'UserName'" [itemName]="'User'"
 								[loadingMessage]="''" [(dataSource)]="users"
-								[value]="recommendation.ToUserID" (input)="recommendation.ToUserID=$event"
-								(click)="hh()"></custom-select-box>
+								[value]="recommendation.ToUserID" (input)="recommendation.ToUserID=$event"></custom-select-box>
 							<br>
 							<input type="text" [(ngModel)]="recommendation.Message" 
 							placeholder="Recommendation message (optional-maxlen 55)" type="text">	

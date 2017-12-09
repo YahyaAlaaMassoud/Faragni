@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
     this.model.UserName = "";
     this.model.FirstName = "";
     this.model.LastName = "";
-    this.model.Email = [];
+    this.model.Email = "";
     this.email = "";
     this.model.Password = "";
     this.loginOrRegiser = false;
@@ -53,14 +53,15 @@ export class HomeComponent implements OnInit {
   }
 
   login() {
-      this.authenticationService.login(this.model.UserName, this.model.Password)
+      console.log(this.model.Email)
+      this.authenticationService.login(this.model.Email, this.model.Password)
           .subscribe(
               data => {
                   this.loading = true;
                   var toast: any = {
                     type: 'success',
                     title: 'Hello!',
-                    body: 'Nice to see you ' + data.UserName + '!',
+                    // body: 'Nice to see you ' + data.UserName + '!',
                     timeout: 2500
                   };
                   
@@ -77,11 +78,10 @@ export class HomeComponent implements OnInit {
 
   register() {
       this.loading = true;
-      this.model.Email = [];
-      this.model.Email.push(this.email)
       this.userService.create(this.model)
           .subscribe(
               data => {
+                  console.log(data)
                   // set success message and pass true paramater to persist the message after redirecting to the login page
                   //this.toast.pop('success', 'Hello', 'Welcome to Faragni');
                   this.loginOrRegiser = !this.loginOrRegiser

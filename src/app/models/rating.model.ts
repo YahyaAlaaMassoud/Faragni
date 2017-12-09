@@ -1,6 +1,7 @@
 export class Rating {
+  RatingID: number;
   UserID: number;
-  MovieID: string;
+  MovieID: number;
   Rating: number;
   Review: string;
 }

@@ -10,9 +10,9 @@ export class FollowersComponent implements OnInit {
   followersList:User[];
   currentUser:User;
   constructor() { 
-    this.currentUser=JSON.parse(localStorage.getItem("currentUser"));
-    this.followersList = this.currentUser.Followers;
-    console.log(this.followersList);
+    // this.currentUser=JSON.parse(localStorage.getItem("currentUser"));
+    // this.followersList = this.currentUser.Followers;
+    // console.log(this.followersList);
   }
   ngOnInit() {
   }

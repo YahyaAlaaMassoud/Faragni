@@ -4,11 +4,14 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { HttpService } from '../../services/custom-http-service/custom-http-service.service';
 
 import { User } from '../../models/user.model';
+import { Rating } from '../../models/rating.model';
+import { Recommendation } from '../../models/recommendation.model';
+import { Movie } from '../../models/movie.model';
 
 @Injectable()
 export class UserService {
 
-    constructor(private httpService: HttpService, private http: Http) { }
+    constructor(private http: HttpService) { }
 
     getAll() {
         return this.http.get('users')
@@ -19,6 +22,60 @@ export class UserService {
     getById(id: number) {
         return this.http.get('users/' + id)
                         .map(res => <User>res.json())
+                        .catch(this.handleError)
+    }
+
+    getAuthenticatedUser() {
+        return this.http.get('user')
+                        .map(res => <User>res.json())
+                        .catch(this.handleError)
+    }
+
+    getFollowersForAuthenticatedUser() {
+        return this.http.get('user/followers')
+                        .map(res => <User[]>res.json())
+                        .catch(this.handleError)
+    }
+
+    getFollowersForUser(id: number) {
+        return this.http.get('users/' + id + '/followers')
+                        .map(res => <User[]>res.json())
+                        .catch(this.handleError)
+    }
+
+    getFollowingsForAuthenticatedUser() {
+        return this.http.get('user/followings')
+                        .map(res => <User[]>res.json())
+                        .catch(this.handleError)
+    }
+
+    getFollowingsForUser(id: number) {
+        return this.http.get('users/' + id + '/followings')
+                        .map(res => <User[]>res.json())
+                        .catch(this.handleError)
+    }
+
+    followUser(id: number) {
+        return this.http.get('users/' + id + '/follow')
+                        .map(res => <User[]>res.json())
+                        .catch(this.handleError)
+    }
+
+    unfollowUser(id: number) {
+        return this.http.get('users/' + id + '/unfollow')
+                        .map(res => <User[]>res.json())
+                        .catch(this.handleError)
+    }
+
+    isFollowing(id: number) {
+        return this.http.get('users/' + id + '/follows_me')
+                        .map(res => <boolean>res.json())
+                        .catch(this.handleError)
+    }
+
+    isFollower(id: number) {
+        return this.http.get('users/' + id + '/follows_him')
+                        .map(res => <boolean>res.json())
                         .catch(this.handleError)
     }
 
@@ -34,6 +91,78 @@ export class UserService {
                         .catch(this.handleError)
     }
 
+    getWatchlist() {
+        return this.http.get('user/watchlist')
+                        .map(res => <Movie[]>res.json())
+                        .catch(this.handleError)
+    }
+
+    getAllRecommendations() {
+        return this.http.get('user/recommendations')
+                        .map(res => <Recommendation[]>res.json())
+                        .catch(this.handleError)
+    }
+
+    getRecommendationByID(id: number) {
+        return this.http.get('user/recommendations/' + id)
+                        .map(res => <Recommendation>res.json())
+                        .catch(this.handleError)
+    }
+
+    updateRecommendation(id: number, entity: Recommendation) {
+        return this.http.put('recommendations/' + id + '/rate', JSON.stringify(entity))
+                        .map(res => <Recommendation>res.json())
+                        .catch(this.handleError)
+    }
+
+    getRecommendationsByStatus(status: string) {
+        return this.http.get('user/recommendations/status/' + status)
+                        .map(res => <Recommendation[]>res.json())
+                        .catch(this.handleError)
+    }
+
+    getNewRecommendations() {
+        return this.http.get('user/get_new_recommendations')
+                        .map(res => <Recommendation[]>res.json())
+                        .catch(this.handleError)
+    }
+    
+    getRatingsForCurrentUser() {
+        return this.http.get('user/ratings')
+                        .map(res => <Rating[]>res.json())
+                        .catch(this.handleError)
+    }
+
+    getRatingsForUser(id: number) {
+        return this.http.get('users/' + id + '/ratings')
+                        .map(res => <Rating[]>res.json())
+                        .catch(this.handleError)
+    }
+
+    rateMovie(entity: Rating) {
+        return this.http.post('user/ratings', JSON.stringify(entity))
+                        .map(res => <Rating>res.json())
+                        .catch(this.handleError)
+    }
+
+    updateRating(id: number, entity: Rating) {
+        return this.http.put('user/ratings/' + id, JSON.stringify(entity))
+                        .map(res => <Rating>res.json())
+                        .catch(this.handleError)
+    }
+
+    deleteRating(id: number) {
+        return this.http.delete('user/ratings/' + id)
+                        .map(res => <Rating[]>res.json())
+                        .catch(this.handleError)
+    }
+
+    recommendToUser(id: number, entity: Recommendation) {
+        return this.http.post('users/' + id + '/recommend', JSON.stringify(entity))
+                        .map(res => <Recommendation>res.json())
+                        .catch(this.handleError)
+    }
+
     delete(id: number) {
         return this.http.delete('users/' + id)
                         .catch(this.handleError)
@@ -42,16 +171,5 @@ export class UserService {
     private handleError(error: Response) {
         console.error(error);
         return Observable.throw(error);
-    }
-
-    // private helper methods
-
-    private jwt() {
-        // create authorization header with jwt token
-        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        if (currentUser && currentUser.token) {
-            let headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
-            return new RequestOptions({ headers: headers });
-        }
     }
 }

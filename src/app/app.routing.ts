@@ -19,7 +19,7 @@ import { Profile } from 'selenium-webdriver/firefox';
 export const appRoutes: Routes = [
     { path: '', component: HomeComponent },//, canActivate: [AuthGuard] }
     { path: 'login', component: LoginComponent },
-    { path: 'welcome', component: WelcomeScreenComponent, canActivate: [AuthGuard], data: { title: 'Heroes List' } },
+    { path: 'welcome', component: WelcomeScreenComponent, canActivate: [AuthGuard] },
     { path: 'movies', component: WelcomeScreenComponent, canActivate: [AuthGuard]},
     { path: 'home', component: HomeComponent },
     { path: 'profile/:id' , component: ProfileComponent, resolve: { user: ProfileResolver } },

@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
       this.model.UserName = "";
       this.model.FirstName = "";
       this.model.LastName = "";
-      this.model.Email = [];
+      // this.model.Email = [];
       this.email = "";
       this.model.Password = "";
       this.loginOrRegiser = false;
@@ -52,14 +52,15 @@ export class LoginComponent implements OnInit {
 
   login() {
     //   console.log('logged in')
-      this.authenticationService.login(this.model.UserName, this.model.Password)
+      this.authenticationService.login(this.model.Email, this.model.Password)
           .subscribe(
               data => {
+                console.log(data)
                   this.loading = true;
                   var toast: any = {
                     type: 'success',
                     title: 'Hello!',
-                    body: 'Nice to see you ' + data.UserName + '!',
+                    // body: 'Nice to see you ' + data.UserName + '!',
                     timeout: 2500
                   };
                 //   console.log(this.model.UserName);
@@ -77,8 +78,8 @@ export class LoginComponent implements OnInit {
 
   register() {
       this.loading = true;
-      this.model.Email = [];
-      this.model.Email.push(this.email)
+      // this.model.Email = [];
+      // this.model.Email.push(this.email)
     //   console.log(this.model)
       this.userService.create(this.model)
           .subscribe(

@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../../../models/user.model';
 import { Movie } from '../../../models/movie.model';
 import { OmdbMoviesService } from '../../../services/omdb/omdb-movies.service';
+import { UserService } from '../../../services/user/user.service';
 
 @Component({
   selector: 'watchlist',
@@ -16,37 +17,48 @@ export class WatchlistComponent implements OnInit {
 
   ngOnInit() {
     this.getCurrentUser();
-    this.watchlistMovies = [];
     this.getWatchListMovies();
   }
 
   getCurrentUser(){
     if(this.route.snapshot.data['user'] === null)
       this.router.navigate(['/404']);
-// console.log(this.isLoggedInUser)
-    this.currentUser = this.route.snapshot.data['user'];
+    else
+      this.currentUser = this.route.snapshot.data['user'];
   }
 
   constructor(private omdb: OmdbMoviesService,
               private route: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private userService: UserService) {
+      this.watchlistMovies = [];
   }
 
    getWatchListMovies() {
-     this.currentUser.WatchList = this.currentUser.WatchList  || [];
-     this.currentUser.WatchList.forEach(item => {
-        this.omdb.getMovieByImdbID(item)
-        .subscribe(
-          res => {
-            const cur: Movie = <Movie>res;
-            // console.log(cur);
-            this.watchlistMovies.push(cur);
-          },
-          error => {
-            // console.log('Error: ', error);
-          }
-        );
-     });
+     this.userService.getWatchlist()
+                     .subscribe(
+                       res => {
+                         this.watchlistMovies = res || []
+                         console.log(res)
+                       },
+                       error => {
+                         console.log('Error: ' + error)
+                       }
+                     )
+    //  this.currentUser.WatchList = this.currentUser.WatchList  || [];
+    //  this.watchlistMovies = [];
+    //  this.currentUser.WatchList.forEach(item => {
+    //     this.omdb.getMovieByImdbID(item)
+    //     .subscribe(
+    //       res => {
+    //         const cur: Movie = <Movie>res;
+    //         this.watchlistMovies.push(cur);
+    //       },
+    //       error => {
+    //         console.log('Error: ', error);
+    //       }
+    //     );
+    //  });
    }
 
 }
