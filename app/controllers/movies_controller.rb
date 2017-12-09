@@ -98,7 +98,7 @@ class MoviesController < ApplicationController
     end
     
     def movie_params
-      p = params.permit(:imdbID, :imdbVotes, :imdbRating, :Title, :Language, :TagLine, :ReleaseDate, :Poster, :Popularity, :Actors, :BoxOffice, :Country, :Genres, :Director, :Metascore, :Plot, :Runtime, :Website, :Writer, :Year, :ProductionCompany, :criteria)
+      p = params.permit(:imdbID, :imdbVotes, :imdbRating, :Title, :Language, :TagLine, :ReleaseDate, :Poster_url, :Popularity, :Actors, :BoxOffice, :Country, :Genres, :Director, :Metascore, :Plot, :Runtime, :Website, :Writer, :Year, :ProductionCompany, :criteria)
       p[:genres] = Genre.get_genres_from_string(p[:Genres])
       p.delete :Genres
       p.delete :ProductionCompany

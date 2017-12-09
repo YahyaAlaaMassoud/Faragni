@@ -14,6 +14,7 @@ Rails.application.configure do
 
   config.action_controller.asset_host = 'http://localhost:3000' # Locally
   
+  # Paperclip.options[:command_path] = 'C:\Program Files (x86)\GnuWin32\bin'
   # Enable/disable caching. By default caching is disabled.
   if Rails.root.join('tmp/caching-dev.txt').exist?
     config.action_controller.perform_caching = true

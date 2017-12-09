@@ -1,5 +1,6 @@
 class User < ApplicationRecord
     # validations and security
+    before_validation :parse_image       
     validates :UserName, presence: true
     validates :Email, presence: true
     has_secure_password
@@ -25,6 +26,7 @@ class User < ApplicationRecord
     # profile pictues
     has_attached_file :profilePic, styles: { medium: "300x300>", thumb: "100x100>" }
     validates_attachment_content_type :profilePic, content_type: /\Aimage\/.*\z/
+    # do_not_validate_attachment_file_type :profilePic    
     attr_accessor :profilePic_base
 
     alias_attribute :UserID, :id
@@ -103,6 +105,7 @@ class User < ApplicationRecord
     private
         # parses a base64 image into a paperclip attachment
         def parse_image
+			# return nil
             image = Paperclip.io_adapters.for(profilePic_base)
             image.original_filename = "profilePic_base.jpg"
             self.profilePic = image;

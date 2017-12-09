@@ -13,6 +13,8 @@ class Movie < ApplicationRecord
     
     has_attached_file :Poster, styles: { medium: "300x300>", thumb: "100x100>" }
     validates_attachment_content_type :Poster, content_type: /\Aimage\/.*\z/
+    # do_not_validate_attachment_file_type :Poster    
+    
     attr_accessor :poster_base
 
     def Poster_url
@@ -27,7 +29,7 @@ class Movie < ApplicationRecord
 
     private
         def parse_image
-            byebug
+            # return nil
             image = Paperclip.io_adapters.for(poster_base)
             image.original_filename = "poster.jpg"
             self.Poster = image;
