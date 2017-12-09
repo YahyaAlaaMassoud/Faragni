@@ -6,7 +6,10 @@
     </div>
     <div class="row">
           <div class="col-30">
-            
+            <custom-select-box *ngIf="movies != undefined" [valueExpr]="'MovieID'"
+            [displayExpr]="'Title'" [itemName]="'User'"
+            [loadingMessage]="''" [(dataSource)]="movies"
+            [value]="searchable" (input)="searchable=$event"></custom-select-box>
           </div>
           <div class="col-70">
               <div class="right">
@@ -46,9 +49,9 @@
     <div class="pagination" *ngIf="pagedItems.length">
         <!-- <button class="page gradient" (click)="setPage(1)">First</button> -->
 
-        <li *ngFor="let page of pager.pages" [ngClass]="{'active':pager.currentPage == page}">
+        <!-- <li *ngFor="let page of pager.pages" [ngClass]="{'active':pager.currentPage == page}">
           <button class="page number gradient" (click)="setPage(page)">{{page}}</button>
-        </li>
+        </li> -->
 
         <!-- <button class="page gradient" (click)="setPage(pager.totalPages)">Last</button> -->
     </div>

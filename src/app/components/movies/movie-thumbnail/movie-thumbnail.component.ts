@@ -13,6 +13,7 @@ import { startWith } from 'rxjs/operators/startWith';
 import { map } from 'rxjs/operators/map';
 import { UserService } from '../../../services/user/user.service';
 import { MovieService } from '../../../services/movie/movie.service';
+import { ToasterContainerComponent, ToasterService, ToasterConfig } from 'angular2-toaster';
 
 declare var $: any;
 

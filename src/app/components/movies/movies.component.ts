@@ -34,6 +34,7 @@ export class MoviesComponent implements OnInit {
   pagedItems: Movie[];
   last: Movie;
   selectedPage: number = 1;
+  searchable: number;
 
   constructor(private location: Location, 
               private pagerService: PagerService,
