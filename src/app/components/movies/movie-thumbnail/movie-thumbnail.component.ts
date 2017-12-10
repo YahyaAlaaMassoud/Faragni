@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { OmdbMoviesService } from '../../../services/omdb/omdb-movies.service';
 import { FormControl, NgControl } from '@angular/forms';
+import { fadeInAnimation } from '../../../animations/fade-in.animation'
 // import { MatInput, MatFormField, MatAutocomplete } from '@angular/material'
 import { Movie } from '../../../models/movie.model';
 import { Rating } from '../../../models/rating.model';
@@ -20,7 +21,9 @@ declare var $: any;
 @Component({
   selector: 'app-movie-thumbnail',
   templateUrl: './movie-thumbnail.component.html',
-  styleUrls: ['./movie-thumbnail.component.css']
+  styleUrls: ['./movie-thumbnail.component.css'],
+  animations: [fadeInAnimation],
+  host: { '[@fadeInAnimation]': '' }
 })
 export class MovieThumbnailComponent implements OnInit {
 

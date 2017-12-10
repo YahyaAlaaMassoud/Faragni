@@ -1,5 +1,5 @@
-<app-navbar (onModalOpen)="toggleModal()" [home]="true"></app-navbar>
-<header class="masthead" style="min-height:600px;">
+<!-- <app-navbar (onModalOpen)="toggleModal()" [hide]="true"></app-navbar> -->
+<header class="masthead">
      <style>
         .notValid{
           border: 2px solid red;
@@ -20,7 +20,7 @@
     </div>
   </div>
 </header>
-<app-footer></app-footer>
+<!-- <app-footer></app-footer> -->
 <!-- <body> -->
 <div id="loginModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-full-height modal-right">
@@ -54,7 +54,7 @@
           <input style="width:270px;" placeholder="Password.." type="password" 
           [ngClass]="{'notValid':!passValid, 'form-control':passValid}" (change)="checkInput('pw')" [(ngModel)]="model.Password" required />
           <hr>
-          <button [ngClass]="{'dis':!emValid||!unValid||!fnValid||!lnValid||!passValid}" style="width:270px;" [disabled]="true" class ="login-btn-outline btn-lg btn-block" (click)="register()">Register</button>
+          <button [ngClass]="{'dis':!emValid||!unValid||!fnValid||!lnValid||!passValid}" style="width:270px;" class ="login-btn-outline btn-lg btn-block" (click)="register()">Register</button>
           <a (click)="loginOrRegiser = !loginOrRegiser" style="cursor: pointer;">Already have an account?</a>
         </div>
       </div>

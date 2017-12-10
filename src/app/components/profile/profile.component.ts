@@ -214,7 +214,7 @@ export class ProfileComponent implements OnInit {
     this.userService.isFollowing(this.currentUser.UserID)
                     .subscribe(
                       res => {
-                        this.isFollowed = !res.follows_me;
+                        this.isFollowed = res.follows_me;
                       },
                       error => {
                         console.log('Error: ' + error)
@@ -267,7 +267,7 @@ export class ProfileComponent implements OnInit {
 
                 res => {
                   console.log(res);
-                  this.isFollowed = true;
+                  this.isFollowed = false;
                 },
                 error =>{
                   console.log("error: " + error);
@@ -281,7 +281,7 @@ export class ProfileComponent implements OnInit {
     this.userService.unfollowUser(this.currentUser.UserID).subscribe(
                       res => {
                         console.log(res);
-                       this.isFollowed = false
+                       this.isFollowed = true
                       },
                       error =>{
                         console.log("error: " + error);

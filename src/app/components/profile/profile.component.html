@@ -32,10 +32,10 @@
             <button class="action-button" *ngIf="isLoggedInUser" (click)="takeAction($event.target)">
                 Edit Profile
             </button>
-            <button class="action-button" *ngIf="!isLoggedInUser && !isFollowed" (click)="follow()">
+            <button class="action-button" *ngIf="!isLoggedInUser && isFollowed" (click)="follow()">
                 Follow
             </button>                
-            <button class="action-button" *ngIf="!isLoggedInUser && isFollowed" (click)="unfollow()">
+            <button class="action-button" *ngIf="!isLoggedInUser && !isFollowed" (click)="unfollow()">
                 Unfollow
             </button>      
         </div>

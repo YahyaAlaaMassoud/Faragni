@@ -13,4 +13,8 @@ export class OmdbMoviesService {
         return this.customHttp.get(url)
           .map(res => <Movie>res.json())
     }
+
+    getListOfMoviesTBMD() {
+        
+    }
 }

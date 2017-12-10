@@ -23,7 +23,7 @@ import { GenreService } from '../../services/genre/genre.service';
 })
 export class MoviesComponent implements OnInit {
 
-  movies: Movie[];
+  movies: Movie[] = []
   dumMovies: Movie[];
   displayedMovies: Movie[];
   moviesSortedByRate: Movie[];
@@ -60,6 +60,7 @@ export class MoviesComponent implements OnInit {
 
   search(e){
     this.dumMovies = []
+    console.log(e)
     e.forEach(item => {
       let index = this.movies.findIndex(m => m.MovieID === item.value.valueExpr)
       this.dumMovies.push(this.movies[index])

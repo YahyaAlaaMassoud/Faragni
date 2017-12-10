@@ -46,15 +46,14 @@ export class NavbarComponent implements OnInit {
               private userService: UserService)
   {
     this.home = false;
-    this.hide = true;
     if(localStorage.getItem('jwt') === null)
       this.showAvatar = false;
     else
       this.showAvatar = true;
     this.currentUser = new User();
-    this.currentUser = null;
   }
   ngOnInit() {
+    console.log(this.hide)
     this.getAuthenticatedUser()
     // if(this.route.snapshot.url[0].path === "profile" || this.route.snapshot.url[0].path === "home")
     //   this.currentScreen = 0;
