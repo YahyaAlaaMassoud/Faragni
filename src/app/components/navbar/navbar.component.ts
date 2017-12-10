@@ -51,6 +51,7 @@ export class NavbarComponent implements OnInit {
     else
       this.showAvatar = true;
     this.currentUser = new User();
+    this.currentUser = null;
     this.currentScreen = 1;
   }
 

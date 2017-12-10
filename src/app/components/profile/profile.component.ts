@@ -194,6 +194,7 @@ export class ProfileComponent implements OnInit {
   }
 
   chooseScreen(e) {
+    console.log("my scree : " + e);
     this.currentScreen = e; 
   }
 
@@ -221,6 +222,7 @@ export class ProfileComponent implements OnInit {
   }
 
   chooseTab(id: number){
+    console.log(id);
     if(id == 1){
       this.showRatedMovies = true;
       this.showFollowers = false;

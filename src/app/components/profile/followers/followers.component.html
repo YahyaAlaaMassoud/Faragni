@@ -1,3 +1,3 @@
     <div *ngFor="let currentFollower of followersList;">
-        <app-followers-thumbnail [currentFollower] = "currentFollower"> </app-followers-thumbnail>            
+            <app-followers-thumbnail (FollowingDatasource)="refreshList($event)" [currentFollower] = "currentFollower"> </app-followers-thumbnail>            
     </div>
