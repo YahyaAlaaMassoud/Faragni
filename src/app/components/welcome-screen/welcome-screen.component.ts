@@ -31,7 +31,7 @@ export class WelcomeScreenComponent implements OnInit {
 
   constructor(
         private route: ActivatedRoute,
-        private router: Router,
+        public router: Router,
         private toast: ToasterService,
         private authenticationService: AuthenticationService,
         private userService: UserService)
@@ -40,15 +40,23 @@ export class WelcomeScreenComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.changeMeOnUpdate()
       this.loadAllUsers();
   }
+
+  changeMeOnUpdate(){
+    this.route
+        .params
+        .subscribe(params => {
+          this.currentScreen = params['screen'];
+        })
+    }
 
   private loadAllUsers() {
       this.userService.getAll()
                       .subscribe(
                         res => {
                         this.users = res;
-                        // console.log(res)
                         },
                         error => {
                           // console.log('Error: ' + error)
@@ -57,7 +65,8 @@ export class WelcomeScreenComponent implements OnInit {
                     );
   }
 
-  chooseScreen(e) {
-    this.currentScreen = e;
+  chooseScreen() {
+    this.currentScreen = +this.route.snapshot.paramMap.get("screen");    
+     console.log(this.currentScreen);
   }
 }

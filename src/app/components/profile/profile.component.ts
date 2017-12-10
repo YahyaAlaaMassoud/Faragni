@@ -85,6 +85,9 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     let usr: User = this.route.snapshot.data['user'];
+    let tab: number = +this.route.snapshot.paramMap.get("tab");
+    let currentScreen: number = +this.route.snapshot.paramMap.get("screen");
+    this.chooseTab(tab);
     this.currentUser = usr;
     console.log(this.currentUser.UserID)
     this.fullName = this.currentUser.FirstName + ' ' + this.currentUser.LastName;
@@ -172,9 +175,7 @@ export class ProfileComponent implements OnInit {
             else{
               this.currentUser = res;
               this.isLoggedInUser = (this.loggedUser.UserID == this.currentUser.UserID) ? true : false;
-              this.noAccess = !this.isLoggedInUser;              
-              let scr: number = +this.route.snapshot.paramMap.get('screen')              
-              this.chooseTab(scr);
+              this.noAccess = !this.isLoggedInUser;  
               window.scrollTo(0,0);
             }
           })

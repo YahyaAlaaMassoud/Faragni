@@ -30,7 +30,7 @@ export class NavbarComponent implements OnInit {
   @Output() onModalOpen = new EventEmitter<any>();
   @Output() screenID = new EventEmitter<number>();
   //<!-- LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAA START -->
-  
+  @Input() home: boolean;
   @Output() CurrentTab = new EventEmitter<number>();
  // <!-- LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAA START -->
 
@@ -45,6 +45,7 @@ export class NavbarComponent implements OnInit {
               private location: Location,
               private userService: UserService)
   {
+    this.home = false;
     this.hide = true;
     if(localStorage.getItem('jwt') === null)
       this.showAvatar = false;
@@ -52,9 +53,7 @@ export class NavbarComponent implements OnInit {
       this.showAvatar = true;
     this.currentUser = new User();
     this.currentUser = null;
-    this.currentScreen = 1;
   }
-
   ngOnInit() {
     this.getAuthenticatedUser()
     // if(this.route.snapshot.url[0].path === "profile" || this.route.snapshot.url[0].path === "home")
@@ -62,8 +61,7 @@ export class NavbarComponent implements OnInit {
   }
 
   chooseScreen(id: number){
-    this.currentScreen = id;
-    this.screenID.emit(id);
+    this.router.navigate(['/movies', id]);
   }
 
   toggleModal() {
