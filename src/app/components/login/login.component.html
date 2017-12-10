@@ -1,4 +1,14 @@
-
+<style>
+    .notValid{
+      border: 2px solid red;
+    }
+    .dis{
+      cursor: not-allowed;
+      border: 1px solid #999999;
+      background-color: #cccccc;
+      color: #666666;
+    }
+</style> 
     <div class="row body-all">
       <div class="col-md-6">
       </div>
@@ -17,23 +27,23 @@
         <!--register form-->
         <!-- LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA  START -->
         <div class="login" *ngIf="loginOrRegiser">
-          <h2 style="font-size:22px;">Create a new account</h2>
-          <input style="width:270px;" placeholder="First Name.." name="fn" #firstName type="text" class="form-control"
-                        [(ngModel)]="model.FirstName" (change)="checkInput(firstName)" required />
-          <input style="width:270px;" placeholder="Last Name.." name="ln" #lastName type="text" class="form-control"
-                        [(ngModel)]="model.LastName" (change)="checkInput(lastName)" required />
-          <input style="width:270px;" placeholder="Username.." name="un" #username type="text" class="form-control"
-                        [(ngModel)]="model.UserName" (change)="checkInput(username)" required />
-          <input style="width:270px;" placeholder="Email.." name="email" #email type="email" class="form-control" 
-                        [(ngModel)]="model.Email" (change)="checkInput(email)" required />
-          <input style="width:270px;" placeholder="Age.." type="date" class="form-control"
-                        [(ngModel)]="model.Age" required />
-          <input style="width:270px;" placeholder="Password.." name="pw" #password type="password" class="form-control"
-                        [(ngModel)]="model.Password" (change)="checkInput(password)" required />
-          <hr>
-          <button style="width:270px;" [disabled]="loading" class="login-btn-outline btn-lg btn-block" (click)="register()">Register</button>
-          <a (click)="loginOrRegiser = !loginOrRegiser" style="cursor: pointer;">Already have an account?</a>
-          <!-- LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA  END -->
+            <h2 style="font-size:22px;">Create a new account</h2>
+            <input style="width:270px;" placeholder="First Name.." type="text" 
+            [ngClass]="{'notValid':!fnValid, 'form-control':fnValid}" (change)="checkInput('fn')" [(ngModel)]="model.FirstName" required />
+            <input style="width:270px;" placeholder="Last Name.." type="text" 
+            [ngClass]="{'notValid':!lnValid, 'form-control':lnValid}" (change)="checkInput('ln')" [(ngModel)]="model.LastName" required />
+            <input style="width:270px;" placeholder="Username.." type="text" 
+            [ngClass]="{'notValid':!unValid, 'form-control':unValid}" (change)="checkInput('un')" [(ngModel)]="model.UserName" required />
+            <input style="width:270px;" placeholder="Email.." type="text" 
+            [ngClass]="{'notValid':!emValid, 'form-control':emValid}" (change)="checkInput('em')" [(ngModel)]="model.Email" required />
+            <input style="width:270px;" placeholder="Age.." type="date" class="form-control datepicker"
+                                                       [(ngModel)]="model.Age" required />
+            <input style="width:270px;" placeholder="Password.." type="password" 
+            [ngClass]="{'notValid':!passValid, 'form-control':passValid}" (change)="checkInput('pw')" [(ngModel)]="model.Password" required />
+            <hr>
+            <button [ngClass]="{'dis':!emValid||!unValid||!fnValid||!lnValid||!passValid}" style="width:270px;" [disabled]="true" class ="login-btn-outline btn-lg btn-block" (click)="register()">Register</button>
+            <a (click)="loginOrRegiser = !loginOrRegiser" style="cursor: pointer;">Already have an account?</a>
+          </div>
         </div>
       </div>
-    </div>
+

@@ -1,8 +1,7 @@
-import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter } from '@angular/core';
 import { User } from '../../../../models/user.model';
-import { Output } from '@angular/core/src/metadata/directives';
 //<!-- LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAA START -->
-
+import { UserService } from '../../../../services/user/user.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -16,32 +15,30 @@ export class FollowingThumbnailComponent implements OnInit {
   @Input() currentFollowing:User;
   currentUser:User;
 
+  @Output() followingDataSource = new EventEmitter<User[]>(); 
+
   //<!-- LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAA START -->
   
-  constructor(private router: Router) { 
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  constructor(private router: Router,private userService: UserService) { 
   }
+
   ngOnInit() {
-
-  }
-  updateUsersList(user: User) {
-    const users: User[] = JSON.parse(localStorage.getItem('users'));
-    const index: number = users
-      .findIndex(item => item.UserID === user.UserID);
-    users[index] = user;
-    localStorage.setItem('users', JSON.stringify(users));
-  }
+}
   goToProfile(){
-    this.router.navigate(['/profile', this.currentFollowing.UserID]);
-  }
-  unfollowUser(){
-    const index: number = this.currentUser.Following
-    .findIndex(item => item.UserID === this.currentFollowing.UserID)
-    //this.currentUser.Followers.splice(index,1)
-    this.currentUser.Following = this.currentUser.Following.filter(item=>item.UserID!=this.currentFollowing.UserID);
-    console.log(this.currentUser.Following);
-    localStorage.setItem('currentUser',JSON.stringify(this.currentUser));
-    this.updateUsersList(this.currentUser);
+  this.router.navigate(['/profile', this.currentFollowing.UserID]);
+
   }
 
+  unfollowUser(){
+    this.userService.unfollowUser(this.currentFollowing.UserID)
+                    .subscribe(
+                      res => {
+                        this.followingDataSource.emit(res);
+                      },
+                      error => {
+                        console.log('Error: ' + error)
+                      }
+                    )
+  }
+  //__________________________________________________________________________________
 }

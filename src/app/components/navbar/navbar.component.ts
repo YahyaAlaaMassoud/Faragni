@@ -45,6 +45,7 @@ export class NavbarComponent implements OnInit {
   {
     this.hide = true;
     this.currentUser = new User();
+    this.currentUser = null;
     this.currentScreen = 1;
   }
 

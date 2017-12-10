@@ -68,13 +68,13 @@ export class UserService {
     }
 
     isFollowing(id: number) {
-        return this.http.get('users/' + id + '/follows_me')
+        return this.http.get('users/' + id + '/follows_him')
                         .map(res => <boolean>res.json())
                         .catch(this.handleError)
     }
 
     isFollower(id: number) {
-        return this.http.get('users/' + id + '/follows_him')
+        return this.http.get('users/' + id + '/follows_me')
                         .map(res => <boolean>res.json())
                         .catch(this.handleError)
     }

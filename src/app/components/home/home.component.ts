@@ -31,6 +31,12 @@ export class HomeComponent implements OnInit {
   returnUrl: string;
   loginOrRegiser: boolean;
   email: string;
+  emValid:boolean;
+  unValid:boolean;
+  fnValid:boolean;
+  lnValid:boolean;
+  passValid:boolean;
+
 
   constructor(
         private route: ActivatedRoute,
@@ -47,6 +53,11 @@ export class HomeComponent implements OnInit {
     this.email = "";
     this.model.Password = "";
     this.loginOrRegiser = false;
+    this.unValid = false;
+    this.emValid = false;
+    this.passValid = false;
+    this.fnValid = false;
+    this.lnValid = false;
   }
 
   ngOnInit() {
@@ -104,44 +115,66 @@ export class HomeComponent implements OnInit {
     var rg ;
     if(myInput=="em"){
       rg = new RegExp("([a-zA-Z][\w]*[@][a-zA-Z0-9]+[.][a-z]{2,3})");
-      if(!rg.test(myInput.value))
+      if(!rg.test(this.model.Email))
       {
+        this.emValid = false;
         alert("Please enter valid email address : example@example.abc");
         myInput.style.backgroundColor="red";
         return false;
       }
+      else
+      this.emValid = true ;
     }
-    else if(myInput =="fn" || myInput =="ln")
+    else if(myInput =="fn")
     {
-      rg = new RegExp("([a-zA-Z]+)");
-      console.log(this.model.FirstName);
+      rg = new RegExp("^([a-zA-Z]+)$");
       if(!rg.test(this.model.FirstName)) 
       {
+        this.fnValid = false;
         alert("Please enter valid Name : example");
         return false;
       }
+      else 
+        this.fnValid = true;
+    }
+    else if(myInput =="ln")
+    {
+      rg = new RegExp("^([a-zA-Z]+)$");
+      if(!rg.test(this.model.LastName)) 
+      {
+        this.lnValid = false;
+        alert("Please enter valid Name : example");
+        return false;
+      }
+      else
+        this.lnValid = true;
     }
     else if(myInput=="pw")
     {
-      rg = new RegExp("((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,})");
-      if(!rg.test(myInput.value))
+      rg = new RegExp("^([a-zA-Z0-9@*#]{8,15})$");
+      console.log(this.model.Password)
+      if(!rg.test(this.model.Password))
       {
-        alert("Password must have atleast one small character"+
-                                        ",one capital character"+
-                                        ",one special character"+
-                                        "and one digit");
+        this.passValid = false;
+        alert("Please enter valid password");
         return false;
       }
+      else
+        this.passValid = true;
     }
     else if(myInput=="un")
     {
-        rg = new RegExp("([a-zA-z_][\w]{5,12})");
-      if(!rg.test(myInput.value))
+       rg = new RegExp("^([a-zA-z_][a-zA-Z0-9]{5,12})$");
+       console.log(this.model.UserName)
+      if(!rg.test(this.model.UserName))
       {
+        this.unValid = false;
         alert("please enter valid username"+
-              "username must be at least 6 characters and at most 13 characters");
+              " username must be at least 6 characters and at most 13 characters");
         return false;
       }
+      else
+        this.unValid = true ; 
     }
 }
 // LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAA START -->
