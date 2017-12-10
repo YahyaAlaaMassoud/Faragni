@@ -170,7 +170,7 @@ textarea{
 }
 .fix{
     top: 55px;
-    z-index: 1000;
+    z-index: 500;
     position: fixed;
     transition: all 0.4s ease-in-out;    
     background-color: #7b4397;
@@ -195,6 +195,11 @@ textarea{
         background-color: white; 
         transition: all 0.4s ease-in-out;    
         -webkit-text-fill-color: #7b4397;
+    }
+
+    .tab-active, .tab:active, .tab:focus, .tab:hover {
+        border-top: 6px solid white;
+        border-bottom: 3px solid transparent;
     }
 }
 .tab{
@@ -278,3 +283,4 @@ textarea{
     height: 100%;
     box-shadow: 0 10px 20px 0 #d4d4d5, 0 0 0 1px #d4d4d5;    
 }
+
