@@ -22,7 +22,7 @@ export const appRoutes: Routes = [
     { path: 'welcome', component: WelcomeScreenComponent, canActivate: [AuthGuard] },
     { path: 'movies', component: WelcomeScreenComponent, canActivate: [AuthGuard]},
     { path: 'home', component: HomeComponent },
-    { path: 'profile/:id' , component: ProfileComponent, resolve: { user: ProfileResolver } },
+    { path: 'profile/:id/:screen' , component: ProfileComponent, resolve: { user: ProfileResolver } },
     { path: 'followers' , component: FollowersComponent},
     { path: '404', component: NotFound404Component},
     
