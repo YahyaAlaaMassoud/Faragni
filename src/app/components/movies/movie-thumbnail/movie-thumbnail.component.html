@@ -91,14 +91,14 @@
 <!-- </div> -->
 
 <!-- <div class="ui segment"> -->
-    <!-- <sui-dimmer class="page" [(isDimmed)]="pageDimmedOnRecommendation">
+    <sui-dimmer class="page" [(isDimmed)]="pageDimmedOnRecommendation">
         <h2 class="ui inverted icon header purple-text">
 			<i class="fa fa-paper-plane" aria-hidden="true" style="font-size: 100px; padding-bottom:10px;"></i>
 			<div>
-				Your recommendation has been sent to {{recommendation.ToUserID}}
+				Your recommendation has been sent successfully! 
 			</div>
         </h2>
-    </sui-dimmer> -->
+    </sui-dimmer>
 <!-- </div> -->
 
 <!--Modal: Login with Avatar Form-->
@@ -138,7 +138,7 @@
 						</div>
 
 						<div class="text-center">
-							<button (click)="sendRecommendation()"
+							<button (click)="sendRecommendation()" data-dismiss="modal"
 							class="btn btn-outline-purple mt-1">Send Recommendation 
 							<i class="fa fa-paper-plane-o ml-1"></i>
 							</button>

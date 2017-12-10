@@ -33,6 +33,8 @@ export class NavbarComponent implements OnInit {
   @Input() home: boolean;
   @Output() CurrentTab = new EventEmitter<number>();
  // <!-- LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAA START -->
+
+ showAvatar: boolean;
   
   currentScreen: number;
 
@@ -45,11 +47,14 @@ export class NavbarComponent implements OnInit {
   {
     this.home = false;
     this.hide = true;
+    if(localStorage.getItem('jwt') === null)
+      this.showAvatar = false;
+    else
+      this.showAvatar = true;
     this.currentUser = new User();
     this.currentUser = null;
   }
   ngOnInit() {
-    console.log(this.currentUser)
     this.getAuthenticatedUser()
     // if(this.route.snapshot.url[0].path === "profile" || this.route.snapshot.url[0].path === "home")
     //   this.currentScreen = 0;
@@ -78,8 +83,7 @@ export class NavbarComponent implements OnInit {
   goToProfile(){
     this.currentScreen = 0
     this.CurrentTab.emit(1)
-    this.router.navigate(['/profile', this.currentUser.UserID.toString(), "1" ]);
-    
+    this.router.navigate(['/profile', this.currentUser.UserID.toString(), "1" ])
   }
   goToRecommendation()
   {

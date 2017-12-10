@@ -1,5 +1,7 @@
 ﻿import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { document } from 'angular-bootstrap-md/utils/facade/browser';
+import { Movie } from '../../../models/movie.model';
+import { MovieService } from '../../../services/movie/movie.service';
 declare var $: any;
 
 @Component({
@@ -12,8 +14,11 @@ export class CustomSelectBoxComponent implements OnInit {
     @Input() dataSource: any[];
     @Input() displayExpr: string;
     @Input() valueExpr: string;
+    @Input() movies: number;
     @Input() loadingMessage: string;
     @Output() input = new EventEmitter<any>();
+    @Output() searchable = new EventEmitter<string>();
+    @Output() newDataSource = new EventEmitter<any[]>();
     selectedOption: string;
     @Input() itemName: string;
     @Input() value: string;
@@ -28,13 +33,14 @@ export class CustomSelectBoxComponent implements OnInit {
     cityPattern = "^[^0-9]+$";
     openSelectBox: boolean;
 
-    constructor() {
+    constructor(private movieService: MovieService) {
         this.openSelectBox = false;
         this.selectedOption = "";
         this.brokenRuleMessage = "";
         this.touched = false;
         this.warning = false;
         this.mainOptions = [];
+        this.movies = 0;
 
         this.req = false;
     }
@@ -46,21 +52,9 @@ export class CustomSelectBoxComponent implements OnInit {
         this.openSelectBox = !this.openSelectBox;
     }
 
-    //validate() {
-    //    if (this.touched) {
-    //        if (this.selectedOption.length == 0) {
-    //            this.warning = true;
-    //        }
-    //        else {
-    //            this.warning = false;
-    //        }
-    //    }
-    //}
-
     ngOnInit() {
-        // console.log(this.value)
         if (this.dataSource != undefined) {
-            console.log(this.dataSource)
+            // console.log(this.dataSource)
             this.setSelectBoxDisplay(this.valueExpr, this.displayExpr);
             this.dataSource.forEach(item => {
                 if (item[this.valueExpr] == this.value) {
@@ -92,15 +86,19 @@ export class CustomSelectBoxComponent implements OnInit {
         this.openSelectBox = false;
     }
 
+    allMovies: Movie[];
+
     search() {
         // console.log(this.selectedOption)
+        this.searchable.emit(this.selectedOption.toLocaleLowerCase())
         this.searchSelections = [];
+        this.allMovies = []
         this.mainOptions.forEach(item => {
             if (item.dis.displayExpr.toLocaleLowerCase().includes(this.selectedOption.toLocaleLowerCase())) {
-                // console.log(item)
                 this.searchSelections.push(item);
             }
         })
+        this.newDataSource.emit(this.searchSelections)
     }
 
     dropdown() {

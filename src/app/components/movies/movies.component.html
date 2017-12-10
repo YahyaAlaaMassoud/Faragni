@@ -1,3 +1,5 @@
+
+<app-navbar></app-navbar>
 <div class="screen-tab">
   <div class="header">
     <div class="row padd-left">
@@ -5,14 +7,16 @@
     </div>
     <div class="row">
           <div class="col-30">
-            <custom-select-box *ngIf="movies != undefined" [valueExpr]="'MovieID'"
-            [displayExpr]="'Title'" [itemName]="'User'"
-            [loadingMessage]="''" [(dataSource)]="movies"
-            [value]="searchable" (input)="searchable=$event"></custom-select-box>
+          <div style="margin-left:10px">
+            <custom-select-box *ngIf="!movies.length" [loadingMessage]="'loading data..'"></custom-select-box>
+            <custom-select-box [movies]="100" *ngIf="movies.length" [valueExpr]="'MovieID'" [value]="selectedValue"
+            [displayExpr]="'Title'" [itemName]="'User'" (newDataSource)="search($event)" (input)="selectMovie($event)"
+            [loadingMessage]="''" [(dataSource)]="movies"></custom-select-box>
+          </div>
           </div>
           <div class="col-70">
               <div class="right">
-                  <sui-multi-select [options]="genres" [maxSelected]="3" icon="list" 
+                  <!-- <sui-multi-select [options]="genres" [maxSelected]="3" icon="list" 
                                 [labelField]="'Name'" [valueField]="'Name'"
                                 [placeholder]="'Genres..'" (selectedOptionsChange)="filterByGenres($event)" #select>
                     <div class="padd">
@@ -21,7 +25,7 @@
                     <div class="scrolling menu">
                       <sui-select-option *ngFor="let o of select.filteredOptions" [value]="o"></sui-select-option>
                     </div>
-                  </sui-multi-select>
+                  </sui-multi-select> -->
         
                   <div class="ui dropdown btn sort-dropdown" suiDropdown>
                       <div class="text">Sort By</div>
