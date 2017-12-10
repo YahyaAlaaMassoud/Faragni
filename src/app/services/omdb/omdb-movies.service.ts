@@ -13,8 +13,10 @@ export class OmdbMoviesService {
         return this.customHttp.get(url)
           .map(res => <Movie>res.json())
     }
+    
 
     getListOfMoviesTBMD() {
-        
+        const url: string = 'https://api.themoviedb.org/3/movie/550?api_key=13a6b18671bc764984e1fdf315ef5de8';
+
     }
 }

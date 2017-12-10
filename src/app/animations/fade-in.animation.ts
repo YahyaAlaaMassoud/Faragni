@@ -5,11 +5,11 @@ export const fadeInAnimation =
         transition(':enter', [
             style({ opacity: 0 }),
             // animate('3s', style({ opacity: 1 }))
-            animate('3s ease-in-out')            
+            animate('1s ease-in-out')            
         ]),
         transition(':leave', [
             style({ opacity: 1 }),
             // animate('3s', style({ opacity: 0 }))
-            animate('3s ease-in-out')
+            animate('1s ease-in-out')
         ])
     ]);

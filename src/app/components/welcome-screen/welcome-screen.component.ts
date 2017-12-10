@@ -37,6 +37,7 @@ export class WelcomeScreenComponent implements OnInit {
         private userService: UserService)
   { 
     this.currentScreen = 1;
+    this.currentUser = new User();
   }
 
   ngOnInit() {
