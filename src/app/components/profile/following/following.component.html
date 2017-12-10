@@ -1,6 +1,5 @@
 <div stylt="min-height:500px">
-<div *ngFor="let currentFollowing of followingList;">
-  <app-following-thumbnail (followingDataSource)="refreshList($event)" [currentFollowing] = "currentFollowing"> </app-following-thumbnail>
-  
-</div>
+  <div *ngFor="let currentFollowing of followingList;">
+    <app-following-thumbnail (followingDataSource)="refreshList($event)" [currentFollowing] = "currentFollowing"> </app-following-thumbnail>
+  </div>
 </div>

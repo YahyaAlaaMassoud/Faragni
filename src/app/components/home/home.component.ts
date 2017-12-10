@@ -22,6 +22,7 @@ declare var $: any;
   selector: 'app-home',
   templateUrl: './home.component.html',
   animations: [fadeInAnimation],
+  styleUrls: ['./home.component.scss'],  
   host: { '[@fadeInAnimation]': '' }
 })
 export class HomeComponent implements OnInit {

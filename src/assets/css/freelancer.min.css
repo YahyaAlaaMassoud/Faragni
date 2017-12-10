@@ -293,38 +293,42 @@ div.login {
     background: transparent;
   }
 
+  @media screen and (max-width:970px){
+    .masthead{
+        min-width: 970px;
+    }
+}
 
-header.masthead {
+.masthead {
   height: 100vh;
   padding-top: 100px;
   padding-bottom: 50px;
   text-align: center;
   color: white;
-  background: #18BC9C;
   background: url("../img/bg-pattern.png"), #7b4397;
   background: url("../img/bg-pattern.png"), -webkit-linear-gradient(to left, #7b4397, #dc2430);
   background: url("../img/bg-pattern.png"), linear-gradient(to left, #7b4397, #dc2430);}
-  header.masthead img {
+  .masthead img {
     display: block;
     margin: 0 auto 20px; }
-  header.masthead .intro-text .name {
+  .masthead .intro-text .name {
     font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 2em;
     font-weight: 700;
     display: block;
     text-transform: capitalize; }
-  header.masthead .intro-text .skills {
+  .masthead .intro-text .skills {
     font-size: 1.25em;
     font-weight: 300; }
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   header.masthead {
     padding-top: 200px;
     padding-bottom: 100px; }
     header.masthead .intro-text .name {
       font-size: 2.75em; }
     header.masthead .intro-text .skills {
-      font-size: 1.75em; } }
+      font-size: 1.75em; } } */
 
 #portfolio .portfolio-item {
   right: 0;

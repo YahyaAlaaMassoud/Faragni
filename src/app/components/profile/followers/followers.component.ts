@@ -17,10 +17,14 @@ export class FollowersComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private router: Router,
                private userService: UserService) { 
+
   }
   ngOnInit() {
+    this.followersList = [];
+    this.followingList = [];
     this.getCurrentUser();
     this.getFollowers();
+    this.getFollowings();
   }
   getCurrentUser(){
     if(this.route.snapshot.data['user'] === null)
@@ -41,7 +45,7 @@ export class FollowersComponent implements OnInit {
                       );
   }
   getFollowings() {
-    this.userService.getFollowingsForAuthenticatedUser()
+    this.userService.getFollowingsForUser(this.currentUser.UserID)
                     .subscribe(
                       res=> {
                         this.followingList = res
@@ -51,10 +55,9 @@ export class FollowersComponent implements OnInit {
                         console.log('Error: '+error); 
                       }
                     );
-}
-refreshList(e){
-  this.followingList = e;
-}
-
-
+  }
+  
+  refreshList(e){
+    this.followingList = e;
+  }
 }

@@ -1,6 +1,7 @@
-// import * as console from 'console';
+import { el } from '@angular/platform-browser/testing/src/browser_util';
+import { OnChange } from 'ngx-bootstrap/ng2-bootstrap';
 import { UserService } from '../../services/user/user.service';
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChange } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -23,7 +24,7 @@ import { User } from '../../models/user.model';
             }`],
   styleUrls: ['./navbar.component.scss'],
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnChanges {
 
   @Input() hide: boolean;
   @Input() currentUser: User;
@@ -46,17 +47,18 @@ export class NavbarComponent implements OnInit {
               private userService: UserService)
   {
     this.home = false;
-    if(localStorage.getItem('jwt') === null)
-      this.showAvatar = false;
-    else
-      this.showAvatar = true;
     this.currentUser = new User();
   }
+
+  ngOnChanges(changes: {[propertyName: string]: SimpleChange}){
+    if(changes['currentUser'] !== undefined)
+      this.currentUser = changes['currentUser'].currentValue
+  }
+
   ngOnInit() {
     console.log(this.hide)
+    console.log(this.currentUser)
     this.getAuthenticatedUser()
-    // if(this.route.snapshot.url[0].path === "profile" || this.route.snapshot.url[0].path === "home")
-    //   this.currentScreen = 0;
   }
 
   chooseScreen(id: number){
@@ -82,40 +84,46 @@ export class NavbarComponent implements OnInit {
   goToProfile(){
     this.currentScreen = 0
     this.CurrentTab.emit(1)
-    this.router.navigate(['/profile', this.currentUser.UserID.toString(), "1" ])
+    this.router.navigate(['/profile', this.currentUser.UserID.toString(), "1" ]);
+    this.closeNav();
   }
   goToRecommendation()
   {
     this.CurrentTab.emit(5);
     this.router.navigate(['/profile', this.currentUser.UserID.toString(), "5" ]);
+    this.closeNav();
   }
   goToRatedMovies()
   {
     this.CurrentTab.emit(1);
     this.router.navigate(['/profile', this.currentUser.UserID.toString(), "1" ]);
+    this.closeNav();
   }
   goToMyWatchList()
   {
     this.CurrentTab.emit(2);
     this.router.navigate(['/profile', this.currentUser.UserID.toString(), "2" ]);
+    this.closeNav();
   }
   goToFollowers(){
     this.CurrentTab.emit(4);
     this.router.navigate(['/profile', this.currentUser.UserID.toString(), "4" ]);
+    this.closeNav();
   }
   goToFollowing(){
     this.CurrentTab.emit(6);
     this.router.navigate(['/profile', this.currentUser.UserID.toString(), "6" ]);
+    this.closeNav();
   }
 
   getAuthenticatedUser() {
     this.userService.getAuthenticatedUser()
               .subscribe( res => {
                 this.currentUser = res;
-                console.log(res)
+                // console.log(res)
               },
               error => {
-                console.log("error: " + error)
+                // console.log("error: " + error)
               }
             )
   }

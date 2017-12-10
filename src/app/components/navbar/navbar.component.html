@@ -23,8 +23,8 @@
         <!-- <button (click)="toggleModal()" *ngIf="hide" class="action-button">
             Sign in
         </button> -->
-        <!-- <img *ngIf=" currentUser.profilePic_url != null &&showAvatar && currentUser !== undefined" [src]="currentUser.profilePic_url" (click)="openNav()" class="rounded-circle img-responsive profile"> -->
-        <button (click)="openNav()" class="action-button">Side Nav</button>
+        <img *ngIf=" currentUser.profilePic_url != null && currentUser !== undefined" alt="error" [src]="currentUser.profilePic_url" (click)="openNav()" class="rounded-circle img-responsive profile">
+        <!-- <button (click)="openNav()" class="action-button">Side Nav</button> -->
     </div>
 </div>
 

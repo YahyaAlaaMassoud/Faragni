@@ -1,27 +1,18 @@
 <!-- <app-navbar (onModalOpen)="toggleModal()" [hide]="true"></app-navbar> -->
 <header class="masthead">
-     <style>
-        .notValid{
-          border: 2px solid red;
-        }
-        .dis{
-          cursor: not-allowed;
-          border: 1px solid #999999;
-          background-color: #cccccc;
-          color: #666666;
-        }
-    </style> 
   <div class="container">
     <div class="intro-text" style="padding-left:200px; padding-right:200px">
       <span class="name">Hello and welcome to</span>
       <span class="skills">Your Personalized Movie Recommendation Engine</span>
       <hr>
-      <button type="button" class="btn-outline btn-lg btn-block" (click)="loginOrRegiser = true" data-toggle="modal" data-target="#loginModal">Sign up to get started!</button>
+      <button type="button" class="btn-outline btn-lg btn-block trans action-button" (click)="loginOrRegiser = true"
+           data-toggle="modal" data-target="#loginModal">Sign up to get started!</button>
     </div>
   </div>
 </header>
 <!-- <app-footer></app-footer> -->
-<!-- <body> -->
+
+
 <div id="loginModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-full-height modal-right">
     <div class="modal-content modal-fluid">
@@ -38,7 +29,6 @@
           <a (click)="loginOrRegiser = !loginOrRegiser" style="cursor: pointer;">Not a member?</a>
         </div>
         <!--register form-->
-        <!-- LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAA START -->
         <div class="login" *ngIf="loginOrRegiser">
           <h2 style="font-size:22px;">Create a new account</h2>
           <input style="width:270px;" placeholder="First Name.." type="text" 
@@ -61,7 +51,3 @@
     </div>
   </div>
 </div>
-
-        <!-- LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAA START -->
-
-<!-- </body> -->

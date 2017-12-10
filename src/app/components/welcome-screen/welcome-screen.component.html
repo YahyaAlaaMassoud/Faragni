@@ -2,7 +2,7 @@
 <app-navbar [hide]="false" [currentUser]="currentUser" (screenID)="chooseScreen()"></app-navbar>
 <app-movies [hidden]="currentScreen != 1"></app-movies>
 <app-activity [hidden]="currentScreen != 2"></app-activity>
-  <header *ngIf="currentScreen == 3" class="masthead">
+  <div *ngIf="currentScreen == 3" class="masthead">
     <div class="container">
       <div class="col-md-6 col-md-offset-3">
           <p>You're logged in Faragni!!</p>
@@ -14,5 +14,5 @@
           </ul>
       </div>
     </div>
-  </header>
+  </div>
 <app-footer></app-footer>

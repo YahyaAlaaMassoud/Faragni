@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnChanges, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnChanges, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import { User } from '../../models/user.model';
 import { Event, document } from 'angular-bootstrap-md/utils/facade/browser';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -36,15 +36,8 @@ export class ProfileComponent implements OnInit {
   constructor(private router:Router, 
               private route: ActivatedRoute, 
               private userService: UserService,
-              private cdRef: ChangeDetectorRef) {
-    //   this.currentUser = JSON.parse(localStorage.getItem('currentUser')); 
-
-    //   this.louda = new User();
-    //   this.user1 = new User();
-    //   this.user2 = new User();
-    //   this.currentUser.Email="khaledawaled@live.com";
-    //   this.currentUser.Age = 21;
-    //   this.currentScreen = 0;
+              private cdRef: ChangeDetectorRef) 
+  {
       this.isEdit = false;
       this.isLoggedInUser = false;
       //-------Tabs------//
@@ -55,71 +48,26 @@ export class ProfileComponent implements OnInit {
       this.showFollowing = false;
 
       this.loggedUser = new User();
-    //   this.currentUser.Friends=[]
-    //  // this.currentUser.Friends.push(this.currentUser);
-    //    localStorage.setItem('currentUser',JSON.stringify(this.currentUser));
-    //   // console.log(this.currentUser.Friends);
-    //   this.user2.FirstName = "waleed";
-    //   this.user2.LastName = "elnaser";
-    //   this.user2.bio = "ana raye7 fen ";
-    //   this.user2.profilePic_url = this.currentUser.profilePic_url;
-    //   this.louda.bio="hamada ra7 wa magash";
-    //   this.louda.FirstName = "louda";
-    //   this.louda.LastName = "hamada";
-    //   this.louda.profilePic_url = this.currentUser.profilePic_url;
-    //   this.louda.UserID = 2 ; 
-    //   this.user1.UserID = 3 ; 
-    //   this.user2.UserID = 4 ;
-    //   this.user1.FirstName = "tftf";
-    //   this.user1.LastName = "2f2f";
-    //   this.user1.bio = "hanafy comes first";
-    //   this.user1.profilePic_url = this.currentUser.profilePic_url;
-    //   this.currentUser.Followers=[];
-    //   this.currentUser.Followers.push(this.louda);
-    //   this.currentUser.Followers.push(this.user1);
-    //   this.currentUser.Following=[];
-    //   this.currentUser.Following.push(this.user2);
-    //   localStorage.setItem('currentUser',JSON.stringify(this.currentUser));
-    //   console.log(this.currentUser.Followers);
   }
 
   ngOnInit() {
     let usr: User = this.route.snapshot.data['user'];
-    let tab: number = +this.route.snapshot.paramMap.get("tab");
-    let currentScreen: number = +this.route.snapshot.paramMap.get("screen");
-    this.chooseTab(tab);
-    this.currentUser = usr;
-    console.log(this.currentUser.UserID)
-    this.fullName = this.currentUser.FirstName + ' ' + this.currentUser.LastName;
-    this.currentUser.bio = "ana esmy hamada";
-
-    this.getAuthenticatedUser();
-    this.isFollowedUser()
-    this.changeMeOnUpdate();
-    
     if(usr === null){
       this.router.navigate(['/404']);
     }
     else{
-      
-      // this.isLoggedInUser = (this.loggedUser.UserID === usr.UserID) ? true : false;
-      
-      // if(!this.isLoggedInUser){
-      //   let ok: boolean = false;
-      //   this.currentUser.Following = this.currentUser.Following || [];
-      //   this.currentUser.Following.forEach(usr =>{
-      //     if(usr.UserID === id){
-      //       ok = true;
-      //     }
-      //   })
-      //   this.isFollowed = ok;
-      // }
-      
-      // this.getUserByID(usr.UserID);
-    }
+      let tab: number = +this.route.snapshot.paramMap.get("tab");
+      let currentScreen: number = +this.route.snapshot.paramMap.get("screen");
+      this.currentUser = usr;
+      this.fullName = this.currentUser.FirstName + ' ' + this.currentUser.LastName;
 
-    let scr: number = +this.route.snapshot.paramMap.get('screen')
-    this.chooseTab(scr)
+      this.getAuthenticatedUser();
+      this.isFollowedUser()
+      this.changeMeOnUpdate();
+
+      let scr: number = +this.route.snapshot.paramMap.get('screen')
+      this.chooseTab(scr)
+    }
   }
 
   getUserByID(id: number){
@@ -139,10 +87,10 @@ export class ProfileComponent implements OnInit {
                     .subscribe( 
                     res => {
                       this.loggedUser = res;
-                      console.log(this.loggedUser.UserID)
+                      // console.log(this.loggedUser.UserID)
                       this.isLoggedInUser = (this.loggedUser.UserID == this.currentUser.UserID) ? true : false;
                       this.noAccess = !this.isLoggedInUser;
-                      console.log(this.loggedUser)
+                      // console.log(this.loggedUser)
                     },
                     error => {
                       console.log("error: " + error)
@@ -155,7 +103,7 @@ export class ProfileComponent implements OnInit {
                     .subscribe(
                       res=>{
                         this.currentUser = res;
-                        console.log(this.currentUser)
+                        this.loggedUser = res;
                       },
                       error => {
                         console.log("error: " + error)
@@ -167,6 +115,7 @@ export class ProfileComponent implements OnInit {
     this.route
         .params
         .subscribe(params => {
+          this.chooseTab(params['tab'])
           this.userService.getById(params['id'])
           .subscribe(res=>{
             if(res === null){

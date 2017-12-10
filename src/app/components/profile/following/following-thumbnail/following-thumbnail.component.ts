@@ -17,16 +17,13 @@ export class FollowingThumbnailComponent implements OnInit {
 
   @Output() followingDataSource = new EventEmitter<User[]>(); 
 
-  //<!-- LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAA START -->
-  
   constructor(private router: Router,private userService: UserService) { 
   }
 
   ngOnInit() {
 }
   goToProfile(){
-  this.router.navigate(['/profile', this.currentFollowing.UserID]);
-
+    this.router.navigate(['/profile', this.currentFollowing.UserID.toString(), 1]);
   }
 
   unfollowUser(){
@@ -40,5 +37,4 @@ export class FollowingThumbnailComponent implements OnInit {
                       }
                     )
   }
-  //__________________________________________________________________________________
 }
