@@ -60,6 +60,7 @@ export class CustomSelectBoxComponent implements OnInit {
     ngOnInit() {
         // console.log(this.value)
         if (this.dataSource != undefined) {
+            console.log(this.dataSource)
             this.setSelectBoxDisplay(this.valueExpr, this.displayExpr);
             this.dataSource.forEach(item => {
                 if (item[this.valueExpr] == this.value) {

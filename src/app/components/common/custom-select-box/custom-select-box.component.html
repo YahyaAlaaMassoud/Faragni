@@ -7,7 +7,6 @@
     <div *ngFor="let op of searchSelections;">
       <a *ngIf="!loadingMessage.length" (click)="changeValue(op)">{{op.dis.displayExpr}}</a>
     </div>
-    <a class="underline" *ngIf="!loadingMessage.length && !searchSelections.length">Add new {{itemName}}</a>
     <a *ngIf="loadingMessage.length">{{loadingMessage}}</a>
   </div>
 </div>

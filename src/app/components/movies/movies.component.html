@@ -1,4 +1,4 @@
-
+<app-navbar></app-navbar>
 <div class="screen-tab">
   <div class="header">
     <div class="row padd-left">
@@ -6,20 +6,19 @@
     </div>
     <div class="row">
           <div class="col-30">
-            
+            <custom-select-box *ngIf="movies != undefined" [valueExpr]="'MovieID'"
+            [displayExpr]="'Title'" [itemName]="'User'"
+            [loadingMessage]="''" [(dataSource)]="movies"
+            [value]="searchable" (input)="searchable=$event"></custom-select-box>
           </div>
           <div class="col-70">
               <div class="right">
                   <sui-multi-select [options]="genres" [maxSelected]="3" icon="list" 
-                                [placeholder]="'Genres..'" (selectedOptionsChange)="hh($event)" #select>
+                                [labelField]="'Name'" [valueField]="'Name'"
+                                [placeholder]="'Genres..'" (selectedOptionsChange)="filterByGenres($event)" #select>
                     <div class="padd">
                       <input suiSelectSearch type="text" placeholder="Search genres...">
                     </div>
-                    <!-- <div class="divider"></div> -->
-                    <!-- <div class="header">
-                      <i class="list icon"></i>
-                      Genres
-                    </div> -->
                     <div class="scrolling menu">
                       <sui-select-option *ngFor="let o of select.filteredOptions" [value]="o"></sui-select-option>
                     </div>
@@ -43,16 +42,16 @@
   <div *ngFor="let movie of pagedItems; let i = index">
     <app-movie-thumbnail [currentMovie]="movie"></app-movie-thumbnail>
   </div>
-  <i *ngIf="pagedItems.length" class="fa fa-arrow-left previous" (click)="setPage(pager.currentPage - 1)" aria-hidden="true"></i>            
-  <i *ngIf="pagedItems.length" class="fa fa-arrow-right next" aria-hidden="true" (click)="setPage(pager.currentPage + 1)"></i>            
+  <i *ngIf="pagedItems.length" class="fa fa-arrow-left previous" (click)="setPage(pager.currentPage - 1, dumMovies.length)" aria-hidden="true"></i>            
+  <i *ngIf="pagedItems.length" class="fa fa-arrow-right next" aria-hidden="true" (click)="setPage(pager.currentPage + 1, dumMovies.length)"></i>            
   
   <div class="pages">
     <div class="pagination" *ngIf="pagedItems.length">
         <!-- <button class="page gradient" (click)="setPage(1)">First</button> -->
 
-        <li *ngFor="let page of pager.pages" [ngClass]="{'active':pager.currentPage === page}">
+        <!-- <li *ngFor="let page of pager.pages" [ngClass]="{'active':pager.currentPage == page}">
           <button class="page number gradient" (click)="setPage(page)">{{page}}</button>
-        </li>
+        </li> -->
 
         <!-- <button class="page gradient" (click)="setPage(pager.totalPages)">Last</button> -->
     </div>

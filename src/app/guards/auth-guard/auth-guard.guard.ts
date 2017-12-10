@@ -10,7 +10,7 @@ export class AuthGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-      if (localStorage.getItem('currentUser')) {
+      if (localStorage.getItem('jwt')) {
           // logged in so return true
           console.log('hena?')
           return true;

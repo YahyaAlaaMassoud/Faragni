@@ -35,48 +35,27 @@ export class WelcomeScreenComponent implements OnInit {
         private toast: ToasterService,
         private authenticationService: AuthenticationService,
         private userService: UserService)
-  {
-      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-      this.currentScreen = 1;
-  }
+  { }
 
   ngOnInit() {
       this.loadAllUsers();
-      console.log(this.route.data)
-  }
-
-  deleteUser(id: number) {
-    console.log(id)
-      this.userService.delete(id)
-        .subscribe(() => {
-          // console.log('deleted')
-          this.loadAllUsers()
-        });
   }
 
   private loadAllUsers() {
       this.userService.getAll()
-        .subscribe(users => {
-          this.users = users;
-          // console.log(users)
-        });
+                      .subscribe(
+                        res => {
+                        this.users = res;
+                        console.log(res)
+                        console.log('henaaaaaaaaa')
+                        },
+                        error => {
+                          console.log('Error: ' + error)
+                        }
+                    );
   }
 
-  logout(){
-    var toast: any = {
-      type: 'info',
-      title: 'Good Bye!',
-      body: 'See you soon ' + this.currentUser.UserName + '!',
-      timeout: 2500
-    };
-    this.toast.pop(toast)
-    // console.log('goodbye')
-    this.authenticationService.logout();
-    this.router.navigate(['/login']);
-  }
-
-  chooseScreen(e){
-    // console.log(e)
+  chooseScreen(e) {
     this.currentScreen = e;
   }
 }

@@ -34,6 +34,8 @@ import { BaseRequestOptions } from '@angular/http';
 import { ProfileResolver } from './services/resolvers/profile.resolver';
 import { PagerService } from './services/pager/pager.service';
 import { LoaderService } from './services/loader/loader.service';
+import { MovieService } from './services/movie/movie.service';
+import { GenreService } from './services/genre/genre.service';
 
 // routing
 import { appRoutes } from './app.routing';
@@ -116,7 +118,9 @@ import { FollowingThumbnailComponent } from './components/profile/following/foll
     BaseRequestOptions,
     OmdbMoviesService,
     ProfileResolver,
-    PagerService
+    PagerService,
+    MovieService,
+    GenreService
   ],
   bootstrap: [ AppComponent ],
   schemas: [ NO_ERRORS_SCHEMA ]

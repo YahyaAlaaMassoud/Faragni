@@ -1,3 +1,4 @@
+import { MovieService } from '../../services/movie/movie.service';
 import { User } from '../../models/user.model';
 
 import { Component, OnInit, Input } from '@angular/core';
@@ -10,6 +11,7 @@ import { fadeInAnimation } from '../../animations/fade-in.animation';
 import { Movie } from '../../models/movie.model';
 import { Genre } from '../../models/genre.model';
 import { PagerService } from '../../services/pager/pager.service';
+import { GenreService } from '../../services/genre/genre.service';
 
 @Component({
   selector: 'app-movies',
@@ -26,47 +28,58 @@ export class MoviesComponent implements OnInit {
   displayedMovies: Movie[];
   moviesSortedByRate: Movie[];
   moviesSortedByDate: Movie[];
-  moviesSortedByAwards: Movie[];
   genres: string[];
   diffGenres: Set<string>;
-  open: boolean;
+  pager: any = {}
+  pagedItems: Movie[];
+  last: Movie;
+  selectedPage: number = 1;
+  searchable: number;
 
-
-  constructor(private location: Location, private pagerService: PagerService) {
+  constructor(private location: Location, 
+              private pagerService: PagerService,
+              private movieService: MovieService,
+              private genreService: GenreService) {
     this.movies = [];
+    this.displayedMovies = [];
     this.dumMovies = [];
-    this.open = false;
-    this.diffGenres = new Set();
     this.genres = [];
+    console.log('fi eh')
   }
 
   ngOnInit() {
-    this.movies = JSON.parse(localStorage.getItem('movies'));
-    this.displayedMovies = JSON.parse(localStorage.getItem('movies'));
-    this.dumMovies = JSON.parse(localStorage.getItem('movies'));
-    // console.log(this.movies);
-    this.location.replaceState('/movies');
-
-    //this.sortByRating();
-    //this.sortByDate();
-
+    console.log('hamada')
+    this.getMovies();
     this.getGenres();
-    this.pagedItems = [];
+    
+    // this.location.replaceState('/movies');
 
-    this.setPage(1)
+    this.pagedItems = [];    
   }
 
-  
-  pager: any = {}
-  pagedItems: Movie[];
+  getMovies() {
+    this.movieService.getAll()
+                     .subscribe(
+                       res => {
+                        this.movies = res;
+                        this.displayedMovies = res;
+                        this.dumMovies = res;
+                        this.setPage(1, this.movies.length)
+                        // console.log(res)
+                       },
+                       error => {
+                         console.log('Error: ' + error)
+                       }
+                     )
+  }
 
-  setPage(page: number) {
+  setPage(page: number, length: number) {
     if (page < 1 || page > this.pager.totalPages) {
         return;
     }
 
     // get pager object from service
-    this.pager = this.pagerService.getPager(this.movies.length, page);
+    this.pager = this.pagerService.getPager(length, page);
 
     // get current page of items
     this.pagedItems = this.dumMovies.slice(this.pager.startIndex, this.pager.endIndex + 1);
@@ -75,7 +88,6 @@ export class MoviesComponent implements OnInit {
 }
 
   sortByRating(){
-    //this.moviesSortedByRate = JSON.parse(localStorage.getItem('movies'));
     this.dumMovies.sort(function(a, b){
       if(a.imdbRating < b.imdbRating){
           return 1;
@@ -87,17 +99,13 @@ export class MoviesComponent implements OnInit {
           return 0;
       }
     })
-    this.setPage(this.pager.currentPage)
+    this.setPage(this.pager.currentPage, this.dumMovies.length)
   }
 
-  last:Movie;
-  selectedPage:number = 1;
-
   sortByDate(){
-    //this.moviesSortedByDate = JSON.parse(localStorage.getItem('movies'));
     this.dumMovies.sort(function(a, b){
-      var aDate = new Date(a.Released);
-      var bDate = new Date(b.Released);
+      var aDate = new Date(a.ReleaseDate);
+      var bDate = new Date(b.ReleaseDate);
       if(aDate < bDate){
           return 1;
       }
@@ -108,26 +116,27 @@ export class MoviesComponent implements OnInit {
           return 0;
       }
     })
-    this.setPage(this.pager.currentPage)
+    this.setPage(this.pager.currentPage, this.dumMovies.length)
   }
 
   getGenres(){
-    this.movies.forEach(movie=>{
-      const li = movie.Genre.split(', ');
-      li.forEach(genre=>{
-        if(!this.diffGenres.has(genre)){
-          this.diffGenres.add(genre);
-          this.genres.push(genre);
-        }
-      })
-    })
+    this.genreService.getAll()
+                     .subscribe(
+                       res => {
+                         this.genres = res;
+                        //  console.log(res)
+                       },
+                       error => {
+                         console.log('Error: ' + error)
+                       }
+                     )
   }
 
-  hh(e){
+  filterByGenres(e){
     console.log(e)
     if(!e.length){
       this.dumMovies = this.movies;
-      this.setPage(this.pager.currentPage)
+      this.setPage(this.pager.currentPage, this.dumMovies.length)
     }
     else{
       this.displayedMovies = [];
@@ -143,7 +152,7 @@ export class MoviesComponent implements OnInit {
           }
         })
       this.dumMovies = this.displayedMovies;
-      this.setPage(this.pager.currentPage)
+      this.setPage(this.pager.currentPage, this.dumMovies.length)
     }
   }
 

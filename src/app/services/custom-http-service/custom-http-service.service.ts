@@ -18,7 +18,7 @@ import { RequestArgs } from '@angular/http/src/interfaces';
 
 export class HttpService extends Http {
     public token: string;
-    apiUrl = '';
+    apiUrl = 'https://faragni-api.herokuapp.com/api/';
 
     constructor(backend: XHRBackend,
                 defaultOptions: MyCustomRequestOptions,
@@ -28,6 +28,7 @@ export class HttpService extends Http {
 
     get(url: string, options?: RequestOptionsArgs): Observable<any> {
         this.showLoader();
+        // debugger;
         return super.get(this.getFullUrl(url), this.requestOptions(options))
                     .catch(this.handleError) // Catch exception here
                     .do((res: Response) => {
@@ -44,7 +45,7 @@ export class HttpService extends Http {
 
     post(url: string, entity: any, options?: RequestOptionsArgs): Observable<any> {
         this.showLoader();
-        return super.post(this.getFullUrl(url), JSON.stringify(entity), this.requestOptions(options))
+        return super.post(this.getFullUrl(url), entity, this.requestOptions(options))
                     .catch(this.handleError)
                     .do((res: Response) => {
                         // console.log('hamadaaaaaaaaaaaaaaaaaa')
@@ -60,7 +61,7 @@ export class HttpService extends Http {
 
     put(url: string, entity: any, options?: RequestOptionsArgs): Observable<any> {
         this.showLoader();
-        return super.put(this.getFullUrl(url), JSON.stringify(entity), this.requestOptions(options))
+        return super.put(this.getFullUrl(url), entity, this.requestOptions(options))
                     .catch(this.handleError)
                     .do((res: Response) => {
                         // console.log('hamadaaaaaaaaaaaaaaaaaa')
@@ -95,12 +96,11 @@ export class HttpService extends Http {
     }
 
     private requestOptions(options?: RequestOptionsArgs): RequestOptionsArgs {
-        // if (options == null) 
-        //     options = new MyCustomRequestOptions();
-        // if (options.headers == null) 
-        //     options.headers = new Headers();
-        // return options;
-        return null;
+        if (options == null) 
+            options = new MyCustomRequestOptions();
+        if (options.headers == null) 
+            options.headers = new Headers();
+        return options;
     }
 
     private handleError(error: Response) {

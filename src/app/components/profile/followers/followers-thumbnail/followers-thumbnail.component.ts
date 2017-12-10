@@ -1,62 +1,72 @@
-import { Component, OnInit, ViewEncapsulation, Input  } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input , EventEmitter ,Output} from '@angular/core';
 import { User } from '../../../../models/user.model';
-import { Output } from '@angular/core/src/metadata/directives';
+//<!-- LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAA START -->
 
+import { Router, ActivatedRoute } from '@angular/router';
+
+import { UserService } from '../../../../services/user/user.service';
+// /users/:id/follows_me
+// /users/:id/follows_him
 @Component({
   selector: 'app-followers-thumbnail',
   templateUrl: './followers-thumbnail.component.html',
   styleUrls: ['./followers-thumbnail.component.css']
 })
 export class FollowersThumbnailComponent implements OnInit {
+  
   @Input() currentFollower:User;
-  currentUser:User;
-  isFollowing:boolean;
-  constructor() { 
-    //console.log(this.currentFollower.UserID);
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.isFollowing = false;
+
+  
+  isFolloowing:boolean;
+  //        <!-- LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAA START -->
+
+  constructor(private router: Router,private userService: UserService) { 
+    
+    
   }
+
   ngOnInit() {
-    const index: number = this.currentUser.Following
-    .findIndex(item => item.UserID === this.currentFollower.UserID)
-    if(index!=-1)
-    {
-     this.isFollowing = true;
-    }
+        this.isFollowingUser();
+        //console.log("hnaaaaaaaaaaa  " + this.isFolloowing );
   }
-  updateUsersList(user: User) {
-    const users: User[] = JSON.parse(localStorage.getItem('users'));
-    const index: number = users
-      .findIndex(item => item.UserID === user.UserID);
-    users[index] = user;
-    localStorage.setItem('users', JSON.stringify(users));
+  goToProfile(){
+    this.router.navigate(['/profile', this.currentFollower.UserID]);
   }
+
   unfollowUser(){
-    const index: number = this.currentUser.Following
-    .findIndex(item => item.UserID === this.currentFollower.UserID)
-    //this.currentUser.Followers.splice(index,1)
-    this.currentUser.Following = this.currentUser.Following.filter(item=>item.UserID!=this.currentFollower.UserID);
-    console.log(this.currentUser.Following);
-    localStorage.setItem('currentUser',JSON.stringify(this.currentUser));
-    this.updateUsersList(this.currentUser);
+    this.userService.unfollowUser(this.currentFollower.UserID)
+                    .subscribe(
+                      res => {
+                        this.isFolloowing = false;
+                      },
+                      error => {
+                        console.log('Error: ' + error)
+                      }
+                    )
   }
+
   followUser(){
-    this.currentUser.Following.push(this.currentFollower);
-    console.log(this.currentUser.Following);
-    localStorage.setItem('currentUser',JSON.stringify(this.currentUser));
-    this.updateUsersList(this.currentUser);
+    this.userService.followUser(this.currentFollower.UserID)
+                    .subscribe(
+                      res => {
+                        this.isFolloowing = true;
+                      },
+                      error => {
+                        console.log('Error: ' + error)
+                      }
+                    )
   }
-  // followOrFollowing(){
-  //   var bt = (<HTMLInputElement>document.getElementById("mybt"));
-  //   if(this.isFollowing)
-  //   {
-  //       bt.value = "unfollow";
-  //       bt.click = function(){this.unfollowUser();}
-  //   }
-  //   else
-  //   {
-  //       bt.value = "follow";
-  //       bt.click = function(){this.followUser();}
-  //   }
-  // }
+
+  isFollowingUser() {
+    this.userService.isFollowing(this.currentFollower.UserID)
+                    .subscribe(
+                      res => {
+                        console.log(res);
+                        this.isFolloowing = res.following_him ;
+                      },
+                      error => {
+                        console.log('Error: ' + error)
+                      }
+                    )
+  }
 }

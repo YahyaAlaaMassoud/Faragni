@@ -9,7 +9,7 @@ export class Movie {
   imdbVotes: string;
   Title: string;
   TagLine: string;
-  ReleaseDate: string;
+  ReleaseDate: Date;
   ProductionCompanies: ProductionCompany[];
   PosterPath: string;
   Popularity: number;
@@ -29,7 +29,6 @@ export class Movie {
   Poster: string;
   ProductionCompany: string;
   Rating: any[];
-  Released: string;
   Runtime: string;
   Website: string;
   Writer: string;

@@ -1,7 +1,7 @@
 <div class="recommended-movie-card">
   <div class="row">
     <div class="col-20">
-      <img src="{{currentRecommendingUser.profilePic}}">
+      <img src="{{currentRecommendingUser.profilePic_url}}" alt="error">
     </div>
     <div class="recommendation-content">
       <div class="title">
@@ -9,8 +9,7 @@
           {{currentRecommendingUser.FirstName + ' ' + currentRecommendingUser.LastName}}
         </span>
         recommended you 
-        <span data-toggle="modal" [attr.data-target]="'#' + currentMovie.imdbID" 
-              *ngIf="currentMovie != undefined">
+        <span data-toggle="modal" [attr.data-target]="'#' + currentMovie.imdbID" *ngIf="currentMovie != undefined">
           {{currentMovie.Title}}
         </span>
       </div>
@@ -18,10 +17,10 @@
         '{{currentRecommendation.Message}}'
       </div>
       <hr>
-      <star-rating-comp [hoverEnabled]="true" [labelText]="'Your ratingfor this movie:'"
-      [numOfStars]="5" [labelPosition]="'left'" [starType]="'icon'" [readOnly]="readOnly"
-      [rating]="currentRecommendation.UserRating"
-      (onClick)="saveRecommendationRating($event)"></star-rating-comp>
+      <star-rating-comp [hoverEnabled]="true" [labelText]="'Your rating for this movie:'" class="pointer"
+                        [numOfStars]="5" [labelPosition]="'left'" [starType]="'icon'"
+                        [rating]="currentRecommendation.UserRating"
+                        (onClick)="saveRecommendationRating($event)"></star-rating-comp>
       <hr>
     </div>
   </div>
