@@ -114,6 +114,9 @@ export class ProfileComponent implements OnInit {
       
       // this.getUserByID(usr.UserID);
     }
+
+    let scr: number = +this.route.snapshot.paramMap.get('screen')
+    this.chooseTab(scr)
   }
 
   getUserByID(id: number){
@@ -170,7 +173,8 @@ export class ProfileComponent implements OnInit {
               this.currentUser = res;
               this.isLoggedInUser = (this.loggedUser.UserID == this.currentUser.UserID) ? true : false;
               this.noAccess = !this.isLoggedInUser;              
-              this.chooseTab(1);
+              let scr: number = +this.route.snapshot.paramMap.get('screen')              
+              this.chooseTab(scr);
               window.scrollTo(0,0);
             }
           })

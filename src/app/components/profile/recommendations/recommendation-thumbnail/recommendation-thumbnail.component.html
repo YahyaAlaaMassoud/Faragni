@@ -18,7 +18,7 @@
       </div>
       <hr>
       <star-rating-comp [hoverEnabled]="true" [labelText]="'Your rating for this movie:'" class="pointer"
-                        [numOfStars]="5" [labelPosition]="'left'" [starType]="'icon'"
+                        [numOfStars]="5" [labelPosition]="'left'" [starType]="'icon'" [readOnly]="readOnly"
                         [rating]="currentRecommendation.UserRating"
                         (onClick)="saveRecommendationRating($event)"></star-rating-comp>
       <hr>

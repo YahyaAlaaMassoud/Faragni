@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
             tapToDismiss: true,
             timeout: 0,
             positionClass: 'toast-bottom-center',
-            animation: 'slideUp'
+            animation: 'fade'
         });
 
   constructor(private route: ActivatedRoute){

@@ -28,9 +28,9 @@
           <div *ngFor="let recommendation of pendingRecommendations;">
             <recommendation-thumbnail [currentRecommendation]="recommendation"></recommendation-thumbnail>
           </div>
-          <div *ngIf="!pendingRecommendations.length">
+          <!-- <div *ngIf="!pendingRecommendations.length">
             you have rated all your recommendations
-          </div>
+          </div> -->
         </div>
       <!-- </div>
   </sui-accordion-panel>
@@ -50,9 +50,9 @@
               <div *ngFor="let recommendation of ratedRecommendations;">
                 <recommendation-thumbnail [readOnly]="true" [currentRecommendation]="recommendation"></recommendation-thumbnail>
               </div>
-              <div *ngIf="!ratedRecommendations.length">
+              <!-- <div *ngIf="!ratedRecommendations.length">
                 you haven't rated any of your recommendations
-              </div>
+              </div> -->
             </div>
       <!-- </div>
   </sui-accordion-panel>

@@ -17,10 +17,12 @@ import { MovieService } from '../../../../services/movie/movie.service';
 export class RecommendationThumbnailComponent implements OnInit {
 
   @Input() currentRecommendation: Recommendation;
+  @Input() readOnly: boolean;
   currentRecommendingUser: User;
   currentMovie: Movie;
   currentUser: User;
   imdbPath: string;
+  
 
   constructor(private omdb: OmdbMoviesService,
               private route: ActivatedRoute,
@@ -90,6 +92,6 @@ export class RecommendationThumbnailComponent implements OnInit {
   }
 
   goToProfile(){
-    this.router.navigate(['/profile', this.currentRecommendingUser.UserID])
+    this.router.navigate(['/profile', this.currentRecommendingUser.UserID.toString(), "1"])
   }
 }

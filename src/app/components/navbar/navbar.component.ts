@@ -33,6 +33,8 @@ export class NavbarComponent implements OnInit {
   
   @Output() CurrentTab = new EventEmitter<number>();
  // <!-- LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAA START -->
+
+ showAvatar: boolean;
   
   currentScreen: number;
 
@@ -44,13 +46,16 @@ export class NavbarComponent implements OnInit {
               private userService: UserService)
   {
     this.hide = true;
+    if(localStorage.getItem('jwt') === null)
+      this.showAvatar = false;
+    else
+      this.showAvatar = true;
     this.currentUser = new User();
     this.currentUser = null;
     this.currentScreen = 1;
   }
 
   ngOnInit() {
-    console.log(this.currentUser)
     this.getAuthenticatedUser()
     // if(this.route.snapshot.url[0].path === "profile" || this.route.snapshot.url[0].path === "home")
     //   this.currentScreen = 0;
@@ -80,30 +85,30 @@ export class NavbarComponent implements OnInit {
   goToProfile(){
     this.currentScreen = 0
     this.CurrentTab.emit(1)
-    this.router.navigate(['/profile', this.currentUser.UserID])
+    this.router.navigate(['/profile', this.currentUser.UserID.toString(), "1" ])
   }
   goToRecommendation()
   {
     this.CurrentTab.emit(5);
-    this.router.navigate(['/profile', this.currentUser.UserID]);
+    this.router.navigate(['/profile', this.currentUser.UserID.toString(), "5" ]);
   }
   goToRatedMovies()
   {
     this.CurrentTab.emit(1);
-    this.router.navigate(['/profile', this.currentUser.UserID]);
+    this.router.navigate(['/profile', this.currentUser.UserID.toString(), "1" ]);
   }
   goToMyWatchList()
   {
     this.CurrentTab.emit(2);
-    this.router.navigate(['/profile', this.currentUser.UserID]);
+    this.router.navigate(['/profile', this.currentUser.UserID.toString(), "2" ]);
   }
   goToFollowers(){
     this.CurrentTab.emit(4);
-    this.router.navigate(['/profile', this.currentUser.UserID]);
+    this.router.navigate(['/profile', this.currentUser.UserID.toString(), "4" ]);
   }
   goToFollowing(){
     this.CurrentTab.emit(6);
-    this.router.navigate(['/profile', this.currentUser.UserID]);
+    this.router.navigate(['/profile', this.currentUser.UserID.toString(), "6" ]);
   }
 
   getAuthenticatedUser() {

@@ -35,7 +35,9 @@ export class WelcomeScreenComponent implements OnInit {
         private toast: ToasterService,
         private authenticationService: AuthenticationService,
         private userService: UserService)
-  { }
+  { 
+    this.currentScreen = 1;
+  }
 
   ngOnInit() {
       this.loadAllUsers();
@@ -46,11 +48,11 @@ export class WelcomeScreenComponent implements OnInit {
                       .subscribe(
                         res => {
                         this.users = res;
-                        console.log(res)
-                        console.log('henaaaaaaaaa')
+                        // console.log(res)
                         },
                         error => {
-                          console.log('Error: ' + error)
+                          // console.log('Error: ' + error)
+                          this.users = []
                         }
                     );
   }
