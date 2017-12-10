@@ -30,7 +30,7 @@ export class NavbarComponent implements OnInit {
   @Output() onModalOpen = new EventEmitter<any>();
   @Output() screenID = new EventEmitter<number>();
   //<!-- LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAA START -->
-  
+  @Input() home: boolean;
   @Output() CurrentTab = new EventEmitter<number>();
  // <!-- LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAA START -->
   
@@ -43,6 +43,7 @@ export class NavbarComponent implements OnInit {
               private location: Location,
               private userService: UserService)
   {
+    this.home = false;
     this.hide = true;
     this.currentUser = new User();
     this.currentUser = null;
