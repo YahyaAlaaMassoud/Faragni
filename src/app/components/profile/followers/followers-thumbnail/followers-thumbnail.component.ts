@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, Input , EventEmitter ,Output} from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input , EventEmitter, Output, OnChanges, SimpleChange} from '@angular/core';
 import { User } from '../../../../models/user.model';
 //<!-- LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAA START -->
 
@@ -14,30 +14,43 @@ import { UserService } from '../../../../services/user/user.service';
 })
 export class FollowersThumbnailComponent implements OnInit {
   
-  @Input() currentFollower:User;
+  @Input() currentFollower: User;
+  @Input() currentFollowings: User[];
+  authenticatedUser: User;
+  currentUser: User;
+  isFollowing:boolean;
+  isAllowed: boolean;
 
-  
-  isFolloowing:boolean;
-  //        <!-- LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAA START -->
-
-  constructor(private router: Router,private userService: UserService) { 
-    
-    
+  constructor(private router: Router, 
+              private userService: UserService,
+              private route: ActivatedRoute) { 
+    this.authenticatedUser = new User();
+    this.currentFollowings = []
+    this.currentUser = new User()
   }
 
   ngOnInit() {
-        this.isFollowingUser();
-        //console.log("hnaaaaaaaaaaa  " + this.isFolloowing );
-  }
-  goToProfile(){
-    this.router.navigate(['/profile', this.currentFollower.UserID]);
+    let usr: User = new User;
+    this.currentUser = this.route.snapshot.data['user'] || usr;
+    this.getAuthUser();
+    this.isFollowing = false;
+    for(let i: number = 0; i < this.currentFollowings.length; i++){
+      if(this.currentFollowings[i].UserID == this.currentFollower.UserID){
+        this.isFollowing = true;
+        break;
+      }
+    }
   }
 
-  unfollowUser(){
-    this.userService.unfollowUser(this.currentFollower.UserID)
+  getAuthUser() {
+    this.userService.getAuthenticatedUser()
                     .subscribe(
                       res => {
-                        this.isFolloowing = false;
+                        this.authenticatedUser = res;
+                        if(res.UserID == this.currentUser.UserID)
+                          this.isAllowed = true;
+                        else
+                          this.isAllowed = false;
                       },
                       error => {
                         console.log('Error: ' + error)
@@ -45,11 +58,40 @@ export class FollowersThumbnailComponent implements OnInit {
                     )
   }
 
+  ngOnChanges(changes: {[propertyName: string]: SimpleChange}){
+    if(changes['currentFollowings'] !== undefined){
+      this.currentFollowings = changes['currentFollowings'].currentValue || []
+      this.isFollowing = false;
+      for(let i: number = 0; i < this.currentFollowings.length; i++){
+        if(this.currentFollowings[i].UserID == this.currentFollower.UserID){
+          this.isFollowing = true;
+          break;
+        }
+      }
+    }
+  }
+
+  goToProfile(){
+    this.router.navigate(['/profile', this.currentFollower.UserID.toString(), 1]);
+  }
+
+  unfollowUser(){
+      this.userService.unfollowUser(this.currentFollower.UserID)
+                      .subscribe(
+                        res => {
+                          this.isFollowing = false;
+                        },
+                        error => {
+                          console.log('Error: ' + error)
+                        }
+                      )
+  }
+
   followUser(){
     this.userService.followUser(this.currentFollower.UserID)
                     .subscribe(
                       res => {
-                        this.isFolloowing = true;
+                        this.isFollowing = true;
                       },
                       error => {
                         console.log('Error: ' + error)
@@ -62,7 +104,7 @@ export class FollowersThumbnailComponent implements OnInit {
                     .subscribe(
                       res => {
                         console.log(res);
-                        this.isFolloowing = res.following_him ;
+                        this.isFollowing = res.following_him ;
                       },
                       error => {
                         console.log('Error: ' + error)

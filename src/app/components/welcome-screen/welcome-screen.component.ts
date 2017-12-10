@@ -31,31 +31,43 @@ export class WelcomeScreenComponent implements OnInit {
 
   constructor(
         private route: ActivatedRoute,
-        private router: Router,
+        public router: Router,
         private toast: ToasterService,
         private authenticationService: AuthenticationService,
         private userService: UserService)
-  { }
+  { 
+    this.currentScreen = 1;
+    this.currentUser = new User();
+  }
 
   ngOnInit() {
+    this.changeMeOnUpdate()
       this.loadAllUsers();
   }
+
+  changeMeOnUpdate(){
+    this.route
+        .params
+        .subscribe(params => {
+          this.currentScreen = params['screen'];
+        })
+    }
 
   private loadAllUsers() {
       this.userService.getAll()
                       .subscribe(
                         res => {
                         this.users = res;
-                        console.log(res)
-                        console.log('henaaaaaaaaa')
                         },
                         error => {
-                          console.log('Error: ' + error)
+                          // console.log('Error: ' + error)
+                          this.users = []
                         }
                     );
   }
 
-  chooseScreen(e) {
-    this.currentScreen = e;
+  chooseScreen() {
+    this.currentScreen = +this.route.snapshot.paramMap.get("screen");    
+     console.log(this.currentScreen);
   }
 }

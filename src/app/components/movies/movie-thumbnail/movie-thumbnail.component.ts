@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { OmdbMoviesService } from '../../../services/omdb/omdb-movies.service';
 import { FormControl, NgControl } from '@angular/forms';
+import { fadeInAnimation } from '../../../animations/fade-in.animation'
 // import { MatInput, MatFormField, MatAutocomplete } from '@angular/material'
 import { Movie } from '../../../models/movie.model';
 import { Rating } from '../../../models/rating.model';
@@ -20,7 +21,9 @@ declare var $: any;
 @Component({
   selector: 'app-movie-thumbnail',
   templateUrl: './movie-thumbnail.component.html',
-  styleUrls: ['./movie-thumbnail.component.css']
+  styleUrls: ['./movie-thumbnail.component.css'],
+  animations: [fadeInAnimation],
+  host: { '[@fadeInAnimation]': '' }
 })
 export class MovieThumbnailComponent implements OnInit {
 
@@ -42,7 +45,8 @@ export class MovieThumbnailComponent implements OnInit {
 
     constructor(private omdb: OmdbMoviesService,
                 private userService: UserService,
-                private movieService: MovieService) {
+                private movieService: MovieService,
+                private toast: ToasterService) {
       this.flip = false;
       this.toggleSendButton = false;
       this.pageDimmedOnRate = false;
@@ -84,10 +88,11 @@ export class MovieThumbnailComponent implements OnInit {
                       .subscribe(
                         res => {
                           this.users = res;
-                          console.log(res)
+                          // console.log(res)
                         },
                         error => {
-                          console.log('Error: ' + error)
+                          // console.log('Error: ' + error)
+                          this.users = []
                         }
                       )
     }
@@ -97,7 +102,7 @@ export class MovieThumbnailComponent implements OnInit {
                       .subscribe(
                         res => {
                           this.currentUser.MovieRatings = res;
-                          console.log(res)
+                          // console.log(res)
                           this.currentUser.MovieRatings.forEach(item => {
                             if(item.MovieID === this.currentMovie.MovieID){
                               this.currentMovieRating.Rating = item.Rating;
@@ -106,7 +111,7 @@ export class MovieThumbnailComponent implements OnInit {
                           })
                         },
                         error => {
-                          console.log('Error: ' + error)
+                          // console.log('Error: ' + error)
                         }
                       )
     }
@@ -117,11 +122,17 @@ export class MovieThumbnailComponent implements OnInit {
         this.userService.rateMovie(this.currentMovieRating)
                         .subscribe(
                           res => {
-                            console.log(res)
-                            this.currentMovieRating.RatingID = res.RatingID
+                            // console.log(res)
+                            this.pageDimmedOnRate = true;                            
                           },
                           error => {
-                            console.log('Error: ' + error)
+                            // console.log('Error: ' + error)
+                            var toast: any = {
+                              type: 'error',
+                              title: 'Sorry, an error has happened!',
+                              timeout: 2500
+                            };
+                            this.toast.pop(toast)
                           }
                         )
       }
@@ -130,10 +141,17 @@ export class MovieThumbnailComponent implements OnInit {
         this.userService.updateRating(this.currentMovieRating.RatingID, this.currentMovieRating)
                         .subscribe(
                           res => {
-                            console.log(res)
+                            // console.log(res)
+                            this.pageDimmedOnRate = true;
                           },
                           error => {
-                            console.log('Error: ' + error)
+                            // console.log('Error: ' + error)
+                            var toast: any = {
+                              type: 'error',
+                              title: 'Sorry, an error has happened!',
+                              timeout: 2500
+                            };
+                            this.toast.pop(toast)
                           }
                         )
       }
@@ -143,11 +161,23 @@ export class MovieThumbnailComponent implements OnInit {
       this.userService.deleteRating(this.currentMovieRating.RatingID)
                       .subscribe(
                         res => {
-                          console.log(res)
+                          // console.log(res)
                           this.currentMovieRating.Rating = 0;
+                          var toast: any = {
+                            type: 'info',
+                            title: 'The rating for movie ' + this.currentMovie.Title + ' has been removed!',
+                            timeout: 2500
+                          };
+                          this.toast.pop(toast)
                         },
                         error => {
-                          console.log('Error: ' + error)
+                          // console.log('Error: ' + error)
+                          var toast: any = {
+                            type: 'error',
+                            title: 'Sorry, an error has happened!',
+                            timeout: 2500
+                          };
+                          this.toast.pop(toast)
                         }
                       )
     }
@@ -158,10 +188,10 @@ export class MovieThumbnailComponent implements OnInit {
                         res => {
                           this.currentUser = res;
                           this.currentMovieRating.UserID = res.UserID;
-                          console.log(res)
+                          // console.log(res)
                         },
                         error => {
-                          console.log('Error: ' + error)
+                          // console.log('Error: ' + error)
                         }
                       )
     }
@@ -187,16 +217,28 @@ export class MovieThumbnailComponent implements OnInit {
     }
 
     toggleWatchList() {
-      console.log(this.currentMovie.MovieID)
+      // console.log(this.currentMovie.MovieID)
       if(!this.addedToList) {
         this.movieService.addToWatchlist(this.currentMovie.MovieID)
                         .subscribe(
                           res => {
-                            console.log(res)
+                            // console.log(res)
                             this.addedToList = true;
+                            var toast: any = {
+                              type: 'success',
+                              title: 'The movie ' + this.currentMovie.Title + ' has been added to your watchlist!',
+                              timeout: 2500
+                            };
+                            this.toast.pop(toast)
                           },
                           error => {
-                            console.log('Error: ' + error)
+                            // console.log('Error: ' + error)
+                            var toast: any = {
+                              type: 'error',
+                              title: 'Sorry, an error has happened!',
+                              timeout: 2500
+                            };
+                            this.toast.pop(toast)
                           }
                         )
       }
@@ -204,11 +246,23 @@ export class MovieThumbnailComponent implements OnInit {
         this.movieService.removeFromWatchlist(this.currentMovie.MovieID)
                         .subscribe(
                           res => {
-                            console.log(res)
+                            // console.log(res)
                             this.addedToList = false;
+                            var toast: any = {
+                              type: 'info',
+                              title: 'The movie ' + this.currentMovie.Title + ' has been removed from your watchlist!',
+                              timeout: 2500
+                            };
+                            this.toast.pop(toast)
                           },
                           error => {
-                            console.log('Error: ' + error)
+                            // console.log('Error: ' + error)
+                            var toast: any = {
+                              type: 'error',
+                              title: 'Sorry, an error has happened!',
+                              timeout: 2500
+                            };
+                            this.toast.pop(toast)
                           }
                         )
       }
@@ -232,17 +286,35 @@ export class MovieThumbnailComponent implements OnInit {
         this.userService.recommendToUser(this.recommendation.ToUserID, this.recommendation)
                         .subscribe(
                           res => {
-                            console.log(res)
-                            console.log('success')
-                            $(`#${this.currentMovie.imdbID}`).modal('toggle');                            
+                            // console.log(res)
+                            // console.log('success')
+                            // var toast: any = {
+                            //   type: 'success',
+                            //   title: 'Your recommendation has been sent successfully!',
+                            //   timeout: 2500
+                            // };
+                            // this.toast.pop(toast)
+                            this.pageDimmedOnRecommendation = true;
                           },
                           error => {
-                            console.log('Error: ' + error)
+                            // console.log('Error: ' + error)
+                            var toast: any = {
+                              type: 'error',
+                              title: 'Sorry, an error has happened!',
+                              timeout: 2500
+                            };
+                            this.toast.pop(toast)
                           }
                         )
+                        $(`#${this.currentMovie.imdbID}`).modal('toggle');                            
       }
       else{
-        console.log('fail')
+        var toast: any = {
+          type: 'error',
+          title: 'Sorry, an error has happened!',
+          timeout: 2500
+        };
+        this.toast.pop(toast)
       }
     }
 }

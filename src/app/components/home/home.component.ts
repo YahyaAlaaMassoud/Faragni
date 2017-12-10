@@ -22,6 +22,7 @@ declare var $: any;
   selector: 'app-home',
   templateUrl: './home.component.html',
   animations: [fadeInAnimation],
+  styleUrls: ['./home.component.scss'],  
   host: { '[@fadeInAnimation]': '' }
 })
 export class HomeComponent implements OnInit {
@@ -79,7 +80,7 @@ export class HomeComponent implements OnInit {
                   this.toast.pop(toast)
                   //this.toasterService.pop('success', 'Hello', 'Welcome to Faragni');
 
-                  this.router.navigate(['/welcome']);
+                  this.router.navigate(['/movies', 1]);
               },
               error => {
                   //this.toasterService.pop('error', 'Error', 'Error while login');

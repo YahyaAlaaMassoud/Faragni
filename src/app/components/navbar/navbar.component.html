@@ -2,13 +2,13 @@
 
 <div class="tabs-row">
     <div class="h-100 shift-brand">
-        <button class="tab" [ngClass]="{'tab-active': currentScreen === 1}" (click)="chooseScreen(1)">
+        <button *ngIf="!home" class="tab" [ngClass]="{'tab-active': currentScreen === 1}" (click)="chooseScreen(1)">
             Movies
         </button>
-        <button class="tab" [ngClass]="{'tab-active': currentScreen === 2}" (click)="chooseScreen(2)">
+        <button *ngIf="!home" class="tab" [ngClass]="{'tab-active': currentScreen === 2}" (click)="chooseScreen(2)">
             Activity
         </button>
-        <button class="tab" [ngClass]="{'tab-active': currentScreen === 3}" (click)="chooseScreen(3)">
+        <button *ngIf="!home" class="tab" [ngClass]="{'tab-active': currentScreen === 3}" (click)="chooseScreen(3)">
             Friends
         </button>
         <!-- TODO HOME BUTTON -->
@@ -20,11 +20,11 @@
         <!-- <button class="tab" [hidden]="true">
             Rated Movies
         </button> -->
-        <button (click)="toggleModal()" *ngIf="hide" class="action-button">
+        <!-- <button (click)="toggleModal()" *ngIf="hide" class="action-button">
             Sign in
-        </button>
-        <img [src]="currentUser.profilePic_url" *ngIf="currentUser != null" (click)="openNav()" class="rounded-circle img-responsive profile">
-        
+        </button> -->
+        <img *ngIf=" currentUser.profilePic_url != null && currentUser !== undefined" alt="error" [src]="currentUser.profilePic_url" (click)="openNav()" class="rounded-circle img-responsive profile">
+        <!-- <button (click)="openNav()" class="action-button">Side Nav</button> -->
     </div>
 </div>
 
