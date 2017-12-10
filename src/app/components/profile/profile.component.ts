@@ -135,6 +135,7 @@ export class ProfileComponent implements OnInit {
     this.isEdit = !this.isEdit;
     if(this.isEdit){
       e.textContent = "Save";
+      window.scrollTo(0,0)
     }
     else{
       this.updateUserInfo();
@@ -179,6 +180,7 @@ export class ProfileComponent implements OnInit {
       this.showWatchlistMovies = false;
       this.showRecommendedMovies = false;
       this.showFollowing = false ;
+      window.scrollTo(0,0)      
     }
     else if(id == 2){
       this.showRatedMovies = false;
@@ -186,6 +188,7 @@ export class ProfileComponent implements OnInit {
       this.showWatchlistMovies = true;
       this.showRecommendedMovies = false;
       this.showFollowing = false ;
+      window.scrollTo(0,0)      
     }
     else if(id == 4){
       this.showRatedMovies = false;
@@ -193,6 +196,7 @@ export class ProfileComponent implements OnInit {
       this.showWatchlistMovies = false;
       this.showRecommendedMovies = false;
       this.showFollowing = false ;
+      window.scrollTo(0,0)      
     }
     else if(id == 5){
       this.showRatedMovies = false;
@@ -200,6 +204,7 @@ export class ProfileComponent implements OnInit {
       this.showWatchlistMovies = false;
       this.showFollowing = false ;       
       this.showRecommendedMovies = true;
+      window.scrollTo(0,0)      
     }
     else if(id == 6)
     {
@@ -208,6 +213,7 @@ export class ProfileComponent implements OnInit {
       this.showWatchlistMovies = false;
       this.showRecommendedMovies = false;
       this.showFollowing = true ; 
+      window.scrollTo(0,0)      
     }
   }
 
@@ -237,3 +243,18 @@ export class ProfileComponent implements OnInit {
                       }  )
   }
 }
+$(document).ready(function() {
+  
+  $(window).scroll(function () {
+      //if you hard code, then use console
+      //.log to determine when you want the 
+      //nav bar to stick.  
+      console.log($(window).scrollTop())
+    if ($(window).scrollTop() > 267) {
+      $('#profileNav').addClass('fix');
+    }
+    if ($(window).scrollTop() < 267) {
+      $('#profileNav').removeClass('fix');
+    }
+  });
+});

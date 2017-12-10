@@ -12,7 +12,7 @@
         </label>
         <input *ngIf="isEdit" id="file-upload" type="file" accept="image/*" (change)="onFileChange($event)" />      
     </div>
-    <div class="tabs-row">
+    <div id="profileNav" class="tabs-row">
         <div class="h-100 shift-tabs">
             <button class="tab" [ngClass]="{'tab-active':showRatedMovies}" (click)="chooseTab(1)">
                 Rated Movies
@@ -29,13 +29,13 @@
             <button [hidden]="noAccess" class="tab" [ngClass]="{'tab-active':showRecommendedMovies}" (click)="chooseTab(5)">
                 Recommendations
             </button>
-            <button class="action-button" *ngIf="isLoggedInUser" (click)="takeAction($event.target)">
+            <button id="edit" class="action-button" *ngIf="isLoggedInUser" (click)="takeAction($event.target)">
                 Edit Profile
             </button>
-            <button class="action-button" *ngIf="!isLoggedInUser && isFollowed" (click)="follow()">
+            <button id="follow" class="action-button" *ngIf="!isLoggedInUser && isFollowed" (click)="follow()">
                 Follow
             </button>                
-            <button class="action-button" *ngIf="!isLoggedInUser && !isFollowed" (click)="unfollow()">
+            <button id="unfollow" class="action-button" *ngIf="!isLoggedInUser && !isFollowed" (click)="unfollow()">
                 Unfollow
             </button>      
         </div>
