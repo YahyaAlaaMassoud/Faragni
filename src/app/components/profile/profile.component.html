@@ -14,7 +14,7 @@
     </div>
     <div id="profileNav" class="tabs-row">
         <div class="h-100 shift-tabs">
-            <button class="tab" [ngClass]="{'tab-active':showRatedMovies}" (click)="chooseTab(1)">
+            <button class="tab" data-tooltip="I’m the tooltip text." [ngClass]="{'tab-active':showRatedMovies}" (click)="chooseTab(1)">
                 Rated Movies
             </button>
             <button [hidden]="noAccess" class="tab" [ngClass]="{'tab-active':showWatchlistMovies}" (click)="chooseTab(2)">

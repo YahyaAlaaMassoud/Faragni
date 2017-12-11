@@ -300,7 +300,8 @@ div.login {
 }
 
 .masthead {
-  height: 100vh;
+  min-height: 100vh;
+  max-height: none;
   padding-top: 100px;
   padding-bottom: 50px;
   text-align: center;
@@ -642,3 +643,6 @@ footer {
 .btn:active,
 .btn:focus {
   outline: none; }
+
+
+  
