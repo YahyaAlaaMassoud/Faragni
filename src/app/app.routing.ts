@@ -1,4 +1,3 @@
-import { ProfileResolver } from './services/resolvers/profile.resolver';
 import { Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -16,16 +15,25 @@ import { ActivityComponent } from './components/activity/activity.component'
 import { AuthGuard } from './guards/auth-guard/auth-guard.guard';
 import { Profile } from 'selenium-webdriver/firefox';
 
+import { ProfileResolver } from './services/resolvers/profile.resolver';
+import { AllMoviesResolver } from './services/resolvers/movie.resolver';
+
 export const appRoutes: Routes = [
-    { path: '', component: HomeComponent },//, canActivate: [AuthGuard] }
+    { path: '', redirectTo: 'home', pathMatch: 'full' },
+    { path: 'home', component: HomeComponent },    
     { path: 'login', component: LoginComponent },
-    { path: 'movies/:screen', component: WelcomeScreenComponent, canActivate: [AuthGuard]},
-    { path: 'home', component: HomeComponent },
-    { path: 'profile/:id/:tab' , component: ProfileComponent, resolve: { user: ProfileResolver } },
-    { path: 'followers' , component: FollowersComponent},
+
+    { path: 'movies/:screen', 
+      component: WelcomeScreenComponent, 
+      canActivate: [AuthGuard],
+      resolve: {
+          movies: AllMoviesResolver
+      }
+    },
+
+    { path: 'profile/:id/:tab' , component: ProfileComponent, resolve: { user: ProfileResolver }, canActivate: [AuthGuard] },
     { path: '404', component: NotFound404Component},
     
-
-    // otherwise redirect to home
+    // otherwise redirect to not found
     { path: '**', redirectTo: '404' }
 ];

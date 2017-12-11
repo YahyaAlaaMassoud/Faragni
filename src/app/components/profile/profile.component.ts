@@ -125,7 +125,9 @@ export class ProfileComponent implements OnInit {
               this.currentUser = res;
               this.isLoggedInUser = (this.loggedUser.UserID == this.currentUser.UserID) ? true : false;
               this.noAccess = !this.isLoggedInUser;  
-              window.scrollTo(0,0);
+              document.querySelector('.maindiv').scrollIntoView({ 
+                behavior: 'smooth' 
+              });
             }
           })
         })
@@ -134,6 +136,9 @@ export class ProfileComponent implements OnInit {
   takeAction(e) {
     this.isEdit = !this.isEdit;
     if(this.isEdit){
+      document.querySelector('.maindiv').scrollIntoView({ 
+        behavior: 'smooth' 
+      });
       e.textContent = "Save";
     }
     else{
@@ -174,6 +179,9 @@ export class ProfileComponent implements OnInit {
   chooseTab(id: number){
     console.log(id);
     if(id == 1){
+      document.querySelector('.maindiv').scrollIntoView({ 
+        behavior: 'smooth' 
+      });   
       this.showRatedMovies = true;
       this.showFollowers = false;
       this.showWatchlistMovies = false;
@@ -181,6 +189,9 @@ export class ProfileComponent implements OnInit {
       this.showFollowing = false ;
     }
     else if(id == 2){
+      document.querySelector('.maindiv').scrollIntoView({ 
+        behavior: 'smooth' 
+      });   
       this.showRatedMovies = false;
       this.showFollowers = false;
       this.showWatchlistMovies = true;
@@ -188,6 +199,9 @@ export class ProfileComponent implements OnInit {
       this.showFollowing = false ;
     }
     else if(id == 4){
+      document.querySelector('.maindiv').scrollIntoView({ 
+        behavior: 'smooth' 
+      });   
       this.showRatedMovies = false;
       this.showFollowers = true;
       this.showWatchlistMovies = false;
@@ -195,6 +209,9 @@ export class ProfileComponent implements OnInit {
       this.showFollowing = false ;
     }
     else if(id == 5){
+      document.querySelector('.maindiv').scrollIntoView({ 
+        behavior: 'smooth' 
+      });  
       this.showRatedMovies = false;
       this.showFollowers = false;
       this.showWatchlistMovies = false;
@@ -203,6 +220,9 @@ export class ProfileComponent implements OnInit {
     }
     else if(id == 6)
     {
+      document.querySelector('.maindiv').scrollIntoView({ 
+        behavior: 'smooth' 
+      });
       this.showRatedMovies = false;
       this.showFollowers = false;
       this.showWatchlistMovies = false;
@@ -237,3 +257,18 @@ export class ProfileComponent implements OnInit {
                       }  )
   }
 }
+$(document).ready(function() {
+  
+  $(window).scroll(function () {
+      //if you hard code, then use console
+      //.log to determine when you want the 
+      //nav bar to stick.  
+      // console.log($(window).scrollTop())
+    if ($(window).scrollTop() > 267) {
+      $('#profileNav').addClass('fix');
+    }
+    if ($(window).scrollTop() < 267) {
+      $('#profileNav').removeClass('fix');
+    }
+  });
+});

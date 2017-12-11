@@ -31,11 +31,14 @@ import { AuthGuard } from './guards/auth-guard/auth-guard.guard';
 import { fakeBackendProvider } from './services/fake-backend';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { BaseRequestOptions } from '@angular/http';
-import { ProfileResolver } from './services/resolvers/profile.resolver';
 import { PagerService } from './services/pager/pager.service';
 import { LoaderService } from './services/loader/loader.service';
 import { MovieService } from './services/movie/movie.service';
 import { GenreService } from './services/genre/genre.service';
+
+// resolvers
+import { ProfileResolver } from './services/resolvers/profile.resolver';
+import { AllMoviesResolver } from './services/resolvers/movie.resolver';
 
 // routing
 import { appRoutes } from './app.routing';
@@ -101,14 +104,7 @@ import { FollowingThumbnailComponent } from './components/profile/following/foll
     SuiSearchModule,
     NgbDropdownModule,
     CoreModule
-    // MatFormFieldModule,
-    // MatInputModule,
-    // MatAutocompleteModule,
-    // MatOptionModule
   ],
-  // exports: [
-  //   MatProgressBarModule
-  // ],
   providers: [
     AuthenticationService,
     AuthGuard,
@@ -120,7 +116,8 @@ import { FollowingThumbnailComponent } from './components/profile/following/foll
     ProfileResolver,
     PagerService,
     MovieService,
-    GenreService
+    GenreService,
+    AllMoviesResolver
   ],
   bootstrap: [ AppComponent ],
   schemas: [ NO_ERRORS_SCHEMA ]
