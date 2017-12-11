@@ -53,15 +53,16 @@ export class NavbarComponent implements OnInit, OnChanges {
   ngOnChanges(changes: {[propertyName: string]: SimpleChange}){
     if(changes['currentUser'] !== undefined)
       this.currentUser = changes['currentUser'].currentValue
+    if(changes['currentScreen'] !== undefined)
+      this.currentScreen = changes['currentScreen'].currentValue
   }
 
   ngOnInit() {
-    console.log(this.hide)
-    console.log(this.currentUser)
     this.getAuthenticatedUser()
   }
 
   chooseScreen(id: number){
+    this.currentScreen = id;
     this.router.navigate(['/movies', id]);
   }
 
