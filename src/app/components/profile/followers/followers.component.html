@@ -1,6 +1,16 @@
+<div class="header">
+    Followers
+</div>
+<br>
+<div class="watchlistMovies">
     <div *ngFor="let currentFollower of followersList;">
-        <app-followers-thumbnail (FollowingDatasource)="refreshList($event)" 
-                                [currentFollower]="currentFollower"
-                                [currentFollowings]="followingList"
-                                [currentUser]="currentUser"> </app-followers-thumbnail>            
+        <app-followers-thumbnail (currentUserModel)="authUserChanged($event)" (FollowingDatasource)="refreshList($event)" 
+                                [currentFollower]="currentFollower"> </app-followers-thumbnail>            
     </div>
+    <div *ngIf="!followersList.length">
+      <div class="empty">
+        You have no followers
+      </div>
+    </div>
+</div>
+      

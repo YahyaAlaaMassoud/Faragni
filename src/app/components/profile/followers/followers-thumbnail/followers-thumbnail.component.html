@@ -2,11 +2,9 @@
 
 <aside class="profile-card">
       <header>
-        <!-- here’s the avatar -->
         <a (click)="goToProfile()">
           <img [src]="currentFollower.profilePic_url">
         </a>
-        <!-- the username -->
         <h1>{{currentFollower.FirstName}} {{currentFollower.LastName}}</h1>
       </header>
       <div class="profile-bio">
@@ -15,3 +13,71 @@
         <p  ><button *ngIf="!isFollowing"  class="nav-btn-outline my-2 my-sm-0 followBtn1" (click)="followUser()">follow</button></p>
       </div>
   </aside>
+
+  <!-- <div class="ff card-container-ff manual-flip-ff">
+    <div class="card-ff">
+        <div class="front-ff">
+            <div class="cover-ff">
+                <img src="assets/x_rotating_card_v1.4/x_rotating_card_v1.4/images/rotating_card_thumb.png"/>
+            </div>
+            <div class="user-ff">
+                <img class="img-circle-ff" src="assets/x_rotating_card_v1.4/x_rotating_card_v1.4/images/rotating_card_profile2.png"/>
+            </div>
+            <div class="content-ff">
+                <div class="main-ff">
+                    <h3 class="name-ff">Andrew Mike</h3>
+                    <p class="profession-ff">Web Developer</p>
+                    <p class="text-center-ff">"Lamborghini Mercy <br>Your chick she so thirsty <br>I'm in that two seat Lambo"</p>
+                </div>
+                <div class="footer-ff">
+                    <button id="rotateBtn" class="btn-ff btn-simple-ff" (click)="rotateCard($event)">
+                        <i class="fa fa-mail-forward"></i> Manual Rotation
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="back-ff">
+            <div class="header-ff">
+                <h5 class="motto-ff">"To be or not to be, this is my awesome motto!"</h5>
+            </div>
+            <div class="content-ff">
+                <div class="main-ff">
+                    <h4 class="text-center-ff">Job Description</h4>
+                    <p class="text-center-ff">Web design, Adobe Photoshop, HTML5, CSS3, Corel and many others...</p>
+
+                    <div class="stats-container-ff">
+                        <div class="stats-ff">
+                            <h4>235</h4>
+                            <p>
+                                Followers
+                            </p>
+                        </div>
+                        <div class="stats-ff">
+                            <h4>114</h4>
+                            <p>
+                                Following
+                            </p>
+                        </div>
+                        <div class="stats-ff">
+                            <h4>35</h4>
+                            <p>
+                                Projects
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="footer-ff">
+                <button class="btn-ff btn-simple-ff" rel="tooltip" title="Flip Card" (click)="rotateCard($event)">
+                    <i class="fa fa-reply"></i> Back
+                </button>
+                <div class="social-links-ff text-center-ff">
+                    <a href="http://creative-tim.com" class="facebook"><i class="fa fa-facebook fa-fw"></i></a>
+                    <a href="http://creative-tim.com" class="google"><i class="fa fa-google-plus fa-fw"></i></a>
+                    <a href="http://creative-tim.com" class="twitter"><i class="fa fa-twitter fa-fw"></i></a>
+                </div>
+            </div>
+        </div> 
+    </div>
+</div>  -->

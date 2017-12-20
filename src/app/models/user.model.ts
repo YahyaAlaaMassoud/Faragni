@@ -6,6 +6,7 @@ import { Url } from 'url';
 export class User {
   UserID: number;
   MovieRatings: Rating[];
+  RatedMovies: Movie[];
   FirstName: string;
   LastName: string;
   UserName: string;
@@ -17,8 +18,9 @@ export class User {
   Recommended: Recommendation[];
   Password: string;
   token: string;
-  WatchList: string[];
+  WatchList: Movie[];
   profilePic_url: string; 
+  coverPic_url: string;
   Followers: User[];
   Following: User[];
   bio: string;

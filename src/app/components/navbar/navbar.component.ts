@@ -9,6 +9,7 @@ import { AuthenticationService } from '../../services/authentication/authenticat
 import { ToasterContainerComponent, ToasterService, ToasterConfig } from 'angular2-toaster';
 
 import { User } from '../../models/user.model';
+import { document } from 'angular-bootstrap-md/utils/facade/browser';
 
 @Component({
   selector: 'app-navbar',
@@ -30,12 +31,10 @@ export class NavbarComponent implements OnInit, OnChanges {
   @Input() currentUser: User;
   @Output() onModalOpen = new EventEmitter<any>();
   @Output() screenID = new EventEmitter<number>();
-  //<!-- LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAA START -->
   @Input() home: boolean;
   @Output() CurrentTab = new EventEmitter<number>();
- // <!-- LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAA START -->
 
- showAvatar: boolean;
+  showAvatar: boolean;
   
   currentScreen: number;
 
@@ -113,31 +112,95 @@ export class NavbarComponent implements OnInit, OnChanges {
   }
   goToFollowing(){
     this.CurrentTab.emit(6);
-    this.router.navigate(['/profile', this.currentUser.UserID.toString(), "6" ]);
+    this.router.navigate(['/profile', this.currentUser.UserID.toString(), "3" ]);
     this.closeNav();
   }
 
   getAuthenticatedUser() {
-    this.userService.getAuthenticatedUser()
-              .subscribe( res => {
-                this.currentUser = res;
-                // console.log(res)
-              },
-              error => {
-                // console.log("error: " + error)
-              }
-            )
+    this.currentUser = this.route.snapshot.data['authUser'];
   }
 
   openNav() {
-      if(document.getElementById("mySidenav").style.width == "250px"){
+      if($('#mySidenav').hasClass('openSide')){
         this.closeNav();
         return;
       }
-      document.getElementById("mySidenav").style.width = "250px";    
-  }
+      console.log('open')
+      
+      if(document.getElementById("mainDiv") != null){
+        document.getElementById("mainDiv").style.opacity = "0.3"
+      }
+      else if(document.getElementById("moviesDiv") != null){
+        document.getElementById("moviesDiv").style.opacity = "0.3"; 
+      }
+
+      document.getElementById("sideBarImg").style.marginTop = "58px";    
+      document.getElementById("sideBarImg").style.border = "5px solid #7b4397";    
+      document.getElementById("sideBarImg").style.width = "115px";
+      document.getElementById("sideBarImg").style.height = "115px";  
+    
+      $('#mySidenav').addClass('openSide');
+    }
 
   closeNav() {
-      document.getElementById("mySidenav").style.width = "0";   
+    console.log('close')
+    if(document.getElementById("mainDiv") != null)
+      document.getElementById("mainDiv").style.opacity = "1"    
+    else if(document.getElementById("moviesDiv") != null)
+      document.getElementById("moviesDiv").style.opacity = "1"
+    document.getElementById("sideBarImg").style.border = "none";          
+    document.getElementById("sideBarImg").style.marginTop = "8px";              
+    document.getElementById("sideBarImg").style.width = "40px";
+    document.getElementById("sideBarImg").style.height = "40px"; 
+    $('#mySidenav').removeClass('openSide');
   }
 }
+
+$(document).ready(function() {
+  
+  $(window).scroll(function () {
+      //if you hard code, then use console
+      //.log to determine when you want the 
+      //nav bar to stick.  
+      // console.log($(window).scrollTop())
+    if ($(window).scrollTop() > 267) {
+      $('#faragniNav').addClass('fix');
+    }
+    if ($(window).scrollTop() < 267) {
+      $('#faragniNav').removeClass('fix');
+    }
+  });
+});
+
+$(document).ready(function() {
+  $(document).click(function (e) {
+    var menu = $('#mySidenav'); 
+    var ok1 = $(e.target).is('#sideBarImg')
+    var ok2 = $(e.target).is('#mySidenav')
+    // console.log(ok1 + ' ' + ok2)
+    if(!ok1 && !ok2){
+      if(document.getElementById("mainDiv") != null)
+        document.getElementById("mainDiv").style.opacity = "1"  
+      else if(document.getElementById("moviesDiv") != null)
+        document.getElementById("moviesDiv").style.opacity = "1"   
+      document.getElementById("sideBarImg").style.border = "none";          
+      document.getElementById("sideBarImg").style.marginTop = "8px";   
+      document.getElementById("sideBarImg").style.width = "40px";
+      document.getElementById("sideBarImg").style.height = "40px"; 
+      $('#mySidenav').removeClass('openSide');
+    }
+    // if (ok) {
+    //   console.log('hide')
+    //   if(menu.hasClass('openSide') && !ok){
+    //     menu.removeClass('openSide');
+    //     document.getElementById("sideBarImg").style.width = "40px";
+    //     document.getElementById("sideBarImg").style.height = "40px"; 
+    //   }
+    //   else{
+    //     $('#mySidenav').addClass('openSide');
+    //     document.getElementById("sideBarImg").style.width = "100px";
+    //     document.getElementById("sideBarImg").style.height = "100px";   
+    //   }
+    // }
+  });
+});

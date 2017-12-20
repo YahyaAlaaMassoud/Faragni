@@ -16,13 +16,16 @@ import { ToasterContainerComponent, ToasterService, ToasterConfig } from 'angula
 })
 export class RatedMovieThumbnailComponent implements OnInit {
 
+  currentUser: User;
+  @Output() currentUserModel = new EventEmitter<User>();
+
   @Input() currentMovie: Movie;
   @Input() componentID: number;
+  @Input() loggedUserID: number;
 
   @Output() watchlistDatasource = new EventEmitter<Movie[]>();  
   @Output() ratedMoviesDatasource = new EventEmitter<number>();  
   
-  currentUser: User;
   addedToList: boolean;
   currentMovieRating: Rating;
   modalId: string;
@@ -37,72 +40,37 @@ export class RatedMovieThumbnailComponent implements OnInit {
       this.readOnly = false;
   }
 
-  ngOnInit() {
-    this.getCurrentUser();
+  createNewRating() {
     this.currentMovieRating = new Rating();
     this.currentMovieRating.MovieID = this.currentMovie.MovieID;
     this.currentMovieRating.UserID = this.currentUser.UserID;
     this.currentMovieRating.Review = "";
     this.currentMovieRating.Rating = 0;
-    this.getAuthUser();
+  }
+
+  ngOnInit() {
+    this.currentUser = this.route.snapshot.data['user']
     this.exctractGenres();
     this.exctractActors();
+    this.checkAuthUser();
+    this.createNewRating();
     this.getUserRatings();
     this.modalId = this.currentMovie.imdbID + "ratedMovie"
     this.imdbPath = "http://www.imdb.com/title/" + this.currentMovie.imdbID + "/";
   }
 
-  getCurrentUser(){
-    if(this.route.snapshot.data['user'] === null)
-      this.router.navigate(['/404']);
-    else
-      this.currentUser = this.route.snapshot.data['user'];
-  }
-
-  getAuthUser(){
-    this.userService.getAuthenticatedUser()
-                    .subscribe(
-                      res => {
-                        if(res.UserID !== this.currentUser.UserID){
-                          this.readOnly = true;
-                          // console.log('leh')
-                        }
-                      },
-                      error => {
-                        // console.log('Error: ' + error)
-                        var toast: any = {
-                          type: 'error',
-                          title: 'Sorry, an error has happened!',
-                          timeout: 2500
-                        };
-                        this.toast.pop(toast)
-                      }
-                    )
+  checkAuthUser(){
+    if(this.loggedUserID !== this.currentUser.UserID)
+      this.readOnly = true;
   }
 
   getUserRatings() {
-    this.userService.getRatingsForUser(this.currentUser.UserID) 
-                    .subscribe(
-                      res => {
-                        this.currentUser.MovieRatings = res;
-                        // console.log(res)
-                        this.currentUser.MovieRatings.forEach(item => {
-                          if(item.MovieID === this.currentMovie.MovieID){
-                            this.currentMovieRating.RatingID = item.RatingID;
-                            this.currentMovieRating.Rating = item.Rating;
-                          }
-                        })
-                      },
-                      error => {
-                        // console.log('Error: ' + error)
-                        var toast: any = {
-                          type: 'error',
-                          title: 'Sorry, an error has happened!',
-                          timeout: 2500
-                        };
-                        this.toast.pop(toast)
-                      }
-                    )
+    this.currentUser.MovieRatings.forEach(item => {
+      if(item.MovieID === this.currentMovie.MovieID){
+        this.currentMovieRating.RatingID = item.RatingID;
+        this.currentMovieRating.Rating = item.Rating;
+      }
+    })
   }
 
   saveNewRating(e) {
@@ -113,6 +81,8 @@ export class RatedMovieThumbnailComponent implements OnInit {
                         res => {
                           // console.log(res)
                           this.currentMovieRating.RatingID = res.RatingID
+                          this.currentUser.MovieRatings.push(this.currentMovieRating)
+                          this.currentUserModel.emit(this.currentUser)
                           var toast: any = {
                             type: 'success',
                             title: 'Thank you for rating ' + this.currentMovie.Title + '!',
@@ -137,6 +107,10 @@ export class RatedMovieThumbnailComponent implements OnInit {
                       .subscribe(
                         res => {
                           // console.log(res)
+                          let index: number = this.currentUser.MovieRatings
+                              .findIndex(r => r.RatingID === this.currentMovieRating.RatingID)
+                          this.currentUser.MovieRatings[index] = res;
+                          this.currentUserModel.emit(this.currentUser)
                           var toast: any = {
                             type: 'info',
                             title: 'The rating for movie ' + this.currentMovie.Title + ' has been changed!',
@@ -162,8 +136,11 @@ export class RatedMovieThumbnailComponent implements OnInit {
       this.userService.deleteRating(this.currentMovieRating.RatingID)
                       .subscribe(
                         res => {
-                          // console.log(res)
                           this.ratedMoviesDatasource.emit(this.currentMovieRating.MovieID)
+                          let index: number = this.currentUser.MovieRatings
+                            .findIndex(r => r.RatingID === this.currentMovieRating.RatingID)
+                          this.currentUser.MovieRatings.splice(index, 1)
+                          this.currentUserModel.emit(this.currentUser)
                           var toast: any = {
                             type: 'info',
                             title: 'The rating for movie ' + this.currentMovie.Title + ' has been removed!',
@@ -172,7 +149,6 @@ export class RatedMovieThumbnailComponent implements OnInit {
                           this.toast.pop(toast)
                         },
                         error => {
-                          // console.log('Error: ' + error)
                           var toast: any = {
                             type: 'error',
                             title: 'Sorry, an error has happened!',
@@ -188,6 +164,10 @@ export class RatedMovieThumbnailComponent implements OnInit {
                         res => {
                           // console.log(res)
                           this.watchlistDatasource.emit(res);
+                          let index: number = this.currentUser.WatchList
+                              .findIndex(m => m.MovieID === this.currentMovie.MovieID)
+                          this.currentUser.WatchList.splice(index, 1)
+                          this.currentUserModel.emit(this.currentUser)
                           var toast: any = {
                             type: 'info',
                             title: 'The watchlist movie ' + this.currentMovie.Title + ' has been removed!',

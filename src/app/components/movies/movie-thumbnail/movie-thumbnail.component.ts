@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { OmdbMoviesService } from '../../../services/omdb/omdb-movies.service';
 import { FormControl, NgControl } from '@angular/forms';
 import { fadeInAnimation } from '../../../animations/fade-in.animation'
@@ -25,7 +25,7 @@ declare var $: any;
   animations: [fadeInAnimation],
   host: { '[@fadeInAnimation]': '' }
 })
-export class MovieThumbnailComponent implements OnInit {
+export class MovieThumbnailComponent implements OnInit, OnDestroy {
 
     @Input() currentMovie: Movie;
     flip: boolean;
@@ -52,6 +52,10 @@ export class MovieThumbnailComponent implements OnInit {
       this.pageDimmedOnRate = false;
       this.pageDimmedOnRecommendation = false;
       this.currentUser = new User();
+    }
+
+    ngOnDestroy(){
+      
     }
 
     ngOnInit() {

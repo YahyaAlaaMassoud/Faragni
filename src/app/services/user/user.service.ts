@@ -25,10 +25,66 @@ export class UserService {
                         .catch(this.handleError)
     }
 
+    getByIDWithRatings(id: number){
+        return Observable.forkJoin([
+            this.http.get('users/' + id)
+                     .map(res => <User>res.json()),
+            this.http.get('users/' + id + '/ratings')
+                     .map(res => <Rating[]>res.json())
+        ])
+        .map((data: any[]) => {
+            let user: User = data[0];
+            let movieRatings: Rating[] = data[1];
+            user.MovieRatings = movieRatings;
+            return user;
+        })
+    }
+
+    getByIdWithAllData(id: number){
+        return Observable.forkJoin([
+            this.http.get('users/' + id)
+                     .map(res => <User>res.json()),
+            this.http.get('users/' + id + '/ratings')
+                     .map(res => <Rating[]>res.json()),
+            this.http.get('users/' + id + '/followers')
+                     .map(res => <User[]>res.json()),
+            this.http.get('users/' + id + '/followings')
+                     .map(res => <User[]>res.json()),
+            this.http.get('user/watchlist')
+                     .map(res => <Movie[]>res.json())
+        ])
+        .map((data: any[]) => {
+            let user: User = data[0];
+            let movieRatings: Rating[] = data[1];
+            let followers: User[] = data[2];
+            let followings: User[] = data[3];
+            let watchlist: Movie[] = data[4];
+            user.MovieRatings = movieRatings;
+            user.Followers = followers;
+            user.Following = followings;
+            user.WatchList = watchlist;
+            return user;
+        })
+        .catch(this.handleError)
+    }
+
     getAuthenticatedUser() {
-        return this.http.get('user')
-                        .map(res => <User>res.json())
-                        .catch(this.handleError)
+        return Observable.forkJoin([
+            this.http.get('user')
+                     .map(res => <User>res.json()),
+            this.http.get('user/followers')
+                     .map(res => <User[]>res.json()),
+            this.http.get('user/followings')
+                     .map(res => <User[]>res.json())
+        ])
+        .map((data: any[]) => {
+            let authUser: User = data[0];
+            let authUserFollowers: User[] = data[1];
+            let authUserFollowings: User[] = data[2];
+            authUser.Followers = authUserFollowers;
+            authUser.Following = authUserFollowings;
+            return authUser;
+        })
     }
 
     getFollowersForAuthenticatedUser() {

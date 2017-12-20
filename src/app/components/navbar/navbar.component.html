@@ -1,6 +1,6 @@
 
 
-<div class="tabs-row">
+<div id="faragniNav" class="tabs-row">
     <div class="h-100 shift-brand">
         <button *ngIf="!home" class="tab" [ngClass]="{'tab-active': currentScreen === 1}" (click)="chooseScreen(1)">
             Movies
@@ -23,23 +23,20 @@
         <!-- <button (click)="toggleModal()" *ngIf="hide" class="action-button">
             Sign in
         </button> -->
-        <img *ngIf=" currentUser.profilePic_url != null && currentUser !== undefined" alt="error" [src]="currentUser.profilePic_url" (click)="openNav()" class="rounded-circle img-responsive profile">
+        <img id="sideBarImg" alt="error" [src]="currentUser.profilePic_url" (click)="openNav()" class="rounded-circle img-responsive profile">
         <!-- <button (click)="openNav()" class="action-button">Side Nav</button> -->
     </div>
 </div>
 
 <div id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
-    <a (click)="goToProfile()">Profile</a>
-            <!-- LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAA START -->
-
-    <a (click)="goToRecommendation()">Recommendation</a>
-    <a (click)="goToRatedMovies()">Rated Movies</a>
-    <a (click)="goToMyWatchList()">My Watchlist </a>
-    <a (click)="goToFollowers()">Followers </a>
-    <a (click)="goToFollowing()">Following </a>
-            <!-- LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAA START -->
-
-    <hr>
-    <a (click)="logout()">Logout</a>
+    <div class="sideBarMarginTop">
+        <a (click)="goToProfile()">Profile</a>
+        <a (click)="goToRecommendation()">Recommendation</a>
+        <a (click)="goToRatedMovies()">Rated Movies</a>
+        <a (click)="goToMyWatchList()">My Watchlist </a>
+        <a (click)="goToFollowers()">Followers </a>
+        <a (click)="goToFollowing()">Following </a>
+        <hr>
+        <a class="logout" (click)="logout()">Logout</a>
+    </div>
 </div>

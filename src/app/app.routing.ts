@@ -15,8 +15,10 @@ import { ActivityComponent } from './components/activity/activity.component'
 import { AuthGuard } from './guards/auth-guard/auth-guard.guard';
 import { Profile } from 'selenium-webdriver/firefox';
 
-import { ProfileResolver } from './services/resolvers/profile.resolver';
+import { UserResolver } from './services/resolvers/profile.resolver';
+import { CurrentAuthenicatedResolver } from './services/resolvers/profile.resolver';
 import { AllMoviesResolver } from './services/resolvers/movie.resolver';
+import { AllGenresResolver } from './services/resolvers/movie.resolver';
 
 export const appRoutes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -27,11 +29,21 @@ export const appRoutes: Routes = [
       component: WelcomeScreenComponent, 
       canActivate: [AuthGuard],
       resolve: {
-          movies: AllMoviesResolver
+          movies: AllMoviesResolver,
+          authUser: CurrentAuthenicatedResolver,
+          genres: AllGenresResolver
       }
     },
 
-    { path: 'profile/:id/:tab' , component: ProfileComponent, resolve: { user: ProfileResolver }, canActivate: [AuthGuard] },
+    { path: 'profile/:id/:tab' ,
+      component: ProfileComponent,
+      resolve: { 
+          user: UserResolver,
+          authUser: CurrentAuthenicatedResolver
+      }, 
+      canActivate: [AuthGuard] 
+    },
+
     { path: '404', component: NotFound404Component},
     
     // otherwise redirect to not found

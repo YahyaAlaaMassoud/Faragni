@@ -1,10 +1,10 @@
 <div class="header">
-  Rated Movies
+  My Ratings {{ratedMovies.length}}
 </div>
-<hr/>
-<div class="ratedMovies">
+<br>
+<div id="ratedMovies" class="ratedMovies">
   <div *ngFor="let movie of ratedMovies;">
-    <app-rated-movie-thumbnail (ratedMoviesDatasource)="refreshList($event)" [componentID]="1" [currentMovie]="movie"></app-rated-movie-thumbnail>
+    <app-rated-movie-thumbnail (currentUserModel)="userChanged($event)" [loggedUserID]="loggedUserID" (ratedMoviesDatasource)="refreshList($event)" [componentID]="1" [currentMovie]="movie"></app-rated-movie-thumbnail>
   </div>
   <div *ngIf="!ratedMovies.length">
     <div class="empty">
