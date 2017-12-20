@@ -13,18 +13,14 @@ import { UserService } from '../../../services/user/user.service';
 export class WatchlistComponent implements OnInit {
 
   currentUser: User;
+  @Output() currentUserModel = new EventEmitter<User>();
+
+  @Input() loggedUserID: number;
   watchlistMovies: Movie[];
 
   ngOnInit() {
-    this.getCurrentUser();
+    this.currentUser = this.route.snapshot.data['user']
     this.getWatchListMovies();
-  }
-
-  getCurrentUser(){
-    if(this.route.snapshot.data['user'] === null)
-      this.router.navigate(['/404']);
-    else
-      this.currentUser = this.route.snapshot.data['user'];
   }
 
   constructor(private omdb: OmdbMoviesService,
@@ -34,31 +30,13 @@ export class WatchlistComponent implements OnInit {
       this.watchlistMovies = [];
   }
 
-   getWatchListMovies() {
-     this.userService.getWatchlist()
-                     .subscribe(
-                       res => {
-                         this.watchlistMovies = res || []
-                         console.log(res)
-                       },
-                       error => {
-                         console.log('Error: ' + error)
-                       }
-                     )
-    //  this.currentUser.WatchList = this.currentUser.WatchList  || [];
-    //  this.watchlistMovies = [];
-    //  this.currentUser.WatchList.forEach(item => {
-    //     this.omdb.getMovieByImdbID(item)
-    //     .subscribe(
-    //       res => {
-    //         const cur: Movie = <Movie>res;
-    //         this.watchlistMovies.push(cur);
-    //       },
-    //       error => {
-    //         console.log('Error: ', error);
-    //       }
-    //     );
-    //  });
-   }
+  getWatchListMovies() {
+    this.watchlistMovies = this.currentUser.WatchList
+  }
 
+  userChanged(e){
+    this.currentUser = e;
+    this.route.snapshot.data['user'] = e;
+    this.currentUserModel.emit(this.currentUser)
+  }
 }

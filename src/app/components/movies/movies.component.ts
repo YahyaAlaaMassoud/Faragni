@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { MovieService } from '../../services/movie/movie.service';
 import { User } from '../../models/user.model';
 
@@ -37,7 +38,8 @@ export class MoviesComponent implements OnInit {
   searchable: string;
   selectedValue: number;
 
-  constructor(private location: Location, 
+  constructor(private location: Location,
+              private route: ActivatedRoute,  
               private pagerService: PagerService,
               private movieService: MovieService,
               private genreService: GenreService) {
@@ -52,10 +54,17 @@ export class MoviesComponent implements OnInit {
   ngOnInit() {
     this.getMovies();
     this.getGenres();
-    
-    // this.location.replaceState('/movies');
+  }
 
-    this.pagedItems = [];    
+  getGenres(){
+    this.genres = this.route.snapshot.data['genres'];
+  }
+
+  getMovies() {
+    this.movies = this.route.snapshot.data['movies'];
+    this.displayedMovies = this.route.snapshot.data['movies'];
+    this.dumMovies = this.route.snapshot.data['movies'];
+    this.setPage(1, this.movies.length)
   }
 
   search(e){
@@ -69,106 +78,55 @@ export class MoviesComponent implements OnInit {
   }
 
   selectMovie(e){
-    this.dumMovies = []
-    let index = this.movies.findIndex(m => m.MovieID === e)
-    this.dumMovies.push(this.movies[index])
-    this.selectedValue = e;
-    this.setPage(this.pager.currentPage, this.dumMovies.length)
-  }
-
-  getMovieByID(id: number) {
-    this.movieService.getById(id) 
-                     .subscribe(
-                       res => {
-                         this.dumMovies.push(res)
-                       }
-                     )
-  }
-
-  getMovies() {
-    this.movieService.getAll()
-                     .subscribe(
-                       res => {
-                        this.movies = res;
-                        this.displayedMovies = res;
-                        this.dumMovies = res;
-                        this.setPage(1, this.movies.length)
-                       },
-                       error => {
-                        //  console.log('Error: ' + error)
-                         this.movies = [];
-                         this.displayedMovies = [];
-                         this.dumMovies = [];
-                       }
-                     )
+    // this.dumMovies = []
+    // let index = this.movies.findIndex(m => m.MovieID === e)
+    // this.dumMovies.push(this.movies[index])
+    // this.selectedValue = e;
+    // this.setPage(this.pager.currentPage, this.dumMovies.length)
   }
 
   setPage(page: number, length: number) {
-    if (page < 1 || page > this.pager.totalPages) {
+    if (page < 1 || page > this.pager.totalPages && this.pager.totalPages) {
         return;
     }
-
     // get pager object from service
     this.pager = this.pagerService.getPager(length, page);
-
     // get current page of items
     this.pagedItems = this.dumMovies.slice(this.pager.startIndex, this.pager.endIndex + 1);
 
-    // console.log(this.pagedItems)
+    document.querySelector('.header').scrollIntoView({ 
+      behavior: 'smooth' 
+    });
 }
 
   sortByRating(){
-    this.dumMovies.sort(function(a, b){
-      if(a.imdbRating < b.imdbRating){
+    this.dumMovies.sort((a: Movie, b: Movie) => {
+      if(a.imdbRating < b.imdbRating)
           return 1;
-      }
-      else if(a.imdbRating > b.imdbRating){
+      if(a.imdbRating > b.imdbRating)
           return -1;
-      }
-      else{
-          return 0;
-      }
+      return 0;
     })
-    this.setPage(this.pager.currentPage, this.dumMovies.length)
+    this.setPage(1, this.dumMovies.length)
   }
 
   sortByDate(){
-    this.dumMovies.sort(function(a, b){
+    this.dumMovies.sort((a: Movie, b: Movie) => {
       var aDate = new Date(a.ReleaseDate);
       var bDate = new Date(b.ReleaseDate);
-      if(aDate < bDate){
+      if(aDate < bDate)
           return 1;
-      }
-      else if(aDate > bDate){
+      if(aDate > bDate)
           return -1;
-      }
-      else{
-          return 0;
-      }
+      return 0;
     })
-    this.setPage(this.pager.currentPage, this.dumMovies.length)
-  }
-
-  getGenres(){
-    this.genreService.getAll()
-                     .subscribe(
-                       res => {
-                         this.genres = res;
-                        //  console.log(res)
-                       },
-                       error => {
-                        //  console.log('Error: ' + error)
-                         this.genres = []
-                       }
-                     )
+    this.setPage(1, this.dumMovies.length)
   }
 
   filterByGenres(e){
     this.selectedValue = 0    
     if(e.length === 0){
-      console.log(this.movies)
-      this.dumMovies = this.movies;
-      console.log(this.dumMovies)
+      this.dumMovies = this.route.snapshot.data['movies'];
       this.setPage(1, this.dumMovies.length)
     }
     else{
@@ -185,7 +143,7 @@ export class MoviesComponent implements OnInit {
           }
         })
       this.dumMovies = this.displayedMovies;
-      this.setPage(this.pager.currentPage, this.dumMovies.length)
+      this.setPage(1, this.dumMovies.length)
     }
   }
 

@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { User } from '../../../models/user.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../../services/user/user.service';
-
-
 
 @Component({
   selector: 'app-followers',
@@ -11,53 +9,43 @@ import { UserService } from '../../../services/user/user.service';
   styleUrls: ['./followers.component.scss']
 })
 export class FollowersComponent implements OnInit {
+
+  @Output() currentUserModel = new EventEmitter<User>();
+  currentUser:User;  
   followersList:User[];
-  currentUser:User;
   followingList:User[];
+
   constructor(private route: ActivatedRoute,
               private router: Router,
-               private userService: UserService) { 
-
-  }
-  ngOnInit() {
+              private userService: UserService) { 
     this.followersList = [];
     this.followingList = [];
+  }
+
+  ngOnInit() {
     this.getCurrentUser();
     this.getFollowers();
     this.getFollowings();
   }
+
   getCurrentUser(){
-    if(this.route.snapshot.data['user'] === null)
-      this.router.navigate(['/404']);
-    else
-      this.currentUser = this.route.snapshot.data['user'];
+    this.currentUser = this.route.snapshot.data['user'];
   }
+
   getFollowers() {
-      this.userService.getFollowersForUser(this.currentUser.UserID)
-                      .subscribe(
-                        res=> {
-                          this.followersList = res
-                          console.log(this.followersList);
-                        },
-                        error=>{
-                          console.log('Error: '+error); 
-                        }
-                      );
+    this.followersList = this.currentUser.Followers;
   }
+
   getFollowings() {
-    this.userService.getFollowingsForUser(this.currentUser.UserID)
-                    .subscribe(
-                      res=> {
-                        this.followingList = res
-                        console.log(this.followingList);
-                      },
-                      error=>{
-                        console.log('Error: '+error); 
-                      }
-                    );
+    this.followingList = this.currentUser.Following;    
   }
   
   refreshList(e){
     this.followingList = e;
+  }
+
+  authUserChanged(e) {
+    this.route.snapshot.data['authUser'] = e;
+    this.currentUserModel.emit(e)
   }
 }

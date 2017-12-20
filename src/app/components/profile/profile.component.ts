@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnChanges, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
+import { ChangeDetectorRef, Component, OnChanges, OnInit, ViewChild, Output, EventEmitter, Input } from '@angular/core';
 import { User } from '../../models/user.model';
 import { Event, document } from 'angular-bootstrap-md/utils/facade/browser';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -16,6 +16,7 @@ export class ProfileComponent implements OnInit {
   @ViewChild('fileInput') fileInput;
 
   currentUser: User;
+
   loggedUser: User;  
   isEdit: boolean;
   myBio: String;
@@ -26,11 +27,8 @@ export class ProfileComponent implements OnInit {
   showFollowing: boolean;
   currentScreen:number;
   isLoggedInUser: boolean;
-  isFollowed: boolean;
+  isFollowing: boolean;
   fullName: string;
-  louda: User;
-  user1: User;
-  user2: User;
   noAccess: boolean;
 
   constructor(private router:Router, 
@@ -48,62 +46,67 @@ export class ProfileComponent implements OnInit {
       this.showFollowing = false;
 
       this.loggedUser = new User();
+      this.currentUser = new User();
   }
 
   ngOnInit() {
-    let usr: User = this.route.snapshot.data['user'];
-    if(usr === null){
+    this.currentUser = this.route.snapshot.data['user'];
+    this.loggedUser = this.route.snapshot.data['authUser'];
+    
+    if(this.currentUser === null){
       this.router.navigate(['/404']);
     }
     else{
-      let tab: number = +this.route.snapshot.paramMap.get("tab");
-      let currentScreen: number = +this.route.snapshot.paramMap.get("screen");
-      this.currentUser = usr;
+      // console.log('curr: ' + this.currentUser.UserID + ' logged: ' + this.loggedUser.UserID)      
       this.fullName = this.currentUser.FirstName + ' ' + this.currentUser.LastName;
 
-      this.getAuthenticatedUser();
-      this.isFollowedUser()
+      
       this.changeMeOnUpdate();
 
-      let scr: number = +this.route.snapshot.paramMap.get('screen')
-      this.chooseTab(scr)
+      
     }
   }
 
-  getUserByID(id: number){
-    this.userService.getById(id)
-                    .subscribe( 
-                    res => {
-                      this.currentUser = res;
-                    },
-                    error => {
-                      console.log("error: " + error)
-                    }
-                  )
-  }
+  changeMeOnUpdate(){
+    this.route
+        .params
+        .subscribe(params => {
+          console.log(this.route.snapshot.data['user'])
+          let res = this.route.snapshot.data['user']
+          if(res === null){
+            this.router.navigate(['/404']);
+          }
+          else{
+            this.currentUser = res;            
+            this.isLoggedInUser = (this.loggedUser.UserID == this.currentUser.UserID) ? true : false;
+            if(!this.isLoggedInUser)
+              this.chooseTab(1)
 
-  getAuthenticatedUser() {
-    this.userService.getAuthenticatedUser()
-                    .subscribe( 
-                    res => {
-                      this.loggedUser = res;
-                      // console.log(this.loggedUser.UserID)
-                      this.isLoggedInUser = (this.loggedUser.UserID == this.currentUser.UserID) ? true : false;
-                      this.noAccess = !this.isLoggedInUser;
-                      // console.log(this.loggedUser)
-                    },
-                    error => {
-                      console.log("error: " + error)
-                    }
-                  )
-  }
+            if(!this.isLoggedInUser){
+              const index: number = this.loggedUser.Following
+                .findIndex(f => f.UserID == this.currentUser.UserID);
+              if(index == -1)
+                this.isFollowing = false;
+              else this.isFollowing = true;
+            }
+            this.noAccess = !this.isLoggedInUser;  
+            document.querySelector('.maindiv').scrollIntoView({ 
+              behavior: 'smooth' 
+            });
+            let tab: number = +this.route.snapshot.paramMap.get("tab");
+            this.chooseTab(tab)
+          }
+        })
+    }
 
   updateUserInfo(){
     this.userService.update(this.currentUser)
                     .subscribe(
                       res=>{
                         this.currentUser = res;
+                        this.route.snapshot.data['user'] = res;                        
                         this.loggedUser = res;
+                        // console.log('curr: ' + this.currentUser.UserID + ' logged: ' + this.loggedUser.UserID)      
                       },
                       error => {
                         console.log("error: " + error)
@@ -111,45 +114,26 @@ export class ProfileComponent implements OnInit {
                     )
   }
 
-  changeMeOnUpdate(){
-    this.route
-        .params
-        .subscribe(params => {
-          this.chooseTab(params['tab'])
-          this.userService.getById(params['id'])
-          .subscribe(res=>{
-            if(res === null){
-              this.router.navigate(['/404']);
-            }
-            else{
-              this.currentUser = res;
-              this.isLoggedInUser = (this.loggedUser.UserID == this.currentUser.UserID) ? true : false;
-              this.noAccess = !this.isLoggedInUser;  
-              document.querySelector('.maindiv').scrollIntoView({ 
-                behavior: 'smooth' 
-              });
-            }
-          })
-        })
-    }
-
   takeAction(e) {
     this.isEdit = !this.isEdit;
     if(this.isEdit){
       document.querySelector('.maindiv').scrollIntoView({ 
         behavior: 'smooth' 
       });
-      e.textContent = "Save";
     }
     else{
-      this.updateUserInfo();
-      this.getAuthenticatedUser();
-      e.textContent = "Edit profile";
+      console.log(e)
+      if(e.textContent != "Cancel"){
+        this.updateUserInfo();
+        document.querySelector('.maindiv').scrollIntoView({ 
+          behavior: 'smooth' 
+        });
+        // console.log('curr: ' + this.currentUser.UserID + ' logged: ' + this.loggedUser.UserID)      
+      }
     }
   }
 
   chooseScreen(e) {
-    console.log("my scree : " + e);
     this.currentScreen = e; 
   }
 
@@ -164,24 +148,12 @@ export class ProfileComponent implements OnInit {
     reader.readAsDataURL(fileInput.target.files[0]);
   } 
 
-  isFollowedUser() {
-    this.userService.isFollowing(this.currentUser.UserID)
-                    .subscribe(
-                      res => {
-                        this.isFollowed = res.follows_me;
-                      },
-                      error => {
-                        console.log('Error: ' + error)
-                      }
-                    )
-  }
-
   chooseTab(id: number){
-    console.log(id);
     if(id == 1){
       document.querySelector('.maindiv').scrollIntoView({ 
         behavior: 'smooth' 
       });   
+      this.router.navigate(['/profile', this.currentUser.UserID.toString(), "1" ]);            
       this.showRatedMovies = true;
       this.showFollowers = false;
       this.showWatchlistMovies = false;
@@ -192,16 +164,30 @@ export class ProfileComponent implements OnInit {
       document.querySelector('.maindiv').scrollIntoView({ 
         behavior: 'smooth' 
       });   
+      this.router.navigate(['/profile', this.currentUser.UserID.toString(), "2" ]);                  
       this.showRatedMovies = false;
       this.showFollowers = false;
       this.showWatchlistMovies = true;
       this.showRecommendedMovies = false;
       this.showFollowing = false ;
     }
+    else if(id == 3)
+    {
+      document.querySelector('.maindiv').scrollIntoView({ 
+        behavior: 'smooth' 
+      });
+      this.router.navigate(['/profile', this.currentUser.UserID.toString(), "3" ]);                  
+      this.showRatedMovies = false;
+      this.showFollowers = false;
+      this.showWatchlistMovies = false;
+      this.showRecommendedMovies = false;
+      this.showFollowing = true ; 
+    }
     else if(id == 4){
       document.querySelector('.maindiv').scrollIntoView({ 
         behavior: 'smooth' 
       });   
+      this.router.navigate(['/profile', this.currentUser.UserID.toString(), "4" ]);                  
       this.showRatedMovies = false;
       this.showFollowers = true;
       this.showWatchlistMovies = false;
@@ -212,49 +198,49 @@ export class ProfileComponent implements OnInit {
       document.querySelector('.maindiv').scrollIntoView({ 
         behavior: 'smooth' 
       });  
+      this.router.navigate(['/profile', this.currentUser.UserID.toString(), "5" ]);                  
       this.showRatedMovies = false;
       this.showFollowers = false;
       this.showWatchlistMovies = false;
       this.showFollowing = false ;       
       this.showRecommendedMovies = true;
     }
-    else if(id == 6)
-    {
-      document.querySelector('.maindiv').scrollIntoView({ 
-        behavior: 'smooth' 
-      });
-      this.showRatedMovies = false;
-      this.showFollowers = false;
-      this.showWatchlistMovies = false;
-      this.showRecommendedMovies = false;
-      this.showFollowing = true ; 
-    }
   }
 
   follow(){
-    this.userService.followUser(this.currentUser.UserID).subscribe(
-
-                res => {
-                  console.log(res);
-                  this.isFollowed = false;
-                },
-                error =>{
-                  console.log("error: " + error);
-                }
-                
-
-    )
-  }
-
-  unfollow(){
-    this.userService.unfollowUser(this.currentUser.UserID).subscribe(
+    this.userService.followUser(this.currentUser.UserID)
+                    .subscribe(
                       res => {
-                        console.log(res);
-                       this.isFollowed = true
+                        // console.log(res);
+                        this.isFollowing = true;
                       },
                       error =>{
                         console.log("error: " + error);
-                      }  )
+                    });
+  }
+
+  unfollow(){
+    this.userService.unfollowUser(this.currentUser.UserID)
+                    .subscribe(
+                      res => {
+                        // console.log(res);
+                       this.isFollowing = false
+                      },
+                      error =>{
+                        console.log("error: " + error);
+                    })
+  }
+
+  userChanged(e){
+    this.currentUser = e;
+    this.route.snapshot.data['user'] = e;
+    // console.log(this.route.snapshot.data['user'])
+  }
+
+  authUserChanged(e) {
+    this.loggedUser = e;
+    this.route.snapshot.data['authUser'] = e;
+    console.log(this.route.snapshot.data['authUser'])
   }
 }
 $(document).ready(function() {

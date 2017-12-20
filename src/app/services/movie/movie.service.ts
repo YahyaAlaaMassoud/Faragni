@@ -4,11 +4,13 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { HttpService } from '../../services/custom-http-service/custom-http-service.service';
 
 import { Movie } from '../../models/movie.model';
+import { UserService } from '../../services/user/user.service';
+import { User } from '../../models/user.model';
 
 @Injectable()
 export class MovieService {
 
-    constructor(private http: HttpService) { }
+    constructor(private http: HttpService, private userService: UserService) { }
 
     getAll() {
         return this.http.get('movies')

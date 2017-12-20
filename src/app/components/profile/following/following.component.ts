@@ -10,42 +10,38 @@ import { UserService } from '../../../services/user/user.service';
 })
 export class FollowingComponent implements OnInit {
 
-  followingList:User[];
-  currentUser:User;
+  followingList: User[];
+  currentUser: User;
+  authUser: User;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
               private userService: UserService) { 
-    // this.currentUser=JSON.parse(localStorage.getItem("currentUser"));
-    // this.followingList = this.currentUser.Following;
-    // console.log(this.followingList);
+    this.followingList = []
+    this.currentUser = new User();
+    this.authUser = new User();
   }
+
   ngOnInit() {
     this.getCurrentUser();
-    this.getFollowings();
-    
+    this.getAuthUser();
+    this.getFollowings();  
   }
+
+  getAuthUser(){
+    this.authUser = this.route.snapshot.data['authUser']
+  }
+
   getCurrentUser(){
-    if(this.route.snapshot.data['user'] === null)
-      this.router.navigate(['/404']);
-    else
-      this.currentUser = this.route.snapshot.data['user'];
+    this.currentUser = this.route.snapshot.data['user'];
   }
+
   getFollowings() {
-      this.userService.getFollowingsForAuthenticatedUser()
-                      .subscribe(
-                        res=> {
-                          this.followingList = res
-                          console.log(this.followingList);
-                        },
-                        error=>{
-                          console.log('Error: '+error); 
-                        }
-                      );
+    this.followingList = this.currentUser.Following;
   }
+  
   refreshList(e){
     this.followingList = e;
   }
-
 }
 

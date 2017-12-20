@@ -24,31 +24,20 @@ export class LoaderComponent implements OnInit {
         .subscribe((state: LoaderState) => {
             this.show = state.show;
             if(this.show){
-              // this.move()
-              this.changingValue = 100;
+                this.changingValue = 100;
+                $("#myProgressBar").show()
             }
             else {
-              this.changingValue = 0;
+                this.changingValue = 0;
+                // $("#myProgressBar").hide()
+                $("#myProgressBar").fadeTo("fast", 0)
             }
         });
   }
+
   ngOnDestroy() {
       this.changingValue = 0;
+      $("#myProgressBar").fadeTo("fast", 0)      
       this.subscription.unsubscribe();
   }
-
-  move() {
-    var elem = document.getElementById("myBar"); 
-    var width = 1;
-    var id = setInterval(frame, 30);
-    function frame() {
-        if (width >= 100) {
-            clearInterval(id);
-        } else {
-            width++; 
-            elem.style.width = width + '%'; 
-        }
-    }
-}
-
 }

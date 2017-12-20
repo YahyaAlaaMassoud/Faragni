@@ -91,16 +91,16 @@ export class HttpService extends Http {
                     });
     }
 
-    private getFullUrl(url: string): string {
-        return this.apiUrl + url;
-    }
-
     private requestOptions(options?: RequestOptionsArgs): RequestOptionsArgs {
         if (options == null) 
             options = new MyCustomRequestOptions();
         if (options.headers == null) 
             options.headers = new Headers();
         return options;
+    }
+
+    private getFullUrl(url: string): string {
+        return this.apiUrl + url;
     }
 
     private handleError(error: Response) {

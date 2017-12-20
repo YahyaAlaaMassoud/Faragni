@@ -5,6 +5,8 @@ import { MovieService } from '../../services/movie/movie.service';
 import { Movie } from '../../models/movie.model';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/delay';
+import { Genre } from '../../models/genre.model';
+import { GenreService } from '../../services/genre/genre.service';
 
 @Injectable()
 export class AllMoviesResolver implements Resolve<Observable<Movie[]>> {
@@ -13,5 +15,15 @@ export class AllMoviesResolver implements Resolve<Observable<Movie[]>> {
 
     resolve(route: ActivatedRouteSnapshot) {
         return this.movieService.getAll();
+    }
+}
+
+@Injectable()
+export class AllGenresResolver implements Resolve<Observable<Genre[]>> {
+
+    constructor(private genreService: GenreService) {}
+
+    resolve(route: ActivatedRouteSnapshot) {
+        return this.genreService.getAll();
     }
 }

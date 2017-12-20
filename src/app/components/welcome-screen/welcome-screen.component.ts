@@ -14,9 +14,9 @@ import { trigger, state, animate, transition, style, query, animateChild } from 
 
 @Component({
   selector: 'app-welcome-screen',
-  templateUrl: './welcome-screen.component.html',
-  animations: [fadeInAnimation],
-  host: { '[@fadeInAnimation]': '' }
+  templateUrl: './welcome-screen.component.html'
+  // animations: [fadeInAnimation],
+  // host: { '[@fadeInAnimation]': '' }
 })
 export class WelcomeScreenComponent implements OnInit {
 

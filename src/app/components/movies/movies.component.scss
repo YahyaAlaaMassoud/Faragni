@@ -76,7 +76,7 @@ h1{
     background-color: white;
     width: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+    // z-index: 1;
     display: none;
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
@@ -188,7 +188,7 @@ h1{
 
 .previous{
   position: fixed;
-  margin-top: 100px;
+  margin-top: 20px;
   left:3rem;
   font-size: 50px;
   cursor: pointer;
@@ -196,10 +196,15 @@ h1{
 
 .next{
   position: fixed;
-  margin-top: 100px;
+  margin-top: 20px;
   right:3rem;
   font-size: 50px;
   cursor: pointer;
+}
+
+#moviesDiv{
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
 
 .number:hover{

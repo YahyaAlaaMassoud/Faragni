@@ -23,7 +23,7 @@ export class FollowingThumbnailComponent implements OnInit {
   ngOnInit() {
 }
   goToProfile(){
-    this.router.navigate(['/profile', this.currentFollowing.UserID.toString(), 1]);
+    this.router.navigate(['/profile', this.currentFollowing.UserID.toString(), "1"]);
   }
 
   unfollowUser(){

@@ -6,7 +6,7 @@
     // margin: 15px;
     position: relative;
     background-color: white;    
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), 0 5px 3px rgba(0, 0, 0, 0.2);    
+    // box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), 0 5px 3px rgba(0, 0, 0, 0.2);    
     -webkit-transition: all 0.4s;
     transition: all 0.4s;
     color: #7b4397;
@@ -15,7 +15,7 @@
 
 
 .rated-movie-card:hover{
-    box-shadow: 0 9px 18px rgba(0, 0, 0, 0.6), 0 10px 8px rgba(0, 0, 0, 0.5);    
+    // box-shadow: 0 9px 18px rgba(0, 0, 0, 0.6), 0 10px 8px rgba(0, 0, 0, 0.5);    
     -webkit-transition: all 0.4s;
     transition: all 0.4s;
 }
@@ -173,3 +173,4 @@ a.imdbLink:hover{
 .pointer{
     cursor: pointer;
 }
+

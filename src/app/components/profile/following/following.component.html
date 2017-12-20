@@ -1,5 +1,14 @@
-<div stylt="min-height:500px">
+<div class="header">
+  Followings
+</div>
+<br>
+<div class="watchlistMovies">
   <div *ngFor="let currentFollowing of followingList;">
     <app-following-thumbnail (followingDataSource)="refreshList($event)" [currentFollowing] = "currentFollowing"> </app-following-thumbnail>
+  </div>
+  <div *ngIf="!followingList.length">
+    <div class="empty">
+      You aren't following anyone yet
+    </div>
   </div>
 </div>

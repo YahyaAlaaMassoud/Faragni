@@ -37,8 +37,10 @@ import { MovieService } from './services/movie/movie.service';
 import { GenreService } from './services/genre/genre.service';
 
 // resolvers
-import { ProfileResolver } from './services/resolvers/profile.resolver';
+import { UserResolver } from './services/resolvers/profile.resolver';
+import { CurrentAuthenicatedResolver } from './services/resolvers/profile.resolver';
 import { AllMoviesResolver } from './services/resolvers/movie.resolver';
+import { AllGenresResolver } from './services/resolvers/movie.resolver';
 
 // routing
 import { appRoutes } from './app.routing';
@@ -113,11 +115,13 @@ import { FollowingThumbnailComponent } from './components/profile/following/foll
     MockBackend,
     BaseRequestOptions,
     OmdbMoviesService,
-    ProfileResolver,
+    UserResolver,
     PagerService,
     MovieService,
     GenreService,
-    AllMoviesResolver
+    AllMoviesResolver,
+    CurrentAuthenicatedResolver,
+    AllGenresResolver
   ],
   bootstrap: [ AppComponent ],
   schemas: [ NO_ERRORS_SCHEMA ]

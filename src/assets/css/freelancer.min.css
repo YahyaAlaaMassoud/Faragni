@@ -113,7 +113,7 @@ section.success {
 
 .scroll-top {
   position: fixed;
-  z-index: 1049;
+  /* z-index: 1049; */
   right: 2%;
   bottom: 2%;
   width: 50px;
@@ -367,7 +367,8 @@ div.login {
           margin: 0; }
 
 #portfolio * {
-  z-index: 2; }
+  /* z-index: 2; */
+ }
 
 @media (min-width: 767px) {
   #portfolio .portfolio-item {
@@ -408,7 +409,7 @@ div.login {
     opacity: 0.3; }
   .portfolio-modal .close-modal .lr {
     /* Safari and Chrome */
-    z-index: 1051;
+    /* z-index: 1051; */
     width: 1px;
     height: 75px;
     margin-left: 35px;
@@ -419,7 +420,7 @@ div.login {
     background-color: #2C3E50; }
     .portfolio-modal .close-modal .lr .rl {
       /* Safari and Chrome */
-      z-index: 1052;
+      /* z-index: 1052; */
       width: 1px;
       height: 75px;
       /* IE 9 */
@@ -444,7 +445,7 @@ div.login {
   .floating-label-form-group textarea {
     font-size: 1.5em;
     position: relative;
-    z-index: 1;
+    /* z-index: 1; */
     padding-right: 0;
     padding-left: 0;
     resize: none;
@@ -456,7 +457,7 @@ div.login {
     font-size: 0.85em;
     line-height: 1.764705882em;
     position: relative;
-    z-index: 0;
+    /* z-index: 0; */
     top: 2em;
     display: block;
     margin: 0;
@@ -646,3 +647,36 @@ footer {
 
 
   
+
+  .shadow
+  {
+      position:relative;
+      -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+         -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+              box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  }
+  .shadow:before, .shadow:after
+  {
+      content:"";
+      position:absolute;
+      /* z-index:-1; */
+      -webkit-box-shadow:0 0 20px rgba(0,0,0,0.8);
+      -moz-box-shadow:0 0 20px rgba(0,0,0,0.8);
+      box-shadow:0 0 20px rgba(0,0,0,0.8);
+      top:50%;
+      bottom:0;
+      left:10px;
+      right:10px;
+      -moz-border-radius:100px / 10px;
+      border-radius:100px / 10px;
+  }
+  .shadow:after
+  {
+      right:10px;
+      left:auto;
+      -webkit-transform:skew(8deg) rotate(3deg);
+         -moz-transform:skew(8deg) rotate(3deg);
+          -ms-transform:skew(8deg) rotate(3deg);
+           -o-transform:skew(8deg) rotate(3deg);
+              transform:skew(8deg) rotate(3deg);
+  }

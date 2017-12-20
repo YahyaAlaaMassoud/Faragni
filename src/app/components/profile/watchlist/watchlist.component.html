@@ -1,10 +1,10 @@
 <div class="header">
-  Watchlist
+  My Watchlist
 </div>
-<hr/>
+<br>
 <div class="watchlistMovies">
   <div *ngFor="let movie of watchlistMovies;">
-    <app-rated-movie-thumbnail (watchlistDatasource)="watchlistMovies = $event" [componentID]="2" [currentMovie]="movie"></app-rated-movie-thumbnail>
+    <app-rated-movie-thumbnail (currentUserModel)="userChanged($event)" [loggedUserID]="loggedUserID" [componentID]="2" [currentMovie]="movie"></app-rated-movie-thumbnail>
   </div>
   <div *ngIf="!watchlistMovies.length">
     <div class="empty">
