@@ -18,7 +18,7 @@
     </div>
     <div class="rating">
       <!-- <span  class="rate">{{currentMovie.imdbRating}}</span> -->
-      <star-rating-comp [hoverEnabled]="true" [labelText]="'Your Rating:'"  class="pointer"
+      <star-rating-comp [hoverEnabled]="true" [labelText]="'Your Rating:'"  class="pointer" *ngIf="!rec"
       [numOfStars]="5" [labelPosition]="'left'" [starType]="'icon'" [readOnly]="readOnly" 
         [rating]="currentMovieRating.Rating" (onClick)="saveNewRating($event)"></star-rating-comp>
         <star-rating-comp [hoverEnabled]="false" [labelText]="'Imdb Rating:'" [readOnly]="true"

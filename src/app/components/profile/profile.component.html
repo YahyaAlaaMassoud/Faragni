@@ -105,7 +105,7 @@
                 <rated-movies [loggedUserID]="loggedUser.UserID" (currentUserModel)="userChanged($event)" *ngIf="showRatedMovies"></rated-movies>
                 <app-followers (currentUserModel)="authUserChanged($event)" *ngIf ="showFollowers"></app-followers>                
                 <watchlist [hidden]="noAccess" [loggedUserID]="loggedUser.UserID" (currentUserModel)="userChanged($event)" *ngIf="showWatchlistMovies"></watchlist>
-                <!-- <recommendations [hidden]="noAccess" *ngIf="showRecommendedMovies"></recommendations> -->
+                <recommendations [hidden]="noAccess" *ngIf="showRecommendedMovies"></recommendations>
                 <app-following *ngIf="showFollowing"></app-following>
             </div>
         </div>

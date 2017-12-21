@@ -26,9 +26,10 @@
               </div>
             <hr>
             <!-- have to be implemented -->
-            <!-- <div *ngFor="let recommendation of currentUser.Recommendations;">
-                <app-rated-movie-thumbnail (currentUserModel)="userChanged($event)" [loggedUserID]="loggedUserID" (ratedMoviesDatasource)="refreshList($event)" [componentID]="1" [currentMovie]="recommendation"></app-rated-movie-thumbnail>
-            </div> -->
+            <div *ngFor="let recommendation of DL;">
+                <!-- {{recommendation.Title}} -->
+                <app-rated-movie-thumbnail [rec]="true" [currentMovie]="recommendation"></app-rated-movie-thumbnail>
+            </div>
             <!-- <div *ngIf="!pendingRecommendations.length">
               you have rated all your recommendations
             </div> -->
@@ -53,7 +54,7 @@
         Rated recommendations
       </div>
       <div content> -->
-        <hr>
+        <!-- <hr> -->
           <div class="recommendedMovies">
             <div class="section">
                 Your have already rated <b>{{ratedRecommendations.length}}</b> recommendations
