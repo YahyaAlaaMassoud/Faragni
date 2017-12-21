@@ -3,7 +3,7 @@
 </div>
 <br>
 <div class="watchlistMovies">
-    <div *ngFor="let currentFollower of followersList;">
+    <div class="prfCard" *ngFor="let currentFollower of followersList;">
         <app-followers-thumbnail (currentUserModel)="authUserChanged($event)" (FollowingDatasource)="refreshList($event)" 
                                 [currentFollower]="currentFollower"> </app-followers-thumbnail>            
     </div>

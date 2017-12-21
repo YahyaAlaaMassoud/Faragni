@@ -29,6 +29,7 @@ export class RecommendationsComponent implements OnInit {
               private userService: UserService) {
     this.pendingRecommendations = [];
     this.ratedRecommendations = [];
+    this.currentUser.Recommendations = [];
   }
 
   getPendingRecommendations() {

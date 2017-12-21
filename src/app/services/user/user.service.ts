@@ -59,10 +59,12 @@ export class UserService {
             let followers: User[] = data[2];
             let followings: User[] = data[3];
             let watchlist: Movie[] = data[4];
+            // let recs: Movie[] = data[5]
             user.MovieRatings = movieRatings;
             user.Followers = followers;
             user.Following = followings;
             user.WatchList = watchlist;
+            user.Recommendations = [];
             return user;
         })
         .catch(this.handleError)

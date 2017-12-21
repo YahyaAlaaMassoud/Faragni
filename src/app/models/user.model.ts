@@ -16,6 +16,7 @@ export class User {
   DateOfBirth: Date;
   Friends: User[];
   Recommended: Recommendation[];
+  Recommendations: Movie[];
   Password: string;
   token: string;
   WatchList: Movie[];

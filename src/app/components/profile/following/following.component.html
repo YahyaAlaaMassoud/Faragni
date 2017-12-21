@@ -3,7 +3,7 @@
 </div>
 <br>
 <div class="watchlistMovies">
-  <div *ngFor="let currentFollowing of followingList;">
+  <div class="prfCard" *ngFor="let currentFollowing of followingList;">
     <app-following-thumbnail (followingDataSource)="refreshList($event)" [currentFollowing] = "currentFollowing"> </app-following-thumbnail>
   </div>
   <div *ngIf="!followingList.length">

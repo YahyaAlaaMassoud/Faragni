@@ -12,8 +12,8 @@
 				</div>
 				<ul class="menu-content">
 					<li>
-						<a href="{{imdbPath}}" data-tooltip="hamada" target="_blank">
-							<i class="fa fa-film" aria-hidden="true"></i>								
+						<a href="{{imdbPath}}" target="_blank">
+							<i class="fa fa-film" style="color:#7b4397;" aria-hidden="true"></i>								
 						</a>
 					</li>
 					<li *ngIf="currentMovieRating.Rating != 0"><a class="fa" [ngClass]="{'fa-paper-plane-o':!toggleSendButton, 'fa-paper-plane':toggleSendButton}"

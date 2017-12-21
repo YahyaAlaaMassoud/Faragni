@@ -20,6 +20,19 @@
         Pending you rating
       </div>
       <div content> -->
+          <div class="recommendedMovies">
+              <div class="section">
+                Recommended By Our AI Model
+              </div>
+            <hr>
+            <!-- have to be implemented -->
+            <!-- <div *ngFor="let recommendation of currentUser.Recommendations;">
+                <app-rated-movie-thumbnail (currentUserModel)="userChanged($event)" [loggedUserID]="loggedUserID" (ratedMoviesDatasource)="refreshList($event)" [componentID]="1" [currentMovie]="recommendation"></app-rated-movie-thumbnail>
+            </div> -->
+            <!-- <div *ngIf="!pendingRecommendations.length">
+              you have rated all your recommendations
+            </div> -->
+          </div>
         <div class="recommendedMovies">
             <div class="section">
                 <b>{{pendingRecommendations.length}}</b> recommendations pending your feedback

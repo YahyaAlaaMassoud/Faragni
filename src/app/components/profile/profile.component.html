@@ -17,16 +17,16 @@
     <div id="profileNav" class="tabs-row">
         <div class="h-100 shift-tabs">
             <button class="tab" [ngClass]="{'tab-active':showRatedMovies}" (click)="chooseTab(1)">
-                My Ratings
+                Ratings
             </button>
             <button [hidden]="noAccess" class="tab" [ngClass]="{'tab-active':showWatchlistMovies}" (click)="chooseTab(2)">
-                My Watchlist
+                Watchlist
             </button>
             <button class="tab" [ngClass]="{'tab-active':showFollowing}" (click)="chooseTab(3)">
                 Following
             </button>
             <button class="tab" [ngClass]="{'tab-active':showFollowers}" (click)="chooseTab(4)">
-                My Followers
+                Followers
             </button>
             <button [hidden]="noAccess" class="tab" [ngClass]="{'tab-active':showRecommendedMovies}" (click)="chooseTab(5)">
                 Recommendations

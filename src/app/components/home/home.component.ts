@@ -15,6 +15,7 @@ import 'bootstrap';
 
 //animations
 import { fadeInAnimation } from '../../animations/fade-in.animation'
+import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 
 declare var $: any;
 
@@ -25,7 +26,7 @@ declare var $: any;
   styleUrls: ['./home.component.scss'],  
   host: { '[@fadeInAnimation]': '' }
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
 
   model: User;
   loading = false;
@@ -54,11 +55,15 @@ export class HomeComponent implements OnInit {
     this.email = "";
     this.model.Password = "";
     this.loginOrRegiser = false;
-    this.unValid = false;
-    this.emValid = false;
-    this.passValid = false;
-    this.fnValid = false;
-    this.lnValid = false;
+    this.unValid = true;
+    this.emValid = true;
+    this.passValid = true;
+    this.fnValid = true;
+    this.lnValid = true;
+  }
+
+  ngOnDestroy(){
+    $("#loginForm").hide();
   }
 
   ngOnInit() {
@@ -73,7 +78,7 @@ export class HomeComponent implements OnInit {
                   var toast: any = {
                     type: 'success',
                     title: 'Hello!',
-                    // body: 'Nice to see you ' + data.UserName + '!',
+                    body: 'Nice to see you ' + this.model.UserName + '!',
                     timeout: 2500
                   };
                   
@@ -85,31 +90,56 @@ export class HomeComponent implements OnInit {
               error => {
                   //this.toasterService.pop('error', 'Error', 'Error while login');
                   this.loading = false;
+                  var toast: any = {
+                    type: 'error',
+                    title: '',
+                    body: 'Have you entered incorrect email or password',
+                    timeout: 2500
+                  };
+                  
+                  this.toast.pop(toast)
               });
   }
 
   register() {
-      this.loading = true;
-      this.userService.create(this.model)
-          .subscribe(
-              data => {
-                  console.log(data)
-                  // set success message and pass true paramater to persist the message after redirecting to the login page
-                  //this.toast.pop('success', 'Hello', 'Welcome to Faragni');
-                  this.loginOrRegiser = !this.loginOrRegiser
-                  this.loading = false;
-              },
-              error => {
-                  //this.toast.pop('error', 'Error', 'Error while login');
-                  this.loading = false;
-              });
+    console.log('clicked')
+      if(this.model.UserName && this.model.FirstName && this.model.LastName && this.model.Password && this.model.Email && 
+        this.unValid && this.emValid && this.passValid && this.fnValid && this.lnValid){
+        this.loading = true;
+        this.userService.create(this.model)
+            .subscribe(
+                data => {
+                    console.log(data)
+                    // set success message and pass true paramater to persist the message after redirecting to the login page
+                    //this.toast.pop('success', 'Hello', 'Welcome to Faragni');
+                    this.loginOrRegiser = !this.loginOrRegiser
+                    this.loading = false;
+                },
+                error => {
+                    //this.toast.pop('error', 'Error', 'Error while login');
+                    this.unValid = false;
+                    this.emValid = false;
+                    this.passValid = false;
+                    this.fnValid = false;
+                    this.lnValid = false;
+                    alert("Please enter you data correctly");
+                    this.loading = false;
+                });
+      }
+      else{
+        this.unValid = false;
+        this.emValid = false;
+        this.passValid = false;
+        this.fnValid = false;
+        this.lnValid = false;
+        alert("Please enter you data correctly");
+      }
   }
 
   toggleModal(){
     this.loginOrRegiser = false;
     $('#loginModal').modal('toggle');
   }
-  // LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAA START 
   
   checkInput(myInput)
   {
@@ -178,6 +208,5 @@ export class HomeComponent implements OnInit {
         this.unValid = true ; 
     }
 }
-// LOUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAA START -->
 
 }

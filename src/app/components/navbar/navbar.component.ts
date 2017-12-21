@@ -73,12 +73,12 @@ export class NavbarComponent implements OnInit, OnChanges {
     var toast: any = {
       type: 'info',
       title: 'Good Bye!',
-      body: 'See you soon ' + this.currentUser.UserName + '!',
+      body: 'See you soon ' + this.currentUser.FirstName + '!',
       timeout: 2500
     };
     this.toast.pop(toast)
     this.authService.logout();
-    this.router.navigate(['/login']);
+    this.router.navigate(['/home']);
   }
   
   goToProfile(){
@@ -125,7 +125,7 @@ export class NavbarComponent implements OnInit, OnChanges {
         this.closeNav();
         return;
       }
-      console.log('open')
+      // console.log('open')
       
       if(document.getElementById("mainDiv") != null){
         document.getElementById("mainDiv").style.opacity = "0.3"
@@ -143,7 +143,7 @@ export class NavbarComponent implements OnInit, OnChanges {
     }
 
   closeNav() {
-    console.log('close')
+    // console.log('close')
     if(document.getElementById("mainDiv") != null)
       document.getElementById("mainDiv").style.opacity = "1"    
     else if(document.getElementById("moviesDiv") != null)
@@ -179,14 +179,20 @@ $(document).ready(function() {
     var ok2 = $(e.target).is('#mySidenav')
     // console.log(ok1 + ' ' + ok2)
     if(!ok1 && !ok2){
-      if(document.getElementById("mainDiv") != null)
+      if(document.getElementById("mainDiv") != null){
         document.getElementById("mainDiv").style.opacity = "1"  
-      else if(document.getElementById("moviesDiv") != null)
+        document.getElementById("sideBarImg").style.border = "none";          
+        document.getElementById("sideBarImg").style.marginTop = "8px";   
+        document.getElementById("sideBarImg").style.width = "40px";
+        document.getElementById("sideBarImg").style.height = "40px"; 
+      }
+      else if(document.getElementById("moviesDiv") != null){
         document.getElementById("moviesDiv").style.opacity = "1"   
-      document.getElementById("sideBarImg").style.border = "none";          
-      document.getElementById("sideBarImg").style.marginTop = "8px";   
-      document.getElementById("sideBarImg").style.width = "40px";
-      document.getElementById("sideBarImg").style.height = "40px"; 
+        document.getElementById("sideBarImg").style.border = "none";          
+        document.getElementById("sideBarImg").style.marginTop = "8px";   
+        document.getElementById("sideBarImg").style.width = "40px";
+        document.getElementById("sideBarImg").style.height = "40px"; 
+      }
       $('#mySidenav').removeClass('openSide');
     }
     // if (ok) {

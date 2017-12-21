@@ -19,16 +19,22 @@ export class FollowersThumbnailComponent implements OnInit {
   authenticatedUser: User;
   currentUser: User;
   isFollowing:boolean;
+  realFollower: User;
 
   constructor(private router: Router, 
               private userService: UserService,
               private route: ActivatedRoute) { 
     this.authenticatedUser = new User();
     this.currentUser = new User();    
+    this.realFollower = new User();
+    this.realFollower.Followers = [];
+    this.realFollower.Following = [];
   }
 
   ngOnInit() {
+    this.getUserData()
     this.currentUser = this.route.snapshot.data['user'];
+    console.log(this.currentUser)
     this.authenticatedUser = this.route.snapshot.data['authUser'];
     this.isFollowing = false;
     // console.log(this.authenticatedUser.Following)
@@ -36,6 +42,18 @@ export class FollowersThumbnailComponent implements OnInit {
           .findIndex(u => u.UserID === this.currentFollower.UserID);
     if(index != -1)
       this.isFollowing = true;
+  }
+
+  getUserData(){
+    this.userService.getByIdWithAllData(this.currentFollower.UserID)
+                    .subscribe(
+                      res => {
+                        this.realFollower = res;
+                      },
+                      error => {
+                        console.log(error)
+                      }
+                    )
   }
 
   ngOnChanges(changes: {[propertyName: string]: SimpleChange}){
@@ -95,4 +113,3 @@ export class FollowersThumbnailComponent implements OnInit {
     }
   }
 }
-

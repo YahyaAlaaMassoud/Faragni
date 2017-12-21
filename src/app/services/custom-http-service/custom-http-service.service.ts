@@ -28,7 +28,6 @@ export class HttpService extends Http {
 
     get(url: string, options?: RequestOptionsArgs): Observable<any> {
         this.showLoader();
-        // debugger;
         return super.get(this.getFullUrl(url), this.requestOptions(options))
                     .catch(this.handleError) // Catch exception here
                     .do((res: Response) => {
@@ -37,7 +36,6 @@ export class HttpService extends Http {
                         // Handle errors
                     })
                     .finally(() => {
-                        // console.log('hide loader')
                         this.hideLoader();
                         // Request completed
                     });
