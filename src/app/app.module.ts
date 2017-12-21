@@ -28,6 +28,7 @@ import { AuthenticationService } from './services/authentication/authentication.
 import { UserService } from './services/user/user.service';
 import { OmdbMoviesService } from './services/omdb/omdb-movies.service';
 import { AuthGuard } from './guards/auth-guard/auth-guard.guard';
+import { HomePageGuard } from './guards/auth-guard/auth-guard.guard';
 import { fakeBackendProvider } from './services/fake-backend';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { BaseRequestOptions } from '@angular/http';
@@ -110,6 +111,7 @@ import { FollowingThumbnailComponent } from './components/profile/following/foll
   providers: [
     AuthenticationService,
     AuthGuard,
+    HomePageGuard,
     UserService,
     fakeBackendProvider,
     MockBackend,

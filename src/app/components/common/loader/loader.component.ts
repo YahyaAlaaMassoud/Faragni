@@ -24,20 +24,20 @@ export class LoaderComponent implements OnInit {
         .subscribe((state: LoaderState) => {
             this.show = state.show;
             if(this.show){
+                // console.log('show loader')
                 this.changingValue = 100;
                 $("#myProgressBar").show()
             }
             else {
+                // console.log('hide loader')
                 this.changingValue = 0;
-                // $("#myProgressBar").hide()
                 $("#myProgressBar").fadeTo("fast", 0)
             }
         });
   }
 
   ngOnDestroy() {
-      this.changingValue = 0;
-      $("#myProgressBar").fadeTo("fast", 0)      
+      this.changingValue = 0;  
       this.subscription.unsubscribe();
   }
 }

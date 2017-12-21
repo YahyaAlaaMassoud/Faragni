@@ -14,16 +14,32 @@ export class FollowingThumbnailComponent implements OnInit {
 
   @Input() currentFollowing:User;
   currentUser:User;
+  realFollowing:User;
 
   @Output() followingDataSource = new EventEmitter<User[]>(); 
 
   constructor(private router: Router,private userService: UserService) { 
+    this.realFollowing = new User();
+    this.realFollowing.Followers = [];
+    this.realFollowing.Following = []
   }
 
   ngOnInit() {
+    this.getUserData();
 }
   goToProfile(){
     this.router.navigate(['/profile', this.currentFollowing.UserID.toString(), "1"]);
+  }
+  getUserData(){
+    this.userService.getByIdWithAllData(this.currentFollowing.UserID)
+                    .subscribe(
+                      res => {
+                        this.realFollowing = res;
+                      },
+                      error => {
+                        console.log(error)
+                      }
+                    )
   }
 
   unfollowUser(){

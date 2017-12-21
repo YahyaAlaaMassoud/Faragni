@@ -13,6 +13,7 @@ import { ProfileComponent } from './components/profile/profile.component'
 import { ActivityComponent } from './components/activity/activity.component'
 
 import { AuthGuard } from './guards/auth-guard/auth-guard.guard';
+import { HomePageGuard } from './guards/auth-guard/auth-guard.guard';
 import { Profile } from 'selenium-webdriver/firefox';
 
 import { UserResolver } from './services/resolvers/profile.resolver';

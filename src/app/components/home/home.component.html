@@ -1,5 +1,4 @@
-<!-- <app-navbar (onModalOpen)="toggleModal()" [hide]="true"></app-navbar> -->
-<header class="masthead">
+<!-- <header class="masthead">
   <div class="container">
     <div class="intro-text" style="padding-left:200px; padding-right:200px">
       <span class="name">Hello and welcome to</span>
@@ -9,8 +8,70 @@
            data-toggle="modal" data-target="#loginModal">Sign up to get started!</button>
     </div>
   </div>
+</header> -->
+
+
+<header id="loginForm" class="masthead">
+  <div class="row">
+    <div class="col-40">
+      <div class="brand">
+        Faragni
+      </div>
+      <div class="description">
+        Deep Learning Based Movie Recommendation Engine
+      </div>
+    </div>
+    <div class="col-20">
+        <div class="headerDivider"></div>
+    </div>
+    <div class="col-40-right">
+        <div class="login" *ngIf="!loginOrRegiser">
+            <input placeholder="Username.." type="text" 
+                    class="form-control input" name="username"
+                    [(ngModel)]="model.Email" required />
+            <input placeholder="Password.." type="password"
+             class="form-control input" name="password"
+                          [(ngModel)]="model.Password" required />
+            <hr>
+            <button [disabled]="loading" 
+            class="login-btn-outline btn-lg btn-block login-btn" (click)="login()">Login</button>
+              <p class="switch" (click)="loginOrRegiser = !loginOrRegiser">Not a member?</p>
+        </div>
+        <div class="login" *ngIf="loginOrRegiser">
+            <input placeholder="First Name.." type="text"
+            class="form-control input"  [ngClass]="{'alert-form':!fnValid}" (change)="checkInput('fn')" 
+            [(ngModel)]="model.FirstName" required />
+            <input placeholder="Last Name.." type="text"
+            class="form-control input" (change)="checkInput('ln')"   [ngClass]="{'alert-form':!lnValid}"
+            [(ngModel)]="model.LastName" required />
+            <input placeholder="Username.." type="text"
+            class="form-control input" (change)="checkInput('un')"   [ngClass]="{'alert-form':!unValid}"
+            [(ngModel)]="model.UserName" required />
+            <input placeholder="Email.." type="text" 
+            class="form-control input" (change)="checkInput('em')"  [ngClass]="{'alert-form':!emValid}"
+            [(ngModel)]="model.Email" required />
+            <input placeholder="Password.." type="password"
+            class="form-control input" (change)="checkInput('pw')"   [ngClass]="{'alert-form':!passValid}"
+            [(ngModel)]="model.Password" required />
+            <hr>
+            <button [disabled]="!emValid||!unValid||!fnValid||!lnValid||!passValid" 
+            class="login-btn-outline btn-lg btn-block login-btn"
+            (click)="register()">Sign Up</button>
+            <p (click)="loginOrRegiser = !loginOrRegiser" class="switch">Already have an account?</p>
+          </div>
+    </div>
+  </div>
 </header>
-<!-- <app-footer></app-footer> -->
+
+
+
+
+
+
+
+
+
+
 
 
 <div id="loginModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="myModalLabel">

@@ -2,14 +2,31 @@
   
     <header>
       <a (click)="goToProfile()">
-        <img [src]="currentFollowing.profilePic_url">
+        <img *ngIf="realFollowing != undefined" alt="loading..." [src]="realFollowing.profilePic_url">
       </a>
       
-      <h1>{{currentFollowing.FirstName}} {{currentFollowing.LastName}}</h1>
+      <h1>{{realFollowing.FirstName}} {{realFollowing.LastName}}</h1>
     </header>
     
     <div class="profile-bio">
-      <p>{{currentFollowing.bio}}</p>
-      <p><button class="nav-btn-outline my-2 my-sm-0 followBtn" (click)="unfollowUser()">unfollow</button></p>
+      <p>{{realFollowing.bio}}</p>
+
+      <div class="twPc-divStats">
+        <ul class="twPc-Arrange">
+          <li class="twPc-ArrangeSizeFit">
+            <a title="{{realFollowing.Following.length}} Followings">
+              <span class="twPc-StatLabel twPc-block">Following</span>
+              <span class="twPc-StatValue">{{realFollowing.Following.length}}</span>
+            </a>
+          </li>
+          <li class="twPc-ArrangeSizeFit">
+            <a title="{{realFollowing.Followers.length}} Followers">
+              <span class="twPc-StatLabel twPc-block">Followers</span>
+              <span class="twPc-StatValue">{{realFollowing.Followers.length}}</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <p><button class="nav-btn-outline my-2 my-sm-0 followBtn" (click)="unfollowUser()">unfollow</button></p>      
     </div>
 </aside>

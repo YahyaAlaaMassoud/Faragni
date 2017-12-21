@@ -3,15 +3,32 @@
 <aside class="profile-card">
       <header>
         <a (click)="goToProfile()">
-          <img [src]="currentFollower.profilePic_url">
+            <img *ngIf="realFollower != undefined" alt="loading..." [src]="realFollower.profilePic_url">
         </a>
-        <h1>{{currentFollower.FirstName}} {{currentFollower.LastName}}</h1>
+        <h1>{{realFollower.FirstName}} {{realFollower.LastName}}</h1>
       </header>
       <div class="profile-bio">
-        <p>{{currentFollower.bio}}</p>
+        <p>{{realFollower.bio}}</p>
+
+        <div class="twPc-divStats">
+			<ul class="twPc-Arrange">
+				<li class="twPc-ArrangeSizeFit">
+					<a title="{{realFollower.Following.length}} Followings">
+						<span class="twPc-StatLabel twPc-block">Following</span>
+						<span class="twPc-StatValue">{{realFollower.Following.length}}</span>
+					</a>
+				</li>
+				<li class="twPc-ArrangeSizeFit">
+					<a title="{{realFollower.Followers.length}} Followers">
+						<span class="twPc-StatLabel twPc-block">Followers</span>
+						<span class="twPc-StatValue">{{realFollower.Followers.length}}</span>
+					</a>
+				</li>
+			</ul>
+		</div>
         <p ><button *ngIf="isFollowing" class="nav-btn-outline my-2 my-sm-0 followBtn1" (click)="unfollowUser()">unfollow</button></p>
         <p  ><button *ngIf="!isFollowing"  class="nav-btn-outline my-2 my-sm-0 followBtn1" (click)="followUser()">follow</button></p>
-      </div>
+    </div>
   </aside>
 
   <!-- <div class="ff card-container-ff manual-flip-ff">

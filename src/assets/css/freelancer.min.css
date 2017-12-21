@@ -31,10 +31,10 @@ p {
 
 p.small {
   font-size: 16px; }
-a{
-  -webkit-text-fill-color: #7b4397;
+/* a{
+  -webkit-text-fill-color: #7b4397; */
   
-}
+/* } */
 a,
 a.active,
 a:active,
@@ -306,9 +306,13 @@ div.login {
   padding-bottom: 50px;
   text-align: center;
   color: white;
-  background: url("../img/bg-pattern.png"), #7b4397;
+  background-image: url("../img/Scyfer-7.jpg");
+  background-size:100% 100%;
+  background-repeat: no-repeat;
+  /* background: url("../img/bg-pattern.png"), #7b4397;
   background: url("../img/bg-pattern.png"), -webkit-linear-gradient(to left, #7b4397, #dc2430);
-  background: url("../img/bg-pattern.png"), linear-gradient(to left, #7b4397, #dc2430);}
+  background: url("../img/bg-pattern.png"), linear-gradient(to left, #7b4397, #dc2430); */
+}
   .masthead img {
     display: block;
     margin: 0 auto 20px; }
