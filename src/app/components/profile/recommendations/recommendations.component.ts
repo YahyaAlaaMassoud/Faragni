@@ -16,11 +16,13 @@ export class RecommendationsComponent implements OnInit {
   currentUser: User;
   pendingRecommendations: Recommendation[];
   ratedRecommendations: Recommendation[];
+  DL: Movie[];
 
   ngOnInit() {
     this.getCurrentUser();
     this.getPendingRecommendations();
     this.getRatedRecommendations();
+    this.getRecommendations();
   }
 
   constructor(private omdb: OmdbMoviesService,
@@ -29,7 +31,21 @@ export class RecommendationsComponent implements OnInit {
               private userService: UserService) {
     this.pendingRecommendations = [];
     this.ratedRecommendations = [];
-    this.currentUser.Recommendations = [];
+    // this.currentUser.Recommendations = [];
+    this.DL = [];
+  }
+
+  getRecommendations(){
+    this.userService.getNewRecommendations()
+                    .subscribe(
+                      res => {
+                        this.DL = res;
+                        console.log(this.DL)
+                      },
+                      error => {
+                        console.log(error)
+                      }
+                  )
   }
 
   getPendingRecommendations() {

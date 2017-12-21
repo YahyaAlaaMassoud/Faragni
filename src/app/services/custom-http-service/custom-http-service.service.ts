@@ -18,7 +18,7 @@ import { RequestArgs } from '@angular/http/src/interfaces';
 
 export class HttpService extends Http {
     public token: string;
-    apiUrl = 'https://faragni-api.herokuapp.com/api/';
+    apiUrl = 'https://faragni-api1.herokuapp.com/api/';
 
     constructor(backend: XHRBackend,
                 defaultOptions: MyCustomRequestOptions,

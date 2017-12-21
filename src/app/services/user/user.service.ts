@@ -181,7 +181,7 @@ export class UserService {
 
     getNewRecommendations() {
         return this.http.get('user/get_new_recommendations')
-                        .map(res => <Recommendation[]>res.json())
+                        .map(res => <Movie[]>res.json())
                         .catch(this.handleError)
     }
     

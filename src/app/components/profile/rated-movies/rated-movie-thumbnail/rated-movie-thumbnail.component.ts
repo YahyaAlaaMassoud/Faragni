@@ -22,6 +22,7 @@ export class RatedMovieThumbnailComponent implements OnInit {
   @Input() currentMovie: Movie;
   @Input() componentID: number;
   @Input() loggedUserID: number;
+  @Input() rec:boolean;
 
   @Output() watchlistDatasource = new EventEmitter<Movie[]>();  
   @Output() ratedMoviesDatasource = new EventEmitter<number>();  
