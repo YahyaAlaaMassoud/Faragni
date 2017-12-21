@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "postinstall": "ng build --aot -prod",
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -38,9 +39,7 @@
     "ngx-bootstrap": "^1.9.3",
     "rxjs": "^5.5.5",
     "tether": "^1.4.1",
-    "zone.js": "^0.8.14"
-  },
-  "devDependencies": {
+    "zone.js": "^0.8.14",
     "@angular/cli": "^1.5.0",
     "@angular/compiler-cli": "^5.1.0",
     "@angular/language-service": "^4.4.6",
@@ -61,5 +60,7 @@
     "ts-node": "~3.2.0",
     "tslint": "~5.7.0",
     "typescript": "^2.4.2"
+  },
+  "devDependencies": {
   }
 }
